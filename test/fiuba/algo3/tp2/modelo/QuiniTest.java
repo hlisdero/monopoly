@@ -7,7 +7,7 @@ import org.junit.Test;
 public class QuiniTest {
 
 	@Test
-	public void newQuiniNotNull() {
+	public void nuevoQuiniNoNull() {
 		assertNotNull(new Quini());
 	}
 

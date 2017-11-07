@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 class Tablero {
-	ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+	private ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 	
 	Tablero() {
 		int i;

@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 class Casilla {
-	int numeroCasilla;
+	private int numeroCasilla;
 	
 	Casilla(int numeroCasilla) {
 		this.numeroCasilla = numeroCasilla;

@@ -12,6 +12,10 @@ class Tablero {
 		}
 	}
 	
+	Casilla getCasillaInicial() {
+		return casillas.get(0);
+	}
+	
 	Casilla getCasillaSiguiente(Casilla casilla, int posiciones) {
 		return casillas.get(casilla.siguiente(posiciones));
 	}

@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 class Jugador {
-	private double capital = 100000;
+	private int capital = 100000;
 	private Casilla casilla;
 	private ArrayList<Casilla> listaDeCasillasDelJugador;
 	
@@ -28,18 +28,25 @@ class Jugador {
 		return casilla;
 	}
 
-	void setCasilla(Casilla casilla) {
+	public void setCasilla(Casilla casilla) {
 		this.casilla = casilla;
 	}
 
-	void agregarDinero(double monto) {
+	public void agregarDinero(double monto) {
 		capital += monto;
 	}
 	
-	void restarDinero(double monto) throws CapitalInsuficienteException {
+	public int restarDinero(int monto) throws CapitalInsuficienteException {
 		if (capital < monto) {
 			throw new CapitalInsuficienteException();
 		}
-		capital -= monto;
+		 capital -= monto;
+		 return this.capital;
+	}
+	
+	public int addTerrenoALaLista(Casilla unaCasilla)
+	{
+		this.listaDeCasillasDelJugador.add(unaCasilla);
+		return this.listaDeCasillasDelJugador.size();
 	}
 }

@@ -3,33 +3,31 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 class Jugador {
+	
 	private int capital = 100000;
 	private Casilla casilla;
-	private ArrayList<Casilla> listaDeCasillasDelJugador;
+	private ArrayList<Propiedad> listaDePropiedadesDelJugador = new ArrayList<Propiedad>();
+	private  ResultadoDados ultimaTirada;
 	
 	
-	public Jugador(){
-		this.listaDeCasillasDelJugador = new ArrayList<Casilla>();
+	public Jugador(Casilla unaCasilla) {
+		this.casilla = unaCasilla;
 	}
 	
-	public Jugador(Casilla casilla) {
-		this.casilla = casilla;
-	}
-	
-	public ArrayList<Casilla> getListaDeCasillasDelJugador() {
-		return listaDeCasillasDelJugador;
+	public ArrayList<Propiedad> getListaPropiedadesJugador() {
+		return listaDePropiedadesDelJugador;
 	}
 
-	public void setListaDeCasillasDelJugador(ArrayList<Casilla> listaDeCasillasDelJugador) {
-		this.listaDeCasillasDelJugador = listaDeCasillasDelJugador;
+	public void setListaDeCasillasDelJugador(ArrayList<Propiedad> listaDeCasillasDelJugador) {
+		this.listaDePropiedadesDelJugador = listaDeCasillasDelJugador;
 	}
 
 	Casilla getCasilla() {
 		return casilla;
 	}
 
-	public void setCasilla(Casilla casilla) {
-		this.casilla = casilla;
+	public void setCasilla(Casilla unaCasilla) {
+		this.casilla = unaCasilla;
 	}
 
 	public void agregarDinero(double monto) {
@@ -44,9 +42,17 @@ class Jugador {
 		 return this.capital;
 	}
 	
-	public int addTerrenoALaLista(Casilla unaCasilla)
+	public int addTerrenoALaLista(Propiedad unaPropiedad)
 	{
-		this.listaDeCasillasDelJugador.add(unaCasilla);
-		return this.listaDeCasillasDelJugador.size();
+		this.listaDePropiedadesDelJugador.add(unaPropiedad);
+		return this.listaDePropiedadesDelJugador.size();
+	}
+	
+	public ResultadoDados tirarDados() {
+		ultimaTirada = Dados.tirarDados();
+		return ultimaTirada;
+	}
+	public ResultadoDados  getResultadoDados() {
+		return ultimaTirada;
 	}
 }

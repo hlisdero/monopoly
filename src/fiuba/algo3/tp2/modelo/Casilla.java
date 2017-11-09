@@ -1,20 +1,10 @@
 package fiuba.algo3.tp2.modelo;
 
-class Casilla {
-	
-	private int numeroCasilla;
-	
-	public Casilla()
-	{
-		this.numeroCasilla = 0;
-	}
+public interface Casilla {
 	
 	
-	public Casilla(int numeroCasilla) {
-		this.numeroCasilla = numeroCasilla;
-	}
+	public void aplicarEfecto(Jugador jugador);
+		
 	
-	public int siguiente(int posiciones) {
-		return (numeroCasilla + posiciones) % 20;
-	}
+	
 }

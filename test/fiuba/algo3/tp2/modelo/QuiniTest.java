@@ -8,7 +8,7 @@ public class QuiniTest {
 
 	@Test
 	public void nuevoQuiniNoNull() {
-		assertNotNull(new Quini(0));
+		assertNotNull(new Quini());
 	}
 
 }

@@ -1,26 +1,12 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Compania extends Casilla {
+public class Compania extends Propiedad {
 
-	private int precioDeLaCompania;
 	
-	public Compania()
-	{
-		this.precioDeLaCompania = 0;
-	}
-	
-	public Compania(int precio)
-	{
-		this.precioDeLaCompania = precio;
+	public Compania(int precio) {
+		super(precio);
 	}
 
-	public int getPrecioDeLaCompania() {
-		return precioDeLaCompania;
-	}
-
-	public void setPrecioDeLaCompania(int precioDeLaCompania) {
-		this.precioDeLaCompania = precioDeLaCompania;
-	}
 	
 	
 	

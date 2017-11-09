@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.modelo;
+/*package fiuba.algo3.tp2.modelo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -40,4 +40,4 @@ public class JugadorTest {
 		
 		assertEquals(monto, 65000);
 	}
-}
+}*/

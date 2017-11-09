@@ -1,11 +1,15 @@
 package fiuba.algo3.tp2.modelo;
 
-class Quini implements Casilla {
+public class CasillaPrueba implements Casilla{
+	
+	public CasillaPrueba() {
+		
+	}
 
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 }

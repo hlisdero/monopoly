@@ -4,11 +4,11 @@ public class Terreno extends Casilla {
 	
 	private  
 		int precioDelTerreno;
-		Jugador dueno;
+		Jugador duenio;
 	public Terreno()
 	{
 		super();
-		this.dueno=new Jugador();
+		this.duenio=new Jugador();
 	}
 	
 	public Terreno(int precio)
@@ -23,12 +23,14 @@ public class Terreno extends Casilla {
 	public void setPrecioDelTerreno(int precioDelTerreno) {
 		this.precioDelTerreno = precioDelTerreno;
 	}
-	public Jugador  duenoDelTerreno() {
-		return this.dueno;
+	public Jugador duenioDelTerreno() {
+		return this.duenio;
 	}
-	public void asignarDueno(Jugador nuevoDueno) {
-		this.dueno= nuevoDueno;
+	public void asignarDuenio(Jugador nuevoDueno) {
+		this.duenio= nuevoDueno;
 	}
+
+	
 	
 	
 	

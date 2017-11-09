@@ -33,14 +33,14 @@ class Jugador {
 	}
 
 	public void agregarDinero(double monto) {
-		capital += monto;
+		this.capital += monto;
 	}
 	
 	public int restarDinero(int monto) throws CapitalInsuficienteException {
-		if (capital < monto) {
+		if (this.capital < monto) {
 			throw new CapitalInsuficienteException();
 		}
-		 capital -= monto;
+		 this.capital -= monto;
 		 return this.capital;
 	}
 	

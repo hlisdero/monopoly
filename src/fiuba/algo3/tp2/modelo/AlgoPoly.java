@@ -17,4 +17,10 @@ public class AlgoPoly {
 		unJugador.addTerrenoALaLista(unTerreno);
 		return unJugador.restarDinero(unTerreno.getPrecioDelTerreno());
 	}
+	
+	public int jugadorCompraCompania(Jugador unJugador, Compania unaCompania) throws CapitalInsuficienteException
+	{
+		unJugador.addTerrenoALaLista(unaCompania);
+		return unJugador.restarDinero(unaCompania.getPrecioDeLaCompania());
+	}
 }

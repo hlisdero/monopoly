@@ -1,13 +1,29 @@
 package fiuba.algo3.tp2.modelo;
 
+import java.util.ArrayList;
+
 class Jugador {
 	private double capital = 100000;
 	private Casilla casilla;
+	private ArrayList<Casilla> listaDeCasillasDelJugador;
 	
-	Jugador(Casilla casilla) {
+	
+	public Jugador(){
+		this.listaDeCasillasDelJugador = new ArrayList<Casilla>();
+	}
+	
+	public Jugador(Casilla casilla) {
 		this.casilla = casilla;
 	}
 	
+	public ArrayList<Casilla> getListaDeCasillasDelJugador() {
+		return listaDeCasillasDelJugador;
+	}
+
+	public void setListaDeCasillasDelJugador(ArrayList<Casilla> listaDeCasillasDelJugador) {
+		this.listaDeCasillasDelJugador = listaDeCasillasDelJugador;
+	}
+
 	Casilla getCasilla() {
 		return casilla;
 	}

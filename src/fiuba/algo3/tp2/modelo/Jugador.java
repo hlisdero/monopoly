@@ -9,6 +9,11 @@ class Jugador {
 	private ArrayList<Propiedad> listaDePropiedadesDelJugador = new ArrayList<Propiedad>();
 	private  ResultadoDados ultimaTirada;
 	
+	public Jugador(Casilla casillaInicial) {
+		casilla = casillaInicial;
+	}
+	
+	
 	public ArrayList<Propiedad> getListaPropiedadesJugador() {
 		return listaDePropiedadesDelJugador;
 	}

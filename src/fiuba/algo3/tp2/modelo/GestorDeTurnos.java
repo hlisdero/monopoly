@@ -13,7 +13,7 @@ public class GestorDeTurnos {
 		return colaDeTurnos.size();
 	}
 
-	public Jugador avanzarTurno() {
+	public Jugador proximoTurno() {
 		Jugador jugador = colaDeTurnos.remove();
 		colaDeTurnos.add(jugador);
 		return jugador;

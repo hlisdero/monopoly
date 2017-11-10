@@ -1,28 +1,23 @@
 package fiuba.algo3.tp2.modelo;
 
 public class AlgoPoly {
-	private Tablero tablero = new Tablero();
+	private GestorDeMovimiento gestorDeMovimiento = new GestorDeMovimiento();
 	private GestorDeTurnos colaDeTurnos = new GestorDeTurnos();
 
 	
 	public Jugador crearJugador() {
-		Jugador jugador = new Jugador();
-		jugador.setCasilla(tablero.getCasillaInicial());
+		Casilla casillaInicial = gestorDeMovimiento.getCasillaInicial();
+		Jugador jugador = new Jugador(casillaInicial);
 		colaDeTurnos.agregarJugador(jugador);
 		return jugador;
 	}
 	
-	public void mover(Jugador jugador) {
-		Casilla casillaSiguiente = tablero.getCasillaSiguiente(jugador.getCasilla(), jugador.tirarDados());
-		casillaSiguiente.aplicarEfecto(jugador);
-		jugador.setCasilla(casillaSiguiente);
-	}
 	 
 	//a modo de ejemplo preliminar
 	public void empezarJuego(){
 		//agregarJugadoresALaCola()
 		  while (colaDeTurnos.getNumeroDeJugadores() > 1){
-			  Jugador jugador = colaDeTurnos.avanzarTurno();
+			  Jugador jugador = colaDeTurnos.proximoTurno();
 			  //gestorDeMovimientos.mover(jugador);
 		  }
 		  // finalizarJuego()

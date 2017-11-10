@@ -27,5 +27,17 @@ public class QuiniTest {
 		assertEquals(jugador.getCapital(), 180000);
 	}
 	
-
+	@Test
+	public void aplicarEfectoSobreJugadores()
+	{
+		Quini quini = new Quini();
+		Jugador jugador1 = new Jugador(quini);
+		Jugador jugador2 = new Jugador(quini);
+		
+		quini.aplicarEfecto(jugador1);
+		assertEquals(jugador1.getCapital(), 150000);
+		
+		quini.aplicarEfecto(jugador2);
+		assertEquals(jugador2.getCapital(), 150000);
+	}
 }

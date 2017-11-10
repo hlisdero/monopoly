@@ -7,7 +7,7 @@ public class Turno {
 		jugador = unJugador;
 	}
 
-	public Object getJugador() {
+	public Jugador getJugador() {
 		return jugador;
 	}
 }

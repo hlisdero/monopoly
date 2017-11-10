@@ -7,7 +7,7 @@ class Jugador {
 	private int capital = 100000;
 	private Casilla casilla;
 	private ArrayList<Propiedad> listaDePropiedadesDelJugador = new ArrayList<Propiedad>();
-	private  ResultadoDados ultimaTirada;
+	private ResultadoDados ultimaTirada;
 	
 	public Jugador(Casilla casillaInicial) {
 		casilla = casillaInicial;
@@ -24,6 +24,10 @@ class Jugador {
 
 	Casilla getCasilla() {
 		return casilla;
+	}
+
+	public int getCapital() {
+		return capital;
 	}
 
 	public void setCasilla(Casilla unaCasilla) {

@@ -2,11 +2,8 @@ package fiuba.algo3.tp2.modelo;
 
 public class Propiedad implements Casilla {
 	
-	private 	int precio;
+	private int precio;
 	private	Jugador propietario;
-	
-
-	
 	
 	public Propiedad(int precio){
 		this.precio = precio;

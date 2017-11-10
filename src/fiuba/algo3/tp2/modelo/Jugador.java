@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 class Jugador {
 	
+	private String nombre;
 	private int capital = 100000;
 	private Casilla casilla;
 	private ArrayList<Propiedad> listaDePropiedadesDelJugador = new ArrayList<Propiedad>();
 	private  ResultadoDados ultimaTirada;
 	
-	
-	public Jugador(Casilla unaCasilla) {
-		this.casilla = unaCasilla;
+	public Jugador(String unNombre) {
+		nombre = unNombre;
 	}
 	
 	public ArrayList<Propiedad> getListaPropiedadesJugador() {

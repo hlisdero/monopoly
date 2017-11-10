@@ -3,8 +3,10 @@ package fiuba.algo3.tp2.modelo;
 public class AlgoPoly {
 	private Tablero tablero = new Tablero();
 	
-	public Jugador crearJugador() {
-		return new Jugador(tablero.getCasillaInicial());
+	public Jugador crearJugador(String NombreDelJugador) {
+		Jugador jugador = new Jugador(NombreDelJugador);
+		jugador.setCasilla(tablero.getCasillaInicial());
+		return jugador;
 	}
 	
 	public void mover(Jugador jugador) {

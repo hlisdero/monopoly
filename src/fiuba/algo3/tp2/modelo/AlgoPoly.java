@@ -3,9 +3,10 @@ package fiuba.algo3.tp2.modelo;
 public class AlgoPoly {
 	private Tablero tablero = new Tablero();
 	private GestorDeTurnos colaDeTurnos = new GestorDeTurnos();
+
 	
-	public Jugador crearJugador(String NombreDelJugador) {
-		Jugador jugador = new Jugador(NombreDelJugador);
+	public Jugador crearJugador() {
+		Jugador jugador = new Jugador();
 		jugador.setCasilla(tablero.getCasillaInicial());
 		colaDeTurnos.agregarJugador(jugador);
 		return jugador;
@@ -19,9 +20,10 @@ public class AlgoPoly {
 	 
 	//a modo de ejemplo preliminar
 	public void empezarJuego(){
+		//agregarJugadoresALaCola()
 		  while (colaDeTurnos.getNumeroDeJugadores() > 1){
-			  Turno turno = colaDeTurnos.avanzarTurno();
-			  this.mover(turno.getJugador());
+			  Jugador jugador = colaDeTurnos.avanzarTurno();
+			  //gestorDeMovimientos.mover(jugador);
 		  }
 		  // finalizarJuego()
 	  }

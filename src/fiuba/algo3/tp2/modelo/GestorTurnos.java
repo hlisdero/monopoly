@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 import java.util.LinkedList;
 
-public class GestorDeTurnos {
+public class GestorTurnos {
 	private LinkedList<Jugador> colaDeTurnos = new LinkedList<Jugador>();
 
 	public void agregarJugador(Jugador jugador) {

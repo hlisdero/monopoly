@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-public class GestorDeMovimiento {
+public class GestorMovimiento {
 	private Tablero tablero = new Tablero();
 	
 	public Casilla getCasillaInicial() {

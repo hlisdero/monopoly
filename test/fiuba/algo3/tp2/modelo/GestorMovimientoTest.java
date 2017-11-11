@@ -4,16 +4,16 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class GestorDeMovimientoTest {
+public class GestorMovimientoTest {
 
 	@Test
 	public void nuevoGestorNoEsNull() {
-		assertNotNull(new GestorDeMovimiento());
+		assertNotNull(new GestorMovimiento());
 	}
 
 	@Test
 	public void getCasillaInicialNoDevuelveNull() {
-		GestorDeMovimiento gestor = new GestorDeMovimiento();
+		GestorMovimiento gestor = new GestorMovimiento();
 		assertNotNull(gestor.getCasillaInicial());
 	}
 }

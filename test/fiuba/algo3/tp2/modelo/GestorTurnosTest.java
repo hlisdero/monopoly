@@ -4,17 +4,17 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class GestorDeTurnosTest {
+public class GestorTurnosTest {
 
 	@Test
-	public void nuevoGestorNoEsNull() {
-		assertNotNull(new GestorDeTurnos());
+	public void nuevoGestorTurnosNoEsNull() {
+		assertNotNull(new GestorTurnos());
 	}
 	
 	@Test
 	public void agregarJugadorLoAgregaALaCola() {
 		Jugador jugador = new Jugador(new CasillaPrueba());
-		GestorDeTurnos turnos = new GestorDeTurnos();
+		GestorTurnos turnos = new GestorTurnos();
 		turnos.agregarJugador(jugador);
 		assertEquals(turnos.getNumeroDeJugadores(),1);
 	}
@@ -24,7 +24,7 @@ public class GestorDeTurnosTest {
 		
 		Jugador jugador = new Jugador(new CasillaPrueba());
 		Jugador jugador2 = new Jugador(new CasillaPrueba());
-		GestorDeTurnos turnos = new GestorDeTurnos();
+		GestorTurnos turnos = new GestorTurnos();
 		turnos.agregarJugador(jugador);
 		turnos.agregarJugador(jugador2);
 		Jugador jugadorTurno = turnos.proximoTurno();
@@ -34,7 +34,7 @@ public class GestorDeTurnosTest {
 	@Test
 	public void proximoTurnoDevuelveElTurno() {
 		Jugador jugador = new Jugador(new CasillaPrueba());
-		GestorDeTurnos turnos = new GestorDeTurnos();
+		GestorTurnos turnos = new GestorTurnos();
 		turnos.agregarJugador(jugador);
 		assertNotNull(turnos.proximoTurno());
 	}
@@ -42,7 +42,7 @@ public class GestorDeTurnosTest {
 	public void proximoTurnoLoMandaAlFinalDeLaCola() {
 		Jugador jugador = new Jugador(new CasillaPrueba());
 		Jugador jugador2 = new Jugador(new CasillaPrueba());
-		GestorDeTurnos turnos = new GestorDeTurnos();
+		GestorTurnos turnos = new GestorTurnos();
 		turnos.agregarJugador(jugador);
 		turnos.agregarJugador(jugador2);
 		turnos.proximoTurno();

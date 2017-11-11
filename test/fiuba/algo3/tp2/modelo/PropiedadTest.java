@@ -15,7 +15,7 @@ public class PropiedadTest {
 	@Test
 	public void getPrecioDevuelvePrecio() {
 		Propiedad prop = new Propiedad(1000);
-		assertEquals(prop.getPrecio(), 1000, DELTA);
+		assertEquals(1000, prop.getPrecio(), DELTA);
 	}
 	
 	@Test
@@ -23,7 +23,7 @@ public class PropiedadTest {
 		Propiedad prop = new Propiedad(1000);
 		Jugador jugador = new Jugador(prop);
 		prop.setPropietario(jugador);
-		assertEquals(prop.getPropietario(), jugador);
+		assertEquals(jugador, prop.getPropietario());
 	}
 
 }

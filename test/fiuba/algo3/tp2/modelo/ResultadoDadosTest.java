@@ -14,7 +14,7 @@ public class ResultadoDadosTest {
 	@Test
 	public void getSumaDevuelveSuma() {
 		ResultadoDados resultado = new ResultadoDados(1,5);
-		assertEquals(resultado.getSuma(), 6);
+		assertEquals(6, resultado.getSuma());
 	}
 	
 	@Test

@@ -12,7 +12,7 @@ public class GestorMovimientoTest {
 	}
 
 	@Test
-	public void getCasillaInicialNoDevuelveNull() {
+	public void getCasillaInicialDevuelveCasillaInicial() {
 		GestorMovimiento gestor = new GestorMovimiento();
 		assertNotNull(gestor.getCasillaInicial());
 	}

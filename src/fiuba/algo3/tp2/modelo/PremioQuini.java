@@ -1,8 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
 class PremioQuini {
-	private static final int MONTO_PRIMERA_VEZ = 50000;
-	private static final int MONTO_SEGUNDA_VEZ = 30000;
+	private static final double MONTO_PRIMERA_VEZ = 50000;
+	private static final double MONTO_SEGUNDA_VEZ = 30000;
 
 	void darPremio(Jugador jugador, int cantidadVeces) {
 		if (cantidadVeces == 1) {

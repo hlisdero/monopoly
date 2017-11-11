@@ -4,4 +4,9 @@ public class AlgoPoly {
 	private GestorMovimiento gestorMovimiento = new GestorMovimiento();
 	private GestorTurnos gestorTurnos = new GestorTurnos(gestorMovimiento.getCasillaInicial());
 	
+	public void mover() {
+		Jugador jugador = gestorTurnos.proximoJugador();
+		gestorMovimiento.mover(jugador);
+	}
+
 }

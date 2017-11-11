@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.HashMap;
 
-class Quini implements Casilla {
+public class Quini implements Casilla {
 	private HashMap<Jugador, Integer> vecesQueCayeron = new HashMap<Jugador, Integer>();
 	private PremioQuini premio = new PremioQuini();
 	

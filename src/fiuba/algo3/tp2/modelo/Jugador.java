@@ -2,61 +2,56 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 
-class Jugador {
-	
-	private int capital = 100000;
-	private Casilla casilla;
-	private ArrayList<Propiedad> listaDePropiedadesDelJugador = new ArrayList<Propiedad>();
+class Jugador {	
+	private double capital = 100000;
+	private Casilla casillaActual;
+	private ArrayList<Propiedad> listaPropiedades = new ArrayList<Propiedad>();
 	private ResultadoDados ultimaTirada;
 	
-	public Jugador(Casilla casillaInicial) {
-		casilla = casillaInicial;
+	Jugador(Casilla casillaInicial) {
+		casillaActual = casillaInicial;
 	}
 	
-	
-	public ArrayList<Propiedad> getListaPropiedadesJugador() {
-		return listaDePropiedadesDelJugador;
-	}
-
-	public void setListaDeCasillasDelJugador(ArrayList<Propiedad> listaDeCasillasDelJugador) {
-		this.listaDePropiedadesDelJugador = listaDeCasillasDelJugador;
+	ArrayList<Propiedad> getListaPropiedadesJugador() {
+		return listaPropiedades;
 	}
 
 	Casilla getCasilla() {
-		return casilla;
+		return casillaActual;
 	}
 
-	public int getCapital() {
+	double getCapital() {
 		return capital;
 	}
 
-	public void setCasilla(Casilla unaCasilla) {
-		this.casilla = unaCasilla;
+	void setCasilla(Casilla casilla) {
+		casillaActual = casilla;
 	}
 
-	public void agregarDinero(double monto) {
-		this.capital += monto;
+	void agregarDinero(double monto) {
+		capital += monto;
 	}
 	
-	public int restarDinero(int monto) throws CapitalInsuficienteException {
-		if (this.capital < monto) {
+	double restarDinero(double monto) throws CapitalInsuficienteException {
+		if (capital < monto) {
 			throw new CapitalInsuficienteException();
 		}
-		 this.capital -= monto;
-		 return this.capital;
+		capital -= monto;
+		return capital;
 	}
 	
-	public int addTerrenoALaLista(Propiedad unaPropiedad)
+	int addPropiedad(Propiedad propiedad)
 	{
-		this.listaDePropiedadesDelJugador.add(unaPropiedad);
-		return this.listaDePropiedadesDelJugador.size();
+		listaPropiedades.add(propiedad);
+		return listaPropiedades.size();
 	}
 	
-	public ResultadoDados tirarDados() {
+	ResultadoDados tirarDados() {
 		ultimaTirada = Dados.tirarDados();
 		return ultimaTirada;
 	}
-	public ResultadoDados  getResultadoDados() {
+	
+	ResultadoDados getResultadoDados() {
 		return ultimaTirada;
 	}
 }

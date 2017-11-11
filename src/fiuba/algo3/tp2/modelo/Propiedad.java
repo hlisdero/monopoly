@@ -1,26 +1,23 @@
 package fiuba.algo3.tp2.modelo;
 
 public class Propiedad implements Casilla {
-	
-	private int precio;
+	private double precio;
 	private	Jugador propietario;
 	
-	public Propiedad(int precio){
+	public Propiedad(double precio) {
 		this.precio = precio;
 	}
 
-	public int getPrecioDelTerreno() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecioDelTerreno(int precioDelTerreno) {
-		this.precio = precioDelTerreno;
-	}
-	public Jugador duenioDelTerreno() {
+	public Jugador getPropietario() {
 		return this.propietario;
 	}
-	public void asignarDuenio(Jugador nuevoDueno) {
-		this.propietario= nuevoDueno;
+	
+	public void setPropietario(Jugador propietario) {
+		this.propietario = propietario;
 	}
 
 	public void construirCasa() {
@@ -35,7 +32,5 @@ public class Propiedad implements Casilla {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 	
 }

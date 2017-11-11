@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class QuiniTest {
+	private static final double DELTA = 1e-15;
 
 	@Test
 	public void nuevoQuiniNoNull() {
@@ -18,13 +19,13 @@ public class QuiniTest {
 		Jugador jugador = new Jugador(quini);
 		
 		quini.aplicarEfecto(jugador);
-		assertEquals(jugador.getCapital(), 150000);
+		assertEquals(jugador.getCapital(), 150000, DELTA);
 		
 		quini.aplicarEfecto(jugador);
-		assertEquals(jugador.getCapital(), 180000);
+		assertEquals(jugador.getCapital(), 180000, DELTA);
 		
 		quini.aplicarEfecto(jugador);
-		assertEquals(jugador.getCapital(), 180000);
+		assertEquals(jugador.getCapital(), 180000, DELTA);
 	}
 	
 	@Test
@@ -35,9 +36,9 @@ public class QuiniTest {
 		Jugador jugador2 = new Jugador(quini);
 		
 		quini.aplicarEfecto(jugador1);
-		assertEquals(jugador1.getCapital(), 150000);
+		assertEquals(jugador1.getCapital(), 150000, DELTA);
 		
 		quini.aplicarEfecto(jugador2);
-		assertEquals(jugador2.getCapital(), 150000);
+		assertEquals(jugador2.getCapital(), 150000, DELTA);
 	}
 }

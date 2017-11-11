@@ -1,43 +1,56 @@
-/*package fiuba.algo3.tp2.modelo;
+package fiuba.algo3.tp2.modelo;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class JugadorTest {
+	private static final double DELTA = 1e-15;
 
 	@Test
-	public void test01CantidadDeCasilla() {
-		Jugador jugador1 = new Jugador();
-		assertEquals(jugador1.getListaDeCasillasDelJugador().size(),0);
-		
-		Casilla unaCasilla = new Casilla();
-		jugador1.addTerrenoALaLista(unaCasilla);
-		assertEquals(jugador1.getListaDeCasillasDelJugador().size(),1);
-		
+	public void jugadorNuevoNoNull() {
+		assertNotNull(new Jugador(new CasillaPrueba()));
 	}
 	
 	@Test
-	public void test02JugadorCompraUnTerreno() throws CapitalInsuficienteException
-	{
-		AlgoPoly algo = new AlgoPoly();
-		Jugador jugador = new Jugador();
-		Terreno unTerreno = new Terreno(20000);
-		
-		int monto = algo.jugadorCompraTerreno(jugador, unTerreno);
-		
-		assertEquals(monto, 80000);
+	public void capitalInicialCienMil() {
+		Jugador jugador = new Jugador(new CasillaPrueba());
+		assertEquals(100000, jugador.getCapital(), DELTA);
 	}
-
+	
 	@Test
-	public void test03JugadorCompraUnaCompania() throws CapitalInsuficienteException
-	{
-		AlgoPoly algo = new AlgoPoly();
-		Jugador jugador = new Jugador();
-		Compania unaCompania = new Compania(35000);
-		
-		int monto = algo.jugadorCompraCompania(jugador, unaCompania);
-		
-		assertEquals(monto, 65000);
+	public void getCasillaDevuelveCasilla() {
+		CasillaPrueba casilla = new CasillaPrueba();
+		Jugador jugador = new Jugador(casilla);
+		assertEquals(casilla, jugador.getCasilla());
 	}
-}*/
+	
+	@Test
+	public void agregarDineroAumentaCapital() {
+		Jugador jugador = new Jugador(new CasillaPrueba());
+		jugador.agregarDinero(50000);
+		assertEquals(150000, jugador.getCapital(), DELTA);
+	}
+	
+	@Test
+	public void restarDineroDisminuyeCapital() {
+		Jugador jugador = new Jugador(new CasillaPrueba());
+		try {
+			jugador.restarDinero(50000);
+		} catch (CapitalInsuficienteException e) {}
+		assertEquals(50000, jugador.getCapital(), DELTA);
+	}
+	
+	@Test
+	public void tirarDadosDevuelveResultadoDados() {
+		Jugador jugador = new Jugador(new CasillaPrueba());
+		assertNotNull(jugador.tirarDados());
+	}
+	
+	@Test
+	public void getResultadoDadosDevuelveResultadoDados() {
+		Jugador jugador = new Jugador(new CasillaPrueba());
+		jugador.tirarDados();
+		assertNotNull(jugador.getResultadoDados());
+	}
+}

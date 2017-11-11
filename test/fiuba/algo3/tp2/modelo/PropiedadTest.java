@@ -25,5 +25,21 @@ public class PropiedadTest {
 		prop.setPropietario(jugador);
 		assertEquals(jugador, prop.getPropietario());
 	}
+	@Test
+	public void jugadorAplicarEfecto() {
+		Propiedad prop = new Propiedad(1000);
+		Jugador jugador = new Jugador(prop);
+		prop.aplicarEfecto(jugador);
+		assertEquals(jugador, prop.getPropietario());
+	}
+	@Test
+	public void jugador1YaEsPropietarioJugador2NoAplicaEfecto() {
+		Propiedad prop = new Propiedad(1000);
+		Jugador jugador1 = new Jugador(prop);
+		Jugador jugador2 = new Jugador(prop);
+		prop.aplicarEfecto(jugador1);
+		prop.aplicarEfecto(jugador2);
+		assertEquals(jugador1, prop.getPropietario());
+	}
 
 }

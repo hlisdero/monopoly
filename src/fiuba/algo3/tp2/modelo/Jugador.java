@@ -40,8 +40,7 @@ class Jugador {
 		return capital;
 	}
 	
-	int addPropiedad(Propiedad propiedad)
-	{
+	int addPropiedad(Propiedad propiedad){
 		listaPropiedades.add(propiedad);
 		return listaPropiedades.size();
 	}

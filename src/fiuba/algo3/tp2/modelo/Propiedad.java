@@ -26,11 +26,17 @@ public class Propiedad implements Casilla {
 	public void construirHotel() {
 		
 	}
+	private boolean noTienePropietario() {
+		return propietario == null;
+	}
 
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
+		if(this.noTienePropietario()) {
+			this.propietario = jugador;
+			jugador.addPropiedad(this);
+				
+		}
 	}
 	
 }

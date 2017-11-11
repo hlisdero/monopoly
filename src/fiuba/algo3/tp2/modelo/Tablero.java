@@ -13,12 +13,11 @@ class Tablero {
 		}
 	}
 	
-	
 	Casilla getCasillaInicial() {
 		return casilleros.get(0);
 	}
 	
 	Casilla getCasillaSiguiente(Casilla unaCasilla, ResultadoDados dados) {
-		return casilleros.get((casilleros.indexOf(unaCasilla) + dados.getSuma()) % cantidadCasillas) ;
+		return casilleros.get((casilleros.indexOf(unaCasilla) + dados.getSuma()) % cantidadCasillas);
 	}
 }

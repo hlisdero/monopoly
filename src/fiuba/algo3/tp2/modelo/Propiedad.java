@@ -32,10 +32,11 @@ public class Propiedad implements Casilla {
 
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
-		if(this.noTienePropietario()) {
-			this.propietario = jugador;
-			jugador.addPropiedad(this);
-				
+		if(this.noTienePropietario() ) {
+			if (jugador.getCapital() >= this.getPrecio()) {
+				this.propietario = jugador;
+				jugador.addPropiedad(this);
+			}	
 		}
 	}
 	

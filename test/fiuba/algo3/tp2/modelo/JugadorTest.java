@@ -56,13 +56,13 @@ public class JugadorTest {
 	
 	
 	@Test
-	public void cantidadDePropiedad()
+	public void cantidadPropiedad()
 	{
 		Jugador jugador = new Jugador(new CasillaPrueba());
 		Propiedad prop = new Propiedad(95000);
 		
 		jugador.addPropiedad(prop);
-		int cantidad = jugador.cantidadDePropiedad();
+		int cantidad = jugador.cantidadPropiedad();
 		
 		assertEquals(cantidad, 1);
 	}

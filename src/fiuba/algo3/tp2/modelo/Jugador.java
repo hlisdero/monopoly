@@ -40,9 +40,13 @@ class Jugador {
 		return capital;
 	}
 	
-	int addPropiedad(Propiedad propiedad){
+	void addPropiedad(Propiedad propiedad){
 		listaPropiedades.add(propiedad);
 		this.restarDinero(propiedad.getPrecio());
+	}
+	
+	int cantidadDePropiedad()
+	{
 		return listaPropiedades.size();
 	}
 	

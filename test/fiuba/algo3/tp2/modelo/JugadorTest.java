@@ -54,6 +54,19 @@ public class JugadorTest {
 		assertNotNull(jugador.getResultadoDados());
 	}
 	
+	
+	@Test
+	public void cantidadDePropiedad()
+	{
+		Jugador jugador = new Jugador(new CasillaPrueba());
+		Propiedad prop = new Propiedad(95000);
+		
+		jugador.addPropiedad(prop);
+		int cantidad = jugador.cantidadDePropiedad();
+		
+		assertEquals(cantidad, 1);
+	}
+	
 	@Test
 	public void addPropiedadRestaDinero() {
 		Jugador jugador = new Jugador(new CasillaPrueba());

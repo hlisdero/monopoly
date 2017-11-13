@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Propiedad implements Casilla {
+public class Propiedad extends Casilla {
 	private double precio;
 	private	Jugador propietario;
 	

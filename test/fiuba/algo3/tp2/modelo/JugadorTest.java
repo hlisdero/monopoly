@@ -9,32 +9,32 @@ public class JugadorTest {
 
 	@Test
 	public void jugadorNuevoNoNull() {
-		assertNotNull(new Jugador(new CasillaPrueba()));
+		assertNotNull(new Jugador(new Casilla()));
 	}
 	
 	@Test
 	public void capitalInicialCienMil() {
-		Jugador jugador = new Jugador(new CasillaPrueba());
+		Jugador jugador = new Jugador(new Casilla());
 		assertEquals(100000, jugador.getCapital(), DELTA);
 	}
 	
 	@Test
 	public void getCasillaDevuelveCasilla() {
-		CasillaPrueba casilla = new CasillaPrueba();
+		Casilla casilla = new Casilla();
 		Jugador jugador = new Jugador(casilla);
 		assertEquals(casilla, jugador.getCasilla());
 	}
 	
 	@Test
 	public void agregarDineroAumentaCapital() {
-		Jugador jugador = new Jugador(new CasillaPrueba());
+		Jugador jugador = new Jugador(new Casilla());
 		jugador.agregarDinero(50000);
 		assertEquals(150000, jugador.getCapital(), DELTA);
 	}
 	
 	@Test
 	public void restarDineroDisminuyeCapital() {
-		Jugador jugador = new Jugador(new CasillaPrueba());
+		Jugador jugador = new Jugador(new Casilla());
 		try {
 			jugador.restarDinero(50000);
 		} catch (CapitalInsuficienteException e) {}
@@ -43,13 +43,13 @@ public class JugadorTest {
 	
 	@Test
 	public void tirarDadosDevuelveResultadoDados() {
-		Jugador jugador = new Jugador(new CasillaPrueba());
+		Jugador jugador = new Jugador(new Casilla());
 		assertNotNull(jugador.tirarDados());
 	}
 	
 	@Test
 	public void getResultadoDadosDevuelveResultadoDados() {
-		Jugador jugador = new Jugador(new CasillaPrueba());
+		Jugador jugador = new Jugador(new Casilla());
 		jugador.tirarDados();
 		assertNotNull(jugador.getResultadoDados());
 	}
@@ -58,7 +58,7 @@ public class JugadorTest {
 	@Test
 	public void cantidadPropiedad()
 	{
-		Jugador jugador = new Jugador(new CasillaPrueba());
+		Jugador jugador = new Jugador(new Casilla());
 		Propiedad prop = new Propiedad(95000);
 		
 		jugador.addPropiedad(prop);
@@ -69,7 +69,7 @@ public class JugadorTest {
 	
 	@Test
 	public void addPropiedadRestaDinero() {
-		Jugador jugador = new Jugador(new CasillaPrueba());
+		Jugador jugador = new Jugador(new Casilla());
 		Propiedad prop = new Propiedad(95000);
 		assertEquals(100000, jugador.getCapital(), DELTA);
 		jugador.addPropiedad(prop);

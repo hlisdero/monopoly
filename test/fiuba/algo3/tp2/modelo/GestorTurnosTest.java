@@ -8,18 +8,18 @@ public class GestorTurnosTest {
 
 	@Test
 	public void nuevoGestorTurnosNoEsNull() {
-		assertNotNull(new GestorTurnos(new CasillaPrueba()));
+		assertNotNull(new GestorTurnos(new Casilla()));
 	}
 	
 	@Test
 	public void nuevoGestorTurnosGetCantidadJugadoresDevuelveTres() {
-		GestorTurnos gestorTurnos = new GestorTurnos(new CasillaPrueba());
+		GestorTurnos gestorTurnos = new GestorTurnos(new Casilla());
 		assertEquals(3, gestorTurnos.getCantidadJugadores());
 	}
 	
 	@Test
 	public void proximoJugadorNoNull() {
-		GestorTurnos gestorTurnos = new GestorTurnos(new CasillaPrueba());
+		GestorTurnos gestorTurnos = new GestorTurnos(new Casilla());
 		assertNotNull(gestorTurnos.proximoJugador());
 	}
 

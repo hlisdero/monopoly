@@ -17,7 +17,7 @@ class Tablero {
 		casillas.add(new Casilla()); 		// TODO Avance dinámico
 		casillas.add(new Empresa(40000));	// SUBTE		
 		casillas.add(new Propiedad(20000));	// Córdoba Zona Norte
-		casillas.add(new Casilla());		// TODO Impuesto al Lujo
+		casillas.add(new Impuesto());		// Impuesto al Lujo
 		casillas.add(new Propiedad(15000));	// Santa Fe
 		casillas.add(new Empresa(30000));	// AYSA
 		casillas.add(new Propiedad(23000));	// Salta Zona Norte

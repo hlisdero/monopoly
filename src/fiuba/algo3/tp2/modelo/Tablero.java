@@ -6,6 +6,7 @@ class Tablero {
 	private ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 	private int cantidadCasillas = 20;
 	
+	
 	Tablero() {
 		casillas.add(new Casilla());		// Salida
 		casillas.add(new Quini());			// Quini 6
@@ -14,7 +15,7 @@ class Tablero {
 		casillas.add(new Propiedad(25000));	// Buenos Aires Zona Norte
 		// Cárcel
 		casillas.add(new Propiedad(18000));	// Córdoba Zona Sur
-		casillas.add(new Casilla()); 		// TODO Avance dinámico
+ 		// TODO Avance dinámico
 		casillas.add(new Empresa(40000));	// SUBTE		
 		casillas.add(new Propiedad(20000));	// Córdoba Zona Norte
 		casillas.add(new Impuesto());		// Impuesto al Lujo
@@ -25,12 +26,12 @@ class Tablero {
 		casillas.add(new Policia(5));		// Policia
 		casillas.add(new Empresa(38000));	// Trenes
 		casillas.add(new Propiedad(17000));	// Neuquén
-		casillas.add(new Casilla());		// TODO Retroceso dinámico
+		// TODO Retroceso dinámico
 		casillas.add(new Propiedad(25000));	// Tucumán		
 	}
 	
 	void insertarCasilla(int posicion, Casilla casilla) {
-		casillas.add(5, casilla);
+		casillas.add(posicion, casilla);
 	}
 	
 	Casilla getCasillaInicial() {
@@ -38,7 +39,9 @@ class Tablero {
 	}
 	
 	Casilla getCasillaSiguiente(Casilla casillaActual, ResultadoDados dados) {
+		
 		int posicionCasillaActual = casillas.indexOf(casillaActual);
 		return casillas.get(casillaActual.getIndiceCasillaSiguiente(posicionCasillaActual, dados) % cantidadCasillas);
+		
 	}
 }

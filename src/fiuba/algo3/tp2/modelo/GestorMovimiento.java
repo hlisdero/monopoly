@@ -17,7 +17,7 @@ class GestorMovimiento {
 			casillaSiguiente = tablero.getCasillaSiguiente(jugador.getCasilla(), jugador.tirarDados());
 			casillaSiguiente.aplicarEfecto(jugador);
 			jugador.setCasilla(casillaSiguiente);
-		} while(tablero.esCasilleroProhibido(casillaSiguiente));
+		} while(tablero.esCasillaProhibida(casillaSiguiente));
 	}
 	
 }

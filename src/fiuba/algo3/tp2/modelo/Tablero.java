@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 class Tablero {
 	private ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-	private ArrayList<Casilla> casillerosProhibidos = new ArrayList<Casilla>();
+	private ArrayList<Casilla> casillasProhibidas = new ArrayList<Casilla>();
 	private int cantidadCasillas = 20;
 	private Carcel carcel;
 	
@@ -34,8 +34,8 @@ class Tablero {
 		casillas.add(retroceso);			// Retroceso Dinámico
 		casillas.add(new Propiedad(25000));	// Tucumán
 		
-		casillerosProhibidos.add(avance);
-		casillerosProhibidos.add(retroceso);
+		casillasProhibidas.add(avance);
+		casillasProhibidas.add(retroceso);
 	}
 	
 	void insertarCasilla(int posicion, Casilla casilla) {
@@ -55,7 +55,7 @@ class Tablero {
 		return casillas.get(casillaActual.getIndiceCasillaSiguiente(posicionCasillaActual, dados) % cantidadCasillas);
 	}
 	
-	boolean esCasilleroProhibido(Casilla casilla) {
-		return casillerosProhibidos.contains(casilla);
+	boolean esCasillaProhibida(Casilla casilla) {
+		return casillasProhibidas.contains(casilla);
 	}
 }

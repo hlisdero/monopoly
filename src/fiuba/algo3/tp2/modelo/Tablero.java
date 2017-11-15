@@ -38,10 +38,6 @@ class Tablero {
 		casillasProhibidas.add(retroceso);
 	}
 	
-	void insertarCasilla(int posicion, Casilla casilla) {
-		casillas.add(posicion, casilla);
-	}
-	
 	Casilla getCasillaInicial() {
 		return casillas.get(0);
 	}

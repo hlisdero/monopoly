@@ -12,20 +12,22 @@ class Jugador {
 		casillaActual = casillaInicial;
 	}
 	
-	ArrayList<Propiedad> getListaPropiedadesJugador() {
-		return listaPropiedades;
+	/* Constructor de jugador con dados iniciales para pruebas */
+	Jugador(Casilla casillaInicial, int primerDado, int segundoDado) {
+		casillaActual = casillaInicial;
+		ultimaTirada = new ResultadoDados(primerDado, segundoDado);
 	}
-
+	
 	Casilla getCasilla() {
 		return casillaActual;
 	}
-
-	double getCapital() {
-		return capital;
-	}
-
+	
 	void setCasilla(Casilla casilla) {
 		casillaActual = casilla;
+	}
+	
+	double getCapital() {
+		return capital;
 	}
 
 	void agregarDinero(double monto) {
@@ -45,7 +47,7 @@ class Jugador {
 		this.restarDinero(propiedad.getPrecio());
 	}
 	
-	int cantidadPropiedad(){
+	int getCantidadPropiedades(){
 		return listaPropiedades.size();
 	}
 	

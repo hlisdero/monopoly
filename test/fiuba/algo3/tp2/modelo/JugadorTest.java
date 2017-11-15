@@ -19,6 +19,18 @@ public class JugadorTest {
 	}
 	
 	@Test
+	public void cantidadPropiedaddesInicialCero() {
+		Jugador jugador = new Jugador(new Casilla());
+		assertEquals(0, jugador.getCantidadPropiedades());
+	}
+	
+	@Test
+	public void getResultadoDadosInicialAntesTirarDadosDevuelveNull() {
+		Jugador jugador = new Jugador(new Casilla());
+		assertEquals(null, jugador.getResultadoDados());
+	}
+	
+	@Test
 	public void getCasillaDevuelveCasilla() {
 		Casilla casilla = new Casilla();
 		Jugador jugador = new Jugador(casilla);
@@ -55,20 +67,12 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void getCantidadPropiedadesDevuelveCantidadPropiedades() {
+	public void agregarPropiedadAumentaCantidadPropiedades() {
 		Jugador jugador = new Jugador(new Casilla());
 		Propiedad prop = new Propiedad(95000);
 		
-		jugador.addPropiedad(prop);
+		jugador.agregarPropiedad(prop);
 		assertEquals(1, jugador.getCantidadPropiedades());
 	}
 	
-	@Test
-	public void addPropiedadRestaDinero() {
-		Jugador jugador = new Jugador(new Casilla());
-		Propiedad prop = new Propiedad(95000);
-		jugador.addPropiedad(prop);
-		assertEquals(5000, jugador.getCapital(), DELTA);
-	}
-
 }

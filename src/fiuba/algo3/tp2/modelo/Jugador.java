@@ -12,7 +12,7 @@ class Jugador {
 		casillaActual = casillaInicial;
 	}
 	
-	/* Constructor de jugador con dados iniciales para pruebas */
+	/* Constructor de Jugador con dados iniciales para pruebas */
 	Jugador(Casilla casillaInicial, int primerDado, int segundoDado) {
 		casillaActual = casillaInicial;
 		ultimaTirada = new ResultadoDados(primerDado, segundoDado);
@@ -42,9 +42,8 @@ class Jugador {
 		return capital;
 	}
 	
-	void addPropiedad(Propiedad propiedad){
+	void agregarPropiedad(Propiedad propiedad){
 		listaPropiedades.add(propiedad);
-		this.restarDinero(propiedad.getPrecio());
 	}
 	
 	int getCantidadPropiedades(){

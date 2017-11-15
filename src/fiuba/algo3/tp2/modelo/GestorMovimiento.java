@@ -7,6 +7,10 @@ class GestorMovimiento {
 		return tablero.getCasillaInicial();
 	}
 	
+	void pagarFianza(Jugador jugador) {
+		tablero.getCarcel().pagarFianza(jugador);
+	}
+	
 	void mover(Jugador jugador) {
 		if (tablero.getCarcel().estaAdentro(jugador)) {
 			jugador.getCasilla().aplicarEfecto(jugador);

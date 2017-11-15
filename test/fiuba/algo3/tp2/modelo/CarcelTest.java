@@ -5,7 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class CarcelTest {
-
+	private static final double DELTA = 1e-15;
+	
 	@Test
 	public void nuevaCarcelNoEsNull() {
 		assertNotNull(new Carcel());
@@ -58,6 +59,50 @@ public class CarcelTest {
 		carcel.aplicarEfecto(jugador);
 		carcel.aplicarEfecto(jugador);
 		assertFalse(carcel.estaAdentro(jugador));
+	}
+	
+	@Test
+	public void pagarFianzaLiberaJugador() {
+		Carcel carcel = new Carcel();
+		Jugador jugador = new Jugador(carcel);
+		
+		carcel.aplicarEfecto(jugador);
+		carcel.aplicarEfecto(jugador);
+		carcel.pagarFianza(jugador);
+		assertFalse(carcel.estaAdentro(jugador));
+	}
+	
+	@Test
+	public void pagarFianzaRestaCuarentaYCincoMilAlCapitalJugador() {
+		Carcel carcel = new Carcel();
+		Jugador jugador = new Jugador(carcel);
+		
+		carcel.aplicarEfecto(jugador);
+		carcel.aplicarEfecto(jugador);
+		carcel.pagarFianza(jugador);
+		assertEquals(55000, jugador.getCapital(), DELTA);
+	}
+	
+	@Test
+	public void jugadorConCapitalInsuficienteNoPuedePagarFianza() {
+		Carcel carcel = new Carcel();
+		Jugador jugador = new Jugador(carcel);
+		
+		jugador.restarDinero(60000);
+		carcel.aplicarEfecto(jugador);
+		carcel.aplicarEfecto(jugador);
+		carcel.pagarFianza(jugador);
+		assertTrue(carcel.estaAdentro(jugador));
+	}
+	
+	@Test
+	public void jugadorPrimerTurnoCarcelNoPuedePagarFianza() {
+		Carcel carcel = new Carcel();
+		Jugador jugador = new Jugador(carcel);
+		
+		carcel.aplicarEfecto(jugador);
+		carcel.pagarFianza(jugador);
+		assertTrue(carcel.estaAdentro(jugador));
 	}
 	
 }

@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 class Carcel extends Casilla {
 	private static final int TURNOS_NECESARIOS_PARA_SALIR = 3;
+	private static final int TURNOS_NECESARIO_PARA_PAGAR_FIANZA = 2;
+	private static final double PRECIO_FIANZA = 45000;
 	private HashMap<Jugador, Integer> contadorTurnos = new HashMap<Jugador, Integer>();
 	
 	@Override
@@ -23,4 +25,12 @@ class Carcel extends Casilla {
 		}
 		return (contadorTurnos.get(jugador) <= TURNOS_NECESARIOS_PARA_SALIR);
 	}
+	
+	void pagarFianza(Jugador jugador) {
+		if (contadorTurnos.get(jugador) >= TURNOS_NECESARIO_PARA_PAGAR_FIANZA && jugador.getCapital() >= PRECIO_FIANZA) {
+			contadorTurnos.remove(jugador);
+			jugador.restarDinero(PRECIO_FIANZA);
+		}
+	}
+	
 }

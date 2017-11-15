@@ -54,4 +54,5 @@ class Tablero {
 	boolean esCasillaProhibida(Casilla casilla) {
 		return casillasProhibidas.contains(casilla);
 	}
+
 }

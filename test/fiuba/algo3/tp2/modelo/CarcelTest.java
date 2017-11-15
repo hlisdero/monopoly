@@ -19,21 +19,45 @@ public class CarcelTest {
 	}
 	
 	@Test
-	public void aplicarEfectoMeteAlJugadorEnLaCarcel() {
-		Jugador jugador = new Jugador(new Casilla());
+	public void aplicarEfectoMeteJugadorEnCarcel() {
 		Carcel carcel = new Carcel();
+		Jugador jugador = new Jugador(carcel);
+		
 		carcel.aplicarEfecto(jugador);
 		assertTrue(carcel.estaAdentro(jugador));
 	}
 	
 	@Test
-	public void aplicarEfecto3VecesLoSacaDeLaCarcel() {
-		Jugador jugador = new Jugador(new Casilla());
+	public void aplicarEfectoDosVecesJugadorSigueEnCarcel() {
 		Carcel carcel = new Carcel();
+		Jugador jugador = new Jugador(carcel);
+		
+		carcel.aplicarEfecto(jugador);
+		carcel.aplicarEfecto(jugador);
+		assertTrue(carcel.estaAdentro(jugador));
+	}
+	
+	@Test
+	public void aplicarEfectoTresVecesJugadorSigueEnCarcel() {
+		Carcel carcel = new Carcel();
+		Jugador jugador = new Jugador(carcel);
+		
 		carcel.aplicarEfecto(jugador);
 		carcel.aplicarEfecto(jugador);
 		carcel.aplicarEfecto(jugador);
 		assertTrue(carcel.estaAdentro(jugador));
+	}
+	
+	@Test
+	public void aplicarEfectoCuatroVecesJugadorAfueraCarcel() {
+		Carcel carcel = new Carcel();
+		Jugador jugador = new Jugador(carcel);
+		
+		carcel.aplicarEfecto(jugador);
+		carcel.aplicarEfecto(jugador);
+		carcel.aplicarEfecto(jugador);
+		carcel.aplicarEfecto(jugador);
+		assertFalse(carcel.estaAdentro(jugador));
 	}
 	
 }

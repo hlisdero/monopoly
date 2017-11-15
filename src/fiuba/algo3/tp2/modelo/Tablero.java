@@ -4,18 +4,23 @@ import java.util.ArrayList;
 
 class Tablero {
 	private ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+	private ArrayList<Casilla> casillerosProhibidos = new ArrayList<Casilla>();
 	private int cantidadCasillas = 20;
-	
+	private Carcel carcel;
 	
 	Tablero() {
+		MovimientoDinamico avance = new MovimientoDinamico(new Avance());
+		MovimientoDinamico retroceso = new MovimientoDinamico(new Retroceso());
+		carcel = new Carcel();
+		
 		casillas.add(new Casilla());		// Salida
 		casillas.add(new Quini());			// Quini 6
 		casillas.add(new Propiedad(20000));	// Buenos Aires Zona Sur
 		casillas.add(new Empresa(35000));	// EDESUR
 		casillas.add(new Propiedad(25000));	// Buenos Aires Zona Norte
-		// Cárcel
+		casillas.add(carcel);				// Carcel
 		casillas.add(new Propiedad(18000));	// Córdoba Zona Sur
- 		// TODO Avance dinámico
+		casillas.add(avance);				// Avance Dinámico
 		casillas.add(new Empresa(40000));	// SUBTE		
 		casillas.add(new Propiedad(20000));	// Córdoba Zona Norte
 		casillas.add(new Impuesto());		// Impuesto al Lujo
@@ -26,8 +31,11 @@ class Tablero {
 		casillas.add(new Policia(5));		// Policia
 		casillas.add(new Empresa(38000));	// Trenes
 		casillas.add(new Propiedad(17000));	// Neuquén
-		// TODO Retroceso dinámico
-		casillas.add(new Propiedad(25000));	// Tucumán		
+		casillas.add(retroceso);			// Retroceso Dinámico
+		casillas.add(new Propiedad(25000));	// Tucumán
+		
+		casillerosProhibidos.add(avance);
+		casillerosProhibidos.add(retroceso);
 	}
 	
 	void insertarCasilla(int posicion, Casilla casilla) {
@@ -38,10 +46,16 @@ class Tablero {
 		return casillas.get(0);
 	}
 	
-	Casilla getCasillaSiguiente(Casilla casillaActual, ResultadoDados dados) {
-		
+	Carcel getCarcel() {
+		return carcel;
+	}
+	
+	Casilla getCasillaSiguiente(Casilla casillaActual, ResultadoDados dados) {		
 		int posicionCasillaActual = casillas.indexOf(casillaActual);
 		return casillas.get(casillaActual.getIndiceCasillaSiguiente(posicionCasillaActual, dados) % cantidadCasillas);
-		
+	}
+	
+	boolean esCasilleroProhibido(Casilla casilla) {
+		return casillerosProhibidos.contains(casilla);
 	}
 }

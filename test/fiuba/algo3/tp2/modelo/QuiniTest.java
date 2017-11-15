@@ -77,4 +77,5 @@ public class QuiniTest {
 		quini.aplicarEfecto(jugador2);
 		assertEquals(180000, jugador2.getCapital(), DELTA);
 	}
+
 }

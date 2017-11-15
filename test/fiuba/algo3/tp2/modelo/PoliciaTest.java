@@ -13,7 +13,8 @@ public class PoliciaTest {
 	
 	@Test
 	public void getIndiceDevuelveElIndiceConElCualFueCreado() {
-		Policia pol = new Policia(1);
-		assertEquals(1,pol.getIndiceCasillaSiguiente(2, Dados.tirarDados()));
+		Policia policia = new Policia(1);
+		assertEquals(1, policia.getIndiceCasillaSiguiente(2, Dados.tirarDados()));
 	}
+
 }

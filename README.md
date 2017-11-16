@@ -3,7 +3,5 @@
 
 Simple Java implementation of a custom MonoPoly
 
-UML class diagram of the Project:
-Class diagram 1: https://drive.google.com/file/d/1Bk1He5ulq4L8huHAGV-KK2qxZNmLGrZ_/view?usp=sharing
-
-Class diagram 2: https://drive.google.com/file/d/1maycLC_ipqF8h1S1027NK4b4DS-cfw7-/view?usp=sharing
+INFORME
+https://docs.google.com/document/d/1i1mrhhVmDredwuFabp4foOz5wfY_c2UupE3V05yYz1U/edit?usp=sharing

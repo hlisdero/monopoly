@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-class Retroceso implements TipoMovimiento {
+public class Retroceso implements TipoMovimiento {
 	
 	public int getIndiceMovimiento(Jugador jugador) {
 		int sumaDados = jugador.getResultadoDados().getSuma();
@@ -24,5 +24,4 @@ class Retroceso implements TipoMovimiento {
 	private int efectoTercero(Jugador jugador) {
 		return -jugador.getResultadoDados().getSuma() + 2;
 	}
-
 }

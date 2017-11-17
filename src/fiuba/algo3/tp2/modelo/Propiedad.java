@@ -4,19 +4,19 @@ public class Propiedad extends Casilla {
 	private double precio;
 	private	Jugador propietario;
 	
-	Propiedad(double precio) {
+	public Propiedad(double precio) {
 		this.precio = precio;
 	}
 
-	double getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	Jugador getPropietario() {
+	public Jugador getPropietario() {
 		return this.propietario;
 	}
 
-	boolean noTienePropietario() {
+	public boolean noTienePropietario() {
 		return (propietario == null);
 	}
 
@@ -28,5 +28,4 @@ public class Propiedad extends Casilla {
 			jugador.restarDinero(precio);
 		}
 	}
-	
 }

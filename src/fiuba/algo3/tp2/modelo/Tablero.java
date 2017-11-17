@@ -2,11 +2,11 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 
-class Tablero {
+public class Tablero {
 	private static final int CANTIDAD_CASILLAS = 20;
 	private ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		
-	Tablero(GestorMovimiento gestor) {		
+	public Tablero(GestorMovimiento gestor) {		
 		casillas.add(new Casilla());									// Salida
 		casillas.add(new Quini());										// Quini 6
 		casillas.add(new Propiedad(20000));								// Buenos Aires Zona Sur
@@ -29,13 +29,12 @@ class Tablero {
 		casillas.add(new Propiedad(25000));								// Tucumán
 	}
 	
-	Casilla getCasillaInicial() {
+	public Casilla getCasillaInicial() {
 		return casillas.get(0);
 	}
 	
-	Casilla getCasillaSiguiente(Casilla casillaActual, int posiciones) {		
+	public Casilla getCasillaSiguiente(Casilla casillaActual, int posiciones) {		
 		int posicionCasillaSiguiente = (casillas.indexOf(casillaActual) + posiciones) % CANTIDAD_CASILLAS;
 		return casillas.get(posicionCasillaSiguiente);
 	}
-
 }

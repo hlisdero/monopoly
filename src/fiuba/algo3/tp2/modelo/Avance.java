@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-class Avance implements TipoMovimiento {
+public class Avance implements TipoMovimiento {
 	
 	public int getIndiceMovimiento(Jugador jugador) {
 		int sumaDados = jugador.getResultadoDados().getSuma();
@@ -24,5 +24,4 @@ class Avance implements TipoMovimiento {
 	private int efectoTercero(Jugador jugador) {
 		return jugador.getResultadoDados().getSuma() - jugador.getCantidadPropiedades();
 	}
-
 }

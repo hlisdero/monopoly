@@ -1,10 +1,10 @@
 package fiuba.algo3.tp2.modelo;
 
-class Policia extends Casilla {
+public class Policia extends Casilla {
 	private int posicionRelativaCarcel;
 	private GestorMovimiento gestorMovimiento;
 	
-	Policia(int posicionRelativaCarcel, GestorMovimiento gestorMovimiento) {
+	public Policia(int posicionRelativaCarcel, GestorMovimiento gestorMovimiento) {
 		this.posicionRelativaCarcel = posicionRelativaCarcel;
 		this.gestorMovimiento = gestorMovimiento;
 	}
@@ -13,5 +13,4 @@ class Policia extends Casilla {
 	public void aplicarEfecto(Jugador jugador) {
 		gestorMovimiento.mover(jugador, posicionRelativaCarcel);
 	}
-
 }

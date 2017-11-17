@@ -8,5 +8,4 @@ public class AlgoPoly {
 		Jugador jugador = gestorTurnos.proximoJugador();
 		gestorMovimiento.mover(jugador);
 	}
-
 }

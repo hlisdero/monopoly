@@ -15,6 +15,5 @@ public class Quini extends Casilla {
 			vecesQueCayeron.put(jugador, cantidadVeces + 1);
 		}
 		premio.darPremio(jugador, vecesQueCayeron.get(jugador));
-	}
-	
+	}	
 }

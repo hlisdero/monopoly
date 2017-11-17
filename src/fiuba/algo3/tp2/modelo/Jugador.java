@@ -2,24 +2,24 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.ArrayList;
 
-class Jugador {	
+public class Jugador {	
 	private double capital = 100000;
 	private Casilla casillaActual;
 	private ArrayList<Propiedad> listaPropiedades = new ArrayList<Propiedad>();
 	private ResultadoDados ultimaTirada;
 	private boolean sePuedeMover = true;
 	
-	Jugador(Casilla casillaInicial) {
+	public Jugador(Casilla casillaInicial) {
 		casillaActual = casillaInicial;
 	}
 	
 	/* Constructor de Jugador con dados iniciales para pruebas */
-	Jugador(Casilla casillaInicial, int primerDado, int segundoDado) {
+	public Jugador(Casilla casillaInicial, int primerDado, int segundoDado) {
 		casillaActual = casillaInicial;
 		ultimaTirada = new ResultadoDados(primerDado, segundoDado);
 	}
 	
-	Casilla getCasilla() {
+	public Casilla getCasilla() {
 		return casillaActual;
 	}
 	
@@ -27,15 +27,15 @@ class Jugador {
 		casillaActual = casilla;
 	}
 	
-	double getCapital() {
+	public double getCapital() {
 		return capital;
 	}
 
-	void agregarDinero(double monto) {
+	public void agregarDinero(double monto) {
 		capital += monto;
 	}
 	
-	double restarDinero(double monto) throws CapitalInsuficienteException {
+	public double restarDinero(double monto) throws CapitalInsuficienteException {
 		if (capital < monto) {
 			throw new CapitalInsuficienteException();
 		}
@@ -43,33 +43,32 @@ class Jugador {
 		return capital;
 	}
 	
-	void agregarPropiedad(Propiedad propiedad){
+	public void agregarPropiedad(Propiedad propiedad){
 		listaPropiedades.add(propiedad);
 	}
 	
-	int getCantidadPropiedades(){
+	public int getCantidadPropiedades(){
 		return listaPropiedades.size();
 	}
 	
-	ResultadoDados tirarDados() {
+	public ResultadoDados tirarDados() {
 		ultimaTirada = Dados.tirarDados();
 		return ultimaTirada;
 	}
 	
-	ResultadoDados getResultadoDados() {
+	public ResultadoDados getResultadoDados() {
 		return ultimaTirada;
 	}
 	
-	boolean noSePuedeMover() {
+	public boolean noSePuedeMover() {
 		return !sePuedeMover;
 	}
 	
-	void prohibirMovimiento() {
+	public void prohibirMovimiento() {
 		sePuedeMover = false;
 	}
 	
-	void permitirMovimiento() {
+	public void permitirMovimiento() {
 		sePuedeMover = true;
-	}
-	
+	}	
 }

@@ -7,6 +7,7 @@ class Jugador {
 	private Casilla casillaActual;
 	private ArrayList<Propiedad> listaPropiedades = new ArrayList<Propiedad>();
 	private ResultadoDados ultimaTirada;
+	private boolean sePuedeMover = true;
 	
 	Jugador(Casilla casillaInicial) {
 		casillaActual = casillaInicial;
@@ -58,4 +59,17 @@ class Jugador {
 	ResultadoDados getResultadoDados() {
 		return ultimaTirada;
 	}
+	
+	boolean noSePuedeMover() {
+		return !sePuedeMover;
+	}
+	
+	void prohibirMovimiento() {
+		sePuedeMover = false;
+	}
+	
+	void permitirMovimiento() {
+		sePuedeMover = true;
+	}
+	
 }

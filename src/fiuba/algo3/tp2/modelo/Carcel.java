@@ -10,20 +10,22 @@ class Carcel extends Casilla {
 	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
-		if (!contadorTurnos.containsKey(jugador)) {
-			contadorTurnos.put(jugador, 1);
-		} else if (contadorTurnos.get(jugador) == TURNOS_NECESARIOS_PARA_SALIR){
+		contadorTurnos.put(jugador, 0);
+		jugador.prohibirMovimiento();
+	}
+	
+	void contarTurno(Jugador jugador) {
+		int cantidadTurnos = contadorTurnos.get(jugador);
+		if (cantidadTurnos == TURNOS_NECESARIOS_PARA_SALIR) {
 			contadorTurnos.remove(jugador);
+			jugador.permitirMovimiento();
 		} else {
-			contadorTurnos.put(jugador, contadorTurnos.get(jugador) + 1);
+			contadorTurnos.put(jugador, cantidadTurnos + 1);
 		}
 	}
 	
 	boolean estaAdentro(Jugador jugador) {
-		if (!contadorTurnos.containsKey(jugador)) {
-			return false;
-		}
-		return (contadorTurnos.get(jugador) <= TURNOS_NECESARIOS_PARA_SALIR);
+		return (contadorTurnos.containsKey(jugador));
 	}
 	
 	void pagarFianza(Jugador jugador) {

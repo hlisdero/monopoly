@@ -29,35 +29,36 @@ public class CarcelTest {
 	}
 	
 	@Test
-	public void aplicarEfectoDosVecesJugadorSigueEnCarcel() {
+	public void despuesPrimerTurnoJugadorSigueEnCarcel() {
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador(carcel);
 		
 		carcel.aplicarEfecto(jugador);
-		carcel.aplicarEfecto(jugador);
+		carcel.contarTurno(jugador);
 		assertTrue(carcel.estaAdentro(jugador));
 	}
 	
 	@Test
-	public void aplicarEfectoTresVecesJugadorSigueEnCarcel() {
+	public void despuesSegundoTurnoJugadorSigueEnCarcel() {
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador(carcel);
 		
 		carcel.aplicarEfecto(jugador);
-		carcel.aplicarEfecto(jugador);
-		carcel.aplicarEfecto(jugador);
+		carcel.contarTurno(jugador);
+		carcel.contarTurno(jugador);
 		assertTrue(carcel.estaAdentro(jugador));
 	}
 	
 	@Test
-	public void aplicarEfectoCuatroVecesJugadorAfueraCarcel() {
+	public void despuesTercerTurnoJugadorAfueraCarcel() {
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador(carcel);
 		
 		carcel.aplicarEfecto(jugador);
-		carcel.aplicarEfecto(jugador);
-		carcel.aplicarEfecto(jugador);
-		carcel.aplicarEfecto(jugador);
+		carcel.contarTurno(jugador);
+		carcel.contarTurno(jugador);
+		carcel.contarTurno(jugador);
+		carcel.contarTurno(jugador);
 		assertFalse(carcel.estaAdentro(jugador));
 	}
 	
@@ -67,7 +68,8 @@ public class CarcelTest {
 		Jugador jugador = new Jugador(carcel);
 		
 		carcel.aplicarEfecto(jugador);
-		carcel.aplicarEfecto(jugador);
+		carcel.contarTurno(jugador);
+		carcel.contarTurno(jugador);
 		carcel.pagarFianza(jugador);
 		assertFalse(carcel.estaAdentro(jugador));
 	}
@@ -78,7 +80,8 @@ public class CarcelTest {
 		Jugador jugador = new Jugador(carcel);
 		
 		carcel.aplicarEfecto(jugador);
-		carcel.aplicarEfecto(jugador);
+		carcel.contarTurno(jugador);
+		carcel.contarTurno(jugador);
 		carcel.pagarFianza(jugador);
 		assertEquals(55000, jugador.getCapital(), DELTA);
 	}
@@ -90,7 +93,7 @@ public class CarcelTest {
 		
 		jugador.restarDinero(60000);
 		carcel.aplicarEfecto(jugador);
-		carcel.aplicarEfecto(jugador);
+		carcel.contarTurno(jugador);
 		carcel.pagarFianza(jugador);
 		assertTrue(carcel.estaAdentro(jugador));
 	}
@@ -101,6 +104,7 @@ public class CarcelTest {
 		Jugador jugador = new Jugador(carcel);
 		
 		carcel.aplicarEfecto(jugador);
+		carcel.contarTurno(jugador);
 		carcel.pagarFianza(jugador);
 		assertTrue(carcel.estaAdentro(jugador));
 	}

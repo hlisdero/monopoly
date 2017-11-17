@@ -8,13 +8,7 @@ public class PoliciaTest {
 
 	@Test
 	public void nuevaPoliciaNoEsNull() {
-		assertNotNull(new Policia(1));
+		assertNotNull(new Policia(1, new GestorMovimiento()));
 	}
 	
-	@Test
-	public void getIndiceDevuelveElIndiceConElCualFueCreado() {
-		Policia policia = new Policia(1);
-		assertEquals(1, policia.getIndiceCasillaSiguiente(2, Dados.tirarDados()));
-	}
-
 }

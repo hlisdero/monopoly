@@ -1,10 +1,10 @@
 package fiuba.algo3.tp2.modelo;
 
-class MovimientoDinamico extends Casilla {
+class CasillaMovimientoDinamico extends Casilla {
 	private TipoMovimiento tipoMovimiento;
 	private GestorMovimiento gestorMovimiento;
 	
-	MovimientoDinamico(TipoMovimiento nuevoTipo, GestorMovimiento gestorMovimiento) {
+	CasillaMovimientoDinamico(TipoMovimiento nuevoTipo, GestorMovimiento gestorMovimiento) {
 		tipoMovimiento = nuevoTipo;	
 		this.gestorMovimiento = gestorMovimiento;
 	}

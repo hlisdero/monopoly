@@ -14,7 +14,7 @@ class Tablero {
 		casillas.add(new Propiedad(25000));								// Buenos Aires Zona Norte
 		// casillas.add(new Carcel());										// Carcel
 		casillas.add(new Propiedad(18000));								// Córdoba Zona Sur
-		casillas.add(new MovimientoDinamico(new Avance(), gestor));		// Avance Dinámico
+		casillas.add(new CasillaMovimientoDinamico(new Avance(), gestor));		// Avance Dinámico
 		casillas.add(new Empresa(40000));								// SUBTE		
 		casillas.add(new Propiedad(20000));								// Córdoba Zona Norte
 		casillas.add(new Impuesto());									// Impuesto al Lujo
@@ -25,7 +25,7 @@ class Tablero {
 		casillas.add(new Policia(-10, gestor));							// Policia
 		casillas.add(new Empresa(38000));								// Trenes
 		casillas.add(new Propiedad(17000));								// Neuquén
-		casillas.add(new MovimientoDinamico(new Retroceso(), gestor));	// Retroceso Dinámico
+		casillas.add(new CasillaMovimientoDinamico(new Retroceso(), gestor));	// Retroceso Dinámico
 		casillas.add(new Propiedad(25000));								// Tucumán
 	}
 	

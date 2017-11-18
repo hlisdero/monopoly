@@ -14,7 +14,7 @@ public class Retroceso implements TipoMovimiento {
 	}
 	
 	private int efectoPrimero(Jugador jugador) {
-		return -jugador.getResultadoDados().getSuma() + jugador.getCantidadPropiedades();
+		return -jugador.getResultadoDados().getSuma() + jugador.getGestorPropiedades().getCantidadPropiedades();
 	}
 	
 	private int efectoSegundo(Jugador jugador) {

@@ -22,6 +22,6 @@ public class Avance implements TipoMovimiento {
 	}
 	
 	private int efectoTercero(Jugador jugador) {
-		return jugador.getResultadoDados().getSuma() - jugador.getCantidadPropiedades();
+		return jugador.getResultadoDados().getSuma() - jugador.getGestorPropiedades().getCantidadPropiedades();
 	}
 }

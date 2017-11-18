@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class Jugador {	
 	private double capital = 100000;
 	private Casilla casillaActual;
-	private ArrayList<Propiedad> listaPropiedades = new ArrayList<Propiedad>();
+	//private ArrayList<Propiedad> listaPropiedades = new ArrayList<Propiedad>();
 	private ResultadoDados ultimaTirada;
+	private GestorPropiedades propiedades = new GestorPropiedades();
 	private boolean sePuedeMover = true;
 	
 	public Jugador(Casilla casillaInicial) {
@@ -43,13 +44,10 @@ public class Jugador {
 		return capital;
 	}
 	
-	public void agregarPropiedad(Propiedad propiedad){
-		listaPropiedades.add(propiedad);
+	public GestorPropiedades getGestorPropiedades(){
+		return propiedades;
 	}
 	
-	public int getCantidadPropiedades(){
-		return listaPropiedades.size();
-	}
 	
 	public ResultadoDados tirarDados() {
 		ultimaTirada = Dados.tirarDados();

@@ -24,7 +24,7 @@ public class Propiedad extends Casilla {
 	public void aplicarEfecto(Jugador jugador) {
 		if (noTienePropietario() && jugador.getCapital() >= precio) {
 			propietario = jugador;
-			jugador.agregarPropiedad(this);
+			jugador.getGestorPropiedades().agregarPropiedad(this);
 			jugador.restarDinero(precio);
 		}
 	}

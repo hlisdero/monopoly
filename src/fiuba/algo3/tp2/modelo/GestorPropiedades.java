@@ -17,10 +17,18 @@ public class GestorPropiedades {
 		}
 	}
 	
-	public void construirHotel(Propiedad prop) {
-		if (!cantidadDeHotelesPorPropiedad.containsKey(prop)) {
+	public void construirHotel(Propiedad prop) throws CasasInsuficienteException {
+		if (!cantidadDeHotelesPorPropiedad.containsKey(prop) && sePuedeConstruirHotel(prop)) {
+			cantidadDeCasasPorPropiedad.put(prop, 0);
 			cantidadDeHotelesPorPropiedad.put(prop, 1);
 		}
+		else throw new CasasInsuficienteException();
+	}
+	
+	public boolean sePuedeConstruirHotel(Propiedad prop) {
+		if (cantidadDeCasasPorPropiedad.get(prop) == 2)
+			return true;
+		else return false;
 	}
 	
 	public void agregarPropiedad(Propiedad prop) {

@@ -86,13 +86,15 @@ public class PropiedadTest {
 	}
 	
 	@Test
-	public void construirHotelCapitalJugadorSeReduce(){
+	public void construirHotelCapitalJugadorSeReduce() throws CasasInsuficienteException{
 		Propiedad prop = new Propiedad(1000,500, 2000, 3000, 500, 700, 1000);
 		Jugador jugador1 = new Jugador(prop);
+		prop.construirCasa(jugador1);
+		prop.construirCasa(jugador1);
 		
 		prop.construirHotel(jugador1);
 		
-		assertEquals(97000, jugador1.getCapital(), DELTA);
+		assertEquals(93000, jugador1.getCapital(), DELTA);
 	}
 	
 	@Test
@@ -124,13 +126,16 @@ public class PropiedadTest {
 	}
 	
 	@Test
-	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnHotel() {
+	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnHotel() throws CasasInsuficienteException {
 		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
+		prop.construirCasa(jugador1);
+		prop.construirCasa(jugador1);
 		prop.construirHotel(jugador1);
+		
 		prop.aplicarEfecto(jugador2);
 		
 		assertEquals(96000, jugador2.getCapital(), DELTA);

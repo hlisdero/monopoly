@@ -75,7 +75,7 @@ public class Propiedad extends Casilla {
 		jugador.restarDinero(precioConstruirCasa);
 	}
 	
-	public void construirHotel(Jugador jugador) {
+	public void construirHotel(Jugador jugador) throws CasasInsuficienteException {
 		jugador.getGestorPropiedades().construirHotel(this);
 		jugador.restarDinero(precioConstruirHotel);
 	}

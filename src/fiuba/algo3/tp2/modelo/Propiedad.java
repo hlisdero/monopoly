@@ -69,6 +69,12 @@ public class Propiedad extends Casilla {
 		return (propietario == null);
 	}
 
+	public void precioAlquilerJugadorTieneConstrucciones(Jugador jugador) {
+		if (jugador.getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 1){
+			this.precioAlquiler = this.precioAlquilerUnaCasa;
+		}
+	}
+	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
 		if (noTienePropietario() && jugador.getCapital() >= precio) {

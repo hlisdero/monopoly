@@ -65,4 +65,15 @@ public class PropiedadTest {
 		assertEquals(99500, jugador2.getCapital(), DELTA);
 	}
 
+	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnaCasa() {
+		Propiedad prop = new Propiedad(1000,500, 2000, 4000);
+		Jugador jugador1 = new Jugador(prop);
+		Jugador jugador2 = new Jugador(prop);
+		
+		prop.aplicarEfecto(jugador1);
+		jugador1.getGestorPropiedades().construirCasa(prop);
+		prop.aplicarEfecto(jugador2);
+		
+		assertEquals(96000, jugador2.getCapital(), DELTA);
+	}
 }

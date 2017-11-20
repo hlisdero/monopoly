@@ -43,11 +43,11 @@ public class GestorPropiedades {
 		return propiedades.size();
 	}
 	
-	public int getCantidadCasas(Propiedad prop) {
+	public int getCantidadCasas(Casilla prop) {
 		return cantidadDeCasasPorPropiedad.get(prop);
 	}
 	
-	public int getCantidadHotel(Propiedad prop) {
+	public int getCantidadHotel(Casilla prop) {
 		return cantidadDeHotelesPorPropiedad.get(prop);
 	}
 }

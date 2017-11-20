@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 public class Propiedad extends Casilla {
 	protected double precio;
-	private double precioSiHayConstrucciones;
+	private static double precioSiHayConstrucciones;
 	protected double precioAlquiler;
 	private double precioConstruirCasa;
 	private double precioConstruirHotel;
@@ -70,27 +70,30 @@ public class Propiedad extends Casilla {
 		return (propietario == null);
 	}
 
-	public void precioAlquilerJugadorTieneConstrucciones(Jugador jugador) {
-		if (jugador.getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 1){
-			precioSiHayConstrucciones = this.precioAlquilerUnaCasa;
+	public void precioAlquilerJugadorTieneConstrucciones() {
+		if (getPropietario().getGestorPropiedades().getCantidadCasas(getPropietario().getCasilla()) == 1){
+			precioSiHayConstrucciones = precioAlquilerUnaCasa;
 		}
-		else if (jugador.getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 2){
-			precioSiHayConstrucciones = this.precioAlquilerDosCasas;
+		else if (getPropietario().getGestorPropiedades().getCantidadCasas(getPropietario().getCasilla()) == 2){
+			precioSiHayConstrucciones = precioAlquilerDosCasas;
 		}
-		else if (jugador.getGestorPropiedades().getCantidadHotel(jugador.getCasilla())){
-			precioSiHayConstrucciones = this.precioAlquilerHotel;
+		else if (getPropietario().getGestorPropiedades().getCantidadHotel(getPropietario().getCasilla()) == 1){
+			precioSiHayConstrucciones = precioAlquilerHotel;
 		}
-		else precioSiHayConstrucciones = this.precioAlquiler;
+		else precioSiHayConstrucciones = precioAlquiler;
 	}
 	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
+		
 		if (noTienePropietario() && jugador.getCapital() >= precio) {
 			propietario = jugador;
 			jugador.getGestorPropiedades().agregarPropiedad(this);
 			jugador.restarDinero(precio);
 		}
-		else if (!noTienePropietario() && jugador.getCapital() >= precioSiHayConstrucciones) {
+		
+		else if (!noTienePropietario()) {
+			precioAlquilerJugadorTieneConstrucciones();
 			jugador.restarDinero(precioSiHayConstrucciones);
 		}
 	}

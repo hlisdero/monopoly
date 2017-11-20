@@ -33,5 +33,8 @@ public class Propiedad extends Casilla {
 			jugador.getGestorPropiedades().agregarPropiedad(this);
 			jugador.restarDinero(precio);
 		}
+		else if (!noTienePropietario() && jugador.getCapital() >= this.precioDeAlquiler) {
+			jugador.restarDinero(precioDeAlquiler);
+		}
 	}
 }

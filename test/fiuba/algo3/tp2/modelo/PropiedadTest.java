@@ -54,8 +54,18 @@ public class PropiedadTest {
 	}
 	
 	@Test
+	public void aplicarEfectoAsignaPropietarioYReduceSuCapital() {
+		Propiedad prop = new Propiedad(1000,500, 2000, 1000);
+		Jugador jugador1 = new Jugador(prop);
+		
+		prop.aplicarEfecto(jugador1);
+		
+		assertEquals(99000, jugador1.getCapital(), DELTA);
+	}
+	
+	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietario() {
-		Propiedad prop = new Propiedad(1000,500);
+		Propiedad prop = new Propiedad(1000,500, 2000, 1000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		

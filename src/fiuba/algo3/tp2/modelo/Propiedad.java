@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 public class Propiedad extends Casilla {
 	protected double precio;
+	private double precioSiHayConstrucciones;
 	protected double precioAlquiler;
 	private double precioConstruirCasa;
 	private double precioConstruirHotel;
@@ -71,8 +72,15 @@ public class Propiedad extends Casilla {
 
 	public void precioAlquilerJugadorTieneConstrucciones(Jugador jugador) {
 		if (jugador.getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 1){
-			this.precioAlquiler = this.precioAlquilerUnaCasa;
+			precioSiHayConstrucciones = this.precioAlquilerUnaCasa;
 		}
+		else if (jugador.getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 2){
+			precioSiHayConstrucciones = this.precioAlquilerDosCasas;
+		}
+		else if (jugador.getGestorPropiedades().getCantidadHotel(jugador.getCasilla())){
+			precioSiHayConstrucciones = this.precioAlquilerHotel;
+		}
+		else precioSiHayConstrucciones = this.precioAlquiler;
 	}
 	
 	@Override
@@ -82,8 +90,8 @@ public class Propiedad extends Casilla {
 			jugador.getGestorPropiedades().agregarPropiedad(this);
 			jugador.restarDinero(precio);
 		}
-		else if (!noTienePropietario() && jugador.getCapital() >= this.precioAlquiler) {
-			jugador.restarDinero(precioAlquiler);
+		else if (!noTienePropietario() && jugador.getCapital() >= precioSiHayConstrucciones) {
+			jugador.restarDinero(precioSiHayConstrucciones);
 		}
 	}
 }

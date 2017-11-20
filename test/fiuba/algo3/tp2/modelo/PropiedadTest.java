@@ -64,14 +64,42 @@ public class PropiedadTest {
 		
 		assertEquals(99500, jugador2.getCapital(), DELTA);
 	}
-
+	
+	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnaCasa() {
-		Propiedad prop = new Propiedad(1000,500, 2000, 4000);
+		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
 		jugador1.getGestorPropiedades().construirCasa(prop);
+		prop.aplicarEfecto(jugador2);
+		
+		assertEquals(99000, jugador2.getCapital(), DELTA);
+	}
+	
+	@Test
+	public void aplicarEfectoCobraSiYaTieneUnPropietarioConDosCasas() {
+		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
+		Jugador jugador1 = new Jugador(prop);
+		Jugador jugador2 = new Jugador(prop);
+		
+		prop.aplicarEfecto(jugador1);
+		jugador1.getGestorPropiedades().construirCasa(prop);
+		jugador1.getGestorPropiedades().construirCasa(prop);
+		prop.aplicarEfecto(jugador2);
+		
+		assertEquals(97000, jugador2.getCapital(), DELTA);
+	}
+	
+	@Test
+	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnHotel() {
+		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
+		Jugador jugador1 = new Jugador(prop);
+		Jugador jugador2 = new Jugador(prop);
+		
+		prop.aplicarEfecto(jugador1);
+		jugador1.getGestorPropiedades().construirHotel(prop);
 		prop.aplicarEfecto(jugador2);
 		
 		assertEquals(96000, jugador2.getCapital(), DELTA);

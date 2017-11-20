@@ -8,7 +8,7 @@ public class EmpresaTest {
 
 	@Test
 	public void nuevaEmpresaNoNull() {
-		assertNotNull(new Empresa(0));
+		assertNotNull(new Empresa(0, 0));
 	}
 	
 	

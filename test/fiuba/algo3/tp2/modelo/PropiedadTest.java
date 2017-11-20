@@ -9,18 +9,18 @@ public class PropiedadTest {
 	
 	@Test
 	public void nuevaPropiedadNoNull() {
-		assertNotNull(new Propiedad(0));
+		assertNotNull(new Propiedad(0,0));
 	}
 	
 	@Test
 	public void getPrecioDevuelvePrecio() {
-		Propiedad prop = new Propiedad(1000);
+		Propiedad prop = new Propiedad(1000,0);
 		assertEquals(1000, prop.getPrecio(), DELTA);
 	}
 	
 	@Test
 	public void aplicarEfectoAsignaJugadorConCapitalSuficienteComoPropietario() {
-		Propiedad prop = new Propiedad(1000);
+		Propiedad prop = new Propiedad(1000,0);
 		Jugador jugador = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador);
@@ -29,7 +29,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoNoAsignaJugadorSinCapitalSuficienteComoPropietario() {
-		Propiedad prop = new Propiedad(1000000);
+		Propiedad prop = new Propiedad(1000000,0);
 		Jugador jugador = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador);
@@ -38,7 +38,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoNoAsignaPropietarioSiYaTieneUno() {
-		Propiedad prop = new Propiedad(1000);
+		Propiedad prop = new Propiedad(1000,0);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		

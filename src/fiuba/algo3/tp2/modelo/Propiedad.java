@@ -2,10 +2,16 @@ package fiuba.algo3.tp2.modelo;
 
 public class Propiedad extends Casilla {
 	protected double precio;
+	protected double precioDeAlquiler;
 	protected Jugador propietario;
 	
-	public Propiedad(double precio) {
+	public Propiedad(double precio, double precioDeAlquiler) {
 		this.precio = precio;
+		this.precioDeAlquiler = precioDeAlquiler;
+	}
+	
+	public double getPrecioDeAlquiler(){
+		return this.precioDeAlquiler;
 	}
 
 	public double getPrecio() {

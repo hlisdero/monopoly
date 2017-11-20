@@ -69,6 +69,18 @@ public class Propiedad extends Casilla {
 	public boolean noTienePropietario() {
 		return (propietario == null);
 	}
+	
+	public void construirCasa(Jugador jugador) {
+		jugador.getGestorPropiedades().construirCasa(this);
+		jugador.restarDinero(precioConstruirCasa);
+	}
+	
+	public void construirHotel(Jugador jugador) {
+		jugador.getGestorPropiedades().construirHotel(this);
+		jugador.restarDinero(precioConstruirHotel);
+	}
+	
+	
 
 	public void precioAlquilerJugadorTieneConstrucciones(Jugador jugador) {
 		if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 1){

@@ -70,14 +70,14 @@ public class Propiedad extends Casilla {
 		return (propietario == null);
 	}
 
-	public void precioAlquilerJugadorTieneConstrucciones() {
-		if (getPropietario().getGestorPropiedades().getCantidadCasas(getPropietario().getCasilla()) == 1){
+	public void precioAlquilerJugadorTieneConstrucciones(Jugador jugador) {
+		if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 1){
 			precioSiHayConstrucciones = precioAlquilerUnaCasa;
 		}
-		else if (getPropietario().getGestorPropiedades().getCantidadCasas(getPropietario().getCasilla()) == 2){
+		else if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 2){
 			precioSiHayConstrucciones = precioAlquilerDosCasas;
 		}
-		else if (getPropietario().getGestorPropiedades().getCantidadHotel(getPropietario().getCasilla()) == 1){
+		else if (getPropietario().getGestorPropiedades().getCantidadHotel(jugador.getCasilla()) == 1){
 			precioSiHayConstrucciones = precioAlquilerHotel;
 		}
 		else precioSiHayConstrucciones = precioAlquiler;
@@ -93,7 +93,7 @@ public class Propiedad extends Casilla {
 		}
 		
 		else if (!noTienePropietario()) {
-			precioAlquilerJugadorTieneConstrucciones();
+			precioAlquilerJugadorTieneConstrucciones(jugador);
 			jugador.restarDinero(precioSiHayConstrucciones);
 		}
 	}

@@ -77,29 +77,30 @@ public class PropiedadTest {
 	
 	@Test
 	public void construirCasaCapitalJugadorSeReduce(){
-		Propiedad prop = new Propiedad(1000,500, 2000, 1000);
+
+		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.construirCasa(jugador1);
 		
-		assertEquals(98000, jugador1.getCapital(), DELTA);
+		assertEquals(95000, jugador1.getCapital(), DELTA);
 	}
 	
 	@Test
 	public void construirHotelCapitalJugadorSeReduce() throws CasasInsuficienteException{
-		Propiedad prop = new Propiedad(1000,500, 2000, 3000, 500, 700, 1000);
+		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
 		prop.construirCasa(jugador1);
 		prop.construirCasa(jugador1);
 		
 		prop.construirHotel(jugador1);
 		
-		assertEquals(93000, jugador1.getCapital(), DELTA);
+		assertEquals(82000, jugador1.getCapital(), DELTA);
 	}
 	
 	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnaCasa() {
-		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
+		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
@@ -107,12 +108,12 @@ public class PropiedadTest {
 		prop.construirCasa(jugador1);
 		prop.aplicarEfecto(jugador2);
 		
-		assertEquals(99000, jugador2.getCapital(), DELTA);
+		assertEquals(97000, jugador2.getCapital(), DELTA);
 	}
 	
 	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietarioConDosCasas() {
-		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
+		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
@@ -122,7 +123,7 @@ public class PropiedadTest {
 		
 		prop.aplicarEfecto(jugador2);
 		
-		assertEquals(97000, jugador2.getCapital(), DELTA);
+		assertEquals(96500, jugador2.getCapital(), DELTA);
 	}
 	
 	@Test

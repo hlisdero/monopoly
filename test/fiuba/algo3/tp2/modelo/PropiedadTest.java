@@ -19,6 +19,12 @@ public class PropiedadTest {
 	}
 	
 	@Test
+	public void getPrecioDeAlquilerDevuelvePrecioDeAlquiler() {
+		Propiedad prop = new Propiedad(1000,2000);
+		assertEquals(2000, prop.getPrecioDeAlquiler(), DELTA);
+	}
+	
+	@Test
 	public void aplicarEfectoAsignaJugadorConCapitalSuficienteComoPropietario() {
 		Propiedad prop = new Propiedad(1000,0);
 		Jugador jugador = new Jugador(prop);
@@ -45,6 +51,18 @@ public class PropiedadTest {
 		prop.aplicarEfecto(jugador1);
 		prop.aplicarEfecto(jugador2);
 		assertEquals(jugador1, prop.getPropietario());
+	}
+	
+	@Test
+	public void aplicarEfectoCobraSiYaTieneUnPropietario() {
+		Propiedad prop = new Propiedad(1000,500);
+		Jugador jugador1 = new Jugador(prop);
+		Jugador jugador2 = new Jugador(prop);
+		
+		prop.aplicarEfecto(jugador1);
+		prop.aplicarEfecto(jugador2);
+		
+		assertEquals(99500, jugador2.getCapital(), DELTA);
 	}
 
 }

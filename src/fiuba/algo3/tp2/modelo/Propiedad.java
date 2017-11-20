@@ -77,7 +77,7 @@ public class Propiedad extends Casilla {
 		else if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 2){
 			precioSiHayConstrucciones = precioAlquilerDosCasas;
 		}
-		else if (getPropietario().getGestorPropiedades().getCantidadHotel(jugador.getCasilla()) == 1){
+		else if (getPropietario().getGestorPropiedades().getCantidadHotel(jugador.getCasilla())){
 			precioSiHayConstrucciones = precioAlquilerHotel;
 		}
 		else precioSiHayConstrucciones = precioAlquiler;

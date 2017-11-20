@@ -49,9 +49,9 @@ public class GestorPropiedades {
 		else return cantidadDeCasasPorPropiedad.get(prop);
 	}
 	
-	public int getCantidadHotel(Casilla prop) {
+	public boolean getCantidadHotel(Casilla prop) {
 		if(!cantidadDeHotelesPorPropiedad.containsKey(prop))
-			return 0;
-		else return cantidadDeHotelesPorPropiedad.get(prop);
+			return false;
+		else return true;
 	}
 }

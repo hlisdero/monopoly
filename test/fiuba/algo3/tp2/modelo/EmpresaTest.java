@@ -25,7 +25,7 @@ public class EmpresaTest {
 		unaEmpresa.aplicarEfecto(jugador2);
 		
 		int resultadoDados = jugador2.getResultadoDados().getSuma();
-		int precioDeAlquiler = (int) (unaEmpresa.getPrecioDeAlquiler()*resultadoDados);
+		int precioDeAlquiler = (int) (unaEmpresa.getPrecioAlquiler()*resultadoDados);
 		
 		assertEquals(100000-precioDeAlquiler, jugador2.getCapital(), DELTA);
 	}

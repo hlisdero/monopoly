@@ -13,8 +13,8 @@ public class Empresa extends Propiedad {
 			jugador.getGestorPropiedades().agregarPropiedad(this);
 			jugador.restarDinero(precio);
 		}
-		else if (!noTienePropietario() && jugador.getCapital() >= this.precioDeAlquiler) {
-			jugador.restarDinero(precioDeAlquiler*jugador.getResultadoDados().getSuma());
+		else if (!noTienePropietario() && jugador.getCapital() >= this.precioAlquiler) {
+			jugador.restarDinero(precioAlquiler*jugador.getResultadoDados().getSuma());
 		}
 	}
 	

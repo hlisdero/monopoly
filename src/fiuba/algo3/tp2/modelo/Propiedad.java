@@ -2,16 +2,59 @@ package fiuba.algo3.tp2.modelo;
 
 public class Propiedad extends Casilla {
 	protected double precio;
-	protected double precioDeAlquiler;
+	protected double precioAlquiler;
+	private double precioConstruirCasa;
+	private double precioConstruirHotel;
+	private double precioAlquilerUnaCasa;
+	private double precioAlquilerDosCasas;
+	private double precioAlquilerHotel;
 	protected Jugador propietario;
 	
-	public Propiedad(double precio, double precioDeAlquiler) {
+	public Propiedad(double precio, double precioAlquiler, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel) {
 		this.precio = precio;
-		this.precioDeAlquiler = precioDeAlquiler;
+		this.precioAlquiler = precioAlquiler;
+		this.precioConstruirCasa = precioConstruirCasa;
+		this.precioConstruirHotel = precioConstruirHotel;
+		this.precioAlquilerUnaCasa = precioAlquilerUnaCasa;
+		this.precioAlquilerDosCasas = precioAlquilerDosCasas;
+		this.precioAlquilerHotel = precioAlquilerHotel;
 	}
 	
-	public double getPrecioDeAlquiler(){
-		return this.precioDeAlquiler;
+	public Propiedad(double precio, double precioAlquiler, double precioConstruirCasa, double precioAlquilerUnaCasa) {
+		
+		this.precio = precio;
+		this.precioAlquiler = precioAlquiler;
+		this.precioConstruirCasa = precioConstruirCasa;
+		this.precioAlquilerUnaCasa = precioAlquilerUnaCasa;
+	}
+	
+	public Propiedad(double precio, double precioAlquiler) {
+		this.precio = precio;
+		this.precioAlquiler = precioAlquiler;
+	}
+	
+	public double getPrecioConstruirCasa() {
+		return precioConstruirCasa;
+	}
+
+	public double getPrecioConstruirHotel() {
+		return precioConstruirHotel;
+	}
+
+	public double getPrecioAlquilerUnaCasa() {
+		return precioAlquilerUnaCasa;
+	}
+
+	public double getPrecioAlquilerDosCasas() {
+		return precioAlquilerDosCasas;
+	}
+
+	public double getPrecioAlquilerHotel() {
+		return precioAlquilerHotel;
+	}
+	
+	public double getPrecioAlquiler(){
+		return this.precioAlquiler;
 	}
 
 	public double getPrecio() {
@@ -33,8 +76,8 @@ public class Propiedad extends Casilla {
 			jugador.getGestorPropiedades().agregarPropiedad(this);
 			jugador.restarDinero(precio);
 		}
-		else if (!noTienePropietario() && jugador.getCapital() >= this.precioDeAlquiler) {
-			jugador.restarDinero(precioDeAlquiler);
+		else if (!noTienePropietario() && jugador.getCapital() >= this.precioAlquiler) {
+			jugador.restarDinero(precioAlquiler);
 		}
 	}
 }

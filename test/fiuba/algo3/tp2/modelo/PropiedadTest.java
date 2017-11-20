@@ -21,7 +21,7 @@ public class PropiedadTest {
 	@Test
 	public void getPrecioDeAlquilerDevuelvePrecioDeAlquiler() {
 		Propiedad prop = new Propiedad(1000,2000);
-		assertEquals(2000, prop.getPrecioDeAlquiler(), DELTA);
+		assertEquals(2000, prop.getPrecioAlquiler(), DELTA);
 	}
 	
 	@Test

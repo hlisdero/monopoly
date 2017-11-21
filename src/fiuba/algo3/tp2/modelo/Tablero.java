@@ -12,10 +12,10 @@ public class Tablero {
 		Empresa aysa = new Empresa(30000, 300,500);
 		Empresa trenes = new Empresa(38000, 450,800);
 		
-		edesur.agregarEmpresaHermana(aysa);
-		aysa.agregarEmpresaHermana(edesur);
-		subte.agregarEmpresaHermana(trenes);
-		trenes.agregarEmpresaHermana(subte);
+		edesur.setEmpresaHermana(aysa);
+		aysa.setEmpresaHermana(edesur);
+		subte.setEmpresaHermana(trenes);
+		trenes.setEmpresaHermana(subte);
 		
 		casillas.add(edesur);
 		casillas.add(subte);

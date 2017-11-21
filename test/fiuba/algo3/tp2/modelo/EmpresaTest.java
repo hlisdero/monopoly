@@ -13,11 +13,39 @@ public class EmpresaTest {
 		assertNotNull(new Empresa(100, 100,100));
 	}
 	
-	/*@Test
+	@Test
+	public void getRentaSinEmpresaHermanaDevuelveElValorCorrecto() {
+		Empresa unaEmpresa = new Empresa(1000,500,100);
+		assertEquals(unaEmpresa.getRenta(), 500, DELTA);
+	}
+	
+	@Test
+	public void setEmpresaHermanaAsociaLaEmpresa() {
+		Empresa unaEmpresa = new Empresa(10,500,1000);
+		Empresa otraEmpresa = new Empresa(10,200,600);
+		unaEmpresa.setEmpresaHermana(otraEmpresa);
+		assertEquals(unaEmpresa.getEmpresaHermana(),otraEmpresa);
+	}
+	
+	@Test
+	public void getRentaConEmpresaHermanaDevuelveElValorCorrecto() {
+		Empresa unaEmpresa = new Empresa(10,500,1000);
+		Empresa otraEmpresa = new Empresa(10,200,600);
+		unaEmpresa.setEmpresaHermana(otraEmpresa);
+		Jugador jugador1 = new Jugador(unaEmpresa);
+		
+		unaEmpresa.aplicarEfecto(jugador1);
+		otraEmpresa.aplicarEfecto(jugador1);
+		
+		assertEquals(unaEmpresa.getRenta(), 1000, DELTA);
+	}
+	
+	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietario() {
-		Propiedad unaEmpresa = new Empresa(1000,500);
+		Empresa unaEmpresa = new Empresa(1000,500,100);
 		Jugador jugador1 = new Jugador(unaEmpresa);
 		Jugador jugador2 = new Jugador(unaEmpresa);
+		double capitalInicial = jugador2.getCapital();
 		
 		jugador2.tirarDados();
 		
@@ -25,11 +53,10 @@ public class EmpresaTest {
 		unaEmpresa.aplicarEfecto(jugador2);
 		
 		int resultadoDados = jugador2.getResultadoDados().getSuma();
-		int precioDeAlquiler = (int) (unaEmpresa.getPrecioAlquiler()*resultadoDados);
+		double precioDeAlquiler = (unaEmpresa.getRenta()*resultadoDados);
 		
-		assertEquals(100000-precioDeAlquiler, jugador2.getCapital(), DELTA);
+		assertEquals(capitalInicial - precioDeAlquiler, jugador2.getCapital(), DELTA);
 	}
-	*/
 	
 	
 

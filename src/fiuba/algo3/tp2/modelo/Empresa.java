@@ -11,16 +11,20 @@ public class Empresa extends Inmueble {
 		this.precio = precio;
 	}
 	
-	public void agregarEmpresaHermana(Empresa empresa) {
+	public void setEmpresaHermana(Empresa empresa) {
 		empresaHermana = empresa;
 	}
 	
-	private double calcularPrecioAlquiler() {
-			if (empresaHermana != null && propietario.getGestorPropiedades().contiene(empresaHermana)){
+	public double getRenta() {
+			if (empresaHermana != null && propietario != null && propietario.getGestorPropiedades().contiene(empresaHermana)){
 				return rentaGremial;
 			}
 			return renta;
 		};
+	
+	public Empresa getEmpresaHermana() {
+		return empresaHermana;
+	}
 	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
@@ -30,7 +34,7 @@ public class Empresa extends Inmueble {
 			jugador.restarDinero(precio);
 		}
 		else if (!noTienePropietario() && jugador != propietario ) {
-			jugador.restarDinero(calcularPrecioAlquiler()*jugador.getResultadoDados().getSuma());
+			jugador.restarDinero(getRenta()*jugador.getResultadoDados().getSuma());
 		}
 	}
 	

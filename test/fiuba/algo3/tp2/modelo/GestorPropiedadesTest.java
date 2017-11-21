@@ -34,11 +34,5 @@ public class GestorPropiedadesTest {
 		gestor.quitarPropiedad(prop);
 		assertEquals(gestor.getCantidadPropiedades(),0);
 	}
-	
-	@Test
-	public void CalcularRentaSinPropiedadesDevuelve0() {
-		GestorPropiedades gestor = new GestorPropiedades();
-		assertEquals(gestor.calcularRenta(),0,DELTA);
-	}
 
 }

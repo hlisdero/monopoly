@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GestorPropiedades {
-	private ArrayList<Propiedad> propiedades = new ArrayList<Propiedad>();
+	private ArrayList<Inmueble> propiedades = new ArrayList<Inmueble>();
 	private HashMap<Propiedad, Integer> cantidadDeCasasPorPropiedad = new HashMap<Propiedad, Integer>();
 	private HashMap<Propiedad, Integer> cantidadDeHotelesPorPropiedad = new HashMap<Propiedad, Integer>();
 	
@@ -31,21 +31,14 @@ public class GestorPropiedades {
 		else return false;
 	}
 	
-	public void agregarPropiedad(Propiedad prop) {
-		propiedades.add(prop);
+	public void agregarPropiedad(Inmueble inmueble) {
+		propiedades.add(inmueble);
 	}
 	
-	public void quitarPropiedad(Propiedad prop) {
+	public void quitarPropiedad(Inmueble prop) {
 		propiedades.remove(prop);
 	}
 	
-	public double calcularRenta() {
-		double renta = 0;
-		for(int i = 0; i < propiedades.size(); i++){
-			//propiedades.get(i).getPrecioRenta();
-		}
-		return renta;
-	}
 	
 	public int getCantidadPropiedades() {
 		return propiedades.size();
@@ -61,5 +54,9 @@ public class GestorPropiedades {
 		if(!cantidadDeHotelesPorPropiedad.containsKey(prop))
 			return false;
 		else return true;
+	}
+
+	public boolean contiene(Empresa empresa) {
+		return propiedades.contains(empresa);
 	}
 }

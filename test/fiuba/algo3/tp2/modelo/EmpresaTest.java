@@ -8,7 +8,7 @@ public class EmpresaTest {
 
 	private static final double DELTA = 1e-15;
 	
-	@Test
+	/*@Test
 	public void nuevaEmpresaNoNull() {
 		assertNotNull(new Empresa(0, 0));
 	}
@@ -29,7 +29,7 @@ public class EmpresaTest {
 		
 		assertEquals(100000-precioDeAlquiler, jugador2.getCapital(), DELTA);
 	}
-	
+	*/
 	
 	
 

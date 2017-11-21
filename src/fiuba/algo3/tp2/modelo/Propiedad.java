@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Propiedad extends Casilla {
-	protected double precio;
+public class Propiedad extends Inmueble {
 	private static double precioSiHayConstrucciones;
 	protected double precioAlquiler;
 	private double precioConstruirCasa;
@@ -9,7 +8,6 @@ public class Propiedad extends Casilla {
 	private double precioAlquilerUnaCasa;
 	private double precioAlquilerDosCasas;
 	private double precioAlquilerHotel;
-	protected Jugador propietario;
 	
 	public Propiedad(double precio, double precioAlquiler, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel) {
 		this.precio = precio;
@@ -57,18 +55,6 @@ public class Propiedad extends Casilla {
 	public double getPrecioAlquiler(){
 		return this.precioAlquiler;
 	}
-
-	public double getPrecio() {
-		return precio;
-	}
-
-	public Jugador getPropietario() {
-		return this.propietario;
-	}
-
-	public boolean noTienePropietario() {
-		return (propietario == null);
-	}
 	
 	public void construirCasa(Jugador jugador) {
 		jugador.getGestorPropiedades().construirCasa(this);
@@ -78,21 +64,6 @@ public class Propiedad extends Casilla {
 	public void construirHotel(Jugador jugador) throws CasasInsuficienteException {
 		jugador.getGestorPropiedades().construirHotel(this);
 		jugador.restarDinero(precioConstruirHotel);
-	}
-	
-	
-
-	public void precioAlquilerJugadorTieneConstrucciones(Jugador jugador) {
-		if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 1){
-			precioSiHayConstrucciones = precioAlquilerUnaCasa;
-		}
-		else if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 2){
-			precioSiHayConstrucciones = precioAlquilerDosCasas;
-		}
-		else if (getPropietario().getGestorPropiedades().getCantidadHotel(jugador.getCasilla())){
-			precioSiHayConstrucciones = precioAlquilerHotel;
-		}
-		else precioSiHayConstrucciones = precioAlquiler;
 	}
 	
 	@Override
@@ -109,4 +80,18 @@ public class Propiedad extends Casilla {
 			jugador.restarDinero(precioSiHayConstrucciones);
 		}
 	}
+
+	public void precioAlquilerJugadorTieneConstrucciones(Jugador jugador) {
+		if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 1){
+			precioSiHayConstrucciones = precioAlquilerUnaCasa;
+		}
+		else if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 2){
+			precioSiHayConstrucciones = precioAlquilerDosCasas;
+		}
+		else if (getPropietario().getGestorPropiedades().getCantidadHotel(jugador.getCasilla())){
+			precioSiHayConstrucciones = precioAlquilerHotel;
+		}
+		else precioSiHayConstrucciones = precioAlquiler;
+	}
+	
 }

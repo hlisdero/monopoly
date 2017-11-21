@@ -8,12 +8,12 @@ public class EmpresaTest {
 
 	private static final double DELTA = 1e-15;
 	
-	/*@Test
+	@Test
 	public void nuevaEmpresaNoNull() {
-		assertNotNull(new Empresa(0, 0));
+		assertNotNull(new Empresa(100, 100,100));
 	}
 	
-	@Test
+	/*@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietario() {
 		Propiedad unaEmpresa = new Empresa(1000,500);
 		Jugador jugador1 = new Jugador(unaEmpresa);

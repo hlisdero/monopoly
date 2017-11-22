@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.Queue;
 

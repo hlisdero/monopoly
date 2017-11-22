@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class GestorPropiedadesTest {
-	private static final double DELTA = 1e-15;
+	
 	
 	@Test
 	public void nuevoGestorNoEsNull() {

@@ -23,12 +23,17 @@ public class Tablero {
 		casillas.add(trenes);
 	}
 	
+	private void agregarContadoresTurnos(GestorMovimiento gestor) {
+		Carcel carcel = new Carcel();
+		gestor.agregarContadorTurnos(carcel);
+		casillas.add(carcel);
+	}
+	
 	public Tablero(GestorMovimiento gestor) {
 		casillas.add(new Casilla());									// Salida
 		casillas.add(new Quini());										// Quini 6
 		casillas.add(new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000));								// Buenos Aires Zona Sur
-		casillas.add(new Propiedad(25000, 2500, 5500, 9000, 3500, 4000, 6000));								// Buenos Aires Zona Norte
-		// casillas.add(new Carcel());										// Carcel
+		casillas.add(new Propiedad(25000, 2500, 5500, 9000, 3500, 4000, 6000));								// Buenos Aires Zona Norte	
 		casillas.add(new Propiedad(18000, 1000, 2000, 3000, 1500, 2500, 3000));								// Córdoba Zona Sur
 		casillas.add(new CasillaMovimientoDinamico(new Avance(), gestor));		// Avance Dinámico		
 		casillas.add(new Propiedad(20000, 1300, 2200, 3500, 1800, 2900, 3500));								// Córdoba Zona Norte
@@ -40,9 +45,10 @@ public class Tablero {
 		casillas.add(new Propiedad(17000, 1800, 4800, 3800));								// Neuquén
 		casillas.add(new CasillaMovimientoDinamico(new Retroceso(), gestor));	// Retroceso Dinámico
 		casillas.add(new Propiedad(25000, 2500, 7000, 2500));								// Tucumán
+		agregarContadoresTurnos(gestor);
 		agregarEmpresas();
 	}
-	
+
 	public Casilla getCasillaInicial() {
 		return casillas.get(0);
 	}

@@ -6,6 +6,7 @@ public class AlgoPoly {
 	
 	public void mover() {
 		Jugador jugador = gestorTurnos.proximoJugador();
+		gestorMovimiento.notificarNuevoTurno(jugador);
 		gestorMovimiento.mover(jugador);
 	}
 }

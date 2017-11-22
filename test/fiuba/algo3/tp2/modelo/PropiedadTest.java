@@ -141,4 +141,16 @@ public class PropiedadTest {
 		
 		assertEquals(96000, jugador2.getCapital(), DELTA);
 	}
+	
+	@Test
+	public void aplicarEfectoAlquilerPropiedadCapitalJugadorSeAcredita() {
+		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
+		Jugador jugador1 = new Jugador(prop);
+		Jugador jugador2 = new Jugador(prop);
+		
+		prop.aplicarEfecto(jugador1);
+		prop.aplicarEfecto(jugador2);
+		
+		assertEquals(100000-1000+500, jugador1.getCapital(),DELTA);
+	}
 }

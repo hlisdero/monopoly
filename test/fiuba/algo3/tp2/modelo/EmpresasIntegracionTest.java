@@ -83,5 +83,28 @@ public class EmpresasIntegracionTest {
 		
 		assertEquals(capitalInicial - dados.getSuma()*1000,j2.getCapital(),DELTA);
 	}
+	
+	@Test 
+	public void aplicarEfectoAcreditarJugadorPropietarioHermanasCuandoOtroCae() {
+		Jugador j1 = new Jugador(new Casilla());
+		Jugador j2 = new Jugador(new Casilla());
+		Empresa edesur = new Empresa(1000, 500,1000);
+		Empresa aysa = new Empresa(1000, 300,500);
+		
+		edesur.setEmpresaHermana(aysa);
+		aysa.setEmpresaHermana(edesur);
+
+		edesur.aplicarEfecto(j1);
+		aysa.aplicarEfecto(j1);
+		
+		j2.tirarDados();
+		int suma = j2.getResultadoDados().getSuma();
+		
+		edesur.aplicarEfecto(j2);
+		
+		assertEquals(100000-2000+(1000*suma), j1.getCapital(),DELTA);
+		
+		
+	}
 
 }

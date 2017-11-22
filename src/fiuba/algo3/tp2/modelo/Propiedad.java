@@ -78,6 +78,7 @@ public class Propiedad extends Inmueble {
 		else if (!noTienePropietario()) {
 			precioAlquilerJugadorTieneConstrucciones(jugador);
 			jugador.restarDinero(precioSiHayConstrucciones);
+			getPropietario().agregarDinero(precioSiHayConstrucciones);
 		}
 	}
 

@@ -58,6 +58,19 @@ public class EmpresaTest {
 		assertEquals(capitalInicial - precioDeAlquiler, jugador2.getCapital(), DELTA);
 	}
 	
+	@Test
+	public void aplicarEfectoAcreditarJugadorPropietarioCuandoOtroCae() {
+		Empresa unaEmpresa = new Empresa(1000,500,100);
+		Jugador jugador1 = new Jugador(unaEmpresa);
+		Jugador jugador2 = new Jugador(unaEmpresa);
+		
+		jugador2.tirarDados();
+		int suma = jugador2.getResultadoDados().getSuma();
+		unaEmpresa.aplicarEfecto(jugador1);
+		unaEmpresa.aplicarEfecto(jugador2);
+		
+		assertEquals(100000-1000+(500*suma), jugador1.getCapital(), DELTA);
+	}
 	
 
 }

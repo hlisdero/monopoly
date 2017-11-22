@@ -35,6 +35,7 @@ public class Empresa extends Inmueble {
 		}
 		else if (!noTienePropietario() && jugador != propietario ) {
 			jugador.restarDinero(getRenta()*jugador.getResultadoDados().getSuma());
+			getPropietario().agregarDinero(getRenta()*jugador.getResultadoDados().getSuma());
 		}
 	}
 	

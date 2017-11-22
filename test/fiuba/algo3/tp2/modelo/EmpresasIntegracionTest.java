@@ -102,9 +102,7 @@ public class EmpresasIntegracionTest {
 		
 		edesur.aplicarEfecto(j2);
 		
-		assertEquals(100000-2000+(1000*suma), j1.getCapital(),DELTA);
-		
-		
+		assertEquals(100000-2000+(1000*suma), j1.getCapital(), DELTA);
 	}
 
 }

@@ -72,5 +72,28 @@ public class EmpresaTest {
 		assertEquals(100000-1000+(500*suma), jugador1.getCapital(), DELTA);
 	}
 	
+	@Test
+	public void jugadorQuiereVenderPropiedadSeAcreditaMontoMenos15Porciento() {
+		
+		Empresa empresa = new Empresa(1000,500,700);
+		Jugador jugador1 = new Jugador(empresa);
+		
+		empresa.aplicarEfecto(jugador1);
+		empresa.jugadorVendePropiedad(jugador1);
+		
+		assertEquals(100000-1000+empresa.getPrecioDeVenta(), jugador1.getCapital(), DELTA);
+	}
+	
+	@Test
+	public void jugadorQuiereVenderPropiedadPropietarioNull() {
+		Empresa empresa = new Empresa(1000,500,700);
+		Jugador jugador1 = new Jugador(empresa);
+		
+		empresa.aplicarEfecto(jugador1);
+		empresa.jugadorVendePropiedad(jugador1);
+		
+		assertNull(empresa.getPropietario());
+	}
+	
 
 }

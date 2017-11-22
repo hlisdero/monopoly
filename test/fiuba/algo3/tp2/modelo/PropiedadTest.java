@@ -153,4 +153,28 @@ public class PropiedadTest {
 		
 		assertEquals(100000-1000+500, jugador1.getCapital(),DELTA);
 	}
+	
+	@Test
+	public void jugadorQuiereVenderPropiedadSeAcreditaMontoMenos15Porciento() {
+		
+		Propiedad prop = new Propiedad(1000,500);
+		Jugador jugador1 = new Jugador(prop);
+		
+		prop.aplicarEfecto(jugador1);
+		prop.jugadorVendePropiedad(jugador1);
+		
+		assertEquals(100000-1000+prop.getPrecioDeVenta(), jugador1.getCapital(), DELTA);
+	}
+	
+	@Test
+	public void jugadorQuiereVenderPropiedadPropietarioNull() {
+		Propiedad prop = new Propiedad(1000,500);
+		Jugador jugador1 = new Jugador(prop);
+		
+		prop.aplicarEfecto(jugador1);
+		prop.jugadorVendePropiedad(jugador1);
+		
+		assertNull(prop.getPropietario());
+	}
+	
 }

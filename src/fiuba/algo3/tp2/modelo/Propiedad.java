@@ -2,7 +2,6 @@ package fiuba.algo3.tp2.modelo;
 
 public class Propiedad extends Inmueble {
 	private static double precioSiHayConstrucciones;
-	protected double precioAlquiler;
 	private double precioConstruirCasa;
 	private double precioConstruirHotel;
 	private double precioAlquilerUnaCasa;
@@ -10,8 +9,7 @@ public class Propiedad extends Inmueble {
 	private double precioAlquilerHotel;
 	
 	public Propiedad(double precio, double precioAlquiler, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel) {
-		this.precio = precio;
-		this.precioAlquiler = precioAlquiler;
+		super(precio, precioAlquiler);
 		this.precioConstruirCasa = precioConstruirCasa;
 		this.precioConstruirHotel = precioConstruirHotel;
 		this.precioAlquilerUnaCasa = precioAlquilerUnaCasa;
@@ -21,15 +19,13 @@ public class Propiedad extends Inmueble {
 	
 	public Propiedad(double precio, double precioAlquiler, double precioConstruirCasa, double precioAlquilerUnaCasa) {
 		
-		this.precio = precio;
-		this.precioAlquiler = precioAlquiler;
+		super(precio, precioAlquiler);
 		this.precioConstruirCasa = precioConstruirCasa;
 		this.precioAlquilerUnaCasa = precioAlquilerUnaCasa;
 	}
 	
 	public Propiedad(double precio, double precioAlquiler) {
-		this.precio = precio;
-		this.precioAlquiler = precioAlquiler;
+		super(precio, precioAlquiler);
 	}
 	
 	public double getPrecioConstruirCasa() {
@@ -94,5 +90,6 @@ public class Propiedad extends Inmueble {
 		}
 		else precioSiHayConstrucciones = precioAlquiler;
 	}
+	
 	
 }

@@ -1,11 +1,8 @@
 package fiuba.algo3.tp2.modelo;
 
-//import java.util.ArrayList;
-
 public class Jugador {	
 	private double capital = 100000;
 	private Casilla casillaActual;
-	//private ArrayList<Propiedad> listaPropiedades = new ArrayList<Propiedad>();
 	private ResultadoDados ultimaTirada;
 	private GestorPropiedades propiedades = new GestorPropiedades();
 	private boolean sePuedeMover = true;

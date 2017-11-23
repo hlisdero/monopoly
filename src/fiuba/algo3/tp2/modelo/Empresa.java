@@ -3,12 +3,12 @@ package fiuba.algo3.tp2.modelo;
 public class Empresa extends Propiedad {
 	private Empresa empresaHermana;
 	private double renta;
-	private double rentaGremial;
+	// private double rentaGremial;
 	
 	public Empresa(double precio, double renta, double rentaGremial) {
 		super(precio);
 		this.renta = renta;
-		this.rentaGremial = rentaGremial;
+		// this.rentaGremial = rentaGremial;
 	}
 	
 	public void setEmpresaHermana(Empresa empresa) {
@@ -16,9 +16,9 @@ public class Empresa extends Propiedad {
 	}
 	
 	public double getRenta() {
-		if (empresaHermana != null && this.getPropietario() != null && this.getPropietario().getGestorPropiedades().contiene(empresaHermana)){ 
+		/*if (empresaHermana != null && this.getPropietario() != null && this.getPropietario().getGestorPropiedades().esPropietario(empresaHermana)){ 
 			return rentaGremial;
-		}
+		} */
 		return renta;
 	}
 	

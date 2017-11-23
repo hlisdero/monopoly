@@ -26,7 +26,7 @@ public class PropiedadTest {
 		Propiedad propiedad = new Propiedad(1000);
 		Jugador jugador1 = new Jugador(new Casilla());
 		propiedad.setPropietario(jugador1);
-		propiedad.jugadorVendePropiedad(jugador1);
+		propiedad.vender(jugador1);
 		assertFalse(propiedad.tienePropietario());
 	}
 }

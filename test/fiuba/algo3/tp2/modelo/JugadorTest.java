@@ -21,7 +21,7 @@ public class JugadorTest {
 	@Test
 	public void cantidadPropiedaddesInicialCero() {
 		Jugador jugador = new Jugador(new Casilla());
-		assertEquals(0, jugador.getGestorPropiedades().getCantidadPropiedades());
+		assertEquals(0, jugador.getCantidadPropiedades());
 	}
 	
 	@Test
@@ -69,10 +69,10 @@ public class JugadorTest {
 	@Test
 	public void agregarPropiedadAumentaCantidadPropiedades() {
 		Jugador jugador = new Jugador(new Casilla());
-		Provincia prop = new Provincia(95000, 0, 0, 0);
+		Propiedad propiedad = new Propiedad(1000);
 		
-		jugador.getGestorPropiedades().agregarPropiedad(prop);
-		assertEquals(1, jugador.getGestorPropiedades().getCantidadPropiedades());
+		jugador.comprar(propiedad);
+		assertEquals(1, jugador.getCantidadPropiedades());
 	}
 	
 }

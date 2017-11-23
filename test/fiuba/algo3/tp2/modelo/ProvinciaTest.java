@@ -73,7 +73,7 @@ public class ProvinciaTest {
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
-		prop.jugadorVendePropiedad(jugador1);
+		prop.vender(jugador1);
 		
 		assertNull(prop.getPropietario());
 	}	

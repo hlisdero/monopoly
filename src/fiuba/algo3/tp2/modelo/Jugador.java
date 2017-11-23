@@ -4,7 +4,7 @@ public class Jugador {
 	private double capital = 100000;
 	private Casilla casillaActual;
 	private ResultadoDados ultimaTirada;
-	private GestorPropiedades propiedades = new GestorPropiedades();
+	private GestorPropiedades gestorPropiedades = new GestorPropiedades(this);
 	private boolean sePuedeMover = true;
 	
 	public Jugador(Casilla casillaInicial) {
@@ -41,10 +41,6 @@ public class Jugador {
 		return capital;
 	}
 	
-	public GestorPropiedades getGestorPropiedades() {
-		return propiedades;
-	}
-	
 	public ResultadoDados tirarDados() {
 		ultimaTirada = Dados.tirarDados();
 		return ultimaTirada;
@@ -64,5 +60,17 @@ public class Jugador {
 	
 	public void permitirMovimiento() {
 		sePuedeMover = true;
-	}	
+	}
+	
+	public void comprar(Propiedad propiedad) {
+		gestorPropiedades.comprar(propiedad);
+	}
+	
+	public void vender(Propiedad propiedad) {
+		gestorPropiedades.vender(propiedad);
+	}
+	
+	public int getCantidadPropiedades() {
+		return gestorPropiedades.getCantidadPropiedades();
+	}
 }

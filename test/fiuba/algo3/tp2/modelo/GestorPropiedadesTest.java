@@ -6,33 +6,33 @@ import org.junit.Test;
 
 public class GestorPropiedadesTest {
 	
-	
 	@Test
 	public void nuevoGestorNoEsNull() {
-		assertNotNull(new GestorPropiedades());
+		assertNotNull(new GestorPropiedades(new Jugador(new Casilla())));
 	}
 	
 	@Test
 	public void nuevoGestorEstaVacio() {
-		GestorPropiedades gestor = new GestorPropiedades();
+		GestorPropiedades gestor = new GestorPropiedades(new Jugador(new Casilla()));
 		assertEquals(gestor.getCantidadPropiedades(),0);
 	}
 	
 	@Test
-	public void agregarPropiedadAgregaALaLista() {
-		GestorPropiedades gestor = new GestorPropiedades();
-		Provincia prop = new Provincia(100,0,0,0);
-		gestor.agregarPropiedad(prop);
+	public void comprarAumentaCantidadPropiedades() {
+		GestorPropiedades gestor = new GestorPropiedades(new Jugador(new Casilla()));
+		Propiedad propiedad = new Propiedad(0);
+		
+		gestor.comprar(propiedad);
 		assertEquals(gestor.getCantidadPropiedades(),1);
 	}
 	
 	@Test
-	public void quitarPropiedadLaQuitaDeLaLista() {
-		GestorPropiedades gestor = new GestorPropiedades();
-		Provincia prop = new Provincia(100,0,0,0);
-		gestor.agregarPropiedad(prop);
-		gestor.quitarPropiedad(prop);
-		assertEquals(gestor.getCantidadPropiedades(),0);
+	public void venderDisminuyeCantidadPropiedades() {
+		GestorPropiedades gestor = new GestorPropiedades(new Jugador(new Casilla()));
+		Propiedad prop = new Propiedad(0);
+		
+		gestor.comprar(prop);
+		gestor.vender(prop);
+		assertEquals(0, gestor.getCantidadPropiedades());
 	}
-
 }

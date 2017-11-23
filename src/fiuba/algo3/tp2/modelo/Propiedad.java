@@ -28,12 +28,14 @@ public class Propiedad extends Casilla {
 	public boolean tienePropietario() {
 		return (propietario != null);
 	}
-		
-	public void jugadorVendePropiedad(Jugador jugador) {	
-		if (jugador.equals(getPropietario())) {
-			jugador.getGestorPropiedades().quitarPropiedad(this);
-			jugador.agregarDinero(getPrecioVenta());
-			setPropietario(null);
-		}
+	
+	public void comprar(Jugador jugador) {
+		propietario = jugador;
+		jugador.restarDinero(getPrecio());
+	}
+	
+	public void vender(Jugador jugador) {
+		propietario = null;
+		jugador.agregarDinero(getPrecioVenta());
 	}
 }

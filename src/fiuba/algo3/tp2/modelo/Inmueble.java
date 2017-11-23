@@ -9,7 +9,7 @@ public class Inmueble extends Casilla {
 		this.precio = precio;
 	}
 
-	public double getPrecioDeVenta() {
+	public double getPrecioVenta() {
 		return precio * (1 - COMISION_VENTA);
 	}
 
@@ -35,7 +35,7 @@ public class Inmueble extends Casilla {
 		
 	public void jugadorVendePropiedad(Jugador jugador) {	
 		jugador.getGestorPropiedades().quitarPropiedad(this);
-		jugador.agregarDinero(getPrecioDeVenta());
+		jugador.agregarDinero(getPrecioVenta());
 		setPropietario(null);
 	}
 }

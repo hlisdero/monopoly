@@ -81,7 +81,7 @@ public class EmpresaTest {
 		empresa.aplicarEfecto(jugador1);
 		empresa.jugadorVendePropiedad(jugador1);
 		
-		assertEquals(100000-1000+empresa.getPrecioDeVenta(), jugador1.getCapital(), DELTA);
+		assertEquals(100000-1000+empresa.getPrecioVenta(), jugador1.getCapital(), DELTA);
 	}
 	
 	@Test

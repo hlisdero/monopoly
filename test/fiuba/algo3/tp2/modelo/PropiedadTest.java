@@ -184,7 +184,7 @@ public class PropiedadTest {
 		prop.aplicarEfecto(jugador1);
 		prop.jugadorVendePropiedad(jugador1);
 		
-		assertEquals(100000-1000+prop.getPrecioDeVenta(), jugador1.getCapital(), DELTA);
+		assertEquals(100000-1000+prop.getPrecioVenta(), jugador1.getCapital(), DELTA);
 	}
 	
 	@Test

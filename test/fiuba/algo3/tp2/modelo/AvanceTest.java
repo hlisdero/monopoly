@@ -32,4 +32,5 @@ public class AvanceTest {
 		assertEquals(12, avance.getIndiceMovimiento(jugador));
 	}
 
+
 }

@@ -19,6 +19,24 @@ public class ProvinciaTest {
 	}
 	
 	@Test
+	public void getCantidadDeCasas() {
+		Provincia prop = new Provincia (1000, 500, 2000, 4000, 1000, 3000, 4000);
+		Jugador jugador1 = new Jugador(prop);
+		prop.aplicarEfecto(jugador1);
+		try {
+			prop.construirCasa(jugador1);
+			prop.construirCasa(jugador1);
+		}catch(ConstruirCasaInvalidoException e) {
+			e.printStackTrace();
+		}
+		try {
+			prop.construirHotel(jugador1);
+		}catch(ConstruirHotelInvalidoException e) {
+			e.printStackTrace();
+		}
+		assertEquals(1, prop.getCantidadCasas());
+	}
+	@Test
 	public void aplicarEfectoAsignaJugadorConCapitalSuficienteComoPropietario() {
 		Provincia prop = new Provincia(1000,0,0,0);
 		Jugador jugador = new Jugador(prop);

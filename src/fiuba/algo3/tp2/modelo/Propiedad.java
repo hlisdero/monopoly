@@ -1,22 +1,22 @@
 package fiuba.algo3.tp2.modelo;
 
 public class Propiedad extends Inmueble {
-	private double precioAlquiler;
+	private MejoraPropiedad terreno;
 	private MejoraPropiedad unaCasa;
 	private MejoraPropiedad dosCasas;
 	private MejoraPropiedad hotel;
 	
-	public Propiedad(double precio, double precioAlquiler, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel) {
+	public Propiedad(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel) {
 		super(precio);
-		this.precioAlquiler = precioAlquiler;
+		terreno = new MejoraPropiedad(precioAlquilerTerreno);
 		unaCasa = new MejoraPropiedad(precioAlquilerUnaCasa, precioConstruirCasa);
 		dosCasas = new MejoraPropiedad(precioAlquilerDosCasas, precioConstruirCasa);
 		hotel = new MejoraPropiedad(precioAlquilerHotel, precioConstruirHotel);
 	}
 	
-	public Propiedad(double precio, double precioAlquiler, double precioConstruirCasa, double precioAlquilerUnaCasa) {
+	public Propiedad(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioAlquilerUnaCasa) {
 		super(precio);
-		this.precioAlquiler = precioAlquiler;
+		terreno = new MejoraPropiedad(precioAlquilerTerreno);
 		unaCasa = new MejoraPropiedad(precioAlquilerUnaCasa, precioConstruirCasa);
 	}
 	
@@ -48,7 +48,7 @@ public class Propiedad extends Inmueble {
 			} else if (getPropietario().getGestorPropiedades().getCantidadHotel(jugador.getCasilla())) {
 				precioACobrar = hotel.getPrecioAlquiler();
 			} else {
-				precioACobrar = precioAlquiler;
+				precioACobrar = terreno.getPrecioAlquiler();
 			}
 			jugador.restarDinero(precioACobrar);
 			getPropietario().agregarDinero(precioACobrar);

@@ -9,6 +9,10 @@ public class MejoraPropiedad {
 		this.precioConstruccion = precioConstruccion;
 	}
 	
+	public MejoraPropiedad(double precioAlquiler) {
+		this(precioAlquiler, 0);
+	}
+	
 	public double getPrecioAlquiler() {
 		return precioAlquiler;
 	}

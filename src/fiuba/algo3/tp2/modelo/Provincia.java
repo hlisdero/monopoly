@@ -54,9 +54,6 @@ public class Provincia extends Propiedad {
 	public void construirHotel(Jugador jugador) throws ConstruirHotelInvalidoException {
 		if (estadoActual == estadosPosibles.get(2)) {
 			estadoActual = estadosPosibles.get(3);
-			
-			estadosPosibles.remove(estadosPosibles.get(2));
-			estadosPosibles.remove(estadosPosibles.get(1));
 		} else {
 			throw new ConstruirHotelInvalidoException();
 		}

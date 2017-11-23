@@ -25,7 +25,7 @@ public class PropiedadTest {
 	}
 	
 	@Test
-	public void propiedadCambiaDeDuenio() {
+	public void propiedadVendidaPorDuenio() {
 		Propiedad propiedad = new Propiedad(1000);
 		Jugador jugador1 = new Jugador(new Casilla());
 		propiedad.setPropietario(jugador1);

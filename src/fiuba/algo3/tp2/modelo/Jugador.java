@@ -41,10 +41,9 @@ public class Jugador {
 		return capital;
 	}
 	
-	public GestorPropiedades getGestorPropiedades(){
+	public GestorPropiedades getGestorPropiedades() {
 		return propiedades;
 	}
-	
 	
 	public ResultadoDados tirarDados() {
 		ultimaTirada = Dados.tirarDados();

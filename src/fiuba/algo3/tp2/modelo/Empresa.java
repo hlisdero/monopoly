@@ -6,9 +6,9 @@ public class Empresa extends Inmueble {
 	protected double rentaGremial;
 	
 	public Empresa(double precio, double renta, double rentaGremial) { //si tiene empresa hermana el gremio te cobra carito
+		super(precio);
 		this.renta = renta;
 		this.rentaGremial = rentaGremial;
-		this.precio = precio;
 	}
 	
 	public void setEmpresaHermana(Empresa empresa) {
@@ -28,10 +28,10 @@ public class Empresa extends Inmueble {
 	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
-		if (noTienePropietario() && jugador.getCapital() >= precio) {
+		if (noTienePropietario() && jugador.getCapital() >= this.getPrecio()) {
 			propietario = jugador;
 			jugador.getGestorPropiedades().agregarPropiedad(this);
-			jugador.restarDinero(precio);
+			jugador.restarDinero(this.getPrecio());
 		}
 		else if (!noTienePropietario() && jugador != propietario ) {
 			jugador.restarDinero(getRenta()*jugador.getResultadoDados().getSuma());

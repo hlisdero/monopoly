@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2.modelo;
 
 public class Propiedad extends Inmueble {
-	private static double precioSiHayConstrucciones;
+	private double precioAlquiler;
 	private double precioConstruirCasa;
 	private double precioConstruirHotel;
 	private double precioAlquilerUnaCasa;
@@ -9,7 +9,8 @@ public class Propiedad extends Inmueble {
 	private double precioAlquilerHotel;
 	
 	public Propiedad(double precio, double precioAlquiler, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel) {
-		super(precio, precioAlquiler);
+		super(precio);
+		this.precioAlquiler = precioAlquiler;
 		this.precioConstruirCasa = precioConstruirCasa;
 		this.precioConstruirHotel = precioConstruirHotel;
 		this.precioAlquilerUnaCasa = precioAlquilerUnaCasa;
@@ -18,14 +19,14 @@ public class Propiedad extends Inmueble {
 	}
 	
 	public Propiedad(double precio, double precioAlquiler, double precioConstruirCasa, double precioAlquilerUnaCasa) {
-		
-		super(precio, precioAlquiler);
+		super(precio);
+		this.precioAlquiler = precioAlquiler;
 		this.precioConstruirCasa = precioConstruirCasa;
 		this.precioAlquilerUnaCasa = precioAlquilerUnaCasa;
 	}
 	
 	public Propiedad(double precio, double precioAlquiler) {
-		super(precio, precioAlquiler);
+		super(precio);
 	}
 	
 	public double getPrecioConstruirCasa() {
@@ -48,10 +49,6 @@ public class Propiedad extends Inmueble {
 		return precioAlquilerHotel;
 	}
 	
-	public double getPrecioAlquiler(){
-		return this.precioAlquiler;
-	}
-	
 	public void construirCasa(Jugador jugador) {
 		jugador.getGestorPropiedades().construirCasa(this);
 		jugador.restarDinero(precioConstruirCasa);
@@ -65,31 +62,26 @@ public class Propiedad extends Inmueble {
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
 		
-		if (noTienePropietario() && jugador.getCapital() >= precio) {
+		if (noTienePropietario() && jugador.getCapital() >= this.getPrecio()) {
 			propietario = jugador;
 			jugador.getGestorPropiedades().agregarPropiedad(this);
-			jugador.restarDinero(precio);
-		}
-		
-		else if (!noTienePropietario()) {
-			precioAlquilerJugadorTieneConstrucciones(jugador);
-			jugador.restarDinero(precioSiHayConstrucciones);
-			getPropietario().agregarDinero(precioSiHayConstrucciones);
+			jugador.restarDinero(this.getPrecio());
+		} 
+		else if (tienePropietario()) {
+			double precioACobrar;
+			
+			if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 1) {
+				precioACobrar = precioAlquilerUnaCasa;
+			} else if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 2) {
+				precioACobrar = precioAlquilerDosCasas;
+			} else if (getPropietario().getGestorPropiedades().getCantidadHotel(jugador.getCasilla())) {
+				precioACobrar = precioAlquilerHotel;
+			} else {
+				precioACobrar = precioAlquiler;
+			}
+			jugador.restarDinero(precioACobrar);
+			getPropietario().agregarDinero(precioACobrar);
 		}
 	}
 
-	public void precioAlquilerJugadorTieneConstrucciones(Jugador jugador) {
-		if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 1){
-			precioSiHayConstrucciones = precioAlquilerUnaCasa;
-		}
-		else if (getPropietario().getGestorPropiedades().getCantidadCasas(jugador.getCasilla()) == 2){
-			precioSiHayConstrucciones = precioAlquilerDosCasas;
-		}
-		else if (getPropietario().getGestorPropiedades().getCantidadHotel(jugador.getCasilla())){
-			precioSiHayConstrucciones = precioAlquilerHotel;
-		}
-		else precioSiHayConstrucciones = precioAlquiler;
-	}
-	
-	
 }

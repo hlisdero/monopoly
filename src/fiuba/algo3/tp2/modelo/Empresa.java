@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.modelo;
 
-public class Empresa extends Inmueble {
+public class Empresa extends Propiedad {
 	protected Empresa empresaHermana;
 	protected double renta;
 	protected double rentaGremial;

@@ -3,14 +3,14 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 public class GestorPropiedades {
-	private ArrayList<Inmueble> propiedades = new ArrayList<Inmueble>();
+	private ArrayList<Propiedad> propiedades = new ArrayList<Propiedad>();
 
-	public void agregarPropiedad(Inmueble inmueble) {
-		propiedades.add(inmueble);
+	public void agregarPropiedad(Propiedad propiedad) {
+		propiedades.add(propiedad);
 	}
 	
-	public void quitarPropiedad(Inmueble inmueble) {
-		propiedades.remove(inmueble);
+	public void quitarPropiedad(Propiedad propiedad) {
+		propiedades.remove(propiedad);
 	}
 	
 	public int getCantidadPropiedades() {

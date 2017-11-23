@@ -4,23 +4,23 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class PropiedadTest {
+public class ProvinciaTest {
 	private static final double DELTA = 1e-15;
 	
 	@Test
-	public void nuevaPropiedadNoNull() {
-		assertNotNull(new Propiedad(0,0,0,0));
+	public void nuevaProvinciaNoNull() {
+		assertNotNull(new Provincia(0,0,0,0));
 	}
 	
 	@Test
 	public void getPrecioDevuelvePrecio() {
-		Propiedad prop = new Propiedad(1000,0,0,0);
+		Provincia prop = new Provincia(1000,0,0,0);
 		assertEquals(1000, prop.getPrecio(), DELTA);
 	}
 	
 	@Test
 	public void aplicarEfectoAsignaJugadorConCapitalSuficienteComoPropietario() {
-		Propiedad prop = new Propiedad(1000,0,0,0);
+		Provincia prop = new Provincia(1000,0,0,0);
 		Jugador jugador = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador);
@@ -29,7 +29,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoNoAsignaJugadorSinCapitalSuficienteComoPropietario() {
-		Propiedad prop = new Propiedad(1000000,0,0,0);
+		Provincia prop = new Provincia(1000000,0,0,0);
 		Jugador jugador = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador);
@@ -38,7 +38,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoNoAsignaPropietarioSiYaTieneUno() {
-		Propiedad prop = new Propiedad(1000,0,0,0);
+		Provincia prop = new Provincia(1000,0,0,0);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
@@ -49,7 +49,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoAsignaPropietarioYReduceSuCapital() {
-		Propiedad prop = new Propiedad(1000,500, 2000, 1000);
+		Provincia prop = new Provincia(1000,500, 2000, 1000);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
@@ -59,7 +59,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietario() {
-		Propiedad prop = new Propiedad(1000, 500, 2000, 1000);
+		Provincia prop = new Provincia(1000, 500, 2000, 1000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
@@ -72,7 +72,7 @@ public class PropiedadTest {
 	@Test
 	public void construirCasaCapitalJugadorSeReduce() {
 
-		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
+		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
 		
 		try {
@@ -86,7 +86,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void construirHotelCapitalJugadorSeReduce() {
-		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
+		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
 		
 		try {
@@ -106,7 +106,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnaCasa() {
-		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
+		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
@@ -123,7 +123,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietarioConDosCasas() {
-		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
+		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
@@ -141,7 +141,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnHotel() {
-		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
+		Provincia prop = new Provincia(1000,500, 2000, 4000, 1000, 3000, 4000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
@@ -165,7 +165,7 @@ public class PropiedadTest {
 	
 	@Test
 	public void aplicarEfectoAlquilerPropiedadCapitalJugadorSeAcredita() {
-		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
+		Provincia prop = new Provincia(1000,500, 2000, 4000, 1000, 3000, 4000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
@@ -178,7 +178,7 @@ public class PropiedadTest {
 	@Test
 	public void jugadorQuiereVenderPropiedadSeAcreditaMontoMenos15Porciento() {
 		
-		Propiedad prop = new Propiedad(1000,500,0,0);
+		Provincia prop = new Provincia(1000,500,0,0);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
@@ -189,13 +189,12 @@ public class PropiedadTest {
 	
 	@Test
 	public void jugadorQuiereVenderPropiedadPropietarioNull() {
-		Propiedad prop = new Propiedad(1000,500,0,0);
+		Provincia prop = new Provincia(1000,500,0,0);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
 		prop.jugadorVendePropiedad(jugador1);
 		
 		assertNull(prop.getPropietario());
-	}
-	
+	}	
 }

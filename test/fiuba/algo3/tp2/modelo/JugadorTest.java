@@ -69,7 +69,7 @@ public class JugadorTest {
 	@Test
 	public void agregarPropiedadAumentaCantidadPropiedades() {
 		Jugador jugador = new Jugador(new Casilla());
-		Propiedad prop = new Propiedad(95000, 0);
+		Propiedad prop = new Propiedad(95000, 0, 0, 0);
 		
 		jugador.getGestorPropiedades().agregarPropiedad(prop);
 		assertEquals(1, jugador.getGestorPropiedades().getCantidadPropiedades());

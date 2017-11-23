@@ -20,10 +20,6 @@ public class Propiedad extends Inmueble {
 		unaCasa = new MejoraPropiedad(precioAlquilerUnaCasa, precioConstruirCasa);
 	}
 	
-	public Propiedad(double precio, double precioAlquiler) {
-		super(precio);
-	}
-	
 	public void construirCasa(Jugador jugador) {
 		jugador.getGestorPropiedades().construirCasa(this);
 		jugador.restarDinero(unaCasa.getPrecioConstruccion());

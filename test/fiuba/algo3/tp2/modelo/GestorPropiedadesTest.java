@@ -21,7 +21,7 @@ public class GestorPropiedadesTest {
 	@Test
 	public void agregarPropiedadAgregaALaLista() {
 		GestorPropiedades gestor = new GestorPropiedades();
-		Propiedad prop = new Propiedad(100,0);
+		Propiedad prop = new Propiedad(100,0,0,0);
 		gestor.agregarPropiedad(prop);
 		assertEquals(gestor.getCantidadPropiedades(),1);
 	}
@@ -29,7 +29,7 @@ public class GestorPropiedadesTest {
 	@Test
 	public void quitarPropiedadLaQuitaDeLaLista() {
 		GestorPropiedades gestor = new GestorPropiedades();
-		Propiedad prop = new Propiedad(100,0);
+		Propiedad prop = new Propiedad(100,0,0,0);
 		gestor.agregarPropiedad(prop);
 		gestor.quitarPropiedad(prop);
 		assertEquals(gestor.getCantidadPropiedades(),0);

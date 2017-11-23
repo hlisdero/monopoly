@@ -8,7 +8,7 @@ public class CarcelTest {
 	private static final double DELTA = 1e-15;
 	
 	@Test
-	public void nuevaCarcelNoEsNull() {
+	public void nuevaCarcelNoNull() {
 		assertNotNull(new Carcel());
 	}
 	
@@ -108,5 +108,4 @@ public class CarcelTest {
 		carcel.pagarFianza(jugador);
 		assertTrue(carcel.estaAdentro(jugador));
 	}
-	
 }

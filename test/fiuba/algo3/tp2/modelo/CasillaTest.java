@@ -10,5 +10,4 @@ public class CasillaTest {
 	public void nuevoCasillaNoEsNull() {
 		assertNotNull(new Casilla());
 	}
-
 }

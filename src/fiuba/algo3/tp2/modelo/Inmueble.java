@@ -20,8 +20,7 @@ public class Inmueble extends Casilla {
 	public Jugador getPropietario() {
 		return this.propietario;
 	}
-	
-	
+		
 	public void setPropietario(Jugador propietario) {
 		this.propietario = propietario;
 	}
@@ -33,11 +32,10 @@ public class Inmueble extends Casilla {
 	public boolean tienePropietario() {
 		return !noTienePropietario();
 	}
-	
+		
 	public void jugadorVendePropiedad(Jugador jugador) {	
 		jugador.getGestorPropiedades().quitarPropiedad(this);
 		jugador.agregarDinero(getPrecioDeVenta());
 		setPropietario(null);
 	}
-
 }

@@ -70,25 +70,37 @@ public class PropiedadTest {
 	}
 	
 	@Test
-	public void construirCasaCapitalJugadorSeReduce(){
+	public void construirCasaCapitalJugadorSeReduce() {
 
 		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
 		
-		prop.construirCasa(jugador1);
+		try {
+			prop.construirCasa(jugador1);
+		} catch (ConstruirCasaInvalidoException e) {
+			e.printStackTrace();
+		}
 		
 		assertEquals(95000, jugador1.getCapital(), DELTA);
 	}
 	
 	@Test
-	public void construirHotelCapitalJugadorSeReduce() throws CasasInsuficienteException{
+	public void construirHotelCapitalJugadorSeReduce() {
 		Propiedad prop = new Propiedad(20000, 2000, 5000, 8000, 3000, 3500, 5000);
 		Jugador jugador1 = new Jugador(prop);
-		prop.construirCasa(jugador1);
-		prop.construirCasa(jugador1);
 		
-		prop.construirHotel(jugador1);
+		try {
+			prop.construirCasa(jugador1);
+			prop.construirCasa(jugador1);
+		} catch (ConstruirCasaInvalidoException e) {
+			e.printStackTrace();
+		}
 		
+		try {
+			prop.construirHotel(jugador1);
+		} catch (ConstruirHotelInvalidoException e) {
+			e.printStackTrace();
+		}
 		assertEquals(82000, jugador1.getCapital(), DELTA);
 	}
 	
@@ -99,7 +111,11 @@ public class PropiedadTest {
 		Jugador jugador2 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
-		prop.construirCasa(jugador1);
+		try {
+			prop.construirCasa(jugador1);
+		} catch (ConstruirCasaInvalidoException e) {
+			e.printStackTrace();
+		}
 		prop.aplicarEfecto(jugador2);
 		
 		assertEquals(97000, jugador2.getCapital(), DELTA);
@@ -112,25 +128,36 @@ public class PropiedadTest {
 		Jugador jugador2 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
-		prop.construirCasa(jugador1);
-		prop.construirCasa(jugador1);
-		
+		try {
+			prop.construirCasa(jugador1);
+			prop.construirCasa(jugador1);
+		} catch (ConstruirCasaInvalidoException e) {
+			e.printStackTrace();
+		}	
 		prop.aplicarEfecto(jugador2);
 		
 		assertEquals(96500, jugador2.getCapital(), DELTA);
 	}
 	
 	@Test
-	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnHotel() throws CasasInsuficienteException {
+	public void aplicarEfectoCobraSiYaTieneUnPropietarioConUnHotel() {
 		Propiedad prop = new Propiedad(1000,500, 2000, 4000, 1000, 3000, 4000);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
-		prop.construirCasa(jugador1);
-		prop.construirCasa(jugador1);
-		prop.construirHotel(jugador1);
+		try {
+			prop.construirCasa(jugador1);
+			prop.construirCasa(jugador1);
+		} catch (ConstruirCasaInvalidoException e) {
+			e.printStackTrace();
+		}
 		
+		try {
+			prop.construirHotel(jugador1);
+		} catch (ConstruirHotelInvalidoException e) {
+			e.printStackTrace();
+		}
 		prop.aplicarEfecto(jugador2);
 		
 		assertEquals(96000, jugador2.getCapital(), DELTA);

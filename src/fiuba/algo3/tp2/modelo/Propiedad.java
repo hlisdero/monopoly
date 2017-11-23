@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.modelo;
 public class Propiedad extends Casilla {
 	private static final double COMISION_VENTA = 0.15;
 	private double precio;
-	protected Jugador propietario;
+	private Jugador propietario;
 	
 	public Propiedad(double precio){
 		this.precio = precio;
@@ -24,13 +24,9 @@ public class Propiedad extends Casilla {
 	public void setPropietario(Jugador propietario) {
 		this.propietario = propietario;
 	}
-
-	public boolean noTienePropietario() {
-		return (propietario == null);
-	}
 	
 	public boolean tienePropietario() {
-		return !noTienePropietario();
+		return (propietario != null);
 	}
 		
 	public void jugadorVendePropiedad(Jugador jugador) {	

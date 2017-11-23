@@ -40,7 +40,7 @@ public class Provincia extends Propiedad {
 		return (estadoActual == estadosPosibles.get(3));
 	}
 	
-	public void construirCasa(Jugador jugador) throws ConstruirCasaInvalidoException {
+	public void construirCasa() throws ConstruirCasaInvalidoException {
 		if (estadoActual == estadosPosibles.get(0)) {
 			estadoActual = estadosPosibles.get(1);
 		} else if (estadoActual == estadosPosibles.get(1)) {
@@ -48,7 +48,7 @@ public class Provincia extends Propiedad {
 		} else {
 			throw new ConstruirCasaInvalidoException();
 		}
-		jugador.restarDinero(estadoActual.getPrecioConstruccion());
+		this.getPropietario().restarDinero(estadoActual.getPrecioConstruccion());
 	}
 	
 	public void construirHotel(Jugador jugador) throws ConstruirHotelInvalidoException {
@@ -62,13 +62,9 @@ public class Provincia extends Propiedad {
 	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
-		if (noTienePropietario() && jugador.getCapital() >= this.getPrecio()) {
-			propietario = jugador;
-			jugador.getGestorPropiedades().agregarPropiedad(this);
-			jugador.restarDinero(this.getPrecio());
-		} else if (tienePropietario()) {
+		if (tienePropietario() && this.getPropietario() != jugador) {
 			jugador.restarDinero(estadoActual.getPrecioAlquiler());
-			getPropietario().agregarDinero(estadoActual.getPrecioAlquiler());
+			this.getPropietario().agregarDinero(estadoActual.getPrecioAlquiler());
 		}
 	}
 }

@@ -3,9 +3,8 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 public class GestorMovimiento {
-	private ArrayList<ContadorTurnos> contadoresTurnos = new  ArrayList<ContadorTurnos>();
+	private ArrayList<ContadorTurnos> contadoresTurnos = new ArrayList<ContadorTurnos>();
 	private Tablero tablero = new Tablero(this);
-
 	
 	public Casilla getCasillaInicial() {
 		return tablero.getCasillaInicial();
@@ -16,7 +15,7 @@ public class GestorMovimiento {
 	}
 	
 	public void notificarNuevoTurno(Jugador jugador) {
-		for(int i = 0; i < contadoresTurnos.size(); i++){
+		for (int i = 0; i < contadoresTurnos.size(); i++){
 			contadoresTurnos.get(i).contarTurno(jugador);;
         }
 	}
@@ -26,7 +25,7 @@ public class GestorMovimiento {
 	}
 	
 	public void mover(Jugador jugador, int posiciones) {
-		if (jugador.noSePuedeMover()) {
+		if (!jugador.sePuedeMover()) {
 			return;
 		} 
 		Casilla casillaSiguiente = tablero.getCasillaSiguiente(jugador.getCasilla(), posiciones);

@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.modelo;
+/* package fiuba.algo3.tp2.modelo;
 
 import static org.junit.Assert.*;
 
@@ -105,4 +105,4 @@ public class EmpresasIntegracionTest {
 		assertEquals(100000-2000+(1000*suma), j1.getCapital(), DELTA);
 	}
 
-}
+} */

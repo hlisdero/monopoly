@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.modelo;
 
 import java.util.HashMap;
 
-public class Carcel extends Casilla implements ContadorTurnos{
+public class Carcel extends Casilla implements ContadorTurnos {
 	private static final int TURNOS_NECESARIOS_PARA_SALIR = 3;
 	private static final int TURNOS_NECESARIO_PARA_PAGAR_FIANZA = 2;
 	private static final double PRECIO_FIANZA = 45000;
@@ -33,6 +33,5 @@ public class Carcel extends Casilla implements ContadorTurnos{
 			contadorTurnos.remove(jugador);
 			jugador.restarDinero(PRECIO_FIANZA);
 		}
-	}
-	
+	}	
 }

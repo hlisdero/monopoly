@@ -54,8 +54,8 @@ public class Jugador {
 		return ultimaTirada;
 	}
 	
-	public boolean noSePuedeMover() {
-		return !sePuedeMover;
+	public boolean sePuedeMover() {
+		return sePuedeMover;
 	}
 	
 	public void prohibirMovimiento() {

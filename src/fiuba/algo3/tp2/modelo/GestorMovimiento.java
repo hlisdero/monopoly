@@ -9,9 +9,9 @@ public class GestorMovimiento {
 	public Casilla getCasillaInicial() {
 		return tablero.getCasillaInicial();
 	}
-	
-	public void mover(Jugador jugador) {
-		this.mover(jugador, jugador.tirarDados().getSuma());
+
+	public void agregarContadorTurnos(ContadorTurnos contador) {
+		contadoresTurnos.add(contador);
 	}
 	
 	public void notificarNuevoTurno(Jugador jugador) {
@@ -19,9 +19,9 @@ public class GestorMovimiento {
 			elementoANotificar.contarTurno(jugador);;
         }
 	}
-	
-	public void agregarContadorTurnos(ContadorTurnos contador) {
-		contadoresTurnos.add(contador);
+
+	public void mover(Jugador jugador) {
+		this.mover(jugador, jugador.tirarDados().getSuma());
 	}
 	
 	public void mover(Jugador jugador, int posiciones) {

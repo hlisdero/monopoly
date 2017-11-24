@@ -31,5 +31,10 @@ public class GestorMovimiento {
 		Casilla casillaSiguiente = tablero.getCasillaSiguiente(jugador.getCasilla(), posiciones);
 		casillaSiguiente.aplicarEfecto(jugador);
 		jugador.setCasilla(casillaSiguiente);
-	}	
+	}
+	
+	public void mover(Jugador jugador, Casilla casilla) {
+		casilla.aplicarEfecto(jugador);
+		jugador.setCasilla(casilla);	
+	}
 }

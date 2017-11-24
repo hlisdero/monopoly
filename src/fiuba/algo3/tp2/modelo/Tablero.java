@@ -29,7 +29,7 @@ public class Tablero {
 		casillas.add(aysa);														// AYSA
 		casillas.add(new Provincia(23000, 2000, 4500, 7500, 3250, 3850, 5500));	// Salta Zona Norte
 		casillas.add(new Provincia(23000, 2000, 4500, 7500, 3250, 3850, 5500));	// Salta Zona Sur
-		casillas.add(new Policia(-10, gestor));									// Policia
+		casillas.add(new Policia(carcel, gestor));								// Policia
 		casillas.add(trenes);													// Trenes
 		casillas.add(new Provincia(17000, 1800, 4800, 3800));					// Neuquén
 		casillas.add(new CasillaMovimientoDinamico(new Retroceso(), gestor));	// Retroceso Dinámico

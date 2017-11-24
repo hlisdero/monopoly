@@ -62,7 +62,7 @@ public class Provincia extends Propiedad {
 	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
-		if (tienePropietario() && this.getPropietario() != jugador) {
+		if (debeCobrar(jugador)) {
 			jugador.restarDinero(estadoActual.getPrecioAlquiler());
 			this.getPropietario().agregarDinero(estadoActual.getPrecioAlquiler());
 		}

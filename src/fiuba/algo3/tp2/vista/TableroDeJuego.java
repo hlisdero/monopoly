@@ -3,9 +3,9 @@ package fiuba.algo3.tp2.vista;
 import java.util.ArrayList;
 
 import fiuba.algo3.tp2.controlador.AlgoPoly;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
-
-
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -42,12 +42,25 @@ public class TableroDeJuego extends Parent{
 		list.add(new CasillaVista(600,280,100,60, Color.GREEN,algo.getGestorMovimiento().getTablero().getCasillas().get(18)));
 		list.add(new CasillaVista(600,340,100,60, Color.RED, algo.getGestorMovimiento().getTablero().getCasillas().get(19)));
 		
-		this.getChildren().addAll(new Rectangle(800,0,100,100));
+		final Rectangle j1 = new Rectangle(625,410, 50,50);
+		final Rectangle rect2 = new Rectangle(800,400, 150,150);
+		
+		
+		rect2.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent t) {
+            	j1.setX(j1.getX()-algo.getGestorTurnos().proximoJugador().tirarDados().getSuma()*100);
+            }
+        });
+		
 		
 		for(CasillaVista rec: list){
 			this.getChildren().addAll(rec);
 		}
 	
+		this.getChildren().add(rect2);
+		this.getChildren().add(j1);
 		
 		
 	}

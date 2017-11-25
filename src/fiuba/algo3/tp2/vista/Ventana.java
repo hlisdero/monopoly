@@ -21,8 +21,6 @@ public class Ventana extends Application {
         
         root.getChildren().addAll(t);
         
-        
-        
         Scene scene = new Scene(root, 1200, 600);
         scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
         stage.setTitle("AlgoPoly");

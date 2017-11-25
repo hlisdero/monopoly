@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 
 
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class TableroDeJuego extends Parent{
 	
@@ -40,7 +42,7 @@ public class TableroDeJuego extends Parent{
 		list.add(new CasillaVista(600,280,100,60, Color.GREEN,algo.getGestorMovimiento().getTablero().getCasillas().get(18)));
 		list.add(new CasillaVista(600,340,100,60, Color.RED, algo.getGestorMovimiento().getTablero().getCasillas().get(19)));
 		
-		
+		this.getChildren().addAll(new Rectangle(800,0,100,100));
 		
 		for(CasillaVista rec: list){
 			this.getChildren().addAll(rec);

@@ -13,4 +13,14 @@ public class AlgoPoly {
 		gestorMovimiento.notificarNuevoTurno(jugador);
 		gestorMovimiento.mover(jugador);
 	}
+
+	public GestorMovimiento getGestorMovimiento() {
+		return gestorMovimiento;
+	}
+
+	public GestorTurnos getGestorTurnos() {
+		return gestorTurnos;
+	}
+	
+	
 }

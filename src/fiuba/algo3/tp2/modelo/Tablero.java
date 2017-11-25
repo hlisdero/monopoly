@@ -51,4 +51,10 @@ public class Tablero {
 		int posicionCasillaSiguiente = (casillas.indexOf(casillaActual) + posiciones) % CANTIDAD_CASILLAS;
 		return casillas.get(posicionCasillaSiguiente);
 	}
+
+	public ArrayList<Casilla> getCasillas() {
+		return casillas;
+	}
+	
+	
 }

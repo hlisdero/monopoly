@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
+
 
 public class TableroDeJuego extends Parent{
 	

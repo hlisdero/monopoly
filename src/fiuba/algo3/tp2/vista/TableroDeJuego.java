@@ -93,7 +93,7 @@ public class TableroDeJuego extends Parent{
 	          @Override
 	          public void handle(MouseEvent t) {
 	          	
-	          	int numeroDeCasilla = J1.getNumeroCasilla();
+	          	int numeroDeCasilla = jugadorGenerico.getNumeroCasilla();
 	          	
 	          	sumaDados = algo.getGestorTurnos().proximoJugador().tirarDados().getSuma();
 	          	System.out.println(sumaDados);

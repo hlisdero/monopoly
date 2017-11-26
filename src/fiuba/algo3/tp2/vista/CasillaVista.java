@@ -2,7 +2,6 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.modelo.Casilla;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 

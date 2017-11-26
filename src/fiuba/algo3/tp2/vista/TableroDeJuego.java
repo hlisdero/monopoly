@@ -21,14 +21,18 @@ public class TableroDeJuego extends Parent{
 	private AlgoPoly algo = new AlgoPoly();
 	public ArrayList<CasillaVista> list = new ArrayList<CasillaVista>();
 	Button tirarDados= new Button("Tirar Dados");
+	Button finalizarTurno= new Button("Finalizar Turno");
 	private int sumaDados;
-	
+	public ArrayList<JugadorVista> listaJugadores = new ArrayList<JugadorVista>();
+	private JugadorVista jugadorGenerico;
 	JugadorVista J1 = new JugadorVista(algo.getGestorTurnos().proximoJugador(), algo.getGestorMovimiento().getTablero().getCasillas().indexOf(algo.getGestorMovimiento().getTablero().getCasillaInicial()));
 	JugadorVista J2 = new JugadorVista(algo.getGestorTurnos().proximoJugador(), algo.getGestorMovimiento().getTablero().getCasillas().indexOf(algo.getGestorMovimiento().getTablero().getCasillaInicial()));
 	JugadorVista J3 = new JugadorVista(algo.getGestorTurnos().proximoJugador(), algo.getGestorMovimiento().getTablero().getCasillas().indexOf(algo.getGestorMovimiento().getTablero().getCasillaInicial()));
+	private int x=listaJugadores.size();
+	
 	public TableroDeJuego(StackPane root){
-		
-		
+	
+			
 		ImageView image = new ImageView ("File:images/tablero.png ");
 		image.setLayoutX(500);
 		image.setLayoutY(400);
@@ -37,7 +41,10 @@ public class TableroDeJuego extends Parent{
 		
 		this.getChildren().add(image);
 		
-		
+		listaJugadores.add(J1);
+		listaJugadores.add(J2);
+		listaJugadores.add(J3);
+		jugadorGenerico= listaJugadores.get(0);
 		list.add(new CasillaVista(1168,734,132,65,algo.getGestorMovimiento().getTablero().getCasillas().get(0)));
 		
 		list.add(new CasillaVista(1035,734,133,65,algo.getGestorMovimiento().getTablero().getCasillas().get(1)));
@@ -64,11 +71,13 @@ public class TableroDeJuego extends Parent{
 		list.add(new CasillaVista(1168,600,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(18)));
 		list.add(new CasillaVista(1168,667,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(19)));
 		
-		//final Rectangle j1 = new Rectangle(625,410, 50,50);
-		//final Rectangle rect2 = new Rectangle(800,400, 150,150);
+		
 		tirarDados.setLayoutX(400);
 		tirarDados.setLayoutY(400);
 		this.getChildren().add(tirarDados);
+		finalizarTurno.setLayoutX(350);
+		finalizarTurno.setLayoutY(450);
+		this.getChildren().add(finalizarTurno);
 		
 		J1.setTranslateX(list.get(0).getPosX());
        	J1.setTranslateY(list.get(0).getPosY());
@@ -92,19 +101,30 @@ public class TableroDeJuego extends Parent{
 	          	
 	          	if(numeroDeCasilla > list.size()){numeroDeCasilla -= list.size() + 1;}
 	          	
-	          	J1.setNumeroCasilla(numeroDeCasilla);
-	          	J1.setTranslateX(list.get(numeroDeCasilla).getPosX());
-	           	J1.setTranslateY(list.get(numeroDeCasilla).getPosY());
+	          	jugadorGenerico.setNumeroCasilla(numeroDeCasilla);
+	          	jugadorGenerico.setTranslateX(list.get(numeroDeCasilla).getPosX());
+	          	jugadorGenerico.setTranslateY(list.get(numeroDeCasilla).getPosY());
 	           	
 	            }
 	        });
+     
+       	finalizarTurno.setOnMouseClicked(new EventHandler<MouseEvent>()
+	      {
+	          @Override
+	          public void handle(MouseEvent t) {
+	          	x=x+ 1;
+	          	jugadorGenerico = listaJugadores.get(x%3);
+	            }
+	        });
 		
+		
+       	
+       	
 		
 		for(CasillaVista rec: list){
 			this.getChildren().addAll(rec);
 		}
 	
-		//this.getChildren().add(tirarDados);
 		this.getChildren().addAll(J1,J2,J3);
 		
 		

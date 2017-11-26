@@ -13,11 +13,12 @@ public class JugadorVista extends Parent{
 	private int numeroCasilla;
 	ImageView imageJugador;
 	public static int numeroDeJugador = 0;
-	
+	private int numero;
 	
 	public JugadorVista(Jugador valorJugador, int numeroCasilla){
 		numeroDeJugador += 1;
-		
+		this.numero = numeroDeJugador;
+		System.out.println(numeroDeJugador);
 		this.valorJugador = valorJugador;
 		this.numeroCasilla = numeroCasilla;
 		
@@ -43,6 +44,11 @@ public class JugadorVista extends Parent{
 
 	public void setValorJugador(Jugador valorJugador) {
 		this.valorJugador = valorJugador;
+	}
+
+	public int numero() {
+		return numero;
+		
 	}
 
 	

@@ -69,27 +69,22 @@ public class TableroDeJuego extends Parent{
 		list.add(new CasillaVista(1168,667,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(19)));
 		
 		
-		tirarDados.setLayoutX(400);
+		tirarDados.setLayoutX(370);
 		tirarDados.setLayoutY(400);
 		this.getChildren().add(tirarDados);
-		finalizarTurno.setLayoutX(350);
+		finalizarTurno.setLayoutX(370);
 		finalizarTurno.setLayoutY(450);
 		this.getChildren().add(finalizarTurno);
 		
-		J1.setTranslateX(list.get(0).getPosX());
-       	J1.setTranslateY(list.get(0).getPosY());
+		J1.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
+		J2.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
+		J3.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
+
        	
-       	J2.setTranslateX(list.get(0).getPosX());
-       	J2.setTranslateY(list.get(0).getPosY());
        	
-       	J3.setTranslateX(list.get(0).getPosX());
-       	J3.setTranslateY(list.get(0).getPosY());
-		
-       	tirarDados.setOnMouseClicked(new EventHandler<MouseEvent>()
-	      {
-	          @Override
-	          public void handle(MouseEvent t) {
-	          	
+       	
+       	tirarDados.setOnMouseClicked(e ->{
+	      
 	          	int numeroDeCasilla = jugadorGenerico.getNumeroCasilla();
 	          	
 	          	sumaDados = algo.getGestorTurnos().proximoJugador().tirarDados().getSuma();
@@ -102,19 +97,10 @@ public class TableroDeJuego extends Parent{
 	          	jugadorGenerico.setTranslateX(list.get(numeroDeCasilla).getPosX());
 	          	jugadorGenerico.setTranslateY(list.get(numeroDeCasilla).getPosY());
 	           	
-	            }
-	        });
-     
-       	finalizarTurno.setOnMouseClicked(new EventHandler<MouseEvent>()
-	      {
-	          @Override
-	          public void handle(MouseEvent t) {
-	          	x=x+ 1;
-	          	jugadorGenerico = listaJugadores.get(x%3);
-	            }
-	        });
-		
-		
+	            });
+       	
+       	finalizarTurno.setOnMouseClicked(e-> {x=x+ 1;
+       										 jugadorGenerico = listaJugadores.get(x%3);});
        	
        	
 		

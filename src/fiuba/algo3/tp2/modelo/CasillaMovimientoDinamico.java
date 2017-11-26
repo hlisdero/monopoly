@@ -4,9 +4,10 @@ public class CasillaMovimientoDinamico extends Casilla {
 	private TipoMovimiento tipoMovimiento;
 	private GestorMovimiento gestorMovimiento;
 	
-	public CasillaMovimientoDinamico(TipoMovimiento nuevoTipo, GestorMovimiento gestorMovimiento) {
+	public CasillaMovimientoDinamico(TipoMovimiento nuevoTipo, GestorMovimiento gestorMovimiento, String nombre) {
 		tipoMovimiento = nuevoTipo;	
 		this.gestorMovimiento = gestorMovimiento;
+		this.nombreCasilla = nombre;
 	}
 		
 	@Override

@@ -8,6 +8,10 @@ public class Carcel extends Casilla implements ContadorTurnos {
 	private static final double PRECIO_FIANZA = 45000;
 	private HashMap<Jugador, Integer> contadorTurnos = new HashMap<Jugador, Integer>();
 	
+	public Carcel() {
+		this.nombreCasilla = "CARCEL";
+	}
+	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
 		contadorTurnos.put(jugador, 0);

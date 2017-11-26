@@ -9,19 +9,19 @@ public class GestorMovimiento {
 	public Casilla getCasillaInicial() {
 		return tablero.getCasillaInicial();
 	}
-	
-	public void mover(Jugador jugador) {
-		this.mover(jugador, jugador.tirarDados().getSuma());
+
+	public void agregarContadorTurnos(ContadorTurnos contador) {
+		contadoresTurnos.add(contador);
 	}
 	
 	public void notificarNuevoTurno(Jugador jugador) {
-		for (int i = 0; i < contadoresTurnos.size(); i++){
-			contadoresTurnos.get(i).contarTurno(jugador);;
+		for (ContadorTurnos elementoANotificar : contadoresTurnos) {
+			elementoANotificar.contarTurno(jugador);;
         }
 	}
-	
-	public void agregarContadorTurnos(ContadorTurnos contador) {
-		contadoresTurnos.add(contador);
+
+	public void mover(Jugador jugador) {
+		this.mover(jugador, jugador.tirarDados().getSuma());
 	}
 	
 	public void mover(Jugador jugador, int posiciones) {
@@ -32,10 +32,13 @@ public class GestorMovimiento {
 		casillaSiguiente.aplicarEfecto(jugador);
 		jugador.setCasilla(casillaSiguiente);
 	}
-
+	
+	public void mover(Jugador jugador, Casilla casilla) {
+		casilla.aplicarEfecto(jugador);
+		jugador.setCasilla(casilla);	
+	}
+	
 	public Tablero getTablero() {
 		return tablero;
-	}	
-	
-	
+	}
 }

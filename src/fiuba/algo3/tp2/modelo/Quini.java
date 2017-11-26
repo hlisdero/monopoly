@@ -6,6 +6,10 @@ public class Quini extends Casilla {
 	private HashMap<Jugador, Integer> vecesQueCayeron = new HashMap<Jugador, Integer>();
 	private PremioQuini premio = new PremioQuini();
 	
+	public Quini(){
+		this.nombreCasilla = "Quini";
+	}
+	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
 		if (!vecesQueCayeron.containsKey(jugador)) {

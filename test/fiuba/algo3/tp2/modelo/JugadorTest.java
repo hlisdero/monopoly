@@ -19,6 +19,12 @@ public class JugadorTest {
 	}
 	
 	@Test
+	public void sePuedeMoverInicialTrue() {
+		Jugador jugador = new Jugador(new Casilla());
+		assertTrue(jugador.sePuedeMover());
+	}
+	
+	@Test
 	public void cantidadPropiedaddesInicialCero() {
 		Jugador jugador = new Jugador(new Casilla());
 		assertEquals(0, jugador.getCantidadPropiedades());
@@ -38,6 +44,23 @@ public class JugadorTest {
 	}
 	
 	@Test
+	public void prohibirMovimientoModificaSePuedeMover() {
+		Jugador jugador = new Jugador(new Casilla());
+		
+		jugador.prohibirMovimiento();
+		assertFalse(jugador.sePuedeMover());
+	}
+	
+	@Test
+	public void permitirMovimientoModificaSePuedeMover() {
+		Jugador jugador = new Jugador(new Casilla());
+		
+		jugador.prohibirMovimiento();
+		jugador.permitirMovimiento();
+		assertTrue(jugador.sePuedeMover());
+	}
+	
+	@Test
 	public void agregarDineroAumentaCapital() {
 		Jugador jugador = new Jugador(new Casilla());
 		jugador.agregarDinero(50000);
@@ -51,6 +74,12 @@ public class JugadorTest {
 			jugador.restarDinero(50000);
 		} catch (CapitalInsuficienteException e) {}
 		assertEquals(50000, jugador.getCapital(), DELTA);
+	}
+	
+	@Test(expected = CapitalInsuficienteException.class)
+	public void restarDineroSuperiorCapitalLanzaExcepcion() {
+		Jugador jugador = new Jugador(new Casilla());
+		jugador.restarDinero(120000);
 	}
 	
 	@Test
@@ -67,12 +96,22 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void agregarPropiedadAumentaCantidadPropiedades() {
+	public void comprarPropiedadAumentaCantidadPropiedades() {
 		Jugador jugador = new Jugador(new Casilla());
 		Propiedad propiedad = new Propiedad(1000);
 		
 		jugador.comprar(propiedad);
 		assertEquals(1, jugador.getCantidadPropiedades());
+	}
+	
+	@Test
+	public void venderPropiedadDisminuyeCantidadPropiedades() {
+		Jugador jugador = new Jugador(new Casilla());
+		Propiedad propiedad = new Propiedad(0);
+		
+		jugador.comprar(propiedad);
+		jugador.vender(propiedad);
+		assertEquals(0, jugador.getCantidadPropiedades());
 	}
 	
 }

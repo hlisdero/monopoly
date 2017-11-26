@@ -2,35 +2,26 @@ package fiuba.algo3.tp2.modelo;
 
 public class Empresa extends Propiedad {
 	private Empresa empresaHermana;
-	private double renta;
-	// private double rentaGremial;
+	private MultiplicadorRenta multiplicador;
 	
-	public Empresa(double precio, double renta, double rentaGremial) {
+	public Empresa(double precio, double multiplicador, double multiplicadorMejorado, String nombre) {
 		super(precio);
-		this.renta = renta;
-		// this.rentaGremial = rentaGremial;
+		this.multiplicador = new MultiplicadorRenta(multiplicador, multiplicadorMejorado);
+		this.nombreCasilla = nombre;
 	}
 	
 	public void setEmpresaHermana(Empresa empresa) {
 		empresaHermana = empresa;
 	}
 	
-	public double getRenta() {
-		/*if (empresaHermana != null && this.getPropietario() != null && this.getPropietario().getGestorPropiedades().esPropietario(empresaHermana)){ 
-			return rentaGremial;
-		} */
-		return renta;
-	}
-	
-	public Empresa getEmpresaHermana() {
-		return empresaHermana;
-	}
-
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
-		if (tienePropietario() && jugador != this.getPropietario() ) {
-			jugador.restarDinero(getRenta()*jugador.getResultadoDados().getSuma());
-			getPropietario().agregarDinero(getRenta()*jugador.getResultadoDados().getSuma());
+		if (debeCobrar(jugador)) {
+			int sumaDados = jugador.getResultadoDados().getSuma();
+			double montoACobrar = multiplicador.getMultiplicador(this, empresaHermana) * sumaDados;
+			
+			jugador.restarDinero(montoACobrar);
+			this.getPropietario().agregarDinero(montoACobrar);
 		}
 	}
 }

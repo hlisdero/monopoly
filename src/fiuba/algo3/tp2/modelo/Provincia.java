@@ -6,7 +6,7 @@ public class Provincia extends Propiedad {
 	private ArrayList<MejoraProvincia> estadosPosibles = new ArrayList<MejoraProvincia>();
 	private MejoraProvincia estadoActual;
 	
-	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel) {
+	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel, String nombre) {
 		super(precio);
 		MejoraProvincia terreno = new MejoraProvincia(precioAlquilerTerreno);
 		MejoraProvincia unaCasa = new MejoraProvincia(precioAlquilerUnaCasa, precioConstruirCasa);
@@ -17,9 +17,10 @@ public class Provincia extends Propiedad {
 		estadosPosibles.add(dosCasas);
 		estadosPosibles.add(hotel);
 		estadoActual = terreno;
+		this.nombreCasilla = nombre;
 	}
 	
-	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioAlquilerUnaCasa) {
+	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioAlquilerUnaCasa, String nombre) {
 		super(precio);
 		MejoraProvincia terreno = new MejoraProvincia(precioAlquilerTerreno);
 		MejoraProvincia unaCasa = new MejoraProvincia(precioAlquilerUnaCasa, precioConstruirCasa);

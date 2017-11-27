@@ -11,7 +11,6 @@ import javafx.scene.image.ImageView;
 public class TerrenoVista extends Parent{
 	
 	public ArrayList<CasillaVista> list = new ArrayList<CasillaVista>();
-	public ArrayList<CasaVista> listCasas = new ArrayList<CasaVista>();
 	private AlgoPoly algo = new AlgoPoly();
 	
 	public TerrenoVista()
@@ -60,13 +59,13 @@ public class TerrenoVista extends Parent{
 			this.getChildren().addAll(casilla);
 		}
 		
-		for(CasaVista casa: listCasas){
-			this.getChildren().addAll(casa);
-		}
+		
 	}
 	
 	public void crearCasaVista(double posX, double posY){
-		listCasas.add(new CasaVista(posX, posY));
+		CasaVista casa = new CasaVista(posX, posY);
+		this.getChildren().add(casa);
+		
 	}
 
 	public ArrayList<CasillaVista> getList() {

@@ -21,7 +21,11 @@ public class BotonConstruirCasaHandler implements EventHandler<ActionEvent>{
 	@Override
     public void handle(ActionEvent actionEvent) {
 		 try {
-			((Provincia)terreno.getList().get(jugador.getJugadorGenerico().getNumeroCasilla()).getValorCasilla()).construirCasa();
+			((Provincia)terreno.getList()
+					.get(jugador.getJugadorGenerico().getNumeroCasilla())
+					.getValorCasilla())
+					.construirCasa();
+			
 		} catch (ConstruirCasaInvalidoException e) {
 			e.printStackTrace();
 		}

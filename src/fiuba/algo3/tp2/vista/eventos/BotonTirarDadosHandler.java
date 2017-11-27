@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
 
 public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
@@ -14,12 +15,13 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	private TerrenoVista terreno;
 	private int sumaDados;
 	private int numeroCasilla;
+	Button source;
 	
-	public BotonTirarDadosHandler(TurnoJugador turno, TerrenoVista terreno){
+	public BotonTirarDadosHandler(TurnoJugador turno, TerrenoVista terreno, Button btn){
 		
 		this.turno = turno;
 		this.terreno = terreno;
-		
+		this.source = btn;
 	}
 	
 	
@@ -38,7 +40,7 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
       	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(numeroCasilla).getPosY());
       	
       	terreno.getAlgo().getGestorMovimiento().mover(turno.getJugadorGenerico().getValorJugador(), terreno.getList().get(turno.getJugadorGenerico().getNumeroCasilla()).getValorCasilla());
-
+      	source.setDisable(true);
     }
 	
 	public int parseNumeroCasilla(int numero)

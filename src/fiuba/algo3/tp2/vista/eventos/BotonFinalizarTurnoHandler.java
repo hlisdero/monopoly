@@ -1,34 +1,41 @@
 package fiuba.algo3.tp2.vista.eventos;
 
 
+import java.util.ArrayList;
+
 import fiuba.algo3.tp2.vista.JugadorVista;
 import fiuba.algo3.tp2.vista.TurnoJugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
 
 public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 
 	private JugadorVista jugador;
-	private int sizeListaJugador;
 	private TurnoJugador turno;
+	private int sizeListaJugador;
+	private ArrayList<Button> btns;
 	
 	
-	public BotonFinalizarTurnoHandler(TurnoJugador turno, JugadorVista jugador, int sizeListaJugador)
+	public BotonFinalizarTurnoHandler(TurnoJugador turno, JugadorVista jugador, ArrayList<Button> btns)
 	{
 		this.turno = turno;
 		this.jugador = jugador;
-		this.sizeListaJugador = sizeListaJugador;
+		this.sizeListaJugador = turno.getListaJugadores().size();
+		this.btns = btns;
 	}
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
-			sizeListaJugador += 1;
+		    sizeListaJugador += 1;
 			jugador = turno.getListaJugadores().get(sizeListaJugador %3);
 			turno.setJugadorGenerico(jugador);
 			this.alertFinalizarTurno();
+			
+			for(Button btn: btns){btn.setDisable(false);}
     }
 	
 	public void alertFinalizarTurno(){

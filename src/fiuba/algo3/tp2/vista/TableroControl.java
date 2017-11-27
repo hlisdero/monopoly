@@ -2,6 +2,8 @@ package fiuba.algo3.tp2.vista;
 
 
 
+import java.util.ArrayList;
+
 import fiuba.algo3.tp2.vista.eventos.BotonComprarHandler;
 import fiuba.algo3.tp2.vista.eventos.BotonFinalizarTurnoHandler;
 import fiuba.algo3.tp2.vista.eventos.BotonTirarDadosHandler;
@@ -18,40 +20,43 @@ public class TableroControl extends Parent{
 	Button comprarPropiedad = new Button("Comprar propiedad");
 	Button venderPropiedad = new Button("Vender propiedad");
 	
+	ArrayList<Button> listBotones = new ArrayList<Button>();
+	
 	private TurnoJugador turnoJugador = new TurnoJugador();
-	
-	private int sizeListaJugador = turnoJugador.getListaJugadores().size();
-	
-	
-	
+
+
 	public TableroControl(){
 
 		this.setLayoutComponents();
 
-
-		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno);
+		listBotones.add(tirarDados);
+		listBotones.add(comprarPropiedad);
+		listBotones.add(venderPropiedad);
+		listBotones.add(finalizarTurno);
+		
+		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno, tirarDados);
        	tirarDados.setOnAction(tirarDadosHandler);
        	
-       	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador.getJugadorGenerico(), terreno);
+       	
+       	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador.getJugadorGenerico(), terreno, comprarPropiedad);
     	comprarPropiedad.setOnAction(comprarHandler);
     	//comprarPropiedad.setDisable(true);	
     	
-    	BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador.getJugadorGenerico(), terreno);
+    	BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador.getJugadorGenerico(), terreno, venderPropiedad);
     	venderPropiedad.setOnAction(venderHandler);
 
-       	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), sizeListaJugador);
+       	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), listBotones );
        	finalizarTurno.setOnAction(finalizarHandler);
 		//tirarDados.setDisable(false);
 		//comprarPropiedad.setDisable(false);
        	
-       	this.getChildren().addAll(tirarDados,finalizarTurno,comprarPropiedad, venderPropiedad);
+       	this.getChildren().addAll(listBotones);
        	this.getChildren().add(datos);
        	this.getChildren().add(terreno);
 		this.getChildren().add(turnoJugador);
 	}
 	
-	
-	
+
 	public void setLayoutComponents()
 	{
 		tirarDados.setLayoutX(570);

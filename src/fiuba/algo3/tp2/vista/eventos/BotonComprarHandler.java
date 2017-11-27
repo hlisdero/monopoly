@@ -6,16 +6,19 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
 
 public class BotonComprarHandler implements EventHandler<ActionEvent> {
 
 	private JugadorVista jugador;
 	private TerrenoVista terreno;
+	private Button source;
 	
-	public BotonComprarHandler(JugadorVista jugador, TerrenoVista terreno){
+	public BotonComprarHandler(JugadorVista jugador, TerrenoVista terreno, Button btn){
 		this.jugador = jugador;
 		this.terreno = terreno;
+		this.source = btn;
 	}
 	
 	  @Override
@@ -28,9 +31,12 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
   			}
   			else{
   				jugador.getValorJugador().comprar((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
-  			System.out.println(jugador.getValorJugador().getCapital());
-  			this.alertComprarPropiedad();
+	  			System.out.println(jugador.getValorJugador().getCapital());
+	  			this.alertComprarPropiedad();
+	  			source.setDisable(true);
   			}
+  			
+  			
 	    }
 	  
 		public void alertComprarPropiedad()

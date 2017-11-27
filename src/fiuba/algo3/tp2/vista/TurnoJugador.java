@@ -17,6 +17,7 @@ public class TurnoJugador extends Parent {
 	private JugadorVista jugadorGenerico;
 	
 	
+	
 	public TurnoJugador(){
 
 		J1 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));

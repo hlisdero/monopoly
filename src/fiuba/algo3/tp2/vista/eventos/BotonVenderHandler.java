@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
 
 public class BotonVenderHandler implements EventHandler<ActionEvent>{
@@ -14,10 +15,12 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 	
 	private JugadorVista jugador;
 	private TerrenoVista terreno;
+	private Button source;
 	
-	public BotonVenderHandler(JugadorVista jugador, TerrenoVista terreno){
+	public BotonVenderHandler(JugadorVista jugador, TerrenoVista terreno, Button btn){
 		this.jugador = jugador;
 		this.terreno = terreno;
+		this.source = btn;
 	}
 	
 	
@@ -28,6 +31,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 			{
 				jugador.getValorJugador().vender((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
 				this.alertVenderPropiedad();
+				source.setDisable(true);
 			}
 		else this.alertNoVenderPropiedad();
 	}

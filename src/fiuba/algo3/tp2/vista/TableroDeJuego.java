@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import fiuba.algo3.tp2.controlador.AlgoPoly;
 import fiuba.algo3.tp2.modelo.Propiedad;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.stage.StageStyle;
 
 
 
@@ -103,6 +106,11 @@ public class TableroDeJuego extends Parent{
 	          	sumaDados = algo.getGestorTurnos().proximoJugador().tirarDados().getSuma();
 	          	System.out.println(sumaDados);
 	          	numeroDeCasilla += sumaDados;
+	          	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
+	          	dialogoAlerta.setTitle("Resultado dados");
+	          	dialogoAlerta.setContentText("DADOS:" + sumaDados);
+	          	dialogoAlerta.initStyle(StageStyle.UTILITY);
+	          	dialogoAlerta.showAndWait();
 	          	
 	          	if(numeroDeCasilla > list.size()){numeroDeCasilla -= list.size() + 1;}
 	          	

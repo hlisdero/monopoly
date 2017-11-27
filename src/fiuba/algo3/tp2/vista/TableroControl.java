@@ -27,8 +27,7 @@ public class TableroControl extends Parent{
 	
 	public TableroControl(){
 
-		table.setLayoutX(50);
-		table.setLayoutY(400);
+		this.setLayoutComponents();
 
 		TableColumn<String, String> colJugador1 = new TableColumn<String, String>("Jugador 1");
 		//firstNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
@@ -42,18 +41,7 @@ public class TableroControl extends Parent{
 
 		//table.setItems(data);
 		//table.getColumns().addAll(colJugador1, colJugador2, colJugador3);
-		
-		this.getChildren().add(table);
 
-		tirarDados.setLayoutX(370);
-		tirarDados.setLayoutY(400);
-
-		finalizarTurno.setLayoutX(370);
-		finalizarTurno.setLayoutY(450);
-
-		comprarPropiedad.setLayoutX(350);
-		comprarPropiedad.setLayoutY(500);
-		
 		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno);
        	tirarDados.setOnAction(tirarDadosHandler);
 	    //tirarDados.setDisable(true););
@@ -68,8 +56,25 @@ public class TableroControl extends Parent{
 		//comprarPropiedad.setDisable(false);
        	
        	this.getChildren().addAll(tirarDados,finalizarTurno,comprarPropiedad);
+       	this.getChildren().add(table);
        	this.getChildren().add(terreno);
 		this.getChildren().add(turnoJugador);
+	}
+	
+	
+	public void setLayoutComponents()
+	{
+		table.setLayoutX(50);
+		table.setLayoutY(400);
+		
+		tirarDados.setLayoutX(370);
+		tirarDados.setLayoutY(400);
+
+		finalizarTurno.setLayoutX(370);
+		finalizarTurno.setLayoutY(450);
+
+		comprarPropiedad.setLayoutX(350);
+		comprarPropiedad.setLayoutY(500);
 	}
 
 }

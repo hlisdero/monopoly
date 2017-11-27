@@ -1,7 +1,8 @@
 package fiuba.algo3.tp2.vista;
 
 
-import fiuba.algo3.tp2.modelo.Propiedad;
+
+import fiuba.algo3.tp2.vista.eventos.BotonComprarHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -13,10 +14,11 @@ import javafx.stage.StageStyle;
 
 
 
+
 public class TableroDeControl extends Parent{
 	
 	
-	TerrenoVista tabla = new TerrenoVista();
+	TerrenoVista terreno = new TerrenoVista();
 	
 	Button tirarDados= new Button("Tirar dados");
 	Button finalizarTurno= new Button("Finalizar turno");
@@ -28,8 +30,6 @@ public class TableroDeControl extends Parent{
 	
 	private JugadorVista jugadorGenerico;
 	private int sizeListaJugador = turnoJugador.getListaJugadores().size();
-	
-	
 	
 	private TableView<String> table = new TableView<String>();
 	
@@ -74,7 +74,7 @@ public class TableroDeControl extends Parent{
 	      
 	          	int numeroDeCasilla = jugadorGenerico.getNumeroCasilla();
 	          	
-	          	sumaDados = tabla.getAlgo().getGestorTurnos().proximoJugador().tirarDados().getSuma();
+	          	sumaDados = terreno.getAlgo().getGestorTurnos().proximoJugador().tirarDados().getSuma();
 	          	System.out.println(sumaDados);
 	          	numeroDeCasilla += sumaDados;
 	          	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
@@ -83,31 +83,29 @@ public class TableroDeControl extends Parent{
 	          	dialogoAlerta.initStyle(StageStyle.UTILITY);
 	          	dialogoAlerta.showAndWait();
 	          	
-	          	if(numeroDeCasilla > tabla.getList().size()){numeroDeCasilla -= tabla.getList().size() + 1;}
+	          	if(numeroDeCasilla > terreno.getList().size()){numeroDeCasilla -= terreno.getList().size() + 1;}
 	          	
 	          	jugadorGenerico.setNumeroCasilla(numeroDeCasilla);
 
 	          	
-	          	tabla.getAlgo().getGestorMovimiento().mover(jugadorGenerico.getValorJugador());
+	          	terreno.getAlgo().getGestorMovimiento().mover(jugadorGenerico.getValorJugador());
 	          	
 
-	          	jugadorGenerico.setTranslateX(tabla.getList().get(numeroDeCasilla).getPosX() + jugadorGenerico.posReferencia());
+	          	jugadorGenerico.setTranslateX(terreno.getList().get(numeroDeCasilla).getPosX() + jugadorGenerico.posReferencia());
 
-	          	jugadorGenerico.setTranslateY(tabla.getList().get(numeroDeCasilla).getPosY());
+	          	jugadorGenerico.setTranslateY(terreno.getList().get(numeroDeCasilla).getPosY());
 	           	
-	          	tabla.getAlgo().getGestorMovimiento().mover(jugadorGenerico.getValorJugador(), tabla.getList().get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
+	          	terreno.getAlgo().getGestorMovimiento().mover(jugadorGenerico.getValorJugador(), terreno.getList().get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
 	          	
 	          	tirarDados.setDisable(true);
 	            });
        	
        	
-    	comprarPropiedad.setOnMouseClicked(e-> {
-    		jugadorGenerico.getValorJugador().comprar((Propiedad)tabla.getList().get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
-    		System.out.println(jugadorGenerico.getValorJugador().getCapital());
-			comprarPropiedad.setDisable(true);
-			
-	
-	});
+       	BotonComprarHandler comprarHandler = new BotonComprarHandler(jugadorGenerico, terreno);
+    	comprarPropiedad.setOnAction(comprarHandler);
+    	//comprarPropiedad.setDisable(true);
+    		
+
        	
        	finalizarTurno.setOnMouseClicked(e-> {sizeListaJugador += 1;
        			jugadorGenerico = turnoJugador.getListaJugadores().get(sizeListaJugador %3);
@@ -117,11 +115,8 @@ public class TableroDeControl extends Parent{
        	
        	});
        	
-       	this.getChildren().add(tabla);
-		
-		
-		
-		
+       	this.getChildren().add(terreno);
+		this.getChildren().add(turnoJugador);
 	}
 
 }

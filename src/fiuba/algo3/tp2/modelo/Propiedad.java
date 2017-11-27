@@ -39,7 +39,7 @@ public class Propiedad extends Casilla {
 	}
 	
 	public void vender(Jugador jugador) {
-		propietario = null;
+		this.setPropietario(null);
 		jugador.agregarDinero(getPrecioVenta());
 	}
 }

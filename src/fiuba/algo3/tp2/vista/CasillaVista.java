@@ -13,8 +13,8 @@ public class CasillaVista extends Parent{
 	private double posY;
 	private double sizeX;
 	private double sizeY;
-	private String valorCasilla;
-	
+	private Casilla valorCasilla;
+	private String name;
 	private Rectangle casilla;
 	
 	
@@ -24,7 +24,8 @@ public class CasillaVista extends Parent{
 		this.posY = positionY;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
-		this.valorCasilla = valorCasilla.nombreCasilla();
+		this.valorCasilla = valorCasilla;
+		this.name = valorCasilla.nombreCasilla();
 		
 		casilla = new Rectangle();
 		casilla.setWidth(this.sizeX);
@@ -54,9 +55,13 @@ public class CasillaVista extends Parent{
 		return this.sizeY;
 		
 	}
-	public String getValorCasilla() {
+	public Casilla getValorCasilla() {
 		return valorCasilla;
 	}
+	public String getName() {
+		return name;
+	}
+	
 	
 	
 

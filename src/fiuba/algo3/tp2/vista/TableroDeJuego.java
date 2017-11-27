@@ -3,11 +3,10 @@ package fiuba.algo3.tp2.vista;
 import java.util.ArrayList;
 
 import fiuba.algo3.tp2.controlador.AlgoPoly;
-import javafx.event.EventHandler;
+import fiuba.algo3.tp2.modelo.Propiedad;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 
@@ -17,8 +16,11 @@ public class TableroDeJuego extends Parent{
 	
 	private AlgoPoly algo = new AlgoPoly();
 	public ArrayList<CasillaVista> list = new ArrayList<CasillaVista>();
-	Button tirarDados= new Button("Tirar Dados");
-	Button finalizarTurno= new Button("Finalizar Turno");
+	
+	Button tirarDados= new Button("Tirar dados");
+	Button finalizarTurno= new Button("Finalizar turno");
+	Button comprarPropiedad = new Button("Comprar propiedad");
+	
 	private int sumaDados;
 	public ArrayList<JugadorVista> listaJugadores = new ArrayList<JugadorVista>();
 	private JugadorVista jugadorGenerico;
@@ -72,9 +74,14 @@ public class TableroDeJuego extends Parent{
 		tirarDados.setLayoutX(370);
 		tirarDados.setLayoutY(400);
 		this.getChildren().add(tirarDados);
+		
 		finalizarTurno.setLayoutX(370);
 		finalizarTurno.setLayoutY(450);
 		this.getChildren().add(finalizarTurno);
+		
+		comprarPropiedad.setLayoutX(350);
+		comprarPropiedad.setLayoutY(500);
+		this.getChildren().add(comprarPropiedad);
 		
 		J1.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
 		J2.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
@@ -94,13 +101,33 @@ public class TableroDeJuego extends Parent{
 	          	if(numeroDeCasilla > list.size()){numeroDeCasilla -= list.size() + 1;}
 	          	
 	          	jugadorGenerico.setNumeroCasilla(numeroDeCasilla);
+	          	
+	          	algo.getGestorMovimiento().mover(jugadorGenerico.getValorJugador());
+	          	
 	          	jugadorGenerico.setTranslateX(list.get(numeroDeCasilla).getPosX());
 	          	jugadorGenerico.setTranslateY(list.get(numeroDeCasilla).getPosY());
 	           	
+	          	algo.getGestorMovimiento().mover(jugadorGenerico.getValorJugador(), list.get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
+	          	
+	          	tirarDados.setDisable(true);
 	            });
        	
+       	
+    	comprarPropiedad.setOnMouseClicked(e-> {
+    		jugadorGenerico.getValorJugador().comprar((Propiedad)list.get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
+    		System.out.println(jugadorGenerico.getValorJugador().getCapital());
+			comprarPropiedad.setDisable(true);
+			
+	
+	});
+       	
        	finalizarTurno.setOnMouseClicked(e-> {x=x+ 1;
-       										 jugadorGenerico = listaJugadores.get(x%3);});
+       			jugadorGenerico = listaJugadores.get(x%3);
+       			tirarDados.setDisable(false);
+       			comprarPropiedad.setDisable(false);
+       			
+       	
+       	});
        	
        	
 		

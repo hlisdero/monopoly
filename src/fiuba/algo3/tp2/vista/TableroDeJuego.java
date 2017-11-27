@@ -2,8 +2,6 @@ package fiuba.algo3.tp2.vista;
 
 import java.util.ArrayList;
 
-
-import fiuba.algo3.tp2.controlador.AlgoPoly;
 import fiuba.algo3.tp2.modelo.Propiedad;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -20,8 +18,7 @@ import javafx.stage.StageStyle;
 
 public class TableroDeJuego extends Parent{
 	
-	private AlgoPoly algo = new AlgoPoly();
-	public ArrayList<CasillaVista> list = new ArrayList<CasillaVista>();
+	private TablaDeJuego tabla = new TablaDeJuego();
 	
 	Button tirarDados= new Button("Tirar dados");
 	Button finalizarTurno= new Button("Finalizar turno");
@@ -30,12 +27,13 @@ public class TableroDeJuego extends Parent{
 	private int sumaDados;
 	public ArrayList<JugadorVista> listaJugadores = new ArrayList<JugadorVista>();
 	private JugadorVista jugadorGenerico;
-	JugadorVista J1 = new JugadorVista(algo.getGestorTurnos().proximoJugador(), algo.getGestorMovimiento().getTablero().getCasillas().indexOf(algo.getGestorMovimiento().getTablero().getCasillaInicial()));
-	JugadorVista J2 = new JugadorVista(algo.getGestorTurnos().proximoJugador(), algo.getGestorMovimiento().getTablero().getCasillas().indexOf(algo.getGestorMovimiento().getTablero().getCasillaInicial()));
-	JugadorVista J3 = new JugadorVista(algo.getGestorTurnos().proximoJugador(), algo.getGestorMovimiento().getTablero().getCasillas().indexOf(algo.getGestorMovimiento().getTablero().getCasillaInicial()));
+	JugadorVista J1 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));
+	JugadorVista J2 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));
+	JugadorVista J3 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));
 	private int x=listaJugadores.size();
 	private TableView<String> table = new TableView<String>();
 
+	
 	
 	public TableroDeJuego(StackPane root){
 	
@@ -47,35 +45,6 @@ public class TableroDeJuego extends Parent{
 		image.setFitHeight(400);
 		
 		this.getChildren().add(image);
-		
-		
-		list.add(new CasillaVista(1168,734,132,65,algo.getGestorMovimiento().getTablero().getCasillas().get(0)));
-		
-		list.add(new CasillaVista(1035,734,133,65,algo.getGestorMovimiento().getTablero().getCasillas().get(1)));
-		
-		list.add(new CasillaVista(901,734,133,65,algo.getGestorMovimiento().getTablero().getCasillas().get(2)));
-		list.add(new CasillaVista(767,734,133,65,  algo.getGestorMovimiento().getTablero().getCasillas().get(3)));
-		list.add(new CasillaVista(633,734,133,65 ,algo.getGestorMovimiento().getTablero().getCasillas().get(4)));
-		list.add(new CasillaVista(500,734,133,65,algo.getGestorMovimiento().getTablero().getCasillas().get(5)));
-		
-		list.add(new CasillaVista(500,667,133,67,algo.getGestorMovimiento().getTablero().getCasillas().get(6)));
-		list.add(new CasillaVista(500,600,133,67,algo.getGestorMovimiento().getTablero().getCasillas().get(7)));
-		list.add(new CasillaVista(500,533,133,67,algo.getGestorMovimiento().getTablero().getCasillas().get(8)));
-		list.add(new CasillaVista(500,466,133,67, algo.getGestorMovimiento().getTablero().getCasillas().get(9)));
-		
-		list.add(new CasillaVista(500,399,133,67, algo.getGestorMovimiento().getTablero().getCasillas().get(10)));
-		list.add(new CasillaVista(633,399,133,67,algo.getGestorMovimiento().getTablero().getCasillas().get(11)));
-		list.add(new CasillaVista(767,399,133,67 ,algo.getGestorMovimiento().getTablero().getCasillas().get(12)));
-		list.add(new CasillaVista(901,399,133,67,algo.getGestorMovimiento().getTablero().getCasillas().get(13)));
-		list.add(new CasillaVista(1035,399,133,67 ,algo.getGestorMovimiento().getTablero().getCasillas().get(14)));
-		list.add(new CasillaVista(1168,399,132,67, algo.getGestorMovimiento().getTablero().getCasillas().get(15)));
-		
-		list.add(new CasillaVista(1168,466,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(16)));
-		list.add(new CasillaVista(1168,533,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(17)));
-		list.add(new CasillaVista(1168,600,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(18)));
-		list.add(new CasillaVista(1168,667,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(19)));
-		
-		
 		
 		listaJugadores.add(J1);
 		listaJugadores.add(J2);
@@ -111,9 +80,9 @@ public class TableroDeJuego extends Parent{
 		comprarPropiedad.setLayoutY(350);
 		this.getChildren().add(comprarPropiedad);
 		
-		J1.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
-		J2.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
-		J3.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
+		J1.asignarPosicion(tabla.getList().get(0).getPosX(), tabla.getList().get(0).getPosY());
+		J2.asignarPosicion(tabla.getList().get(0).getPosX(), tabla.getList().get(0).getPosY());
+		J3.asignarPosicion(tabla.getList().get(0).getPosX(), tabla.getList().get(0).getPosY());
 
 
        	
@@ -123,7 +92,7 @@ public class TableroDeJuego extends Parent{
 	      
 	          	int numeroDeCasilla = jugadorGenerico.getNumeroCasilla();
 	          	
-	          	sumaDados = algo.getGestorTurnos().proximoJugador().tirarDados().getSuma();
+	          	sumaDados = tabla.getAlgo().getGestorTurnos().proximoJugador().tirarDados().getSuma();
 	          	System.out.println(sumaDados);
 	          	numeroDeCasilla += sumaDados;
 	          	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
@@ -132,26 +101,26 @@ public class TableroDeJuego extends Parent{
 	          	dialogoAlerta.initStyle(StageStyle.UTILITY);
 	          	dialogoAlerta.showAndWait();
 	          	
-	          	if(numeroDeCasilla > list.size()){numeroDeCasilla -= list.size() + 1;}
+	          	if(numeroDeCasilla > tabla.getList().size()){numeroDeCasilla -= tabla.getList().size() + 1;}
 	          	
 	          	jugadorGenerico.setNumeroCasilla(numeroDeCasilla);
 
 	          	
-	          	algo.getGestorMovimiento().mover(jugadorGenerico.getValorJugador());
+	          	tabla.getAlgo().getGestorMovimiento().mover(jugadorGenerico.getValorJugador());
 	          	
 
-	          	jugadorGenerico.setTranslateX(list.get(numeroDeCasilla).getPosX() + jugadorGenerico.posReferencia());
+	          	jugadorGenerico.setTranslateX(tabla.getList().get(numeroDeCasilla).getPosX() + jugadorGenerico.posReferencia());
 
-	          	jugadorGenerico.setTranslateY(list.get(numeroDeCasilla).getPosY());
+	          	jugadorGenerico.setTranslateY(tabla.getList().get(numeroDeCasilla).getPosY());
 	           	
-	          	algo.getGestorMovimiento().mover(jugadorGenerico.getValorJugador(), list.get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
+	          	tabla.getAlgo().getGestorMovimiento().mover(jugadorGenerico.getValorJugador(), tabla.getList().get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
 	          	
 	          	tirarDados.setDisable(true);
 	            });
        	
        	//button comprar prop   	
        	comprarPropiedad.setOnMouseClicked(e-> {
-       		jugadorGenerico.getValorJugador().comprar((Propiedad)list.get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
+       		jugadorGenerico.getValorJugador().comprar((Propiedad)tabla.getList().get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
        		System.out.println(jugadorGenerico.getValorJugador().getCapital());
        			comprarPropiedad.setDisable(true);
 			
@@ -166,13 +135,8 @@ public class TableroDeJuego extends Parent{
        			
        	
        		});
-       	
-       	
-		
-		for(CasillaVista rec: list){
-			this.getChildren().addAll(rec);
-		}
-	
+
+       	this.getChildren().add(tabla);
 		this.getChildren().addAll(J1,J2,J3);
 		
 		

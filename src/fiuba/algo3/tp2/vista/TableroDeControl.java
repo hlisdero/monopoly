@@ -26,23 +26,21 @@ public class TableroDeControl extends Parent{
 	Button comprarPropiedad = new Button("Comprar propiedad");
 	
 	private int sumaDados;
-	private ArrayList<JugadorVista> listaJugadores = new ArrayList<JugadorVista>();
+	
+	private TurnoJugador turnoJugador = new TurnoJugador();
+	
 	private JugadorVista jugadorGenerico;
-	JugadorVista J1 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));
-	JugadorVista J2 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));
-	JugadorVista J3 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));
-	private int x=listaJugadores.size();
+	private int sizeListaJugador = turnoJugador.getListaJugadores().size();
+	
+	
+	
 	private TableView<String> table = new TableView<String>();
 	
 	public TableroDeControl(){
 		
 		
-		listaJugadores.add(J1);
-		listaJugadores.add(J2);
-		listaJugadores.add(J3);
-		jugadorGenerico= listaJugadores.get(0);
-
 		
+		jugadorGenerico= turnoJugador.getListaJugadores().get(0);
 		
 		table.setLayoutX(50);
 		table.setLayoutY(400);
@@ -75,14 +73,7 @@ public class TableroDeControl extends Parent{
 		comprarPropiedad.setLayoutY(500);
 		this.getChildren().add(comprarPropiedad);
 		
-		J1.asignarPosicion(tabla.getList().get(0).getPosX(), tabla.getList().get(0).getPosY());
-		J2.asignarPosicion(tabla.getList().get(0).getPosX(), tabla.getList().get(0).getPosY());
-		J3.asignarPosicion(tabla.getList().get(0).getPosX(), tabla.getList().get(0).getPosY());
-
-
-       	
-       	
-       	
+		
        	tirarDados.setOnMouseClicked(e ->{
 	      
 	          	int numeroDeCasilla = jugadorGenerico.getNumeroCasilla();
@@ -122,8 +113,8 @@ public class TableroDeControl extends Parent{
 	
 	});
        	
-       	finalizarTurno.setOnMouseClicked(e-> {x=x+ 1;
-       			jugadorGenerico = listaJugadores.get(x%3);
+       	finalizarTurno.setOnMouseClicked(e-> {sizeListaJugador += 1;
+       			jugadorGenerico = turnoJugador.getListaJugadores().get(sizeListaJugador %3);
        			tirarDados.setDisable(false);
        			comprarPropiedad.setDisable(false);
        			
@@ -131,7 +122,7 @@ public class TableroDeControl extends Parent{
        	});
        	
        	this.getChildren().add(tabla);
-		this.getChildren().addAll(J1,J2,J3);
+		
 		
 		
 		

@@ -49,7 +49,7 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	{
       	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
       	dialogoAlerta.setTitle("Resultado dados");
-      	dialogoAlerta.setContentText("Dados sacado: " + sumaDados);
+      	dialogoAlerta.setContentText("Numero sacado: " + sumaDados);
       	dialogoAlerta.initStyle(StageStyle.UTILITY);
       	dialogoAlerta.showAndWait();
 	}

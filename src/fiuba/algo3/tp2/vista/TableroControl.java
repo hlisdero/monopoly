@@ -44,7 +44,6 @@ public class TableroControl extends Parent{
 
 		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno);
        	tirarDados.setOnAction(tirarDadosHandler);
-	    //tirarDados.setDisable(true););
        	
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador.getJugadorGenerico(), terreno);
     	comprarPropiedad.setOnAction(comprarHandler);
@@ -60,6 +59,7 @@ public class TableroControl extends Parent{
        	this.getChildren().add(terreno);
 		this.getChildren().add(turnoJugador);
 	}
+	
 	
 	
 	public void setLayoutComponents()

@@ -13,13 +13,11 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 	public BotonComprarHandler(JugadorVista jugador, TerrenoVista terreno){
 		this.jugador = jugador;
 		this.terreno = terreno;
-		
 	}
 	
 	  @Override
 	    public void handle(ActionEvent actionEvent) {
 		    jugador.getValorJugador().comprar((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
   			System.out.println(jugador.getValorJugador().getCapital());
-			
 	    }
 }

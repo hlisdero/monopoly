@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.vista;
 
 
 import fiuba.algo3.tp2.vista.eventos.BotonComprarHandler;
+import fiuba.algo3.tp2.vista.eventos.BotonFinalizarTurnoHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -10,9 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.StageStyle;
-
-
-
 
 
 public class TableroDeControl extends Parent{
@@ -28,7 +26,7 @@ public class TableroDeControl extends Parent{
 	
 	private TurnoJugador turnoJugador = new TurnoJugador();
 	
-	private JugadorVista jugadorGenerico;
+	
 	private int sizeListaJugador = turnoJugador.getListaJugadores().size();
 	
 	private TableView<String> table = new TableView<String>();
@@ -36,7 +34,7 @@ public class TableroDeControl extends Parent{
 	public TableroDeControl(){
 		
 		
-		jugadorGenerico= turnoJugador.getListaJugadores().get(0);
+		
 		
 		table.setLayoutX(50);
 		table.setLayoutY(400);
@@ -52,7 +50,7 @@ public class TableroDeControl extends Parent{
 		colJugador3.setMinWidth(100);
 
 		//table.setItems(data);
-		table.getColumns().addAll(colJugador1, colJugador2, colJugador3);
+		//table.getColumns().addAll(colJugador1, colJugador2, colJugador3);
 		
 		this.getChildren().add(table);
 
@@ -70,9 +68,10 @@ public class TableroDeControl extends Parent{
 		this.getChildren().add(comprarPropiedad);
 		
 		
+		
        	tirarDados.setOnMouseClicked(e ->{
 	      
-	          	int numeroDeCasilla = jugadorGenerico.getNumeroCasilla();
+	          	int numeroDeCasilla = turnoJugador.getJugadorGenerico().getNumeroCasilla();
 	          	
 	          	sumaDados = terreno.getAlgo().getGestorTurnos().proximoJugador().tirarDados().getSuma();
 	          	System.out.println(sumaDados);
@@ -85,35 +84,31 @@ public class TableroDeControl extends Parent{
 	          	
 	          	if(numeroDeCasilla > terreno.getList().size()){numeroDeCasilla -= terreno.getList().size() + 1;}
 	          	
-	          	jugadorGenerico.setNumeroCasilla(numeroDeCasilla);
+	          	turnoJugador.getJugadorGenerico().setNumeroCasilla(numeroDeCasilla);
 
 	          	
-	          	terreno.getAlgo().getGestorMovimiento().mover(jugadorGenerico.getValorJugador());
+	          	terreno.getAlgo().getGestorMovimiento().mover(turnoJugador.getJugadorGenerico().getValorJugador());
 	          	
 
-	          	jugadorGenerico.setTranslateX(terreno.getList().get(numeroDeCasilla).getPosX() + jugadorGenerico.posReferencia());
+	          	turnoJugador.getJugadorGenerico().setTranslateX(terreno.getList().get(numeroDeCasilla).getPosX() + turnoJugador.getJugadorGenerico().posReferencia());
 
-	          	jugadorGenerico.setTranslateY(terreno.getList().get(numeroDeCasilla).getPosY());
+	          	turnoJugador.getJugadorGenerico().setTranslateY(terreno.getList().get(numeroDeCasilla).getPosY());
 	           	
-	          	terreno.getAlgo().getGestorMovimiento().mover(jugadorGenerico.getValorJugador(), terreno.getList().get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
+	          	terreno.getAlgo().getGestorMovimiento().mover(turnoJugador.getJugadorGenerico().getValorJugador(), terreno.getList().get(turnoJugador.getJugadorGenerico().getNumeroCasilla()).getValorCasilla());
 	          	
-	          	tirarDados.setDisable(true);
+	          	//tirarDados.setDisable(true);
 	            });
        	
        	
-       	BotonComprarHandler comprarHandler = new BotonComprarHandler(jugadorGenerico, terreno);
+       	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador.getJugadorGenerico(), terreno);
     	comprarPropiedad.setOnAction(comprarHandler);
     	//comprarPropiedad.setDisable(true);
     		
 
-       	
-       	finalizarTurno.setOnMouseClicked(e-> {sizeListaJugador += 1;
-       			jugadorGenerico = turnoJugador.getListaJugadores().get(sizeListaJugador %3);
-       			tirarDados.setDisable(false);
-       			comprarPropiedad.setDisable(false);
-       			
-       	
-       	});
+       	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), sizeListaJugador);
+       	finalizarTurno.setOnAction(finalizarHandler);
+		//tirarDados.setDisable(false);
+		//comprarPropiedad.setDisable(false);
        	
        	this.getChildren().add(terreno);
 		this.getChildren().add(turnoJugador);

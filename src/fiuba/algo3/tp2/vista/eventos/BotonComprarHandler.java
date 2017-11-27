@@ -20,10 +20,17 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 	
 	  @Override
 	    public void handle(ActionEvent actionEvent) {
-		    jugador.getValorJugador().comprar((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
-  			System.out.println(jugador.getValorJugador().getCapital());
+		    
   			
+  			if(jugador.getValorJugador().equals(((Propiedad) jugador.getValorJugador().getCasilla()).getPropietario()))
+  			{
+  				this.alertNoComprarPropiedad();
+  			}
+  			else{
+  				jugador.getValorJugador().comprar((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
+  			System.out.println(jugador.getValorJugador().getCapital());
   			this.alertComprarPropiedad();
+  			}
 	    }
 	  
 		public void alertComprarPropiedad()

@@ -11,8 +11,8 @@ public class GestorPropiedades {
 	}
 	
 	public void comprar(Propiedad propiedad) {
-		propiedades.add(propiedad);
-		propiedad.comprar(propietario);
+			propiedades.add(propiedad);
+			propiedad.comprar(propietario);
 	}
 	
 	public void vender(Propiedad propiedad) {

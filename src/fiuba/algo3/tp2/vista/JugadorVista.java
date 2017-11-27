@@ -13,14 +13,14 @@ public class JugadorVista extends Parent{
 	private int numeroCasilla;
 	ImageView imageJugador;
 	public static int numeroDeJugador = 0;
-	private double posX;
-	private double posY;
+	private double posXEnTablero;
+	
 	
 	public JugadorVista(Jugador valorJugador, int numeroCasilla){
 		numeroDeJugador += 1;
 		this.valorJugador = valorJugador;
 		this.numeroCasilla = numeroCasilla;
-		
+		this.posXEnTablero= (numeroDeJugador-1)*40;
 		imageJugador =  new ImageView("File:images/j"+numeroDeJugador+".png");
 		
 		imageJugador.setFitWidth(50);
@@ -46,12 +46,12 @@ public class JugadorVista extends Parent{
 	}
 	
 	public void asignarPosicion(double posicionX , double posicionY) {
-		this.posX = posicionX;
-		this.posY = posicionY;
-		this.setTranslateX(posicionX);
+		this.setTranslateX(posicionX + this.posXEnTablero);
 		this.setTranslateY(posicionY);
 	}
-	
+	public double posReferencia() {
+		return this.posXEnTablero;
+	}
 
 
 	

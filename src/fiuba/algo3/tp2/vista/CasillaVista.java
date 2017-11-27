@@ -58,10 +58,10 @@ public class CasillaVista extends Parent{
 	public Casilla getValorCasilla() {
 		return valorCasilla;
 	}
-	public String getName() {
-		return name;
-	}
 	
+	public String getName(){
+		return this.name;
+	}
 	
 	
 

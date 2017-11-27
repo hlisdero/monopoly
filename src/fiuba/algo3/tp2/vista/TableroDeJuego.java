@@ -40,10 +40,7 @@ public class TableroDeJuego extends Parent{
 		
 		this.getChildren().add(image);
 		
-		listaJugadores.add(J1);
-		listaJugadores.add(J2);
-		listaJugadores.add(J3);
-		jugadorGenerico= listaJugadores.get(0);
+		
 		list.add(new CasillaVista(1168,734,132,65,algo.getGestorMovimiento().getTablero().getCasillas().get(0)));
 		
 		list.add(new CasillaVista(1035,734,133,65,algo.getGestorMovimiento().getTablero().getCasillas().get(1)));
@@ -71,6 +68,13 @@ public class TableroDeJuego extends Parent{
 		list.add(new CasillaVista(1168,667,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(19)));
 		
 		
+		
+		listaJugadores.add(J1);
+		listaJugadores.add(J2);
+		listaJugadores.add(J3);
+		jugadorGenerico= listaJugadores.get(0);
+
+
 		tirarDados.setLayoutX(370);
 		tirarDados.setLayoutY(400);
 		this.getChildren().add(tirarDados);
@@ -78,6 +82,7 @@ public class TableroDeJuego extends Parent{
 		finalizarTurno.setLayoutX(370);
 		finalizarTurno.setLayoutY(450);
 		this.getChildren().add(finalizarTurno);
+
 		
 		comprarPropiedad.setLayoutX(350);
 		comprarPropiedad.setLayoutY(500);
@@ -86,6 +91,7 @@ public class TableroDeJuego extends Parent{
 		J1.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
 		J2.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
 		J3.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
+
 
        	
        	
@@ -101,10 +107,13 @@ public class TableroDeJuego extends Parent{
 	          	if(numeroDeCasilla > list.size()){numeroDeCasilla -= list.size() + 1;}
 	          	
 	          	jugadorGenerico.setNumeroCasilla(numeroDeCasilla);
+
 	          	
 	          	algo.getGestorMovimiento().mover(jugadorGenerico.getValorJugador());
 	          	
-	          	jugadorGenerico.setTranslateX(list.get(numeroDeCasilla).getPosX());
+
+	          	jugadorGenerico.setTranslateX(list.get(numeroDeCasilla).getPosX() + jugadorGenerico.posReferencia());
+
 	          	jugadorGenerico.setTranslateY(list.get(numeroDeCasilla).getPosY());
 	           	
 	          	algo.getGestorMovimiento().mover(jugadorGenerico.getValorJugador(), list.get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());

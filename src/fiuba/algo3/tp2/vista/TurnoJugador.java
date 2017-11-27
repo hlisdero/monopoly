@@ -9,7 +9,7 @@ public class TurnoJugador extends Parent {
 
 	
 	
-	TablaDeJuego tabla = new TablaDeJuego();
+	TerrenoVista tabla = new TerrenoVista();
 	private ArrayList<JugadorVista> listaJugadores;
 	JugadorVista J1;
 	JugadorVista J2;

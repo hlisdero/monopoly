@@ -8,12 +8,18 @@ import javafx.scene.image.ImageView;
 
 
 
-public class TablaDeJuego extends Parent{
+public class TerrenoVista extends Parent{
 	
 	public ArrayList<CasillaVista> list = new ArrayList<CasillaVista>();
 	private AlgoPoly algo = new AlgoPoly();
 	
-	public TablaDeJuego()
+	public TerrenoVista()
+	{
+		this.dibujarTereno();
+	}
+	
+	
+	public void dibujarTereno()
 	{
 		list.add(new CasillaVista(1168,734,132,65,algo.getGestorMovimiento().getTablero().getCasillas().get(0)));
 		list.add(new CasillaVista(1035,734,133,65,algo.getGestorMovimiento().getTablero().getCasillas().get(1)));

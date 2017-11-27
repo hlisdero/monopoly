@@ -16,7 +16,7 @@ import javafx.stage.StageStyle;
 public class TableroDeControl extends Parent{
 	
 	
-	TablaDeJuego tabla = new TablaDeJuego();
+	TerrenoVista tabla = new TerrenoVista();
 	
 	Button tirarDados= new Button("Tirar dados");
 	Button finalizarTurno= new Button("Finalizar turno");

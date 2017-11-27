@@ -17,7 +17,7 @@ public class Ventana extends Application {
   
         StackPane root = new StackPane();
         
-        TableroDeJuego t = new TableroDeJuego(root);
+        TableroDeControl t = new TableroDeControl(root);
         
         root.getChildren().addAll(t);
         

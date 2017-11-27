@@ -29,7 +29,7 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 		{
 	      	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
 	      	dialogoAlerta.setTitle("Comprar propiedad");
-	      	dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPrecio()+"\n\nCapital que reste: " +jugador.getValorJugador().getCapital());
+	      	dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
 	      	dialogoAlerta.initStyle(StageStyle.UTILITY);
 	      	dialogoAlerta.showAndWait();
 		}

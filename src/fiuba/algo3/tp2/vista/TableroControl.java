@@ -5,6 +5,7 @@ package fiuba.algo3.tp2.vista;
 import fiuba.algo3.tp2.vista.eventos.BotonComprarHandler;
 import fiuba.algo3.tp2.vista.eventos.BotonFinalizarTurnoHandler;
 import fiuba.algo3.tp2.vista.eventos.BotonTirarDadosHandler;
+import fiuba.algo3.tp2.vista.eventos.BotonVenderHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -18,6 +19,7 @@ public class TableroControl extends Parent{
 	Button tirarDados= new Button("Tirar dados");
 	Button finalizarTurno= new Button("Finalizar turno");
 	Button comprarPropiedad = new Button("Comprar propiedad");
+	Button venderPropiedad = new Button("Vender propiedad");
 	
 	private TurnoJugador turnoJugador = new TurnoJugador();
 	
@@ -48,13 +50,16 @@ public class TableroControl extends Parent{
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador.getJugadorGenerico(), terreno);
     	comprarPropiedad.setOnAction(comprarHandler);
     	//comprarPropiedad.setDisable(true);	
+    	
+    	BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador.getJugadorGenerico(), terreno);
+    	venderPropiedad.setOnAction(venderHandler);
 
        	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), sizeListaJugador);
        	finalizarTurno.setOnAction(finalizarHandler);
 		//tirarDados.setDisable(false);
 		//comprarPropiedad.setDisable(false);
        	
-       	this.getChildren().addAll(tirarDados,finalizarTurno,comprarPropiedad);
+       	this.getChildren().addAll(tirarDados,finalizarTurno,comprarPropiedad, venderPropiedad);
        	this.getChildren().add(table);
        	this.getChildren().add(terreno);
 		this.getChildren().add(turnoJugador);
@@ -75,6 +80,9 @@ public class TableroControl extends Parent{
 
 		comprarPropiedad.setLayoutX(900);
 		comprarPropiedad.setLayoutY(850);
+		
+		venderPropiedad.setLayoutX(1100);
+		venderPropiedad.setLayoutY(850);
 	}
 
 }

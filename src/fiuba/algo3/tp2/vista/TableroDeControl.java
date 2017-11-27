@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.vista;
 
-import java.util.ArrayList;
 
 import fiuba.algo3.tp2.modelo.Propiedad;
 import javafx.scene.Parent;
@@ -9,8 +8,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.stage.StageStyle;
 
 
@@ -37,7 +34,6 @@ public class TableroDeControl extends Parent{
 	private TableView<String> table = new TableView<String>();
 	
 	public TableroDeControl(){
-		
 		
 		
 		jugadorGenerico= turnoJugador.getListaJugadores().get(0);

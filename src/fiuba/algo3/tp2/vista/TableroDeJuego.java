@@ -2,12 +2,15 @@ package fiuba.algo3.tp2.vista;
 
 import java.util.ArrayList;
 
+
 import fiuba.algo3.tp2.controlador.AlgoPoly;
 import fiuba.algo3.tp2.modelo.Propiedad;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.StageStyle;
@@ -31,6 +34,8 @@ public class TableroDeJuego extends Parent{
 	JugadorVista J2 = new JugadorVista(algo.getGestorTurnos().proximoJugador(), algo.getGestorMovimiento().getTablero().getCasillas().indexOf(algo.getGestorMovimiento().getTablero().getCasillaInicial()));
 	JugadorVista J3 = new JugadorVista(algo.getGestorTurnos().proximoJugador(), algo.getGestorMovimiento().getTablero().getCasillas().indexOf(algo.getGestorMovimiento().getTablero().getCasillaInicial()));
 	private int x=listaJugadores.size();
+	private TableView table = new TableView();
+
 	
 	public TableroDeJuego(StackPane root){
 	
@@ -76,19 +81,34 @@ public class TableroDeJuego extends Parent{
 		listaJugadores.add(J2);
 		listaJugadores.add(J3);
 		jugadorGenerico= listaJugadores.get(0);
+		
+		table.setLayoutX(50);
+		table.setLayoutY(400);
 
+		TableColumn colJugador1 = new TableColumn("Jugador 1");
+		//firstNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
+		colJugador1.setMinWidth(100);
+		TableColumn colJugador2 = new TableColumn("Jugador 2");
+	//	lastNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("lastName"));
+		colJugador2.setMinWidth(100);
+		TableColumn colJugador3 = new TableColumn("Jugador 3");
+	//	phoneCol.setCellValueFactory(new PropertyValueFactory<Person, String>("phone"));
+		colJugador3.setMinWidth(100);
 
-		tirarDados.setLayoutX(370);
-		tirarDados.setLayoutY(400);
+		//table.setItems(data);
+		table.getColumns().addAll(colJugador1, colJugador2, colJugador3);
+		this.getChildren().add(table);
+		tirarDados.setLayoutX(700);
+		tirarDados.setLayoutY(500);
 		this.getChildren().add(tirarDados);
 		
-		finalizarTurno.setLayoutX(370);
-		finalizarTurno.setLayoutY(450);
+		finalizarTurno.setLayoutX(65);
+		finalizarTurno.setLayoutY(350);
 		this.getChildren().add(finalizarTurno);
 
 		
-		comprarPropiedad.setLayoutX(350);
-		comprarPropiedad.setLayoutY(500);
+		comprarPropiedad.setLayoutX(200);
+		comprarPropiedad.setLayoutY(350);
 		this.getChildren().add(comprarPropiedad);
 		
 		J1.asignarPosicion(list.get(0).getPosX(), list.get(0).getPosY());
@@ -98,7 +118,7 @@ public class TableroDeJuego extends Parent{
 
        	
        	
-       	
+       	//Button tirar dados
        	tirarDados.setOnMouseClicked(e ->{
 	      
 	          	int numeroDeCasilla = jugadorGenerico.getNumeroCasilla();
@@ -129,22 +149,23 @@ public class TableroDeJuego extends Parent{
 	          	tirarDados.setDisable(true);
 	            });
        	
-       	
-    	comprarPropiedad.setOnMouseClicked(e-> {
-    		jugadorGenerico.getValorJugador().comprar((Propiedad)list.get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
-    		System.out.println(jugadorGenerico.getValorJugador().getCapital());
-			comprarPropiedad.setDisable(true);
+       	//button comprar prop   	
+       	comprarPropiedad.setOnMouseClicked(e-> {
+       		jugadorGenerico.getValorJugador().comprar((Propiedad)list.get(jugadorGenerico.getNumeroCasilla()).getValorCasilla());
+       		System.out.println(jugadorGenerico.getValorJugador().getCapital());
+       			comprarPropiedad.setDisable(true);
 			
 	
-	});
+       		});
        	
+       	//button finalizar turno
        	finalizarTurno.setOnMouseClicked(e-> {x=x+ 1;
-       			jugadorGenerico = listaJugadores.get(x%3);
-       			tirarDados.setDisable(false);
-       			comprarPropiedad.setDisable(false);
+       				jugadorGenerico = listaJugadores.get(x%3);
+       				tirarDados.setDisable(false);
+       				comprarPropiedad.setDisable(false);
        			
        	
-       	});
+       		});
        	
        	
 		

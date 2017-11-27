@@ -13,7 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.stage.StageStyle;
 
 
-public class TableroDeControl extends Parent{
+public class TableroControl extends Parent{
 	
 	
 	TerrenoVista terreno = new TerrenoVista();
@@ -31,7 +31,7 @@ public class TableroDeControl extends Parent{
 	
 	private TableView<String> table = new TableView<String>();
 	
-	public TableroDeControl(){
+	public TableroControl(){
 		
 		
 		

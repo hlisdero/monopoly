@@ -41,8 +41,7 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
       	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(numeroCasilla).getPosY());
       	
       	terreno.getAlgo().getGestorMovimiento().mover(turno.getJugadorGenerico().getValorJugador(), terreno.getList().get(turno.getJugadorGenerico().getNumeroCasilla()).getValorCasilla());
-      	
-      	
+
     }
 	
 	public void alertTirarDados()

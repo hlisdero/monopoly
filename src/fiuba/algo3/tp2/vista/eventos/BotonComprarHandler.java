@@ -11,12 +11,13 @@ import javafx.stage.StageStyle;
 
 public class BotonComprarHandler implements EventHandler<ActionEvent> {
 
-	private JugadorVista jugador;
+	private TurnoJugador turno;
 	private TerrenoVista terreno;
 	private Button source;
+	private JugadorVista jugador;
 	
-	public BotonComprarHandler(JugadorVista jugador, TerrenoVista terreno, Button btn){
-		this.jugador = jugador;
+	public BotonComprarHandler(TurnoJugador turno, TerrenoVista terreno, Button btn){
+		this.turno = turno;
 		this.terreno = terreno;
 		this.source = btn;
 	}
@@ -24,6 +25,7 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 	  @Override
 	    public void handle(ActionEvent actionEvent) {
 		    
+		  	jugador = turno.getJugadorGenerico();
   			
   			if(jugador.getValorJugador().equals(((Propiedad) jugador.getValorJugador().getCasilla()).getPropietario()))
   			{

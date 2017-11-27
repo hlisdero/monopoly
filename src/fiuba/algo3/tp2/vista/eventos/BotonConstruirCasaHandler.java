@@ -25,5 +25,7 @@ public class BotonConstruirCasaHandler implements EventHandler<ActionEvent>{
 		} catch (ConstruirCasaInvalidoException e) {
 			e.printStackTrace();
 		}
+		 
+		 terreno.crearCasaVista(terreno.getList().get(jugador.getJugadorGenerico().getNumeroCasilla()).getPosX(), terreno.getList().get(jugador.getJugadorGenerico().getNumeroCasilla()).getPosY());
 	}
 }

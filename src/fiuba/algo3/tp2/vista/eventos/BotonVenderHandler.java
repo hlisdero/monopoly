@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.vista.eventos;
 import fiuba.algo3.tp2.modelo.Propiedad;
 import fiuba.algo3.tp2.vista.JugadorVista;
 import fiuba.algo3.tp2.vista.TerrenoVista;
+import fiuba.algo3.tp2.vista.TurnoJugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -14,11 +15,12 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 	
 	
 	private JugadorVista jugador;
+	private TurnoJugador turno;
 	private TerrenoVista terreno;
 	private Button source;
 	
-	public BotonVenderHandler(JugadorVista jugador, TerrenoVista terreno, Button btn){
-		this.jugador = jugador;
+	public BotonVenderHandler(TurnoJugador turno, TerrenoVista terreno, Button btn){
+		this.turno = turno;
 		this.terreno = terreno;
 		this.source = btn;
 	}
@@ -26,6 +28,8 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 	
 	@Override
 	public void handle(ActionEvent actionEvent){
+		
+		jugador = turno.getJugadorGenerico();
 		
 		if(jugador.getValorJugador().equals(((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPropietario()))
 			{

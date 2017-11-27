@@ -4,10 +4,8 @@ package fiuba.algo3.tp2.vista;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.tp2.vista.eventos.BotonComprarHandler;
-import fiuba.algo3.tp2.vista.eventos.BotonFinalizarTurnoHandler;
-import fiuba.algo3.tp2.vista.eventos.BotonTirarDadosHandler;
-import fiuba.algo3.tp2.vista.eventos.BotonVenderHandler;
+import fiuba.algo3.tp2.vista.eventos.*;
+
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 
@@ -19,6 +17,7 @@ public class TableroControl extends Parent{
 	Button finalizarTurno= new Button("Finalizar turno");
 	Button comprarPropiedad = new Button("Comprar propiedad");
 	Button venderPropiedad = new Button("Vender propiedad");
+	Button construirCasa = new Button("Construir casa");
 	
 	ArrayList<Button> listBotones = new ArrayList<Button>();
 	
@@ -33,18 +32,24 @@ public class TableroControl extends Parent{
 		listBotones.add(comprarPropiedad);
 		listBotones.add(venderPropiedad);
 		listBotones.add(finalizarTurno);
+		listBotones.add(construirCasa);
 		
 		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno, tirarDados);
        	tirarDados.setOnAction(tirarDadosHandler);
        	
-       	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador.getJugadorGenerico(), terreno, comprarPropiedad);
+       	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador, terreno, comprarPropiedad);
     	comprarPropiedad.setOnAction(comprarHandler);
     	
-    	BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador.getJugadorGenerico(), terreno, venderPropiedad);
+    	BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad);
     	venderPropiedad.setOnAction(venderHandler);
 
+    	BotonConstruirCasaHandler casaHandler = new BotonConstruirCasaHandler(turnoJugador, terreno);
+    	construirCasa.setOnAction(casaHandler);
+    	
        	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), listBotones );
        	finalizarTurno.setOnAction(finalizarHandler);
+       	
+       	
        	
        	this.getChildren().addAll(listBotones);
        	this.getChildren().add(datos);
@@ -66,6 +71,9 @@ public class TableroControl extends Parent{
 		
 		venderPropiedad.setLayoutX(1100);
 		venderPropiedad.setLayoutY(850);
+		
+		construirCasa.setLayoutX(1110);
+		construirCasa.setLayoutY(900);
 	}
 
 }

@@ -24,12 +24,12 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 	{
 		this.turno = turno;
 		this.jugador = jugador;
-		this.sizeListaJugador = turno.getListaJugadores().size();
 		this.btns = btns;
 	}
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
+			sizeListaJugador = turno.getListaJugadores().size();
 		    sizeListaJugador += 1;
 			jugador = turno.getListaJugadores().get(sizeListaJugador %3);
 			turno.setJugadorGenerico(jugador);

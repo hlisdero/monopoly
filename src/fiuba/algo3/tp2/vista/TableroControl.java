@@ -64,17 +64,17 @@ public class TableroControl extends Parent{
 	
 	public void setLayoutComponents()
 	{
-		table.setLayoutX(50);
+		table.setLayoutX(180);
 		table.setLayoutY(400);
 		
-		tirarDados.setLayoutX(370);
-		tirarDados.setLayoutY(400);
+		tirarDados.setLayoutX(570);
+		tirarDados.setLayoutY(850);
 
-		finalizarTurno.setLayoutX(370);
-		finalizarTurno.setLayoutY(450);
+		finalizarTurno.setLayoutX(670);
+		finalizarTurno.setLayoutY(850);
 
-		comprarPropiedad.setLayoutX(350);
-		comprarPropiedad.setLayoutY(500);
+		comprarPropiedad.setLayoutX(900);
+		comprarPropiedad.setLayoutY(850);
 	}
 
 }

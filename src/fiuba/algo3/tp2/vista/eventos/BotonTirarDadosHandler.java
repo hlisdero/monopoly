@@ -19,13 +19,15 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 		
 		this.turno = turno;
 		this.terreno = terreno;
-		this.sumaDados = terreno.getAlgo().getGestorTurnos().proximoJugador().tirarDados().getSuma();
-		this.numeroCasilla  = turno.getJugadorGenerico().getNumeroCasilla();
+		
 	}
 	
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
+		
+		this.sumaDados = terreno.getAlgo().getGestorTurnos().proximoJugador().tirarDados().getSuma();
+		this.numeroCasilla  = turno.getJugadorGenerico().getNumeroCasilla();
 		
 		this.alertTirarDados();
    

@@ -39,7 +39,8 @@ public class Propiedad extends Casilla {
 	}
 	
 	public void vender(Jugador jugador) {
+		if(getPropietario().equals(jugador)){
 		this.setPropietario(null);
-		jugador.agregarDinero(getPrecioVenta());
+		jugador.agregarDinero(getPrecioVenta());}
 	}
 }

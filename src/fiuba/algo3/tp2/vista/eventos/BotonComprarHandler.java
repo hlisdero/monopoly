@@ -35,8 +35,6 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 	  			this.alertComprarPropiedad();
 	  			source.setDisable(true);
   			}
-  			
-  			
 	    }
 	  
 		public void alertComprarPropiedad()

@@ -37,18 +37,14 @@ public class TableroControl extends Parent{
 		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno, tirarDados);
        	tirarDados.setOnAction(tirarDadosHandler);
        	
-       	
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador.getJugadorGenerico(), terreno, comprarPropiedad);
     	comprarPropiedad.setOnAction(comprarHandler);
-    	//comprarPropiedad.setDisable(true);	
     	
     	BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador.getJugadorGenerico(), terreno, venderPropiedad);
     	venderPropiedad.setOnAction(venderHandler);
 
        	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), listBotones );
        	finalizarTurno.setOnAction(finalizarHandler);
-		//tirarDados.setDisable(false);
-		//comprarPropiedad.setDisable(false);
        	
        	this.getChildren().addAll(listBotones);
        	this.getChildren().add(datos);

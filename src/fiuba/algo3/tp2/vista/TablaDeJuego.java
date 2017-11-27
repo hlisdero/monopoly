@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.tp2.controlador.AlgoPoly;
 import javafx.scene.Parent;
+import javafx.scene.image.ImageView;
 
 
 
@@ -38,6 +39,15 @@ public class TablaDeJuego extends Parent{
 		list.add(new CasillaVista(1168,600,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(18)));
 		list.add(new CasillaVista(1168,667,132,67,algo.getGestorMovimiento().getTablero().getCasillas().get(19)));
 		
+		
+		
+		ImageView image = new ImageView ("File:images/tablero.png ");
+		image.setLayoutX(500);
+		image.setLayoutY(400);
+		image.setFitWidth(800);
+		image.setFitHeight(400);
+		
+		this.getChildren().add(image);
 		
 		for(CasillaVista casilla: list){
 			this.getChildren().addAll(casilla);

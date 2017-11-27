@@ -34,7 +34,7 @@ public class TableroDeControl extends Parent{
 	private int x=listaJugadores.size();
 	private TableView<String> table = new TableView<String>();
 	
-	public TableroDeControl(StackPane root){
+	public TableroDeControl(){
 		
 		
 		listaJugadores.add(J1);
@@ -47,18 +47,19 @@ public class TableroDeControl extends Parent{
 		table.setLayoutX(50);
 		table.setLayoutY(400);
 
-		TableColumn colJugador1 = new TableColumn("Jugador 1");
+		TableColumn<String, String> colJugador1 = new TableColumn<String, String>("Jugador 1");
 		//firstNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
 		colJugador1.setMinWidth(100);
-		TableColumn colJugador2 = new TableColumn("Jugador 2");
+		TableColumn<String, String> colJugador2 = new TableColumn<String, String>("Jugador 2");
 	//	lastNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("lastName"));
 		colJugador2.setMinWidth(100);
-		TableColumn colJugador3 = new TableColumn("Jugador 3");
+		TableColumn<String, String> colJugador3 = new TableColumn<String, String>("Jugador 3");
 	//	phoneCol.setCellValueFactory(new PropertyValueFactory<Person, String>("phone"));
 		colJugador3.setMinWidth(100);
 
 		//table.setItems(data);
 		table.getColumns().addAll(colJugador1, colJugador2, colJugador3);
+		
 		this.getChildren().add(table);
 
 		tirarDados.setLayoutX(370);

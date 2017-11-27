@@ -19,22 +19,17 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 		
 		this.turno = turno;
 		this.terreno = terreno;
+		this.sumaDados = terreno.getAlgo().getGestorTurnos().proximoJugador().tirarDados().getSuma();
+		this.numeroCasilla  = turno.getJugadorGenerico().getNumeroCasilla();
 	}
 	
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
 		
-		
-		numeroCasilla = turno.getJugadorGenerico().getNumeroCasilla();
-  
-		sumaDados = terreno.getAlgo().getGestorTurnos().proximoJugador().tirarDados().getSuma();
 		this.alertTirarDados();
-      	System.out.println(sumaDados);
-      	numeroCasilla += sumaDados;
-
-      	if(numeroCasilla > terreno.getList().size()){numeroCasilla -= terreno.getList().size() + 1;}
-      	
+   
+      	numeroCasilla = this.parseNumeroCasilla(numeroCasilla + sumaDados);
       	turno.getJugadorGenerico().setNumeroCasilla(numeroCasilla);
       	
       	turno.getJugadorGenerico().setTranslateX(terreno.getList().get(numeroCasilla).getPosX() + turno.getJugadorGenerico().posReferencia());
@@ -43,6 +38,13 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
       	terreno.getAlgo().getGestorMovimiento().mover(turno.getJugadorGenerico().getValorJugador(), terreno.getList().get(turno.getJugadorGenerico().getNumeroCasilla()).getValorCasilla());
 
     }
+	
+	public int parseNumeroCasilla(int numero)
+	{
+		if(numero > terreno.getList().size())
+			{numero -= terreno.getList().size() + 1;}
+		return numero;
+	}
 	
 	public void alertTirarDados()
 	{

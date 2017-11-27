@@ -46,14 +46,8 @@ public class CasillaVista extends Parent{
 		return this.posY;
 		
 	}
-	public double  getWidthX() {
-		return this.sizeX;
-		
-	}
-	public double  getHeightY() {
-		return this.sizeY;
-		
-	}
+	
+	
 	public String getValorCasilla() {
 		return valorCasilla;
 	}

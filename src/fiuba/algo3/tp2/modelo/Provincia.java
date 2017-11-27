@@ -52,13 +52,13 @@ public class Provincia extends Propiedad {
 		this.getPropietario().restarDinero(estadoActual.getPrecioConstruccion());
 	}
 	
-	public void construirHotel(Jugador jugador) throws ConstruirHotelInvalidoException {
+	public void construirHotel() throws ConstruirHotelInvalidoException {
 		if (estadoActual == estadosPosibles.get(2)) {
 			estadoActual = estadosPosibles.get(3);
 		} else {
 			throw new ConstruirHotelInvalidoException();
 		}
-		jugador.restarDinero(estadoActual.getPrecioConstruccion());
+		this.getPropietario().restarDinero(estadoActual.getPrecioConstruccion());
 	}
 	
 	@Override

@@ -60,7 +60,7 @@ public class ProvinciaTest {
 		}
 		
 		try {
-			prop.construirHotel(jugador1);
+			prop.construirHotel();
 		} catch (ConstruirHotelInvalidoException e) {
 			e.printStackTrace();
 		}

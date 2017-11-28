@@ -17,7 +17,7 @@ public class JugadorVista extends Parent{
 	private double capital = 0;
 	
 	public JugadorVista(Jugador valorJugador, int numeroCasilla, int numeroJ){
-		this.numeroDeJugador = numeroJ;;
+		this.numeroDeJugador = numeroJ;
 		this.valorJugador = valorJugador;
 		this.numeroCasilla = numeroCasilla;
 		this.posXEnTablero= (numeroDeJugador-1)*40;

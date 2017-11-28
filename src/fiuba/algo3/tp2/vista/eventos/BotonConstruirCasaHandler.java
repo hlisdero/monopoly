@@ -28,7 +28,7 @@ public class BotonConstruirCasaHandler implements EventHandler<ActionEvent>{
 					.get(jugador.getJugadorGenerico().getNumeroCasilla())
 					.getValorCasilla())
 					.construirCasa();
-			terreno.crearCasaVista(terreno.getList().get(jugador.getJugadorGenerico().getNumeroCasilla()).getPosX(), terreno.getList().get(jugador.getJugadorGenerico().getNumeroCasilla()).getPosY());
+			terreno.crearCasaVista(terreno.getList().get(jugador.getJugadorGenerico().getNumeroCasilla()).getPosX(), terreno.getList().get(jugador.getJugadorGenerico().getNumeroCasilla()).getPosY(),jugador.getJugadorGenerico());
 			this.alertConstruirCasa(true);
 			
 		} catch (ConstruirCasaInvalidoException e) {

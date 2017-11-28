@@ -21,7 +21,7 @@ public class Ventana extends Application {
         
         root.getChildren().addAll(t);
         
-        Scene scene = new Scene(root, 1200, 600);
+        Scene scene = new Scene(root, 1600, 800);
         
         stage.setTitle("AlgoPoly");
         stage.setScene(scene);

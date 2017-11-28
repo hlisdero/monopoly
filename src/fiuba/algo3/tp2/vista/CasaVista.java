@@ -13,15 +13,15 @@ public class CasaVista extends Parent{
 	
 	private static double translacion;
 
-	private ImageView casa = new ImageView("File:images/casa.png");
+	 
 	
-	public CasaVista(double positionX, double positionY){
+	public CasaVista(double positionX, double positionY, JugadorVista jugadorVista){
 		translacion += 10;
 		this.posX = positionX + translacion;
 		this.posY = positionY;
 		this.sizeX = 20;
 		this.sizeY = 20;
-	
+		ImageView casa = new ImageView("File:images/casa"+(jugadorVista.numeroJugador())+".png");
 		casa.setFitWidth(this.sizeX);
 		casa.setFitHeight(this.sizeY);
 		casa.setX(this.posX);

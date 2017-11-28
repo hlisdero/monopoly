@@ -12,12 +12,12 @@ public class JugadorVista extends Parent{
 	private Jugador valorJugador;
 	private int numeroCasilla;
 	ImageView imageJugador;
-	public static int numeroDeJugador = 0;
+	private  int numeroDeJugador = 0;
 	private double posXEnTablero;
+	private double capital = 0;
 	
-	
-	public JugadorVista(Jugador valorJugador, int numeroCasilla){
-		numeroDeJugador += 1;
+	public JugadorVista(Jugador valorJugador, int numeroCasilla, int numeroJ){
+		this.numeroDeJugador = numeroJ;;
 		this.valorJugador = valorJugador;
 		this.numeroCasilla = numeroCasilla;
 		this.posXEnTablero= (numeroDeJugador-1)*40;
@@ -27,6 +27,10 @@ public class JugadorVista extends Parent{
 		imageJugador.setFitHeight(50);
 		
 		this.getChildren().add(imageJugador);
+	}
+	public double getCapital() {
+		capital = this.valorJugador.getCapital();
+		return capital;
 	}
 
 	public int getNumeroCasilla() {
@@ -51,6 +55,9 @@ public class JugadorVista extends Parent{
 	}
 	public double posReferencia() {
 		return this.posXEnTablero;
+	}
+	public int numeroJugador() {
+		return numeroDeJugador;
 	}
 
 

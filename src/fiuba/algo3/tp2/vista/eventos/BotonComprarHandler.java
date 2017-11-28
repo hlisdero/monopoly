@@ -45,9 +45,10 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 		{
 			Alert dialogoAlerta = new Alert(null);
 			dialogoAlerta.setTitle("Comprar propiedad");
-			
+			dialogoAlerta.initStyle(StageStyle.UTILITY);
 			if(valido){
-				
+				dialogoAlerta.setAlertType(AlertType.CONFIRMATION);
+
 				dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
 			}
 			else{
@@ -55,7 +56,7 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 				dialogoAlerta.setContentText("No se puede comprar este propiedad");
 			}
 	    
-	      	dialogoAlerta.initStyle(StageStyle.UTILITY);
+	      	
 	      	dialogoAlerta.showAndWait();
 		}
 		

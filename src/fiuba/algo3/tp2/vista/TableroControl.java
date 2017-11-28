@@ -9,6 +9,7 @@ import fiuba.algo3.tp2.vista.eventos.*;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 
+
 public class TableroControl extends Parent{
 	
 	TerrenoVista terreno = new TerrenoVista();
@@ -22,12 +23,15 @@ public class TableroControl extends Parent{
 	ArrayList<Button> listBotones = new ArrayList<Button>();
 	
 	private TurnoJugador turnoJugador = new TurnoJugador();
+	
 
 
 	public TableroControl(){
 
 		this.setLayoutComponents();
+		
 
+		
 		listBotones.add(tirarDados);
 		listBotones.add(comprarPropiedad);
 		listBotones.add(venderPropiedad);
@@ -38,13 +42,13 @@ public class TableroControl extends Parent{
        	tirarDados.setOnAction(tirarDadosHandler);
        	
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador, terreno, comprarPropiedad);
-    	comprarPropiedad.setOnAction(comprarHandler);
+       	comprarPropiedad.setOnAction(comprarHandler);
     	
-    	BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad);
-    	venderPropiedad.setOnAction(venderHandler);
+    		BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad);
+    		venderPropiedad.setOnAction(venderHandler);
 
-    	BotonConstruirCasaHandler casaHandler = new BotonConstruirCasaHandler(turnoJugador, terreno);
-    	construirCasa.setOnAction(casaHandler);
+    		BotonConstruirCasaHandler casaHandler = new BotonConstruirCasaHandler(turnoJugador, terreno);
+    		construirCasa.setOnAction(casaHandler);
     	
        	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), listBotones );
        	finalizarTurno.setOnAction(finalizarHandler);

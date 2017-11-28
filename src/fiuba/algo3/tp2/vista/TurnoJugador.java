@@ -15,14 +15,14 @@ public class TurnoJugador extends Parent {
 	private JugadorVista J2;
 	private JugadorVista J3;
 	private JugadorVista jugadorGenerico;
-	
+	public int numeroDeJugador=0;
 	
 	
 	public TurnoJugador(){
-
-		J1 = new JugadorVista(tabla.getAlgo().getJugador(), 0);
-		J2 = new JugadorVista(tabla.getAlgo().getJugador(), 0);
-		J3 = new JugadorVista(tabla.getAlgo().getJugador(), 0);
+		numeroDeJugador=+1;
+		J1 = new JugadorVista(tabla.getAlgo().getJugador(), 0,numeroDeJugador);
+		J2 = new JugadorVista(tabla.getAlgo().getJugador(), 0, numeroDeJugador);
+		J3 = new JugadorVista(tabla.getAlgo().getJugador(), 0, numeroDeJugador);
 		
 		
 		
@@ -46,6 +46,7 @@ public class TurnoJugador extends Parent {
 	public JugadorVista getJugadorGenerico() {
 		return jugadorGenerico;
 	}
+	
 
 
 	public void setJugadorGenerico(JugadorVista jugadorGenerico) {

@@ -35,13 +35,7 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
   			}
   			else{
   				jugador.getValorJugador().comprar((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
-  				
-  				
-	  			System.out.println(jugador.getValorJugador().getCapital());
-	  			
-	  			for(JugadorVista j: turno.getListaJugadores()){
-	  			System.out.println("J:"+j.numeroJugador()+" Capital: "+j.getValorJugador().getCapital());
-	  			}
+  				System.out.println(jugador.getValorJugador().getCapital());
 	  			this.alertComprarPropiedad(true);
 	  			source.setDisable(true);
   			}

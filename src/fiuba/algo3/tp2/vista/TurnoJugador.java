@@ -24,8 +24,6 @@ public class TurnoJugador extends Parent {
 		J2 = new JugadorVista(tabla.getAlgo().getJugador(), 0, 2);
 		J3 = new JugadorVista(tabla.getAlgo().getJugador(), 0, 3);
 		
-		
-		
 		listaJugadores = new ArrayList<JugadorVista>();
 		
 		listaJugadores.add(J1);

@@ -10,7 +10,7 @@ import fiuba.algo3.tp2.modelo.Jugador;
 public class AlgoPoly {
 	private GestorMovimiento gestorMovimiento = new GestorMovimiento();
 	private GestorTurnos gestorTurnos = new GestorTurnos(gestorMovimiento.getCasillaInicial());
-	private Jugador jugadorActual = gestorTurnos.proximoJugador();
+	private Jugador jugadorActual;
 	
 	public void mover() {
 		gestorMovimiento.mover(jugadorActual);
@@ -28,6 +28,7 @@ public class AlgoPoly {
 
 
 	public Jugador getJugador() {
+		jugadorActual  = gestorTurnos.proximoJugador();
 		return jugadorActual;
 	}
 

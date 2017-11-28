@@ -31,7 +31,7 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 	@Override
     public void handle(ActionEvent actionEvent) {
 		    sizeListaJugador += 1;
-			jugador = turno.getListaJugadores().get(sizeListaJugador %3);
+			jugador = turno.getListaJugadores().get(sizeListaJugador%3);
 			turno.setJugadorGenerico(jugador);
 			this.alertFinalizarTurno();
 			

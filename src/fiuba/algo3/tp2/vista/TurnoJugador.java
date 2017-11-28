@@ -47,6 +47,11 @@ public class TurnoJugador extends Parent {
 	
 
 
+	public TerrenoVista getTabla() {
+		return tabla;
+	}
+
+
 	public void setJugadorGenerico(JugadorVista jugadorGenerico) {
 		this.jugadorGenerico = jugadorGenerico;
 	}

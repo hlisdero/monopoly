@@ -25,13 +25,19 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
+	
 		
-		
-		terreno.getAlgo().getGestorMovimiento().mover(turno.getJugadorGenerico().getValorJugador());
+		terreno.getAlgo().getGestorMovimiento()
+		.mover(turno.getJugadorGenerico().getValorJugador());
 		int posicionNueva = terreno.getAlgo()
 				.getGestorMovimiento()
 				.getCasillas()
 				.indexOf(turno.getJugadorGenerico().getValorJugador().getCasilla());
+		
+		terreno
+		.getAlgo().getGestorMovimiento()
+		.notificarNuevoTurno(turno.getJugadorGenerico().getValorJugador());
+		
 		
 		this.alertTirarDados(posicionNueva);
 		source.setDisable(true);
@@ -43,16 +49,18 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
       	turno.getJugadorGenerico().setTranslateX(terreno.getList().get(posicionNueva).getPosX() + turno.getJugadorGenerico().posReferencia());
       	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(posicionNueva).getPosY());
       	
-      
+      	
       	System.out.println("Capital: "+turno.getJugadorGenerico().getValorJugador().getCapital());
     }
 	
 	
 	public void alertTirarDados(int sumaDados)
 	{
+		sumaDados -= turno.getJugadorGenerico().getNumeroCasilla();
+		
       	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
       	dialogoAlerta.setTitle("Resultado dados");
-      	dialogoAlerta.setContentText("Numero sacado: " + sumaDados);
+      	dialogoAlerta.setContentText("Numero sacado: " +Math.abs(sumaDados));
       	dialogoAlerta.initStyle(StageStyle.UTILITY);
       	dialogoAlerta.showAndWait();
 	}

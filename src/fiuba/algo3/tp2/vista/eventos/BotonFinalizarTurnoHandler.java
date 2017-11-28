@@ -32,6 +32,8 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
 		    sizeListaJugador += 1;
 			jugador = turno.getListaJugadores().get(sizeListaJugador%3);
+			
+			
 			turno.setJugadorGenerico(jugador);
 			this.alertFinalizarTurno();
 			

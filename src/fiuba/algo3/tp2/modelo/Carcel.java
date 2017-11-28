@@ -19,6 +19,10 @@ public class Carcel extends Casilla implements ContadorTurnos {
 	}
 	
 	public void contarTurno(Jugador jugador) {
+		if(contadorTurnos.get(jugador) == null)
+		{
+			return;
+		}
 		int cantidadTurnos = contadorTurnos.get(jugador);
 		if (cantidadTurnos == TURNOS_NECESARIOS_PARA_SALIR) {
 			contadorTurnos.remove(jugador);

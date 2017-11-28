@@ -41,4 +41,8 @@ public class GestorMovimiento {
 	public Tablero getTablero() {
 		return tablero;
 	}
+
+	public ArrayList<Casilla> getCasillas() {
+		return tablero.getCasillas();
+	}
 }

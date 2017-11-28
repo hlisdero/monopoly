@@ -13,8 +13,6 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 
 	private TurnoJugador turno;
 	private TerrenoVista terreno;
-	private int sumaDados;
-	private int numeroCasilla;
 	Button source;
 	
 	public BotonTirarDadosHandler(TurnoJugador turno, TerrenoVista terreno, Button btn){
@@ -28,29 +26,28 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	@Override
     public void handle(ActionEvent actionEvent) {
 		
-		this.sumaDados = terreno.getAlgo().getGestorTurnos().proximoJugador().tirarDados().getSuma();
-		this.numeroCasilla  = turno.getJugadorGenerico().getNumeroCasilla();
+		int sumaDados = terreno.getAlgo().getJugador().tirarDados().getSuma();
+		int numeroCasilla  = turno.getJugadorGenerico().getNumeroCasilla();
 		
-		this.alertTirarDados();
-   
-      	numeroCasilla = this.parseNumeroCasilla(numeroCasilla + sumaDados);
-      	turno.getJugadorGenerico().setNumeroCasilla(numeroCasilla);
-      	
-      	turno.getJugadorGenerico().setTranslateX(terreno.getList().get(numeroCasilla).getPosX() + turno.getJugadorGenerico().posReferencia());
-      	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(numeroCasilla).getPosY());
-      	
-      	terreno.getAlgo().getGestorMovimiento().mover(turno.getJugadorGenerico().getValorJugador(), terreno.getList().get(turno.getJugadorGenerico().getNumeroCasilla()).getValorCasilla());
-      	source.setDisable(true);
+		this.alertTirarDados(sumaDados);
+		source.setDisable(true);
+		
+		
+	      	numeroCasilla = this.parseNumeroCasilla(numeroCasilla + sumaDados);
+	      	turno.getJugadorGenerico().setNumeroCasilla(numeroCasilla);
+	      	
+	      	turno.getJugadorGenerico().setTranslateX(terreno.getList().get(numeroCasilla).getPosX() + turno.getJugadorGenerico().posReferencia());
+	      	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(numeroCasilla).getPosY());
+	      	
+	      	terreno.getAlgo().mover(sumaDados);
     }
 	
 	public int parseNumeroCasilla(int numero)
 	{
-		if(numero > terreno.getList().size())
-			{numero -= terreno.getList().size() + 1;}
-		return numero;
+		return (numero % terreno.getList().size());
 	}
 	
-	public void alertTirarDados()
+	public void alertTirarDados(int sumaDados)
 	{
       	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
       	dialogoAlerta.setTitle("Resultado dados");

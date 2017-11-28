@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.vista.eventos;
 
+import fiuba.algo3.tp2.modelo.Casilla;
 import fiuba.algo3.tp2.modelo.Propiedad;
 import fiuba.algo3.tp2.vista.*;
 import javafx.event.ActionEvent;
@@ -26,8 +27,9 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 	    public void handle(ActionEvent actionEvent) {
 		    
 		  	jugador = turno.getJugadorGenerico();
+		  	Casilla casilla = jugador.getValorJugador().getCasilla();
   			
-  			if(jugador.getValorJugador().equals(((Propiedad) jugador.getValorJugador().getCasilla()).getPropietario()))
+  			if( casilla instanceof Propiedad && jugador.getValorJugador().equals((((Propiedad) casilla).getPropietario())))
   			{
   				this.alertNoComprarPropiedad();
   			}

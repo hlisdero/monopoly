@@ -20,9 +20,9 @@ public class TurnoJugador extends Parent {
 	
 	public TurnoJugador(){
 
-		J1 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));
-		J2 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));
-		J3 = new JugadorVista(tabla.getAlgo().getGestorTurnos().proximoJugador(), tabla.getAlgo().getGestorMovimiento().getTablero().getCasillas().indexOf(tabla.getAlgo().getGestorMovimiento().getTablero().getCasillaInicial()));
+		J1 = new JugadorVista(tabla.getAlgo().getJugador(), 1);
+		J2 = new JugadorVista(tabla.getAlgo().getJugador(), 1);
+		J3 = new JugadorVista(tabla.getAlgo().getJugador(), 1);
 		
 		
 		

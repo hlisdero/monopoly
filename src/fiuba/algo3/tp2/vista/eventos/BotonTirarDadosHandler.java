@@ -33,13 +33,13 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 		source.setDisable(true);
 		
 		
-	      	numeroCasilla = this.parseNumeroCasilla(numeroCasilla + sumaDados);
-	      	turno.getJugadorGenerico().setNumeroCasilla(numeroCasilla);
-	      	
-	      	turno.getJugadorGenerico().setTranslateX(terreno.getList().get(numeroCasilla).getPosX() + turno.getJugadorGenerico().posReferencia());
-	      	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(numeroCasilla).getPosY());
-	      	
-	      	terreno.getAlgo().mover(sumaDados);
+      	numeroCasilla = this.parseNumeroCasilla(numeroCasilla + sumaDados);
+      	turno.getJugadorGenerico().setNumeroCasilla(numeroCasilla);
+      	
+      	turno.getJugadorGenerico().setTranslateX(terreno.getList().get(numeroCasilla).getPosX() + turno.getJugadorGenerico().posReferencia());
+      	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(numeroCasilla).getPosY());
+      	
+      	terreno.getAlgo().mover(sumaDados);
     }
 	
 	public int parseNumeroCasilla(int numero)

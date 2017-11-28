@@ -67,7 +67,8 @@ public class TerrenoVista extends Parent{
 	
 	public void crearCasaVista(double posX, double posY){
 		CasaVista casa = new CasaVista(posX, posY);
-		this.getChildren().add(casa);
+		CasaVista casa2 = new CasaVista(posX+30, posY);
+		this.getChildren().addAll(casa, casa2);
 		
 	}
 

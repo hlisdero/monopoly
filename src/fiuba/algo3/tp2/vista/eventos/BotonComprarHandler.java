@@ -29,7 +29,7 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 		  	jugador = turno.getJugadorGenerico();
 		  	Casilla casilla = jugador.getValorJugador().getCasilla();
   			
-  			if( casilla instanceof Propiedad && jugador.getValorJugador().equals((((Propiedad) casilla).getPropietario())))
+  			if(((Propiedad) casilla).tienePropietario())
   			{
   				this.alertComprarPropiedad(false);
   			}

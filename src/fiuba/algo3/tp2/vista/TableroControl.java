@@ -19,6 +19,7 @@ public class TableroControl extends Parent{
 	Button comprarPropiedad = new Button("Comprar propiedad");
 	Button venderPropiedad = new Button("Vender propiedad");
 	Button construirCasa = new Button("Construir casa");
+	Button construirHotel = new Button("Construir hotel");
 	
 	ArrayList<Button> listBotones = new ArrayList<Button>();
 	
@@ -37,6 +38,7 @@ public class TableroControl extends Parent{
 		listBotones.add(venderPropiedad);
 		listBotones.add(finalizarTurno);
 		listBotones.add(construirCasa);
+		listBotones.add(construirHotel);
 		
 		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno, tirarDados);
        	tirarDados.setOnAction(tirarDadosHandler);
@@ -44,12 +46,16 @@ public class TableroControl extends Parent{
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador, terreno, comprarPropiedad);
        	comprarPropiedad.setOnAction(comprarHandler);
     	
-    		BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad);
-    		venderPropiedad.setOnAction(venderHandler);
+		BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad);
+		venderPropiedad.setOnAction(venderHandler);
 
-    		BotonConstruirCasaHandler casaHandler = new BotonConstruirCasaHandler(turnoJugador, terreno);
-    		construirCasa.setOnAction(casaHandler);
+		BotonConstruirCasaHandler casaHandler = new BotonConstruirCasaHandler(turnoJugador, terreno);
+		construirCasa.setOnAction(casaHandler);
     	
+		BotonConstruirHotelHandler hotelHandler = new BotonConstruirHotelHandler(turnoJugador, terreno);
+		construirHotel.setOnAction(hotelHandler);
+    	
+		
        	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), listBotones );
        	finalizarTurno.setOnAction(finalizarHandler);
        	
@@ -78,6 +84,9 @@ public class TableroControl extends Parent{
 		
 		construirCasa.setLayoutX(1110);
 		construirCasa.setLayoutY(900);
+		
+		construirHotel.setLayoutX(1110);
+		construirHotel.setLayoutY(950);
 	}
 
 }

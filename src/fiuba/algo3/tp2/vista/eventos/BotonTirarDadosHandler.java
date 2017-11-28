@@ -55,12 +55,10 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	
 	
 	public void alertTirarDados(int sumaDados)
-	{
-		sumaDados -= turno.getJugadorGenerico().getNumeroCasilla();
-		
+	{	
       	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
       	dialogoAlerta.setTitle("Resultado dados");
-      	dialogoAlerta.setContentText("Numero sacado: " +Math.abs(sumaDados));
+      	dialogoAlerta.setContentText("Casilla siguiente: " +turno.getJugadorGenerico().getValorJugador().getCasilla().nombreCasilla());
       	dialogoAlerta.initStyle(StageStyle.UTILITY);
       	dialogoAlerta.showAndWait();
 	}

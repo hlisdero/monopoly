@@ -26,26 +26,27 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	@Override
     public void handle(ActionEvent actionEvent) {
 		
-		int sumaDados = terreno.getAlgo().getJugador().tirarDados().getSuma();
-		int numeroCasilla  = turno.getJugadorGenerico().getNumeroCasilla();
 		
-		this.alertTirarDados(sumaDados);
+		terreno.getAlgo().getGestorMovimiento().mover(turno.getJugadorGenerico().getValorJugador());
+		int posicionNueva = terreno.getAlgo()
+				.getGestorMovimiento()
+				.getCasillas()
+				.indexOf(turno.getJugadorGenerico().getValorJugador().getCasilla());
+		
+		this.alertTirarDados(posicionNueva);
 		source.setDisable(true);
 		
 		
-      	numeroCasilla = this.parseNumeroCasilla(numeroCasilla + sumaDados);
-      	turno.getJugadorGenerico().setNumeroCasilla(numeroCasilla);
+
+      	turno.getJugadorGenerico().setNumeroCasilla(posicionNueva);
       	
-      	turno.getJugadorGenerico().setTranslateX(terreno.getList().get(numeroCasilla).getPosX() + turno.getJugadorGenerico().posReferencia());
-      	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(numeroCasilla).getPosY());
+      	turno.getJugadorGenerico().setTranslateX(terreno.getList().get(posicionNueva).getPosX() + turno.getJugadorGenerico().posReferencia());
+      	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(posicionNueva).getPosY());
       	
-      	terreno.getAlgo().mover(sumaDados);
+      
+      	System.out.println("Capital: "+turno.getJugadorGenerico().getValorJugador().getCapital());
     }
 	
-	public int parseNumeroCasilla(int numero)
-	{
-		return (numero % terreno.getList().size());
-	}
 	
 	public void alertTirarDados(int sumaDados)
 	{

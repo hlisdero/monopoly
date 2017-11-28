@@ -27,6 +27,10 @@ public class AlgoPoly {
 	
 
 
+	public GestorMovimiento getGestorMovimiento() {
+		return gestorMovimiento;
+	}
+
 	public Jugador getJugador() {
 		jugadorActual  = gestorTurnos.proximoJugador();
 		return jugadorActual;

@@ -16,7 +16,7 @@ public class GestorMovimiento {
 	
 	public void notificarNuevoTurno(Jugador jugador) {
 		for (ContadorTurnos elementoANotificar : contadoresTurnos) {
-			elementoANotificar.contarTurno(jugador);;
+			elementoANotificar.contarTurno(jugador);
         }
 	}
 

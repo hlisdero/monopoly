@@ -44,6 +44,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 	{
 		Alert dialogoAlerta = new Alert(null);
       	dialogoAlerta.setTitle("Vender propiedad");
+      	dialogoAlerta.initStyle(StageStyle.UTILITY);
 		
 		if(valido){
 			dialogoAlerta.setAlertType(AlertType.CONFIRMATION);
@@ -54,7 +55,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 			dialogoAlerta.setContentText("No es el propietario de la propiedad !");
 		}
       	
-      	dialogoAlerta.initStyle(StageStyle.UTILITY);
+      	
       	dialogoAlerta.showAndWait();
 	}
 

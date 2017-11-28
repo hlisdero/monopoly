@@ -10,12 +10,14 @@ public class CasaVista extends Parent{
 	private double posY;
 	private double sizeX;
 	private double sizeY;
+	
+	private static double translacion;
 
 	private ImageView casa = new ImageView("File:images/casa.png");
 	
 	public CasaVista(double positionX, double positionY){
-		
-		this.posX = positionX;
+		translacion += 10;
+		this.posX = positionX + translacion;
 		this.posY = positionY;
 		this.sizeX = 20;
 		this.sizeY = 20;

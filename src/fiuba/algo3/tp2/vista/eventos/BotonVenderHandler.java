@@ -34,28 +34,30 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		if(jugador.getValorJugador().equals(((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPropietario()))
 			{
 				jugador.getValorJugador().vender((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
-				this.alertVenderPropiedad();
+				this.alertVenderPropiedad(true);
 				source.setDisable(true);
 			}
-		else this.alertNoVenderPropiedad();
+		else this.alertVenderPropiedad(false);
 	}
 	
-	public void alertVenderPropiedad()
+	public void alertVenderPropiedad(boolean valido)
 	{
-      	Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
-      	dialogoAlerta.setTitle("Comprar propiedad");
-      	dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
+		Alert dialogoAlerta = new Alert(null);
+      	dialogoAlerta.setTitle("Vender propiedad");
+		
+		if(valido){
+			dialogoAlerta.setAlertType(AlertType.CONFIRMATION);
+			dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
+		}
+		else{
+			dialogoAlerta.setAlertType(AlertType.ERROR);
+			dialogoAlerta.setContentText("No es el propietario de la propiedad !");
+		}
+      	
       	dialogoAlerta.initStyle(StageStyle.UTILITY);
       	dialogoAlerta.showAndWait();
 	}
-	
-	public void alertNoVenderPropiedad(){
-		Alert dialogoAlerta = new Alert(AlertType.ERROR);
-      	dialogoAlerta.setTitle("Comprar propiedad");
-      	dialogoAlerta.setContentText("No es el propietario de la propiedad !");
-      	dialogoAlerta.initStyle(StageStyle.UTILITY);
-      	dialogoAlerta.showAndWait();
-	}
+
 	
 
 }

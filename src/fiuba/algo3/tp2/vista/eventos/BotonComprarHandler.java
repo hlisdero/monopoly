@@ -31,30 +31,32 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
   			
   			if( casilla instanceof Propiedad && jugador.getValorJugador().equals((((Propiedad) casilla).getPropietario())))
   			{
-  				this.alertNoComprarPropiedad();
+  				this.alertComprarPropiedad(false);
   			}
   			else{
   				jugador.getValorJugador().comprar((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
 	  			System.out.println(jugador.getValorJugador().getCapital());
-	  			this.alertComprarPropiedad();
+	  			this.alertComprarPropiedad(true);
 	  			source.setDisable(true);
   			}
 	    }
 	  
-		public void alertComprarPropiedad()
+		public void alertComprarPropiedad(boolean valido)
 		{
-	      	Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
-	      	dialogoAlerta.setTitle("Comprar propiedad");
-	      	dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
+			Alert dialogoAlerta = new Alert(null);
+			dialogoAlerta.setTitle("Comprar propiedad");
+			
+			if(valido){
+				
+				dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
+			}
+			else{
+				dialogoAlerta.setAlertType(AlertType.ERROR);
+				dialogoAlerta.setContentText("No se puede comprar este propiedad");
+			}
+	    
 	      	dialogoAlerta.initStyle(StageStyle.UTILITY);
 	      	dialogoAlerta.showAndWait();
 		}
 		
-		public void alertNoComprarPropiedad(){
-			Alert dialogoAlerta = new Alert(AlertType.ERROR);
-	      	dialogoAlerta.setTitle("Comprar propiedad");
-	      	dialogoAlerta.setContentText("No se puede comprar este propiedad");
-	      	dialogoAlerta.initStyle(StageStyle.UTILITY);
-	      	dialogoAlerta.showAndWait();
-		}
 }

@@ -25,14 +25,18 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
-	
+		
+		
 		
 		terreno.getAlgo().getGestorMovimiento()
 		.mover(turno.getJugadorGenerico().getValorJugador());
+		
 		int posicionNueva = terreno.getAlgo()
 				.getGestorMovimiento()
 				.getCasillas()
 				.indexOf(turno.getJugadorGenerico().getValorJugador().getCasilla());
+	
+		
 		
 		terreno
 		.getAlgo().getGestorMovimiento()

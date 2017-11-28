@@ -27,6 +27,7 @@ public class Provincia extends Propiedad {
 		estadosPosibles.add(terreno);
 		estadosPosibles.add(unaCasa);
 		estadoActual = terreno;
+		this.nombreCasilla = nombre;
 	}
 
 	public boolean sePuedeConstruirHotel() {

@@ -35,6 +35,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 			{
 				source.setDisable(false);
 				jugador.getValorJugador().vender((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
+				terreno.venderCasa(terreno.getList().get(jugador.getNumeroCasilla()));
 				this.alertVenderPropiedad(true);
 				source.setDisable(true);
 			}

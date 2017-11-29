@@ -28,7 +28,7 @@ public class BotonConstruirCasaHandler implements EventHandler<ActionEvent>{
 		
 		 try {
 			 	((Provincia)casilla.getValorCasilla()).construirCasa();
-				terreno.crearCasaVista(casilla.getPosX(), casilla.getPosY(),jugadorVista);
+				terreno.crearCasaVista(casilla.getPosX(), casilla.getPosY(),jugadorVista, casilla);
 				this.alertConstruirCasa(true);
 				
 		 	}catch (ConstruirCasaInvalidoException e) {

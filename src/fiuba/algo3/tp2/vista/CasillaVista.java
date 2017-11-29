@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
+import java.util.ArrayList;
+
 import fiuba.algo3.tp2.modelo.Casilla;
 import javafx.scene.Parent;
 import javafx.scene.paint.Color;
@@ -9,6 +11,7 @@ import javafx.scene.shape.Rectangle;
 
 public class CasillaVista extends Parent{
 	
+	private  ArrayList<Parent> listaPropiedades = new ArrayList<Parent>() ;
 	private double posX;
 	private double posY;
 	private double sizeX;
@@ -62,6 +65,17 @@ public class CasillaVista extends Parent{
 	public String getName(){
 		return this.name;
 	}
+	public ArrayList<Parent> removePropiedades() {
+		
+		return this.listaPropiedades;
+						
+		
+	}
+	public void agregarPropiedad(CasaVista propiedad) {
+		this.listaPropiedades.add(propiedad);
+
+	}
+	
 	
 	
 

@@ -65,8 +65,10 @@ public class TerrenoVista extends Parent{
 		
 	}
 	
-	public void crearCasaVista(double posX, double posY, JugadorVista jugadorVista){
+	public void crearCasaVista(double posX, double posY, JugadorVista jugadorVista, CasillaVista casilla){
 		CasaVista casa = new CasaVista(posX, posY,jugadorVista);
+		casilla.agregarPropiedad(casa);
+
 		this.getChildren().addAll(casa);
 	}
 	
@@ -81,6 +83,13 @@ public class TerrenoVista extends Parent{
 
 	public AlgoPoly getAlgo() {
 		return algo;
+	}
+
+
+	public void venderCasa(CasillaVista casilla) {
+		for  (Parent elemento: casilla.removePropiedades()) {
+			this.getChildren().remove(elemento);
+		}			
 	}
 	
 	

@@ -115,8 +115,8 @@ public class TableroControl extends Parent{
 		datosJugador.setStyle("-fx-padding: 15;");
 		
 		
-		barra.setTranslateX(300);
-		barra.setTranslateY(250);
+		barra.setTranslateX(430);
+		barra.setTranslateY(350);
 	}
 	
 	

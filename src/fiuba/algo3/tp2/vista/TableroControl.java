@@ -74,26 +74,33 @@ public class TableroControl extends Parent{
 
 	public void setLayoutComponents()
 	{
-		tirarDados.setLayoutX(570);
+		tirarDados.setLayoutX(500);
 		tirarDados.setLayoutY(850);
+		tirarDados.setStyle("-fx-padding: 50;");
 
-		finalizarTurno.setLayoutX(670);
+		finalizarTurno.setLayoutX(700);
 		finalizarTurno.setLayoutY(850);
+		finalizarTurno.setStyle("-fx-padding: 50;");
 
-		comprarPropiedad.setLayoutX(900);
+		comprarPropiedad.setLayoutX(950);
 		comprarPropiedad.setLayoutY(850);
+		comprarPropiedad.setStyle("-fx-padding: 20;");
 		
-		venderPropiedad.setLayoutX(1100);
+		venderPropiedad.setLayoutX(1150);
 		venderPropiedad.setLayoutY(850);
+		venderPropiedad.setStyle("-fx-padding: 20;");
 		
-		construirCasa.setLayoutX(1110);
-		construirCasa.setLayoutY(900);
+		construirCasa.setLayoutX(970);
+		construirCasa.setLayoutY(920);
+		construirCasa.setStyle("-fx-padding: 15;");
 		
-		construirHotel.setLayoutX(1110);
-		construirHotel.setLayoutY(950);
+		construirHotel.setLayoutX(1170);
+		construirHotel.setLayoutY(920);
+		construirHotel.setStyle("-fx-padding: 15;");
 		
-		pagarFianza.setLayoutX(670);
-		pagarFianza.setLayoutY(900);
+		pagarFianza.setLayoutX(390);
+		pagarFianza.setLayoutY(740);
+		pagarFianza.setStyle("-fx-padding: 15;");
 		
 	}
 

@@ -3,6 +3,8 @@ package fiuba.algo3.tp2.vista.eventos;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.tp2.modelo.Casilla;
+import fiuba.algo3.tp2.modelo.Jugador;
 import fiuba.algo3.tp2.vista.JugadorVista;
 import fiuba.algo3.tp2.vista.TurnoJugador;
 import javafx.event.ActionEvent;
@@ -33,7 +35,7 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 		    sizeListaJugador += 1;
 			jugador = turno.getListaJugadores().get(sizeListaJugador%3);
 			
-			
+	
 			turno.setJugadorGenerico(jugador);
 			this.alertFinalizarTurno();
 			

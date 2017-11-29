@@ -5,6 +5,7 @@ public class Propiedad extends Casilla {
 	private double precio;
 	private Jugador propietario;
 	
+	
 	public Propiedad(double precio){
 		this.precio = precio;
 	}

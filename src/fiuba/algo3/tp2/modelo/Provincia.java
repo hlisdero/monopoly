@@ -62,6 +62,14 @@ public class Provincia extends Propiedad {
 		this.getPropietario().restarDinero(estadoActual.getPrecioConstruccion());
 	}
 	
+	public void vender(Jugador jugador) {
+		if(getPropietario().equals(jugador)){
+			this.setPropietario(null);
+			jugador.agregarDinero(getPrecioVenta());
+			estadoActual = estadosPosibles.get(0);
+		}
+	}
+	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
 		if (tienePropietario() && this.getPropietario() != jugador) {

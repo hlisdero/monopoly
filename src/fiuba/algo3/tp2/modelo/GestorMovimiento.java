@@ -34,8 +34,8 @@ public class GestorMovimiento {
 	}
 	
 	public void mover(Jugador jugador, Casilla casilla) {
-		casilla.aplicarEfecto(jugador);
 		jugador.setCasilla(casilla);	
+		casilla.aplicarEfecto(jugador);
 	}
 	
 	public Tablero getTablero() {

@@ -37,11 +37,8 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	
 		terreno.getAlgo().notificarNuevoTurno(jugador);
 		
-		
 		this.alertTirarDados(posicionNueva);
 		source.setDisable(true);
-		
-		
 
       	turno.getJugadorGenerico().setNumeroCasilla(posicionNueva);
       	

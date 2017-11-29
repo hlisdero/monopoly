@@ -2,6 +2,8 @@ package fiuba.algo3.tp2.vista.eventos;
 
 import fiuba.algo3.tp2.modelo.ConstruirHotelInvalidoException;
 import fiuba.algo3.tp2.modelo.Provincia;
+import fiuba.algo3.tp2.vista.CasillaVista;
+import fiuba.algo3.tp2.vista.JugadorVista;
 import fiuba.algo3.tp2.vista.TerrenoVista;
 import fiuba.algo3.tp2.vista.TurnoJugador;
 import javafx.event.ActionEvent;
@@ -24,7 +26,10 @@ public class BotonConstruirHotelHandler implements EventHandler<ActionEvent>{
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
-		 try {
+		JugadorVista jugadorVista = jugador.getJugadorGenerico();
+		CasillaVista casilla = terreno.getList().get(jugadorVista.getNumeroCasilla());
+ 
+		try {
 			 ((Provincia)terreno.getList()
 						.get(jugador.getJugadorGenerico().getNumeroCasilla())
 						.getValorCasilla())
@@ -33,7 +38,10 @@ public class BotonConstruirHotelHandler implements EventHandler<ActionEvent>{
 						.get(jugador.getJugadorGenerico().getNumeroCasilla())
 						.getPosX(), terreno.getList()
 						.get(jugador.getJugadorGenerico().getNumeroCasilla())
-						.getPosY());
+						.getPosY(),casilla);
+				
+				
+
 				this.alertConstruirHotel(true);
 				
 		} catch (ConstruirHotelInvalidoException e) {

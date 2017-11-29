@@ -72,8 +72,9 @@ public class TerrenoVista extends Parent{
 		this.getChildren().addAll(casa);
 	}
 	
-	public void crearHotelVista(double posX, double posY){
+	public void crearHotelVista(double posX, double posY, CasillaVista casilla){
 		HotelVista hotel = new HotelVista(posX, posY);
+		casilla.agregarPropiedad(hotel);
 		this.getChildren().addAll(hotel);
 	}
 

@@ -6,12 +6,11 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
-import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar{
 
 	
-	 public BarraDeMenu(Stage stage){
+	 public BarraDeMenu(){
 		 
 		 
 		 Menu menuOpcion = new Menu("Menu");

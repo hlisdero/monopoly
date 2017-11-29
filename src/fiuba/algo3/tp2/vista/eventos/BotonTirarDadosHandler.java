@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.vista.eventos;
 
+import fiuba.algo3.tp2.modelo.Casilla;
+import fiuba.algo3.tp2.modelo.Jugador;
 import fiuba.algo3.tp2.vista.TerrenoVista;
 import fiuba.algo3.tp2.vista.TurnoJugador;
 import javafx.event.ActionEvent;
@@ -27,20 +29,13 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
     public void handle(ActionEvent actionEvent) {
 		
 		
+		Jugador jugador = turno.getJugadorGenerico().getValorJugador();
+		terreno.getAlgo().mover(jugador);
 		
-		terreno.getAlgo().getGestorMovimiento()
-		.mover(turno.getJugadorGenerico().getValorJugador());
-		
-		int posicionNueva = terreno.getAlgo()
-				.getGestorMovimiento()
-				.getCasillas()
-				.indexOf(turno.getJugadorGenerico().getValorJugador().getCasilla());
+		Casilla casilla = turno.getJugadorGenerico().getValorJugador().getCasilla();
+		int posicionNueva = terreno.getAlgo().getCasillas().indexOf(casilla);
 	
-		
-		
-		terreno
-		.getAlgo().getGestorMovimiento()
-		.notificarNuevoTurno(turno.getJugadorGenerico().getValorJugador());
+		terreno.getAlgo().notificarNuevoTurno(jugador);
 		
 		
 		this.alertTirarDados(posicionNueva);
@@ -54,7 +49,7 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
       	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(posicionNueva).getPosY());
       	
       	
-      	System.out.println("Capital: "+turno.getJugadorGenerico().getValorJugador().getCapital());
+      	System.out.println("Capital: "+jugador.getCapital());
     }
 	
 	

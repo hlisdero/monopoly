@@ -12,17 +12,18 @@ public class AlgoPoly {
 	private GestorTurnos gestorTurnos = new GestorTurnos(gestorMovimiento.getCasillaInicial());
 	private Jugador jugadorActual;
 	
-	public void mover() {
-		gestorMovimiento.mover(jugadorActual);
+	public void mover(Jugador jugador) {
+		gestorMovimiento.mover(jugador);
 	}
 
 	public void mover(int espacios) {
 		gestorMovimiento.mover(jugadorActual,espacios);
 	}
 	
-	public void proximoJugador() {
+	public Jugador proximoJugador() {
 		jugadorActual = gestorTurnos.proximoJugador();
 		gestorMovimiento.notificarNuevoTurno(jugadorActual);
+		return jugadorActual;
 	}
 	
 
@@ -38,6 +39,11 @@ public class AlgoPoly {
 
 	public ArrayList<Casilla> getCasillas() {
 		return gestorMovimiento.getCasillas();
+	}
+
+	public void notificarNuevoTurno(Jugador jugador) {
+		gestorMovimiento.notificarNuevoTurno(jugador);
+		
 	}
 	
 	

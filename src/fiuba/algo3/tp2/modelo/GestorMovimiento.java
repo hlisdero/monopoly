@@ -29,14 +29,13 @@ public class GestorMovimiento {
 			return;
 		} 
 		Casilla casillaSiguiente = tablero.getCasillaSiguiente(jugador.getCasilla(), posiciones);
-		casillaSiguiente.aplicarEfecto(jugador);
 		jugador.setCasilla(casillaSiguiente);
+		casillaSiguiente.aplicarEfecto(jugador);
 	}
 	
 	public void mover(Jugador jugador, Casilla casilla) {
-		jugador.setCasilla(casilla);	
-		System.out.println("Set casilla carcel");
 		casilla.aplicarEfecto(jugador);
+		jugador.setCasilla(casilla);
 	}
 	
 	public Tablero getTablero() {

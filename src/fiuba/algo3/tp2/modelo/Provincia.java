@@ -6,7 +6,7 @@ public class Provincia extends Propiedad {
 	private ArrayList<MejoraProvincia> estadosPosibles = new ArrayList<MejoraProvincia>();
 	private MejoraProvincia estadoActual;
 	
-	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel) {
+	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel, String nombre) {
 		super(precio);
 		MejoraProvincia terreno = new MejoraProvincia(precioAlquilerTerreno);
 		MejoraProvincia unaCasa = new MejoraProvincia(precioAlquilerUnaCasa, precioConstruirCasa);
@@ -17,15 +17,17 @@ public class Provincia extends Propiedad {
 		estadosPosibles.add(dosCasas);
 		estadosPosibles.add(hotel);
 		estadoActual = terreno;
+		this.nombreCasilla = nombre;
 	}
 	
-	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioAlquilerUnaCasa) {
+	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioAlquilerUnaCasa, String nombre) {
 		super(precio);
 		MejoraProvincia terreno = new MejoraProvincia(precioAlquilerTerreno);
 		MejoraProvincia unaCasa = new MejoraProvincia(precioAlquilerUnaCasa, precioConstruirCasa);
 		estadosPosibles.add(terreno);
 		estadosPosibles.add(unaCasa);
 		estadoActual = terreno;
+		this.nombreCasilla = nombre;
 	}
 
 	public boolean sePuedeConstruirHotel() {
@@ -51,13 +53,21 @@ public class Provincia extends Propiedad {
 		this.getPropietario().restarDinero(estadoActual.getPrecioConstruccion());
 	}
 	
-	public void construirHotel(Jugador jugador) throws ConstruirHotelInvalidoException {
+	public void construirHotel() throws ConstruirHotelInvalidoException {
 		if (estadoActual == estadosPosibles.get(2)) {
 			estadoActual = estadosPosibles.get(3);
 		} else {
 			throw new ConstruirHotelInvalidoException();
 		}
-		jugador.restarDinero(estadoActual.getPrecioConstruccion());
+		this.getPropietario().restarDinero(estadoActual.getPrecioConstruccion());
+	}
+	
+	public void vender(Jugador jugador) {
+		if(getPropietario().equals(jugador)){
+			this.setPropietario(null);
+			jugador.agregarDinero(getPrecioVenta());
+			estadoActual = estadosPosibles.get(0);
+		}
 	}
 	
 	@Override

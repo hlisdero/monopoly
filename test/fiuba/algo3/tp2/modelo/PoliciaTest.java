@@ -8,23 +8,25 @@ public class PoliciaTest {
 
 	@Test
 	public void nuevaPoliciaNoEsNull() {
-		assertNotNull(new Policia(new Carcel(), new GestorMovimiento()));
+		assertNotNull(new Policia(new Carcel(), new GestorMovimiento(), null));
 	}
 	
 	@Test
 	public void aplicarEfectoMueveJugadorACarcel() {
 		Carcel carcel = new Carcel();
-		Policia policia = new Policia(carcel, new GestorMovimiento());
+		Policia policia = new Policia(carcel, new GestorMovimiento(),null);
 		Jugador jugador = new Jugador(policia);
 		
 		policia.aplicarEfecto(jugador);
 		assertEquals(carcel, jugador.getCasilla());
 	}
 
+
+
 	@Test
 	public void aplicarEfectoProhibeMovimientoJugador() {
 		Carcel carcel = new Carcel();
-		Policia policia = new Policia(carcel, new GestorMovimiento());
+		Policia policia = new Policia(carcel, new GestorMovimiento(),null);
 		Jugador jugador = new Jugador(policia);
 		
 		policia.aplicarEfecto(jugador);

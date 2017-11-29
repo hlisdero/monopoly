@@ -9,18 +9,18 @@ public class ProvinciaTest {
 	
 	@Test
 	public void nuevaProvinciaNoNull() {
-		assertNotNull(new Provincia(0,0,0,0));
+		assertNotNull(new Provincia(0,0,0,0, null));
 	}
 	
 	@Test
 	public void getPrecioDevuelvePrecio() {
-		Provincia prop = new Provincia(1000,0,0,0);
+		Provincia prop = new Provincia(1000,0,0,0, null);
 		assertEquals(1000, prop.getPrecio(), DELTA);
 	}
 		
 	@Test
 	public void aplicarEfectoCobraSiYaTieneUnPropietario() {
-		Provincia prop = new Provincia(1000, 500, 2000, 1000);
+		Provincia prop = new Provincia(1000, 500, 2000, 1000, null);
 		Jugador jugador1 = new Jugador(prop);
 		Jugador jugador2 = new Jugador(prop);
 		
@@ -33,7 +33,7 @@ public class ProvinciaTest {
 	@Test
 	public void construirCasaCapitalJugadorSeReduce() {
 
-		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000);
+		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000, null);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.setPropietario(jugador1);
@@ -48,7 +48,7 @@ public class ProvinciaTest {
 	
 	@Test
 	public void construirHotelCapitalJugadorSeReduce() {
-		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000);
+		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000, null);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.setPropietario(jugador1);
@@ -60,7 +60,7 @@ public class ProvinciaTest {
 		}
 		
 		try {
-			prop.construirHotel(jugador1);
+			prop.construirHotel();
 		} catch (ConstruirHotelInvalidoException e) {
 			e.printStackTrace();
 		}
@@ -69,10 +69,11 @@ public class ProvinciaTest {
 	
 	@Test
 	public void jugadorQuiereVenderPropiedadPropietarioNull() {
-		Provincia prop = new Provincia(1000,500,0,0);
+		Provincia prop = new Provincia(1000,500,0,0, null);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
+		prop.comprar(jugador1);
 		prop.vender(jugador1);
 		
 		assertNull(prop.getPropietario());

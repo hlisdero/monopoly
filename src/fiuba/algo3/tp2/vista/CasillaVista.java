@@ -71,7 +71,7 @@ public class CasillaVista extends Parent{
 						
 		
 	}
-	public void agregarPropiedad(CasaVista propiedad) {
+	public void agregarPropiedad(Parent propiedad) {
 		this.listaPropiedades.add(propiedad);
 
 	}

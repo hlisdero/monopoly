@@ -56,7 +56,7 @@ public class JugadorVista extends Parent{
 	public double posReferencia() {
 		return this.posXEnTablero;
 	}
-	public int numeroJugador() {
+	public int getNumeroJugador() {
 		return numeroDeJugador;
 	}
 

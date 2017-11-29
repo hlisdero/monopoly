@@ -17,7 +17,6 @@ public class TurnoJugador extends Parent {
 	private JugadorVista jugadorGenerico;
 	
 	
-	
 	public TurnoJugador(){
 		
 		J1 = new JugadorVista(tabla.getAlgo().getJugador(), 0,1);

@@ -21,7 +21,7 @@ public class CasaVista extends Parent{
 		this.posY = positionY;
 		this.sizeX = 20;
 		this.sizeY = 20;
-		ImageView casa = new ImageView("File:images/casa"+(jugadorVista.numeroJugador())+".png");
+		ImageView casa = new ImageView("File:images/casa"+(jugadorVista.getNumeroJugador())+".png");
 		casa.setFitWidth(this.sizeX);
 		casa.setFitHeight(this.sizeY);
 		casa.setX(this.posX);

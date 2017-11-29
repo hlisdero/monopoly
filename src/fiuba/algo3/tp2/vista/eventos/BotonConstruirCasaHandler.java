@@ -23,22 +23,21 @@ public class BotonConstruirCasaHandler implements EventHandler<ActionEvent>{
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
+		JugadorVista jugadorVista = jugador.getJugadorGenerico();
+		CasillaVista casilla = terreno.getList().get(jugadorVista.getNumeroCasilla());
+		
 		 try {
-			((Provincia)terreno.getList()
-					.get(jugador.getJugadorGenerico().getNumeroCasilla())
-					.getValorCasilla())
-					.construirCasa();
-			terreno.crearCasaVista(terreno.getList().get(jugador.getJugadorGenerico().getNumeroCasilla()).getPosX(), terreno.getList().get(jugador.getJugadorGenerico().getNumeroCasilla()).getPosY(),jugador.getJugadorGenerico());
-			this.alertConstruirCasa(true);
-			
-		} catch (ConstruirCasaInvalidoException e) {
-			e.printStackTrace();
-			this.alertConstruirCasa(false);
+			 	((Provincia)casilla.getValorCasilla()).construirCasa();
+				terreno.crearCasaVista(casilla.getPosX(), casilla.getPosY(),jugadorVista);
+				this.alertConstruirCasa(true);
+				
+		 	}catch (ConstruirCasaInvalidoException e) {
+		 		e.printStackTrace();
+		 		this.alertConstruirCasa(false);
 		}
 	}
 	
-	public void alertConstruirCasa(boolean valido)
-	{
+	public void alertConstruirCasa(boolean valido){
 		Alert dialogoAlerta = new Alert(null);
 		dialogoAlerta.setTitle("Construir casa");
 		
@@ -52,6 +51,5 @@ public class BotonConstruirCasaHandler implements EventHandler<ActionEvent>{
 		}
 	   	dialogoAlerta.initStyle(StageStyle.UTILITY);
       	dialogoAlerta.showAndWait();
-  
 	}
 }

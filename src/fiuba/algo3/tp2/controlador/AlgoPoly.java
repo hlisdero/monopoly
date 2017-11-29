@@ -16,8 +16,8 @@ public class AlgoPoly {
 		gestorMovimiento.mover(jugador);
 	}
 
-	public void mover(int espacios) {
-		gestorMovimiento.mover(jugadorActual,espacios);
+	public void mover(int espacios,Jugador jugador) {
+		gestorMovimiento.mover(jugador,espacios);
 	}
 	
 	public Jugador proximoJugador() {
@@ -25,7 +25,6 @@ public class AlgoPoly {
 		gestorMovimiento.notificarNuevoTurno(jugadorActual);
 		return jugadorActual;
 	}
-	
 
 	public Jugador getJugador() {
 		jugadorActual  = gestorTurnos.proximoJugador();

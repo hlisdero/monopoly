@@ -32,7 +32,7 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 		Jugador jugador = turno.getJugadorGenerico().getValorJugador();
 		terreno.getAlgo().mover(jugador);
 		
-		Casilla casilla = turno.getJugadorGenerico().getValorJugador().getCasilla();
+		Casilla casilla = jugador.getCasilla();
 		int posicionNueva = terreno.getAlgo().getCasillas().indexOf(casilla);
 	
 		terreno.getAlgo().notificarNuevoTurno(jugador);

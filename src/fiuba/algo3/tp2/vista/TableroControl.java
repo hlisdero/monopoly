@@ -57,7 +57,7 @@ public class TableroControl extends Parent{
 		BotonConstruirHotelHandler hotelHandler = new BotonConstruirHotelHandler(turnoJugador, terreno);
 		construirHotel.setOnAction(hotelHandler);
     	
-		BotonPagarFianzaHandler fianzaHandler = new BotonPagarFianzaHandler(turnoJugador, terreno);
+		BotonPagarFianzaHandler fianzaHandler = new BotonPagarFianzaHandler(turnoJugador);
 		pagarFianza.setOnAction(fianzaHandler);
 		
        	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), listBotones );

@@ -35,6 +35,7 @@ public class GestorMovimiento {
 	
 	public void mover(Jugador jugador, Casilla casilla) {
 		jugador.setCasilla(casilla);	
+		System.out.println("Set casilla carcel");
 		casilla.aplicarEfecto(jugador);
 	}
 	

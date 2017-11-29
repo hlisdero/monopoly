@@ -12,29 +12,24 @@ import javafx.stage.StageStyle;
 public class BotonPagarFianzaHandler  implements EventHandler<ActionEvent>{
 
 	private TurnoJugador turno;
-	private TerrenoVista terreno;
 	
-	public BotonPagarFianzaHandler(TurnoJugador turno, TerrenoVista terreno)
+	public BotonPagarFianzaHandler(TurnoJugador turno)
 	{
 		this.turno = turno;
-		this.terreno = terreno;
 	}
 	
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
 		Jugador jugador = turno.getJugadorGenerico().getValorJugador();
-		
-		
-		
+
 		if(((Carcel) jugador.getCasilla()).estaAdentro(jugador) && ((Carcel) jugador.getCasilla()).puedeSalir(jugador))
 		{
 			((Carcel) jugador.getCasilla()).pagarFianza(jugador);
 			this.alertPagarFianza(true);
 		}
 		else this.alertPagarFianza(false);
-		
-		
+
     }
 	
 	public void alertPagarFianza(boolean valido){

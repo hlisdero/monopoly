@@ -41,6 +41,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 			}
 		else{ this.alertVenderPropiedad(false);
 		}
+		
 	}
 	
 	public void alertVenderPropiedad(boolean valido)

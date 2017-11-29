@@ -19,14 +19,13 @@ public class CasaVista extends Parent{
 		translacion += 10;
 		this.posX = positionX + translacion;
 		this.posY = positionY;
-		this.sizeX = 20;
-		this.sizeY = 20;
+		this.sizeX = 25;
+		this.sizeY = 25;
 		ImageView casa = new ImageView("File:images/casa"+(jugadorVista.getNumeroJugador())+".png");
 		casa.setFitWidth(this.sizeX);
 		casa.setFitHeight(this.sizeY);
 		casa.setX(this.posX);
-		casa.setY(this.posY);
-
+		casa.setY(this.posY + 40);
 		this.getChildren().add(casa);
 	}
 

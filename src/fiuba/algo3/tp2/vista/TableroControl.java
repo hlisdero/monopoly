@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.vista.eventos.*;
 
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-
+import fiuba.algo3.tp2.modelo.Propiedad;
 
 public class TableroControl extends Parent{
 	
@@ -52,9 +52,10 @@ public class TableroControl extends Parent{
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador, terreno, comprarPropiedad);
        	comprarPropiedad.setOnAction(comprarHandler);
        	
-       	
-		BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad);
+      
+ 		BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad);
 		venderPropiedad.setOnAction(venderHandler);
+	
 
 		BotonConstruirCasaHandler casaHandler = new BotonConstruirCasaHandler(turnoJugador, terreno);
 		construirCasa.setOnAction(casaHandler);

@@ -21,7 +21,6 @@ public class BotonDatosJugadorHandler implements EventHandler<ActionEvent>{
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
-		
 		this.alertDatosJugador(turno);
 	}
 	

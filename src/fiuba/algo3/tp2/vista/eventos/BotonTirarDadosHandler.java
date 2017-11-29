@@ -45,7 +45,6 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
       	turno.getJugadorGenerico().setTranslateX(terreno.getList().get(posicionNueva).getPosX() + turno.getJugadorGenerico().posReferencia());
       	turno.getJugadorGenerico().setTranslateY(terreno.getList().get(posicionNueva).getPosY());
       	
-      	System.out.println("Capital: "+jugador.getCapital());
     }
 	
 	
@@ -53,7 +52,9 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	{	
       	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
       	dialogoAlerta.setTitle("Resultado dados");
-      	dialogoAlerta.setContentText("Casilla siguiente: " +turno.getJugadorGenerico().getValorJugador().getCasilla().nombreCasilla());
+      	dialogoAlerta.setContentText(
+      			"Numero sacado: "+turno.getJugadorGenerico().getValorJugador().getResultadoDados().getSuma()+
+      			"\nCasilla siguiente: " +turno.getJugadorGenerico().getValorJugador().getCasilla().nombreCasilla());
       	dialogoAlerta.initStyle(StageStyle.UTILITY);
       	dialogoAlerta.showAndWait();
 	}

@@ -13,7 +13,6 @@ public class Policia extends Casilla {
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
 		gestorMovimiento.mover(jugador, carcel);
-		System.out.println("Aplicar efecto POLICIA");
 	}
 
 }

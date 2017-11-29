@@ -3,8 +3,6 @@ package fiuba.algo3.tp2.vista.eventos;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.tp2.modelo.Casilla;
-import fiuba.algo3.tp2.modelo.Jugador;
 import fiuba.algo3.tp2.vista.JugadorVista;
 import fiuba.algo3.tp2.vista.TurnoJugador;
 import javafx.event.ActionEvent;

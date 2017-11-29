@@ -20,6 +20,7 @@ public class TableroControl extends Parent{
 	Button venderPropiedad = new Button("Vender propiedad");
 	Button construirCasa = new Button("Construir casa");
 	Button construirHotel = new Button("Construir hotel");
+	Button pagarFianza = new Button("Pagar fianza");
 	
 	ArrayList<Button> listBotones = new ArrayList<Button>();
 	
@@ -39,6 +40,7 @@ public class TableroControl extends Parent{
 		listBotones.add(finalizarTurno);
 		listBotones.add(construirCasa);
 		listBotones.add(construirHotel);
+		listBotones.add(pagarFianza);
 		
 		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno, tirarDados);
        	tirarDados.setOnAction(tirarDadosHandler);
@@ -55,6 +57,8 @@ public class TableroControl extends Parent{
 		BotonConstruirHotelHandler hotelHandler = new BotonConstruirHotelHandler(turnoJugador, terreno);
 		construirHotel.setOnAction(hotelHandler);
     	
+		BotonPagarFianzaHandler fianzaHandler = new BotonPagarFianzaHandler(turnoJugador, terreno);
+		pagarFianza.setOnAction(fianzaHandler);
 		
        	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), listBotones );
        	finalizarTurno.setOnAction(finalizarHandler);
@@ -87,6 +91,10 @@ public class TableroControl extends Parent{
 		
 		construirHotel.setLayoutX(1110);
 		construirHotel.setLayoutY(950);
+		
+		pagarFianza.setLayoutX(670);
+		pagarFianza.setLayoutY(900);
+		
 	}
 
 }

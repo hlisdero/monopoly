@@ -8,11 +8,14 @@ import fiuba.algo3.tp2.vista.eventos.*;
 
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 
 public class TableroControl extends Parent{
 	
 	TerrenoVista terreno = new TerrenoVista();
+	
+	BarraDeMenu barra;
 	
 	Button tirarDados= new Button("Tirar dados");
 	Button finalizarTurno= new Button("Finalizar turno");
@@ -29,10 +32,12 @@ public class TableroControl extends Parent{
 	
 
 
-	public TableroControl(){
+	public TableroControl(Stage stage){
 
 		this.setLayoutComponents();
 
+		 barra = new BarraDeMenu(stage);
+		
 		listBotones.add(tirarDados);
 		listBotones.add(comprarPropiedad);
 		listBotones.add(venderPropiedad);
@@ -44,6 +49,7 @@ public class TableroControl extends Parent{
 		
 		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno, tirarDados);
        	tirarDados.setOnAction(tirarDadosHandler);
+       	
        	
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador, terreno, comprarPropiedad);
        	comprarPropiedad.setOnAction(comprarHandler);
@@ -72,6 +78,7 @@ public class TableroControl extends Parent{
        	this.getChildren().addAll(listBotones);
        	this.getChildren().add(terreno);
 		this.getChildren().add(turnoJugador);
+		this.getChildren().add(barra);
 	}
 	
 
@@ -109,6 +116,9 @@ public class TableroControl extends Parent{
 		datosJugador.setLayoutY(500);
 		datosJugador.setStyle("-fx-padding: 15;");
 		
+		
+		barra.setTranslateX(300);
+		barra.setTranslateY(250);
 	}
 	
 	

@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.Parent;
 
 public class TurnoJugador extends Parent {
-	
 
-	
 	
 	private TerrenoVista tabla = new TerrenoVista();
 	private ArrayList<JugadorVista> listaJugadores;

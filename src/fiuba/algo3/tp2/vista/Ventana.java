@@ -17,7 +17,10 @@ public class Ventana extends Application {
   
         StackPane root = new StackPane();
         
-        TableroControl t = new TableroControl();
+        
+        TableroControl t = new TableroControl(stage);
+        
+        
         
         root.getChildren().addAll(t);
         

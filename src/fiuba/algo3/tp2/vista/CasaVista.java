@@ -28,8 +28,6 @@ public class CasaVista extends Parent{
 		casa.setY(this.posY);
 
 		this.getChildren().add(casa);
-		
-		
 	}
 
 }

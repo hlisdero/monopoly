@@ -38,8 +38,9 @@ public class ProvinciaTest {
 		assertFalse(provincia.sePuedeConstruirHotel());
 	}
 	
-	@Test
-	public void sePuedeConstruirHotelDevuelveFalseSiPropietariosDiferentes() throws ConstruirCasaInvalidoException {
+	
+	@Test(expected = ConstruirCasaInvalidoException.class)
+	public void construirCasaLanzaExcepcionSiPropietariosDiferentes() throws ConstruirCasaInvalidoException {
 		Provincia provincia1 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
 		Provincia provincia2 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
 		Jugador jugador1 = new Jugador(provincia1);
@@ -49,10 +50,6 @@ public class ProvinciaTest {
 		provincia1.comprar(jugador1);
 		provincia2.comprar(jugador2);
 		provincia1.construirCasa();
-		provincia1.construirCasa();
-		provincia2.construirCasa();
-		provincia2.construirCasa();
-		assertFalse(provincia1.sePuedeConstruirHotel());
 	}
 	
 	@Test

@@ -14,7 +14,7 @@ public class BotonDatosJugadorHandler implements EventHandler<ActionEvent>{
 
 	
 	private TurnoJugador turno;
-	private String listaPropiedad = null;
+	private String listaPropiedad;
 	
 	public BotonDatosJugadorHandler(TurnoJugador turno)
 	{
@@ -30,6 +30,9 @@ public class BotonDatosJugadorHandler implements EventHandler<ActionEvent>{
 	
 	public void alertDatosJugador(TurnoJugador turno)
 	{	
+		
+		listaPropiedad = "";
+		
 		JugadorVista jugadorVista = turno.getJugadorGenerico();
 		Jugador jugador = turno.getJugadorGenerico().getValorJugador();
       	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
@@ -37,19 +40,16 @@ public class BotonDatosJugadorHandler implements EventHandler<ActionEvent>{
       	
       	for(Propiedad p: jugador.getGestorPropiedades().getPropiedades())
       	{
-      		listaPropiedad.concat(p.getNombreCasilla());
-      		listaPropiedad.concat("\n");
+      		listaPropiedad += p.getNombreCasilla() + "\n";
       	}
       	
       	dialogoAlerta.setTitle("Informaciones jugador numero: "+jugadorVista.getNumeroJugador());
       	
       	dialogoAlerta.setContentText(
       			"Capital del Jugador: "+jugador.getCapital()+
-      			"\nCantidad de propiedad: "+jugador.getCantidadPropiedades()+
-      			"\nPosicion en el terreno: "+jugador.getCasilla().getNombreCasilla()+
-      			"\nLista de propiedad: "+listaPropiedad
-      			
-
+      			"\n\nCantidad de propiedad: "+jugador.getCantidadPropiedades()+
+      			"\n\nPosicion en el terreno: "+jugador.getCasilla().getNombreCasilla()+
+      			"\n\nLista de propiedad: \n"+listaPropiedad
       			);
       	dialogoAlerta.initStyle(StageStyle.UTILITY);
       	dialogoAlerta.showAndWait();

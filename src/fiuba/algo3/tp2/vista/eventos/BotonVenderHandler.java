@@ -27,6 +27,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		this.terreno = terreno;
 		this.source = btn;
 		this.text = text;
+		this.text.setText("1");
 	}
 	
 	
@@ -35,9 +36,11 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		
 		try{
 		this.numero = Integer.valueOf(text.getText());}
-		catch(NumberFormatException e){this.alertVenderPropiedad(false);}
+		catch(NumberFormatException e)
+		{this.alertVenderPropiedad(false);}
 		
-		System.out.println("Numero casilla: "+numero);
+		
+		//System.out.println("Numero casilla: "+numero);
 		jugador = turno.getJugadorGenerico();
 		try{
 			if(jugador.getValorJugador().getGestorPropiedades().getPropiedades().contains(terreno.getCasillasVista().get(numero).getValorCasilla()))
@@ -52,7 +55,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		}
 		}catch(ClassCastException e){
 			this.alertVenderPropiedad(false);
-		}
+		}catch(NullPointerException e){}
 	}
 	
 	public void alertVenderPropiedad(boolean valido)
@@ -67,7 +70,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		}
 		else{
 			dialogoAlerta.setAlertType(AlertType.ERROR);
-			dialogoAlerta.setContentText("No se puede vender la propiedad !");
+			dialogoAlerta.setContentText("No se puede vender la propiedad numero "+numero);
 		}
       	dialogoAlerta.showAndWait();
 	}

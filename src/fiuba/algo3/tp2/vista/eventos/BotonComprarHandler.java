@@ -28,17 +28,21 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 		    
 		  	jugador = turno.getJugadorGenerico();
 		  	Casilla casilla = jugador.getValorJugador().getCasilla();
-  			
-  			if(((Propiedad) casilla).tienePropietario())
-  			{
+  			try{
+	  			if(((Propiedad) casilla).tienePropietario())
+	  			{
+	  				this.alertComprarPropiedad(false);
+	  			}
+	  			else{
+	  				jugador.getValorJugador().comprar((Propiedad)terreno.getCasillaJugadorVista(jugador));
+	  				System.out.println(jugador.getValorJugador().getCapital());
+	  				
+		  			this.alertComprarPropiedad(true);
+		  			source.setDisable(true);
+	  			}}
+  			catch(ClassCastException exc){
+  				source.setDisable(true);
   				this.alertComprarPropiedad(false);
-  			}
-  			else{
-  				jugador.getValorJugador().comprar((Propiedad)terreno.getCasillaJugadorVista(jugador));
-  				System.out.println(jugador.getValorJugador().getCapital());
-  				
-	  			this.alertComprarPropiedad(true);
-	  			source.setDisable(true);
   			}
 	    }
 	  

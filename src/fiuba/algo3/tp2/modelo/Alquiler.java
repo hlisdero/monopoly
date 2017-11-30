@@ -10,6 +10,10 @@ public class Alquiler {
 	public Alquiler(double precioAlquiler, double precioConstruccion) {
 		agregarMejora(precioAlquiler, precioConstruccion);
 	}
+	
+	public Alquiler(double precioAlquiler) {
+		this(precioAlquiler, 0);
+	}
 
 	private void mejorar() {
 		estado++;

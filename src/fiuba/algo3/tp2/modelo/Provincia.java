@@ -7,7 +7,7 @@ public class Provincia extends Propiedad {
 	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa,
 			double precioAlquilerDosCasas, double precioAlquilerHotel, String nombre) {
 		super(precio);
-		alquiler = new Alquiler(precioAlquilerTerreno, 0);
+		alquiler = new Alquiler(precioAlquilerTerreno);
 		alquiler.agregarMejora(precioAlquilerUnaCasa, precioConstruirCasa);
 		alquiler.agregarMejora(precioAlquilerDosCasas, precioConstruirCasa);
 		alquiler.agregarMejora(precioAlquilerHotel, precioConstruirHotel);

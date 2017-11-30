@@ -16,5 +16,28 @@ public class CasillaTest {
 		Casilla casilla = new Casilla();
 		casilla.aplicarEfecto(null);
 	}
+	
+	@Test
+	public void casillaNoTieneNombreInicial() {
+		Casilla casilla = new Casilla();
+		assertNull(casilla.getNombreCasilla());
+	}
+	
+	@Test
+	public void getNombreCasillaDevuelveNombreCasilla() {
+		Casilla casilla = new Casilla();
+		
+		casilla.setNombreCasilla("Salida");
+		assertEquals("Salida", casilla.getNombreCasilla());
+	}
+	
+	@Test
+	public void setNombreCasillaCambiaNombreCasilla() {
+		Casilla casilla = new Casilla();
+		
+		casilla.setNombreCasilla("Salida");
+		casilla.setNombreCasilla("Llegada");
+		assertEquals("Llegada", casilla.getNombreCasilla());
+	}
 
 }

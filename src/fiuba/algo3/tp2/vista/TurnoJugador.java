@@ -17,9 +17,9 @@ public class TurnoJugador extends Parent {
 	
 	public TurnoJugador(){
 		
-		J1 = new JugadorVista(tabla.getAlgo().getJugador(), 0,1);
-		J2 = new JugadorVista(tabla.getAlgo().getJugador(), 0, 2);
-		J3 = new JugadorVista(tabla.getAlgo().getJugador(), 0, 3);
+		J1 = new JugadorVista(tabla.getControlador().getJugador(), 0,1);
+		J2 = new JugadorVista(tabla.getControlador().getJugador(), 0, 2);
+		J3 = new JugadorVista(tabla.getControlador().getJugador(), 0, 3);
 		
 		listaJugadores = new ArrayList<JugadorVista>();
 		
@@ -27,9 +27,9 @@ public class TurnoJugador extends Parent {
 		listaJugadores.add(J2);
 		listaJugadores.add(J3);
 		
-		J1.asignarPosicion(tabla.getList().get(0).getPosX(), tabla.getList().get(0).getPosY());
-		J2.asignarPosicion(tabla.getList().get(0).getPosX(), tabla.getList().get(0).getPosY());
-		J3.asignarPosicion(tabla.getList().get(0).getPosX(), tabla.getList().get(0).getPosY());
+		J1.asignarPosicion(tabla.getCasillasVista().get(0).getPosX(), tabla.getCasillasVista().get(0).getPosY());
+		J2.asignarPosicion(tabla.getCasillasVista().get(0).getPosX(), tabla.getCasillasVista().get(0).getPosY());
+		J3.asignarPosicion(tabla.getCasillasVista().get(0).getPosX(), tabla.getCasillasVista().get(0).getPosY());
 		
 		jugadorGenerico= listaJugadores.get(0);
        	

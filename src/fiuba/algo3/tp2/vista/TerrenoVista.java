@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.tp2.controlador.AlgoPoly;
 import fiuba.algo3.tp2.modelo.Casilla;
+import fiuba.algo3.tp2.modelo.Propiedad;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 
@@ -77,11 +78,11 @@ public class TerrenoVista extends Parent{
 		this.getChildren().addAll(hotel);
 	}
 
-	public ArrayList<CasillaVista> getList() {
+	public ArrayList<CasillaVista> getCasillasVista() {
 		return list;
 	}
 
-	public AlgoPoly getAlgo() {
+	public AlgoPoly getControlador() {
 		return algo;
 	}
 
@@ -90,6 +91,16 @@ public class TerrenoVista extends Parent{
 		for  (Parent elemento: casilla.removePropiedades()) {
 			this.getChildren().remove(elemento);
 		}			
+	}
+
+
+	public Casilla getCasillaJugadorVista(JugadorVista jugador) {
+		return list.get(jugador.getNumeroCasilla()).getValorCasilla();
+	}
+
+
+	public CasillaVista getCasillaVista(int posicionNueva) {
+		return list.get(posicionNueva);
 	}
 	
 	

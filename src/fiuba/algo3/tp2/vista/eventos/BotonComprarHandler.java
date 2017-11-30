@@ -34,7 +34,7 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
   				this.alertComprarPropiedad(false);
   			}
   			else{
-  				jugador.getValorJugador().comprar((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
+  				jugador.getValorJugador().comprar((Propiedad)terreno.getCasillaJugadorVista(jugador));
   				System.out.println(jugador.getValorJugador().getCapital());
   				
 	  			this.alertComprarPropiedad(true);
@@ -48,9 +48,9 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 			dialogoAlerta.setTitle("Comprar propiedad");
 			dialogoAlerta.initStyle(StageStyle.UTILITY);
 			if(valido){
+				double precio = ((Propiedad) terreno.getCasillaJugadorVista(jugador)).getPrecio();
 				dialogoAlerta.setAlertType(AlertType.CONFIRMATION);
-
-				dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
+				dialogoAlerta.setContentText("Precio de la propiedad: "+(precio +"\n\nCapital restante: " +jugador.getValorJugador().getCapital()));
 			}
 			else{
 				dialogoAlerta.setAlertType(AlertType.ERROR);

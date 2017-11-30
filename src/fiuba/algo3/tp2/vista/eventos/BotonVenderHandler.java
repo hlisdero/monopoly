@@ -31,11 +31,11 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		
 		jugador = turno.getJugadorGenerico();
 		
-		if(jugador.getValorJugador().equals(((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPropietario()))
+		if(jugador.getValorJugador().equals(((Propiedad) terreno.getCasillaJugadorVista(jugador)).getPropietario()))
 			{
 				source.setDisable(false);
-				jugador.getValorJugador().vender((Propiedad)terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla());
-				terreno.venderCasa(terreno.getList().get(jugador.getNumeroCasilla()));
+				jugador.getValorJugador().vender((Propiedad)terreno.getCasillaJugadorVista(jugador));
+				terreno.venderCasa(terreno.getCasillaVista((jugador.getNumeroCasilla())));
 				this.alertVenderPropiedad(true);
 				source.setDisable(true);
 			}
@@ -52,7 +52,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		
 		if(valido){
 			dialogoAlerta.setAlertType(AlertType.CONFIRMATION);
-			dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getList().get(jugador.getNumeroCasilla()).getValorCasilla()).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
+			dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getCasillaJugadorVista(jugador)).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
 		}
 		else{
 			dialogoAlerta.setAlertType(AlertType.ERROR);

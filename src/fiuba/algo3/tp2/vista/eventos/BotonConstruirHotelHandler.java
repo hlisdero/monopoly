@@ -27,21 +27,11 @@ public class BotonConstruirHotelHandler implements EventHandler<ActionEvent>{
 	@Override
     public void handle(ActionEvent actionEvent) {
 		JugadorVista jugadorVista = jugador.getJugadorGenerico();
-		CasillaVista casilla = terreno.getList().get(jugadorVista.getNumeroCasilla());
+		CasillaVista casilla = terreno.getCasillasVista().get(jugadorVista.getNumeroCasilla());
  
 		try {
-			 ((Provincia)terreno.getList()
-						.get(jugador.getJugadorGenerico().getNumeroCasilla())
-						.getValorCasilla())
-						.construirHotel();
-				terreno.crearHotelVista(terreno.getList()
-						.get(jugador.getJugadorGenerico().getNumeroCasilla())
-						.getPosX(), terreno.getList()
-						.get(jugador.getJugadorGenerico().getNumeroCasilla())
-						.getPosY(),casilla);
-				
-				
-
+			 ((Provincia)terreno.getCasillaJugadorVista(jugadorVista)).construirHotel();
+				terreno.crearHotelVista(casilla.getPosX(), casilla.getPosY(),casilla);
 				this.alertConstruirHotel(true);
 				
 		} catch (ConstruirHotelInvalidoException e) {

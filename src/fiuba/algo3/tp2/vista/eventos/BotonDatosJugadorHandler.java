@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.vista.eventos;
 
+import fiuba.algo3.tp2.modelo.Jugador;
+import fiuba.algo3.tp2.vista.JugadorVista;
 import fiuba.algo3.tp2.vista.TurnoJugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,13 +29,15 @@ public class BotonDatosJugadorHandler implements EventHandler<ActionEvent>{
 	
 	public void alertDatosJugador(TurnoJugador turno)
 	{	
+		JugadorVista jugadorVista = turno.getJugadorGenerico();
+		Jugador jugador = turno.getJugadorGenerico().getValorJugador();
       	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
-      	dialogoAlerta.setTitle("Informaciones jugador numero: "+turno.getJugadorGenerico().getNumeroJugador());
+      	dialogoAlerta.setTitle("Informaciones jugador numero: "+jugadorVista.getNumeroJugador());
       	
       	dialogoAlerta.setContentText(
-      			"Capital del Jugador: "+turno.getJugadorGenerico().getValorJugador().getCapital()+
-      			"\nCantidad de propiedad: "+turno.getJugadorGenerico().getValorJugador().getCantidadPropiedades()+
-      			"\nPosicion en el terreno: "+turno.getJugadorGenerico().getValorJugador().getCasilla().nombreCasilla()
+      			"Capital del Jugador: "+jugador.getCapital()+
+      			"\nCantidad de propiedad: "+jugador.getCantidadPropiedades()+
+      			"\nPosicion en el terreno: "+jugador.getCasilla().nombreCasilla()
       			
       			);
       	dialogoAlerta.initStyle(StageStyle.UTILITY);

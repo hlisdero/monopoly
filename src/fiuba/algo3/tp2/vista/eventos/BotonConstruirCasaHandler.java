@@ -24,11 +24,11 @@ public class BotonConstruirCasaHandler implements EventHandler<ActionEvent>{
 	@Override
     public void handle(ActionEvent actionEvent) {
 		JugadorVista jugadorVista = jugador.getJugadorGenerico();
-		CasillaVista casilla = terreno.getList().get(jugadorVista.getNumeroCasilla());
+		CasillaVista casillaVista = terreno.getCasillasVista().get(jugadorVista.getNumeroCasilla());
 		
 		 try {
-			 	((Provincia)casilla.getValorCasilla()).construirCasa();
-				terreno.crearCasaVista(casilla.getPosX(), casilla.getPosY(),jugadorVista, casilla);
+			 	((Provincia)casillaVista.getValorCasilla()).construirCasa();
+				terreno.crearCasaVista(casillaVista.getPosX(), casillaVista.getPosY(),jugadorVista, casillaVista);
 				this.alertConstruirCasa(true);
 				
 		 	}catch (ConstruirCasaInvalidoException e) {

@@ -5,7 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class AlquilerTest {
-
+	private static final double DELTA = 1e-15;
+	
 	@Test
 	public void nuevoAlquilerNoNull() {
 		assertNotNull(new Alquiler(0));
@@ -14,6 +15,12 @@ public class AlquilerTest {
 	@Test
 	public void nuevoAlquilerConPrecioConstruccionNoNull() {
 		assertNotNull(new Alquiler(0, 0));
+	}
+	
+	@Test
+	public void getPrecioAlquilerDevuelvePrecioAlquilerInicial() {
+		Alquiler alquiler = new Alquiler(1000);
+		assertEquals(1000, alquiler.getPrecioAlquiler(), DELTA);
 	}
 	
 	@Test
@@ -44,6 +51,37 @@ public class AlquilerTest {
 		alquiler.agregarMejora(100, 100);
 		alquiler.construirCasa();
 		assertEquals(1, alquiler.getCantidadCasas());
+	}
+	
+	@Test
+	public void getPrecioAlquilerDevuelvePrecioAlquilerMejora() throws ConstruirCasaInvalidoException {
+		Alquiler alquiler = new Alquiler(100);
+		
+		alquiler.setCantidadCasasMaxima(1);
+		alquiler.agregarMejora(500, 500);
+		alquiler.construirCasa();
+		assertEquals(500, alquiler.getPrecioAlquiler(), DELTA);
+	}
+	
+	@Test
+	public void getPrecioConstruccionDevuelvePrecioConstruccionMejora() throws ConstruirCasaInvalidoException {
+		Alquiler alquiler = new Alquiler(100);
+		
+		alquiler.setCantidadCasasMaxima(1);
+		alquiler.agregarMejora(500, 700);
+		alquiler.construirCasa();
+		assertEquals(700, alquiler.getPrecioConstruccion(), DELTA);
+	}
+	
+	@Test
+	public void getPrecioAlquilerDevuelvePrecioAlquilerInicialSiResetearMejoras() throws ConstruirCasaInvalidoException {
+		Alquiler alquiler = new Alquiler(100);
+		
+		alquiler.setCantidadCasasMaxima(2);
+		alquiler.agregarMejora(500, 700);
+		alquiler.construirCasa();
+		alquiler.resetearMejoras();
+		assertEquals(100, alquiler.getPrecioAlquiler(), DELTA);
 	}
 	
 	@Test
@@ -115,6 +153,34 @@ public class AlquilerTest {
 		alquiler.construirCasa();
 		alquiler.construirHotel();
 		assertTrue(alquiler.tieneHotel());
+	}
+	
+	@Test
+	public void getPrecioAlquilerDevuelvePrecioAlquilerHotel() throws ConstruirCasaInvalidoException, ConstruirHotelInvalidoException {
+		Alquiler alquiler = new Alquiler(50);
+		
+		alquiler.setCantidadCasasMaxima(2);
+		alquiler.agregarMejora(100, 100);
+		alquiler.agregarMejora(200, 100);
+		alquiler.agregarMejora(400, 700);
+		alquiler.construirCasa();
+		alquiler.construirCasa();
+		alquiler.construirHotel();
+		assertEquals(400, alquiler.getPrecioAlquiler(), DELTA);
+	}
+	
+	@Test
+	public void getPrecioConstruccionDevuelvePrecioConstruccionHotel() throws ConstruirCasaInvalidoException, ConstruirHotelInvalidoException {
+		Alquiler alquiler = new Alquiler(50);
+		
+		alquiler.setCantidadCasasMaxima(2);
+		alquiler.agregarMejora(100, 100);
+		alquiler.agregarMejora(200, 100);
+		alquiler.agregarMejora(400, 700);
+		alquiler.construirCasa();
+		alquiler.construirCasa();
+		alquiler.construirHotel();
+		assertEquals(700, alquiler.getPrecioConstruccion(), DELTA);
 	}
 
 }

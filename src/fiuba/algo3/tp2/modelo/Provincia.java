@@ -39,6 +39,13 @@ public class Provincia extends Propiedad {
 		return alquiler.hayCantidadCasasMaxima();
 	}
 	
+	public boolean sePuedeConstruirCasa() {
+		if (!existeProvinciaHermana()) {
+			return !(hayCantidadCasasMaxima());
+		}
+		return !(hayCantidadCasasMaxima()) && provinciaHermanaMismoPropietario();
+	}
+	
 	public boolean sePuedeConstruirHotel() {
 		if (!existeProvinciaHermana()) {
 			return hayCantidadCasasMaxima();
@@ -55,11 +62,17 @@ public class Provincia extends Propiedad {
 	}
 	
 	public void construirCasa() throws ConstruirCasaInvalidoException {
+		if (!sePuedeConstruirCasa()) {
+			throw new ConstruirCasaInvalidoException();
+		}
 		alquiler.construirCasa();
 		this.getPropietario().restarDinero(alquiler.getPrecioConstruccion());
 	}
 	
 	public void construirHotel() throws ConstruirHotelInvalidoException {
+		if (!sePuedeConstruirHotel()) {
+			throw new ConstruirHotelInvalidoException();
+		}
 		alquiler.construirHotel();
 		this.getPropietario().restarDinero(alquiler.getPrecioConstruccion());
 	}

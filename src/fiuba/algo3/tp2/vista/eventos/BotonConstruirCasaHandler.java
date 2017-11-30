@@ -34,6 +34,11 @@ public class BotonConstruirCasaHandler implements EventHandler<ActionEvent>{
 		 	}catch (ConstruirCasaInvalidoException e) {
 		 		e.printStackTrace();
 		 		this.alertConstruirCasa(false);
+		}	catch(NullPointerException e) {
+			this.alertConstruirCasa(false);
+		}	
+		 	catch(ClassCastException e)	{
+		 		this.alertConstruirCasa(false);
 		}
 	}
 	

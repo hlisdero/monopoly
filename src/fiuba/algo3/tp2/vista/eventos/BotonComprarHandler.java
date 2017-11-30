@@ -41,10 +41,6 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
 		  			this.alertComprarPropiedad(true);
 		  			source.setDisable(true);
 	  			}}
-  			catch(ClassCastException exc){
-  				source.setDisable(true);
-  				this.alertComprarPropiedad(false);
-  			}
   			catch(CapitalInsuficienteException exc){
   				source.setDisable(true);
   				this.alertComprarPropiedad(false);

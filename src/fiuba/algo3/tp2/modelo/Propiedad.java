@@ -5,8 +5,7 @@ public class Propiedad extends Casilla {
 	private double precio;
 	private Jugador propietario;
 	
-	
-	public Propiedad(double precio){
+	public Propiedad(double precio) {
 		this.precio = precio;
 	}
 
@@ -40,7 +39,7 @@ public class Propiedad extends Casilla {
 	}
 	
 	public void vender(Jugador jugador) {
-		if(getPropietario().equals(jugador)){
+		if (getPropietario().equals(jugador)) {
 			this.setPropietario(null);
 			jugador.agregarDinero(getPrecioVenta());
 		}

@@ -3,7 +3,6 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 public class Tablero {
-	private static final int CANTIDAD_CASILLAS = 20;
 	private ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 	
 	public Tablero(GestorMovimiento gestor) {
@@ -77,7 +76,7 @@ public class Tablero {
 	}
 	
 	public Casilla getCasillaSiguiente(Casilla casillaActual, int posiciones) {		
-		int posicionCasillaSiguiente = (casillas.indexOf(casillaActual) + posiciones) % CANTIDAD_CASILLAS;
+		int posicionCasillaSiguiente = (casillas.indexOf(casillaActual) + posiciones) % casillas.size();
 		return casillas.get(posicionCasillaSiguiente);
 	}
 

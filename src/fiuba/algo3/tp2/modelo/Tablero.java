@@ -3,7 +3,6 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 public class Tablero {
-	private static final int CANTIDAD_CASILLAS = 20;
 	private ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 	
 	public Tablero(GestorMovimiento gestor) {
@@ -25,7 +24,7 @@ public class Tablero {
 		/* Creación de las provincias simples, las que tienen una única parte */
 		Provincia santaFe = new Provincia(15000, 1500, 4000, 3500, "SANTA FE");
 		Provincia neuquen = new Provincia(17000, 1800, 4800, 3800, "NEUQUEN");
-		Provincia tucuman = new Provincia(25000, 2500, 7000, 2500, "TUCUMAN");
+		Provincia tucuman = new Provincia(25000, 2500, 7000, 4500, "TUCUMAN");
 		
 		/* Creación de la casilla cárcel */
 		Carcel carcel = new Carcel();
@@ -77,7 +76,7 @@ public class Tablero {
 	}
 	
 	public Casilla getCasillaSiguiente(Casilla casillaActual, int posiciones) {		
-		int posicionCasillaSiguiente = (casillas.indexOf(casillaActual) + posiciones) % CANTIDAD_CASILLAS;
+		int posicionCasillaSiguiente = (casillas.indexOf(casillaActual) + posiciones) % casillas.size();
 		return casillas.get(posicionCasillaSiguiente);
 	}
 

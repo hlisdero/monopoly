@@ -13,7 +13,7 @@ public class MejoraProvinciaTest {
 	}
 
 	@Test
-	public void nuevaMejoraProvinciaConDosParametrosNoNull() {
+	public void nuevaMejoraProvinciaConPrecioConstruccionNoNull() {
 		assertNotNull(new MejoraProvincia(0,0));
 	}
 	

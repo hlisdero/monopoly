@@ -14,18 +14,15 @@ public class MultiplicadorRentaTest {
 
 	@Test
 	public void getMultiplicadorDevuelvePrimerMultiplicadorSiEmpresaHermanaNull() {
-		Empresa empresa = new Empresa(0,0,0, null);
+		Empresa empresa = new Empresa(0,0,0, "");
 		MultiplicadorRenta multiplicador = new MultiplicadorRenta(100, 0);
 		
 		assertEquals(100, multiplicador.getMultiplicador(empresa, null), DELTA);
 	}
-	
 
-
-	
 	@Test
 	public void getMultiplicadorDevuelveSegundoMultiplicadorSiEmpresasMismosPropietarios() {
-		Empresa empresa = new Empresa(0,0,0, null);
+		Empresa empresa = new Empresa(0,0,0, "");
 		empresa.setPropietario(new Jugador(new Casilla()));
 		
 		MultiplicadorRenta multiplicador = new MultiplicadorRenta(100, 500);
@@ -34,8 +31,8 @@ public class MultiplicadorRentaTest {
 	
 	@Test
 	public void getMultiplicadorDevuelvePrimerMultiplicadorSiEmpresasDistintosPropietarios() {
-		Empresa empresa1 = new Empresa(0,0,0, null);
-		Empresa empresa2 = new Empresa(0,0,0, null);
+		Empresa empresa1 = new Empresa(0,0,0, "");
+		Empresa empresa2 = new Empresa(0,0,0, "");
 		MultiplicadorRenta multiplicador = new MultiplicadorRenta(100, 500);
 		
 		empresa1.setPropietario(new Jugador(new Casilla()));

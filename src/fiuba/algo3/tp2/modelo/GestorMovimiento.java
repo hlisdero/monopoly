@@ -32,13 +32,14 @@ public class GestorMovimiento {
 			if (jugador.getResultadoDados().esDoble()) {
 				cantidadDadosDoble++;
 			}
-		} while (cantidadDadosDoble <= CANTIDAD_DADOS_DOBLE_MAXIMA);
+		} while (cantidadDadosDoble <= CANTIDAD_DADOS_DOBLE_MAXIMA && jugador.getResultadoDados().esDoble());
 	}
 	
 	public void mover(Jugador jugador, int posiciones) {
-		if (!jugador.sePuedeMover() && posiciones == 0) {
+		if (!jugador.sePuedeMover() || posiciones == 0) {
 			return;
 		} 
+		
 		Casilla casillaSiguiente = tablero.getCasillaSiguiente(jugador.getCasilla(), posiciones);
 		mover(jugador, casillaSiguiente);
 	}

@@ -38,6 +38,7 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 		int posicionNueva = terreno.getControlador().getCasillas().indexOf(casilla);
 	
 		terreno.getControlador().notificarNuevoTurno(jugador);
+		
 		if (!(jugador.getCasilla() instanceof Propiedad)) {
 			botonComprar.setDisable(true);
 		}
@@ -49,6 +50,7 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
       	turno.getJugadorGenerico().setTranslateY(terreno.getCasillaVista(posicionNueva).getPosY());
       	
     }
+	
 	
 	
 	public void alertTirarDados(){	

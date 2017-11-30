@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.vista.eventos;
 
+import fiuba.algo3.tp2.modelo.CapitalInsuficienteException;
 import fiuba.algo3.tp2.modelo.ConstruirCasaInvalidoException;
 import fiuba.algo3.tp2.modelo.Provincia;
 import fiuba.algo3.tp2.vista.*;
@@ -39,6 +40,9 @@ public class BotonConstruirCasaHandler implements EventHandler<ActionEvent>{
 		 	catch(ClassCastException e)	{
 		 		this.alertConstruirCasa(false);
 		}
+			catch(CapitalInsuficienteException exc){
+				this.alertConstruirCasa(false);
+			}
 	}
 	
 	public void alertConstruirCasa(boolean valido){

@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.vista.eventos;
 
+import fiuba.algo3.tp2.modelo.CapitalInsuficienteException;
 import fiuba.algo3.tp2.modelo.Carcel;
 import fiuba.algo3.tp2.modelo.Jugador;
 import fiuba.algo3.tp2.vista.*;
@@ -22,14 +23,20 @@ public class BotonPagarFianzaHandler  implements EventHandler<ActionEvent>{
 	@Override
     public void handle(ActionEvent actionEvent) {
 		Jugador jugador = turno.getJugadorGenerico().getValorJugador();
-
-		if(((Carcel) jugador.getCasilla()).estaAdentro(jugador) && ((Carcel) jugador.getCasilla()).puedeSalir(jugador))
-		{
-			((Carcel) jugador.getCasilla()).pagarFianza(jugador);
-			this.alertPagarFianza(true);
+		try{
+			if(((Carcel) jugador.getCasilla()).estaAdentro(jugador) && ((Carcel) jugador.getCasilla()).puedeSalir(jugador))
+			{
+				((Carcel) jugador.getCasilla()).pagarFianza(jugador);
+				this.alertPagarFianza(true);
+			}
+			else this.alertPagarFianza(false);
+		}catch(ClassCastException e){
+			this.alertPagarFianza(false);
 		}
-		else this.alertPagarFianza(false);
-
+		catch(CapitalInsuficienteException exc){
+			this.alertPagarFianza(false);
+		}
+		
     }
 	
 	public void alertPagarFianza(boolean valido){

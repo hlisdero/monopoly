@@ -30,16 +30,19 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent actionEvent){
 		
 		jugador = turno.getJugadorGenerico();
-		
-		if(jugador.getValorJugador().equals(((Propiedad) terreno.getCasillaJugadorVista(jugador)).getPropietario()))
-			{
-				source.setDisable(false);
-				jugador.getValorJugador().vender((Propiedad)terreno.getCasillaJugadorVista(jugador));
-				terreno.venderCasa(terreno.getCasillaVista((jugador.getNumeroCasilla())));
-				this.alertVenderPropiedad(true);
-				source.setDisable(true);
-			}
-		else{ this.alertVenderPropiedad(false);
+		try{
+			if(jugador.getValorJugador().equals(((Propiedad) terreno.getCasillaJugadorVista(jugador)).getPropietario()))
+				{
+					source.setDisable(false);
+					jugador.getValorJugador().vender((Propiedad)terreno.getCasillaJugadorVista(jugador));
+					terreno.venderCasa(terreno.getCasillaVista((jugador.getNumeroCasilla())));
+					this.alertVenderPropiedad(true);
+					source.setDisable(true);
+				}
+			else{ this.alertVenderPropiedad(false);
+		}
+		}catch(ClassCastException e){
+			this.alertVenderPropiedad(false);
 		}
 		
 	}
@@ -56,10 +59,8 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		}
 		else{
 			dialogoAlerta.setAlertType(AlertType.ERROR);
-			dialogoAlerta.setContentText("No es el propietario de la propiedad !");
+			dialogoAlerta.setContentText("No se puede vender la propiedad !");
 		}
-      	
-      	
       	dialogoAlerta.showAndWait();
 	}
 

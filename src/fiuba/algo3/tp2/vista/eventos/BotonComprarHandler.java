@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.vista.eventos;
 
+import fiuba.algo3.tp2.modelo.CapitalInsuficienteException;
 import fiuba.algo3.tp2.modelo.Casilla;
 import fiuba.algo3.tp2.modelo.Propiedad;
 import fiuba.algo3.tp2.vista.*;
@@ -44,7 +45,11 @@ public class BotonComprarHandler implements EventHandler<ActionEvent> {
   				source.setDisable(true);
   				this.alertComprarPropiedad(false);
   			}
-	    }
+  			catch(CapitalInsuficienteException exc){
+  				source.setDisable(true);
+  				this.alertComprarPropiedad(false);
+  			}
+	  }
 	  
 		public void alertComprarPropiedad(boolean valido)
 		{

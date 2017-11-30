@@ -25,7 +25,7 @@ public class Tablero {
 		/* Creación de las provincias simples, las que tienen una única parte */
 		Provincia santaFe = new Provincia(15000, 1500, 4000, 3500, "SANTA FE");
 		Provincia neuquen = new Provincia(17000, 1800, 4800, 3800, "NEUQUEN");
-		Provincia tucuman = new Provincia(25000, 2500, 7000, 2500, "TUCUMAN");
+		Provincia tucuman = new Provincia(25000, 2500, 7000, 4500, "TUCUMAN");
 		
 		/* Creación de la casilla cárcel */
 		Carcel carcel = new Carcel();

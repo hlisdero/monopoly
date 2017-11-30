@@ -14,10 +14,6 @@ public class Alquiler {
 	public Alquiler(double precioAlquiler) {
 		this(precioAlquiler, 0);
 	}
-
-	private void mejorar() {
-		estado++;
-	}
 	
 	public void setCantidadCasasMaxima(int cantidadCasasMaxima) {
 		this.cantidadCasasMaxima = cantidadCasasMaxima;
@@ -55,13 +51,13 @@ public class Alquiler {
 		if (estado >= cantidadCasasMaxima) {
 			throw new ConstruirCasaInvalidoException();
 		}
-		mejorar();
+		estado++;
 	}
 	
 	public void construirHotel() throws ConstruirHotelInvalidoException {
 		if (!hayCantidadCasasMaxima()) {
 			throw new ConstruirHotelInvalidoException();
 		}
-		mejorar();
+		estado++;
 	}
 }

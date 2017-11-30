@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Alquiler {
 	private ArrayList<MejoraProvincia> mejoras = new ArrayList<MejoraProvincia>();
-	private int estado = 0;
+	private int estadoMejora = 0;
 	private int cantidadCasasMaxima;
 	
 	public Alquiler(double precioAlquiler, double precioConstruccion) {
@@ -28,36 +28,36 @@ public class Alquiler {
 	}
 	
 	public void resetearMejoras() {
-		estado = 0;
+		estadoMejora = 0;
 	}
 		
 	public double getPrecioAlquiler() {
-		return mejoras.get(estado).getPrecioAlquiler();
+		return mejoras.get(estadoMejora).getPrecioAlquiler();
 	}
 	
 	public double getPrecioConstruccion() {
-		return mejoras.get(estado).getPrecioConstruccion();
+		return mejoras.get(estadoMejora).getPrecioConstruccion();
 	}
 	
 	public int getCantidadCasas() {
-		return (estado <= cantidadCasasMaxima? estado : 0);
+		return (estadoMejora <= cantidadCasasMaxima? estadoMejora : 0);
 	}
 	
 	public boolean tieneHotel() {
-		return (estado > cantidadCasasMaxima);
+		return (estadoMejora > cantidadCasasMaxima);
 	}
 	
 	public void construirCasa() throws ConstruirCasaInvalidoException {
-		if (estado >= cantidadCasasMaxima) {
+		if (estadoMejora >= cantidadCasasMaxima) {
 			throw new ConstruirCasaInvalidoException();
 		}
-		estado++;
+		estadoMejora++;
 	}
 	
 	public void construirHotel() throws ConstruirHotelInvalidoException {
 		if (!hayCantidadCasasMaxima()) {
 			throw new ConstruirHotelInvalidoException();
 		}
-		estado++;
+		estadoMejora++;
 	}
 }

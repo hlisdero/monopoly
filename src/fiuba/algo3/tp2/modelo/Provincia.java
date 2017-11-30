@@ -12,7 +12,7 @@ public class Provincia extends Propiedad {
 		alquiler.agregarMejora(precioAlquilerDosCasas, precioConstruirCasa);
 		alquiler.agregarMejora(precioAlquilerHotel, precioConstruirHotel);
 		alquiler.setCantidadCasasMaxima(2);
-		this.nombreCasilla = nombre;
+		setNombreCasilla(nombre);
 	}
 	
 	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioAlquilerUnaCasa, String nombre) {
@@ -20,7 +20,7 @@ public class Provincia extends Propiedad {
 		alquiler = new Alquiler(precioAlquilerTerreno, 0);
 		alquiler.agregarMejora(precioAlquilerUnaCasa, precioConstruirCasa);
 		alquiler.setCantidadCasasMaxima(1);
-		this.nombreCasilla = nombre;
+		setNombreCasilla(nombre);
 	}
 	
 	public void setProvinciaHermana(Provincia provinciaHermana) {

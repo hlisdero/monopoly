@@ -5,10 +5,10 @@ public class Policia extends Casilla {
 	private GestorMovimiento gestorMovimiento;
 	
 
-	public Policia(Carcel carcel, GestorMovimiento gestorMovimiento, String nombreCasilla) {
+	public Policia(Carcel carcel, GestorMovimiento gestorMovimiento) {
 		this.carcel = carcel;
 		this.gestorMovimiento = gestorMovimiento;
-		this.nombreCasilla = nombreCasilla;
+		setNombreCasilla("Policía");
 	}
 	
 	@Override

@@ -28,7 +28,7 @@ public class CasillaVista extends Parent{
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
 		this.valorCasilla = valorCasilla;
-		this.name = valorCasilla.nombreCasilla();
+		this.name = valorCasilla.getNombreCasilla();
 		
 		casilla = new Rectangle();
 		casilla.setWidth(this.sizeX);

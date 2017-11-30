@@ -7,7 +7,7 @@ public class Empresa extends Propiedad {
 	public Empresa(double precio, double multiplicador, double multiplicadorMejorado, String nombre) {
 		super(precio);
 		this.multiplicador = new MultiplicadorRenta(multiplicador, multiplicadorMejorado);
-		this.nombreCasilla = nombre;
+		setNombreCasilla(nombre);
 	}
 	
 	public void setEmpresaHermana(Empresa empresa) {

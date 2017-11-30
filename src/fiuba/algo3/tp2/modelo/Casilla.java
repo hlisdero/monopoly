@@ -1,11 +1,15 @@
 package fiuba.algo3.tp2.modelo;
 
 public class Casilla {
-	protected String nombreCasilla;
+	private String nombreCasilla;
 	
 	public void aplicarEfecto(Jugador jugador) {}
 	
-	public String nombreCasilla() {
+	public void setNombreCasilla(String nombreCasilla) {
+		this.nombreCasilla = nombreCasilla;
+	}
+	
+	public String getNombreCasilla() {
 		return nombreCasilla;
 	}
 }

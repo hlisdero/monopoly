@@ -9,7 +9,7 @@ public class Carcel extends Casilla implements ContadorTurnos {
 	private HashMap<Jugador, Integer> contadorTurnos = new HashMap<Jugador, Integer>();
 
 	public Carcel() {
-		this.nombreCasilla = "CARCEL";
+		setNombreCasilla("CARCEL");
 	}
 	
 	@Override

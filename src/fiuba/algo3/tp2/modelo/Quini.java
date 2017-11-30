@@ -7,7 +7,7 @@ public class Quini extends Casilla {
 	private PremioQuini premio = new PremioQuini();
 	
 	public Quini(){
-		this.nombreCasilla = "Quini";
+		setNombreCasilla("Quini");
 	}
 	
 	@Override

@@ -4,7 +4,7 @@ public class Impuesto extends Casilla {
 	private static final double PORCENTAJE_IMPUESTO = 0.10;
 	
 	public Impuesto() {
-		this.nombreCasilla = "Impuesto";
+		setNombreCasilla("Impuesto");
 	}
 	
 	@Override

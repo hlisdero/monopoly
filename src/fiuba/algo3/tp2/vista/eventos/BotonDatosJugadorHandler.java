@@ -37,7 +37,7 @@ public class BotonDatosJugadorHandler implements EventHandler<ActionEvent>{
       	dialogoAlerta.setContentText(
       			"Capital del Jugador: "+jugador.getCapital()+
       			"\nCantidad de propiedad: "+jugador.getCantidadPropiedades()+
-      			"\nPosicion en el terreno: "+jugador.getCasilla().nombreCasilla()
+      			"\nPosicion en el terreno: "+jugador.getCasilla().getNombreCasilla()
       			
       			);
       	dialogoAlerta.initStyle(StageStyle.UTILITY);

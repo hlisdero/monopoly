@@ -35,26 +35,26 @@ public class Tablero {
 		CasillaMovimientoDinamico retroceso = new CasillaMovimientoDinamico(new Retroceso(), gestor, "RETROCESO");
 		
 		/* Agrego las casillas en orden */
-		casillas.add(new Casilla());							// Salida
-		casillas.add(new Quini());								// Quini 6
-		casillas.add(buenosAiresSur);							// Buenos Aires Zona Sur
-		casillas.add(edesur);									// EDESUR
-		casillas.add(buenosAiresNorte);							// Buenos Aires Zona Norte	
-		casillas.add(carcel);									// Cárcel
-		casillas.add(cordobaSur);								// Córdoba Zona Sur
-		casillas.add(avance);									// Avance Dinámico		
-		casillas.add(subte);									// Subte
-		casillas.add(cordobaNorte);								// Córdoba Zona Norte
-		casillas.add(new Impuesto());							// Impuesto al Lujo
-		casillas.add(santaFe);									// Santa Fe
-		casillas.add(aysa);										// AYSA
-		casillas.add(saltaNorte);								// Salta Zona Norte
-		casillas.add(saltaSur);									// Salta Zona Sur
-		casillas.add(new Policia(carcel, gestor, "POLICIA"));	// Policia
-		casillas.add(trenes);									// Trenes
-		casillas.add(neuquen);									// Neuquén
-		casillas.add(retroceso);								// Retroceso Dinámico
-		casillas.add(tucuman);									// Tucumán
+		casillas.add(new Casilla());					// Salida
+		casillas.add(new Quini());						// Quini 6
+		casillas.add(buenosAiresSur);					// Buenos Aires Zona Sur
+		casillas.add(edesur);							// EDESUR
+		casillas.add(buenosAiresNorte);					// Buenos Aires Zona Norte	
+		casillas.add(carcel);							// Cárcel
+		casillas.add(cordobaSur);						// Córdoba Zona Sur
+		casillas.add(avance);							// Avance Dinámico		
+		casillas.add(subte);							// Subte
+		casillas.add(cordobaNorte);						// Córdoba Zona Norte
+		casillas.add(new Impuesto());					// Impuesto al Lujo
+		casillas.add(santaFe);							// Santa Fe
+		casillas.add(aysa);								// AYSA
+		casillas.add(saltaNorte);						// Salta Zona Norte
+		casillas.add(saltaSur);							// Salta Zona Sur
+		casillas.add(new Policia(carcel, gestor));		// Policia
+		casillas.add(trenes);							// Trenes
+		casillas.add(neuquen);							// Neuquén
+		casillas.add(retroceso);						// Retroceso Dinámico
+		casillas.add(tucuman);							// Tucumán
 
 		/* Configuración de las provincias dobles */
 		buenosAiresSur.setProvinciaHermana(buenosAiresNorte);

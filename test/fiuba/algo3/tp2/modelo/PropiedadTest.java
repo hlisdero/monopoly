@@ -86,6 +86,13 @@ public class PropiedadTest {
 	}
 	
 	@Test
+	public void venderNoHaceNadaSiNoEsPropietario() {
+		Propiedad propiedad = new Propiedad(1000);
+		Jugador jugador = new Jugador(propiedad);
+		propiedad.vender(jugador);
+	}
+	
+	@Test
 	public void venderAgregaPrecioVentaCapitalPropietario() {
 		Propiedad propiedad = new Propiedad(1000);
 		Jugador jugador = new Jugador(propiedad);

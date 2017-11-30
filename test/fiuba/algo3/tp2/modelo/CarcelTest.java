@@ -20,6 +20,15 @@ public class CarcelTest {
 	}
 	
 	@Test
+	public void contarTurnoNoHaceNadaSiJugadorNoEstaAdentro() {
+		Jugador jugador = new Jugador(new Casilla());
+		Carcel carcel = new Carcel();
+		
+		carcel.contarTurno(jugador);
+		assertTrue(jugador.sePuedeMover());
+	}
+	
+	@Test
 	public void aplicarEfectoMeteJugadorEnCarcel() {
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador(carcel);

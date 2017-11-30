@@ -3,14 +3,11 @@ package fiuba.algo3.tp2.modelo;
 public class Empresa extends Propiedad {
 	private Empresa empresaHermana;
 	private MultiplicadorRenta multiplicador;
-	
 
 	public Empresa(double precio, double multiplicador, double multiplicadorMejorado, String nombre) {
-
 		super(precio);
 		this.multiplicador = new MultiplicadorRenta(multiplicador, multiplicadorMejorado);
 		this.nombreCasilla = nombre;
-
 	}
 	
 	public void setEmpresaHermana(Empresa empresa) {

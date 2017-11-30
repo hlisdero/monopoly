@@ -24,6 +24,12 @@ public class AlquilerTest {
 	}
 	
 	@Test
+	public void getPrecioVentaConstruccionInicialDevuelveCero() {
+		Alquiler alquiler = new Alquiler(1000);
+		assertEquals(0, alquiler.getPrecioVentaConstruccion(), DELTA);
+	}
+	
+	@Test
 	public void getCantidadCasasInicialDevuelveCero() {
 		Alquiler alquiler = new Alquiler(0);
 		assertEquals(0, alquiler.getCantidadCasas());
@@ -71,6 +77,16 @@ public class AlquilerTest {
 		alquiler.agregarMejora(500, 700);
 		alquiler.construirCasa();
 		assertEquals(700, alquiler.getPrecioConstruccion(), DELTA);
+	}
+	
+	@Test
+	public void getPrecioVentaConstruccionDevuelvePrecioConstruccionMenosComision() throws ConstruirCasaInvalidoException {
+		Alquiler alquiler = new Alquiler(1000);
+		
+		alquiler.setCantidadCasasMaxima(1);
+		alquiler.agregarMejora(500, 1000);
+		alquiler.construirCasa();
+		assertEquals(850, alquiler.getPrecioVentaConstruccion(), DELTA);
 	}
 	
 	@Test
@@ -153,6 +169,20 @@ public class AlquilerTest {
 		alquiler.construirCasa();
 		alquiler.construirHotel();
 		assertTrue(alquiler.tieneHotel());
+	}
+	
+	@Test
+	public void getCantidadCasasDevuelveCeroSiConstruyoHotel() throws ConstruirCasaInvalidoException, ConstruirHotelInvalidoException {
+		Alquiler alquiler = new Alquiler(0);
+		
+		alquiler.setCantidadCasasMaxima(2);
+		alquiler.agregarMejora(100, 100);
+		alquiler.agregarMejora(200, 100);
+		alquiler.agregarMejora(400, 250);
+		alquiler.construirCasa();
+		alquiler.construirCasa();
+		alquiler.construirHotel();
+		assertEquals(0, alquiler.getCantidadCasas());
 	}
 	
 	@Test

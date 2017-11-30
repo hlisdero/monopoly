@@ -10,4 +10,11 @@ public class CasillaTest {
 	public void nuevoCasillaNoEsNull() {
 		assertNotNull(new Casilla());
 	}
+	
+	@Test
+	public void aplicarEfectoNoHaceNada() {
+		Casilla casilla = new Casilla();
+		casilla.aplicarEfecto(null);
+	}
+
 }

@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 public class Alquiler {
+	private static final double COMISION_VENTA = 0.15;
 	private ArrayList<MejoraProvincia> mejoras = new ArrayList<MejoraProvincia>();
 	private int estadoMejora = 0;
 	private int cantidadCasasMaxima;
@@ -37,6 +38,10 @@ public class Alquiler {
 	
 	public double getPrecioConstruccion() {
 		return mejoras.get(estadoMejora).getPrecioConstruccion();
+	}
+	
+	public double getPrecioVentaConstruccion() {
+		return mejoras.get(estadoMejora).getPrecioConstruccion() * (1 - COMISION_VENTA);
 	}
 	
 	public int getCantidadCasas() {

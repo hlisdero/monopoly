@@ -7,9 +7,6 @@ public class Carcel extends Casilla implements ContadorTurnos {
 	private static final int TURNOS_NECESARIO_PARA_PAGAR_FIANZA = 2;
 	private static final double PRECIO_FIANZA = 45000;
 	private HashMap<Jugador, Integer> contadorTurnos = new HashMap<Jugador, Integer>();
-	private int cantidadTurnos;
-	
-
 
 	public Carcel() {
 		this.nombreCasilla = "CARCEL";
@@ -22,8 +19,7 @@ public class Carcel extends Casilla implements ContadorTurnos {
 	}
 	
 	public void contarTurno(Jugador jugador) {
-		if(contadorTurnos.get(jugador) == null)
-		{
+		if (!estaAdentro(jugador)) {
 			return;
 		}
 		if (puedeSalir(jugador)) {
@@ -34,11 +30,8 @@ public class Carcel extends Casilla implements ContadorTurnos {
 		}
 	}
 	
-	public boolean puedeSalir(Jugador jugador)
-	{
-		if (getCantidadTurnos(jugador) == TURNOS_NECESARIOS_PARA_SALIR)
-			return true;
-		else return false;
+	public boolean puedeSalir(Jugador jugador) {
+		return (getCantidadTurnos(jugador) == TURNOS_NECESARIOS_PARA_SALIR);
 	}
 	
 	public boolean estaAdentro(Jugador jugador) {
@@ -54,7 +47,6 @@ public class Carcel extends Casilla implements ContadorTurnos {
 	}
 	
 	public int getCantidadTurnos(Jugador jugador) {
-		cantidadTurnos = contadorTurnos.get(jugador);
-		return cantidadTurnos;
+		return contadorTurnos.get(jugador);
 	}
 }

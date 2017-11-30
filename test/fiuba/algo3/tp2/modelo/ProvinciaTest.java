@@ -39,6 +39,69 @@ public class ProvinciaTest {
 	}
 	
 	@Test
+	public void sePuedeConstruirHotelDevuelveFalseSiPropietariosDiferentes() throws ConstruirCasaInvalidoException {
+		Provincia provincia1 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Provincia provincia2 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Jugador jugador1 = new Jugador(provincia1);
+		Jugador jugador2 = new Jugador(provincia2);
+		
+		provincia1.setProvinciaHermana(provincia2);
+		provincia1.comprar(jugador1);
+		provincia2.comprar(jugador2);
+		provincia1.construirCasa();
+		provincia1.construirCasa();
+		provincia2.construirCasa();
+		provincia2.construirCasa();
+		assertFalse(provincia1.sePuedeConstruirHotel());
+	}
+	
+	@Test
+	public void sePuedeConstruirHotelDevuelveFalseSiProvinciaActualNoTieneCantidadMaximaCasas() throws ConstruirCasaInvalidoException {
+		Provincia provincia1 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Provincia provincia2 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Jugador jugador = new Jugador(provincia1);
+		
+		provincia1.setProvinciaHermana(provincia2);
+		provincia1.comprar(jugador);
+		provincia2.comprar(jugador);
+		provincia1.construirCasa();
+		provincia2.construirCasa();
+		provincia2.construirCasa();
+		assertFalse(provincia1.sePuedeConstruirHotel());
+	}
+	
+	@Test
+	public void sePuedeConstruirHotelDevuelveFalseSiProvinciaHermanaNoTieneCantidadMaximaCasas() throws ConstruirCasaInvalidoException {
+		Provincia provincia1 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Provincia provincia2 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Jugador jugador = new Jugador(provincia1);
+		
+		provincia1.setProvinciaHermana(provincia2);
+		provincia1.comprar(jugador);
+		provincia2.comprar(jugador);
+		provincia1.construirCasa();
+		provincia1.construirCasa();
+		provincia2.construirCasa();
+		assertFalse(provincia1.sePuedeConstruirHotel());
+	}
+	
+	@Test
+	public void sePuedeConstruirHotelDevuelveTrueSiProvinciaActualYHermanaCantidadMaximaCasas() throws ConstruirCasaInvalidoException {
+		Provincia provincia1 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Provincia provincia2 = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Jugador jugador = new Jugador(provincia1);
+		
+		provincia1.comprar(jugador);
+		provincia2.comprar(jugador);
+		provincia1.setProvinciaHermana(provincia2);
+		provincia1.construirCasa();
+		provincia1.construirCasa();
+		provincia2.construirCasa();
+		provincia2.construirCasa();
+		assertTrue(provincia1.sePuedeConstruirHotel());
+	}
+	
+	@Test
 	public void getPrecioDevuelvePrecio() {
 		Provincia provincia = new Provincia(1000, 0, 0, 0, "");
 		assertEquals(1000, provincia.getPrecio(), DELTA);
@@ -131,6 +194,61 @@ public class ProvinciaTest {
 		provincia.construirCasa();
 		provincia.construirHotel();
 		assertEquals(92000, jugador.getCapital(), DELTA);
+	}
+	
+	@Test
+	public void tieneHotelDevuelveTrueSiTieneHotel() throws ConstruirCasaInvalidoException, ConstruirHotelInvalidoException {
+		Provincia provincia = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Jugador jugador = new Jugador(provincia);
+		
+		provincia.comprar(jugador);
+		provincia.construirCasa();
+		provincia.construirCasa();
+		provincia.construirHotel();
+		assertTrue(provincia.tieneHotel());
+	}
+	
+	@Test
+	public void venderNoHaceNadaSiNoEsPropietario() {
+		Provincia provincia = new Provincia(0, 0, 0, 0, "");
+		Jugador jugador = new Jugador(provincia);
+		provincia.vender(jugador);
+	}
+
+	@Test
+	public void venderCambiaPropietario() {
+		Provincia provincia = new Provincia(0, 0, 0, 0, "");
+		Jugador jugador = new Jugador(provincia);
+		
+		provincia.comprar(jugador);
+		provincia.vender(jugador);
+		assertFalse(provincia.tienePropietario());
+	}
+	
+	@Test
+	public void venderConConstruccionesAgregaPrecioVentaCapitalPropietario() throws ConstruirCasaInvalidoException, ConstruirHotelInvalidoException {
+		Provincia provincia = new Provincia(0, 0, 2500, 5000, 0, 0, 0, "");
+		Jugador jugador = new Jugador(provincia);
+		
+		provincia.comprar(jugador);
+		provincia.construirCasa();
+		provincia.construirCasa();
+		provincia.construirHotel();
+		provincia.vender(jugador);
+		assertEquals(90000 + 5000*0.85, jugador.getCapital(), DELTA);
+	}
+
+	@Test
+	public void venderReseteaMejoras() throws ConstruirCasaInvalidoException, ConstruirHotelInvalidoException {
+		Provincia provincia = new Provincia(0, 0, 0, 0, 0, 0, 0, "");
+		Jugador jugador = new Jugador(provincia);
+		
+		provincia.comprar(jugador);
+		provincia.construirCasa();
+		provincia.construirCasa();
+		provincia.construirHotel();
+		provincia.vender(jugador);
+		assertEquals(0, provincia.getCantidadCasas());
 	}
 	
 }

@@ -31,6 +31,10 @@ public class Provincia extends Propiedad {
 		return provinciaHermana != null;
 	}
 	
+	public boolean provinciaHermanaMismoPropietario() {
+		return this.getPropietario() == provinciaHermana.getPropietario();
+	}
+	
 	public boolean hayCantidadCasasMaxima() {
 		return alquiler.hayCantidadCasasMaxima();
 	}
@@ -39,14 +43,14 @@ public class Provincia extends Propiedad {
 		if (!existeProvinciaHermana()) {
 			return hayCantidadCasasMaxima();
 		}
-		return hayCantidadCasasMaxima() && provinciaHermana.hayCantidadCasasMaxima();	
+		return hayCantidadCasasMaxima() && provinciaHermana.hayCantidadCasasMaxima() && provinciaHermanaMismoPropietario();	
 	}
 
 	public int getCantidadCasas() {
 		return alquiler.getCantidadCasas();
 	}
 	
-	public boolean tieneHotel(Casilla prop) {
+	public boolean tieneHotel() {
 		return alquiler.tieneHotel();
 	}
 	
@@ -60,8 +64,14 @@ public class Provincia extends Propiedad {
 		this.getPropietario().restarDinero(alquiler.getPrecioConstruccion());
 	}
 	
+	@Override
+	public double getPrecioVenta() {
+		return super.getPrecioVenta() + alquiler.getPrecioVentaConstruccion();
+	}
+	
+	@Override
 	public void vender(Jugador jugador) {
-		if(getPropietario().equals(jugador)){
+		if (getPropietario() == jugador) {
 			this.setPropietario(null);
 			jugador.agregarDinero(getPrecioVenta());
 			alquiler.resetearMejoras();

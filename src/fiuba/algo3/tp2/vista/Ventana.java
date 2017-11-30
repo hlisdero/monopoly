@@ -29,7 +29,6 @@ public class Ventana extends Application {
         stage.setTitle("AlgoPoly");
         stage.setScene(scene);
         
-        stage.setFullScreen(true);
         stage.show();
     }
 

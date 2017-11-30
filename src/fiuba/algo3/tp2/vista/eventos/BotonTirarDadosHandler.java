@@ -31,15 +31,13 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 		
 		Jugador jugador = turno.getJugadorGenerico().getValorJugador();
 		terreno.getControlador().mover(jugador);
-		
 		Casilla casilla = jugador.getCasilla();
 		int posicionNueva = terreno.getControlador().getCasillas().indexOf(casilla);
 	
 		terreno.getControlador().notificarNuevoTurno(jugador);
-		
-		this.alertTirarDados(posicionNueva);
-		source.setDisable(true);
 
+		source.setDisable(true);
+		this.alertTirarDados();
       	turno.getJugadorGenerico().setNumeroCasilla(posicionNueva);
       	
       	turno.getJugadorGenerico().setTranslateX(terreno.getCasillaVista(posicionNueva).getPosX() + turno.getJugadorGenerico().posReferencia());
@@ -48,9 +46,10 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
     }
 	
 	
-	public void alertTirarDados(int sumaDados){	
+	public void alertTirarDados(){	
 		Jugador jugador = turno.getJugadorGenerico().getValorJugador();
       	Alert dialogoAlerta = new Alert(AlertType.INFORMATION);
+      	
       	dialogoAlerta.setTitle("Resultado dados");
       	dialogoAlerta.setContentText(
       			"Numero sacado: "+jugador.getResultadoDados().getSuma()+"\nCasilla siguiente: " +jugador.getCasilla().getNombreCasilla());

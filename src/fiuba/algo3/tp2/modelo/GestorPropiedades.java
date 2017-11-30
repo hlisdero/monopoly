@@ -24,6 +24,12 @@ public class GestorPropiedades {
 		return propiedades.size();
 	}
 	
+	
+	
+	public ArrayList<Propiedad> getPropiedades() {
+		return propiedades;
+	}
+
 	public boolean esPropietario(Propiedad propiedad) {
 		return propiedades.contains(propiedad);
 	}

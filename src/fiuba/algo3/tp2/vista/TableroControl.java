@@ -8,6 +8,7 @@ import fiuba.algo3.tp2.vista.eventos.*;
 
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class TableroControl extends Parent{
 	
@@ -28,7 +29,8 @@ public class TableroControl extends Parent{
 	
 	private TurnoJugador turnoJugador = new TurnoJugador();
 	
-
+	TextField text = new TextField();
+	
 
 	public TableroControl(){
 
@@ -52,7 +54,7 @@ public class TableroControl extends Parent{
        	comprarPropiedad.setOnAction(comprarHandler);
        	
       
- 		BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad);
+ 		BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad, text);
 		venderPropiedad.setOnAction(venderHandler);
 	
 
@@ -77,6 +79,7 @@ public class TableroControl extends Parent{
        	this.getChildren().add(terreno);
 		this.getChildren().add(turnoJugador);
 		this.getChildren().add(barra);
+		this.getChildren().add(text);
 	}
 	
 
@@ -117,6 +120,9 @@ public class TableroControl extends Parent{
 		
 		barra.setTranslateX(430);
 		barra.setTranslateY(350);
+		
+		text.setLayoutX(1140);
+		text.setLayoutY(820);
 	}
 	
 	

@@ -26,7 +26,7 @@ public class GestorMovimiento {
 	}
 	
 	public void mover(Jugador jugador, int posiciones) {
-		if (!jugador.sePuedeMover()) {
+		if (!jugador.sePuedeMover() && posiciones == 0) {
 			return;
 		} 
 		Casilla casillaSiguiente = tablero.getCasillaSiguiente(jugador.getCasilla(), posiciones);

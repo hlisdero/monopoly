@@ -11,6 +11,8 @@ public class ResultadoDados {
 		}
 		primerDado = primerNumero;
 		segundoDado = segundoNumero;
+		
+		System.out.println("D1: "+primerDado+"  D2: "+segundoDado);
 	}
 	
 	public int getSuma() {

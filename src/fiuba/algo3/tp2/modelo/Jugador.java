@@ -73,4 +73,10 @@ public class Jugador {
 	public int getCantidadPropiedades() {
 		return gestorPropiedades.getCantidadPropiedades();
 	}
+
+	public GestorPropiedades getGestorPropiedades() {
+		return gestorPropiedades;
+	}
+	
+	
 }

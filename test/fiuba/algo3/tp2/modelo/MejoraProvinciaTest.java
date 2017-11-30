@@ -26,7 +26,7 @@ public class MejoraProvinciaTest {
 	@Test
 	public void getPrecioConstruccionDevuelvePrecioConstruccion() {
 		MejoraProvincia mejora = new MejoraProvincia(2500, 5000);
-		assertEquals(5000, mejora.getPrecioAlquiler(), DELTA);
+		assertEquals(5000, mejora.getPrecioConstruccion(), DELTA);
 	}
 
 }

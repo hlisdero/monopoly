@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Alquiler {
 	private ArrayList<MejoraProvincia> mejoras = new ArrayList<MejoraProvincia>();
-	private int cantidadCasasMaxima;
 	private int estado = 0;
+	private int cantidadCasasMaxima;
 	
 	public Alquiler(double precioAlquiler, double precioConstruccion) {
 		agregarMejora(precioAlquiler, precioConstruccion);

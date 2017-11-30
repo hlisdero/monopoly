@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import fiuba.algo3.tp2.controlador.AlgoPoly;
 import fiuba.algo3.tp2.modelo.Casilla;
-import fiuba.algo3.tp2.modelo.Propiedad;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 

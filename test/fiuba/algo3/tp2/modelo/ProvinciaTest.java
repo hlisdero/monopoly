@@ -9,12 +9,12 @@ public class ProvinciaTest {
 	
 	@Test
 	public void nuevaProvinciaNoNull() {
-		assertNotNull(new Provincia(0,0,0,0, null));
+		assertNotNull(new Provincia(0, 0, 0, 0, null));
 	}
 	
 	@Test
 	public void getPrecioDevuelvePrecio() {
-		Provincia prop = new Provincia(1000,0,0,0, null);
+		Provincia prop = new Provincia(1000, 0, 0, 0, null);
 		assertEquals(1000, prop.getPrecio(), DELTA);
 	}
 		
@@ -26,56 +26,39 @@ public class ProvinciaTest {
 		
 		prop.setPropietario(jugador1);
 		prop.aplicarEfecto(jugador2);
-		
 		assertEquals(99500, jugador2.getCapital(), DELTA);
 	}
 	
 	@Test
-	public void construirCasaCapitalJugadorSeReduce() {
-
+	public void construirCasaCapitalJugadorSeReduce() throws ConstruirCasaInvalidoException {
 		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000, null);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.setPropietario(jugador1);
-		try {
-			prop.construirCasa();
-		} catch (ConstruirCasaInvalidoException e) {
-			e.printStackTrace();
-		}
-		
+		prop.construirCasa();	
 		assertEquals(95000, jugador1.getCapital(), DELTA);
 	}
 	
 	@Test
-	public void construirHotelCapitalJugadorSeReduce() {
+	public void construirHotelCapitalJugadorSeReduce() throws ConstruirCasaInvalidoException, ConstruirHotelInvalidoException {
 		Provincia prop = new Provincia(20000, 2000, 5000, 8000, 3000, 3500, 5000, null);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.setPropietario(jugador1);
-		try {
-			prop.construirCasa();
-			prop.construirCasa();
-		} catch (ConstruirCasaInvalidoException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			prop.construirHotel();
-		} catch (ConstruirHotelInvalidoException e) {
-			e.printStackTrace();
-		}
+		prop.construirCasa();
+		prop.construirCasa();
+		prop.construirHotel();
 		assertEquals(82000, jugador1.getCapital(), DELTA);
 	}
 	
 	@Test
-	public void jugadorQuiereVenderPropiedadPropietarioNull() {
+	public void venderPropiedadSeteaPropietarioNull() {
 		Provincia prop = new Provincia(1000,500,0,0, null);
 		Jugador jugador1 = new Jugador(prop);
 		
 		prop.aplicarEfecto(jugador1);
 		prop.comprar(jugador1);
 		prop.vender(jugador1);
-		
 		assertNull(prop.getPropietario());
 	}	
 }

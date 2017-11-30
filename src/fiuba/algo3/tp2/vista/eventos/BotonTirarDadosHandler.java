@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.vista.eventos;
 
 import fiuba.algo3.tp2.modelo.Casilla;
 import fiuba.algo3.tp2.modelo.Jugador;
+import fiuba.algo3.tp2.modelo.Propiedad;
 import fiuba.algo3.tp2.vista.TerrenoVista;
 import fiuba.algo3.tp2.vista.TurnoJugador;
 import javafx.event.ActionEvent;
@@ -16,12 +17,14 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 	private TurnoJugador turno;
 	private TerrenoVista terreno;
 	Button source;
+	private Button botonComprar;
 	
-	public BotonTirarDadosHandler(TurnoJugador turno, TerrenoVista terreno, Button btn){
+	public BotonTirarDadosHandler(TurnoJugador turno, TerrenoVista terreno, Button btn, Button botonComprar){
 		
 		this.turno = turno;
 		this.terreno = terreno;
 		this.source = btn;
+		this.botonComprar = botonComprar;
 	}
 	
 	
@@ -35,7 +38,9 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent>{
 		int posicionNueva = terreno.getControlador().getCasillas().indexOf(casilla);
 	
 		terreno.getControlador().notificarNuevoTurno(jugador);
-
+		if (!(jugador.getCasilla() instanceof Propiedad)) {
+			botonComprar.setDisable(true);
+		}
 		source.setDisable(true);
 		this.alertTirarDados();
       	turno.getJugadorGenerico().setNumeroCasilla(posicionNueva);

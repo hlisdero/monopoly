@@ -45,9 +45,7 @@ public class TableroControl extends Parent{
 		listBotones.add(construirHotel);
 		listBotones.add(pagarFianza);
 		listBotones.add(datosJugador);
-		
-		BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno, tirarDados);
-       	tirarDados.setOnAction(tirarDadosHandler);
+	
        	
        	
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador, terreno, comprarPropiedad);
@@ -72,6 +70,9 @@ public class TableroControl extends Parent{
 		
        	BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(turnoJugador, turnoJugador.getJugadorGenerico(), listBotones );
        	finalizarTurno.setOnAction(finalizarHandler);
+       	
+       	BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno, tirarDados, comprarPropiedad);
+       	tirarDados.setOnAction(tirarDadosHandler);
        	
        	
        	

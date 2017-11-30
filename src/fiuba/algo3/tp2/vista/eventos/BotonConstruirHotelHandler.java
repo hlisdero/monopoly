@@ -35,8 +35,13 @@ public class BotonConstruirHotelHandler implements EventHandler<ActionEvent>{
 				this.alertConstruirHotel(true);
 				
 		} catch (ConstruirHotelInvalidoException e) {
-			e.printStackTrace();
 			this.alertConstruirHotel(false);
+		}
+		catch(NullPointerException e) {
+			this.alertConstruirHotel(false);
+		}	
+		 	catch(ClassCastException e)	{
+		 		this.alertConstruirHotel(false);
 		}
 	}
 	

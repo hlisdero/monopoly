@@ -1,80 +1,78 @@
 package fiuba.algo3.tp2.modelo;
 
-import java.util.ArrayList;
-
 public class Provincia extends Propiedad {
-	private ArrayList<MejoraProvincia> estadosPosibles = new ArrayList<MejoraProvincia>();
-	private MejoraProvincia estadoActual;
+	private Alquiler alquiler;
+	private Provincia provinciaHermana;
 	
-	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa, double precioAlquilerDosCasas, double precioAlquilerHotel, String nombre) {
+	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioConstruirHotel, double precioAlquilerUnaCasa,
+			double precioAlquilerDosCasas, double precioAlquilerHotel, String nombre) {
 		super(precio);
-		MejoraProvincia terreno = new MejoraProvincia(precioAlquilerTerreno);
-		MejoraProvincia unaCasa = new MejoraProvincia(precioAlquilerUnaCasa, precioConstruirCasa);
-		MejoraProvincia dosCasas = new MejoraProvincia(precioAlquilerDosCasas, precioConstruirCasa);
-		MejoraProvincia hotel = new MejoraProvincia(precioAlquilerHotel, precioConstruirHotel);
-		estadosPosibles.add(terreno);
-		estadosPosibles.add(unaCasa);
-		estadosPosibles.add(dosCasas);
-		estadosPosibles.add(hotel);
-		estadoActual = terreno;
+		alquiler = new Alquiler(precioAlquilerTerreno, 0);
+		alquiler.agregarMejora(precioAlquilerUnaCasa, precioConstruirCasa);
+		alquiler.agregarMejora(precioAlquilerDosCasas, precioConstruirCasa);
+		alquiler.agregarMejora(precioAlquilerHotel, precioConstruirHotel);
+		alquiler.setCantidadCasasMaxima(2);
 		this.nombreCasilla = nombre;
 	}
 	
 	public Provincia(double precio, double precioAlquilerTerreno, double precioConstruirCasa, double precioAlquilerUnaCasa, String nombre) {
 		super(precio);
-		MejoraProvincia terreno = new MejoraProvincia(precioAlquilerTerreno);
-		MejoraProvincia unaCasa = new MejoraProvincia(precioAlquilerUnaCasa, precioConstruirCasa);
-		estadosPosibles.add(terreno);
-		estadosPosibles.add(unaCasa);
-		estadoActual = terreno;
+		alquiler = new Alquiler(precioAlquilerTerreno, 0);
+		alquiler.agregarMejora(precioAlquilerUnaCasa, precioConstruirCasa);
+		alquiler.setCantidadCasasMaxima(1);
 		this.nombreCasilla = nombre;
 	}
+	
+	public void setProvinciaHermana(Provincia provinciaHermana) {
+		this.provinciaHermana = provinciaHermana;
+	}
 
+	public boolean existeProvinciaHermana() {
+		return provinciaHermana != null;
+	}
+	
+	public boolean hayCantidadCasasMaxima() {
+		return alquiler.hayCantidadCasasMaxima();
+	}
+	
 	public boolean sePuedeConstruirHotel() {
-		return (estadosPosibles.size() == 4);
+		if (!existeProvinciaHermana()) {
+			return hayCantidadCasasMaxima();
+		}
+		return hayCantidadCasasMaxima() && provinciaHermana.hayCantidadCasasMaxima();	
 	}
 
 	public int getCantidadCasas() {
-		return estadosPosibles.indexOf(estadoActual);
+		return alquiler.getCantidadCasas();
 	}
 	
 	public boolean tieneHotel(Casilla prop) {
-		return (estadoActual == estadosPosibles.get(3));
+		return alquiler.tieneHotel();
 	}
 	
 	public void construirCasa() throws ConstruirCasaInvalidoException {
-		if (estadoActual == estadosPosibles.get(0)) {
-			estadoActual = estadosPosibles.get(1);
-		} else if (estadoActual == estadosPosibles.get(1)) {
-			estadoActual = estadosPosibles.get(2);
-		} else {
-			throw new ConstruirCasaInvalidoException();
-		}
-		this.getPropietario().restarDinero(estadoActual.getPrecioConstruccion());
+		alquiler.construirCasa();
+		this.getPropietario().restarDinero(alquiler.getPrecioConstruccion());
 	}
 	
 	public void construirHotel() throws ConstruirHotelInvalidoException {
-		if (estadoActual == estadosPosibles.get(2)) {
-			estadoActual = estadosPosibles.get(3);
-		} else {
-			throw new ConstruirHotelInvalidoException();
-		}
-		this.getPropietario().restarDinero(estadoActual.getPrecioConstruccion());
+		alquiler.construirHotel();
+		this.getPropietario().restarDinero(alquiler.getPrecioConstruccion());
 	}
 	
 	public void vender(Jugador jugador) {
 		if(getPropietario().equals(jugador)){
 			this.setPropietario(null);
 			jugador.agregarDinero(getPrecioVenta());
-			estadoActual = estadosPosibles.get(0);
+			alquiler.resetearMejoras();
 		}
 	}
 	
 	@Override
 	public void aplicarEfecto(Jugador jugador) {
 		if (debeCobrar(jugador)) {
-			jugador.restarDinero(estadoActual.getPrecioAlquiler());
-			this.getPropietario().agregarDinero(estadoActual.getPrecioAlquiler());
+			jugador.restarDinero(alquiler.getPrecioAlquiler());
+			this.getPropietario().agregarDinero(alquiler.getPrecioAlquiler());
 		}
 	}
 }

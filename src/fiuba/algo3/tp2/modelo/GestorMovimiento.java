@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modelo;
 import java.util.ArrayList;
 
 public class GestorMovimiento {
+	private static final int CANTIDAD_DADOS_DOBLE_MAXIMA = 1;
 	private ArrayList<ContadorTurnos> contadoresTurnos = new ArrayList<ContadorTurnos>();
 	private Tablero tablero = new Tablero(this);
 	
@@ -16,13 +17,18 @@ public class GestorMovimiento {
 	
 	public void notificarNuevoTurno(Jugador jugador) {
 		for (ContadorTurnos elementoANotificar : contadoresTurnos) {
-
 			elementoANotificar.contarTurno(jugador);
         }
 	}
 
 	public void mover(Jugador jugador) {
-		this.mover(jugador, jugador.tirarDados().getSuma());
+		int cantidadDadosDoble = 0;
+		do {
+			this.mover(jugador, jugador.tirarDados().getSuma());
+			if (jugador.getResultadoDados().esDoble()) {
+				cantidadDadosDoble++;
+			}
+		} while (cantidadDadosDoble < CANTIDAD_DADOS_DOBLE_MAXIMA);
 	}
 	
 	public void mover(Jugador jugador, int posiciones) {

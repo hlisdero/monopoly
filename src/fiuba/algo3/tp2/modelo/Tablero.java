@@ -7,8 +7,7 @@ public class Tablero {
 	private ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 	
 	public Tablero(GestorMovimiento gestor) {
-		Carcel carcel = new Carcel();
-
+		
 		/* Creación de las empresas */
 		Empresa edesur = new Empresa(35000, 500,1000,"EDESUR");
 		Empresa subte = new Empresa(40000, 600,1100, "SUBTE");
@@ -27,6 +26,9 @@ public class Tablero {
 		Provincia santaFe = new Provincia(15000, 1500, 4000, 3500, "SANTA FE");
 		Provincia neuquen = new Provincia(17000, 1800, 4800, 3800, "NEUQUEN");
 		Provincia tucuman = new Provincia(25000, 2500, 7000, 2500, "TUCUMAN");
+		
+		/* Creación de la casilla cárcel */
+		Carcel carcel = new Carcel();
 		
 		/* Creación de las casillas de movimiento dinámico */
 		CasillaMovimientoDinamico avance = new CasillaMovimientoDinamico(new Avance(), gestor, "AVANCE");
@@ -54,6 +56,13 @@ public class Tablero {
 		casillas.add(retroceso);								// Retroceso Dinámico
 		casillas.add(tucuman);									// Tucumán
 
+		/* Configuración de las provincias dobles */
+		buenosAiresSur.setProvinciaHermana(buenosAiresNorte);
+		buenosAiresNorte.setProvinciaHermana(buenosAiresSur);
+		cordobaSur.setProvinciaHermana(cordobaNorte);
+		cordobaNorte.setProvinciaHermana(cordobaSur);
+		saltaSur.setProvinciaHermana(saltaNorte);
+		saltaNorte.setProvinciaHermana(saltaSur);
 		
 		/* Configuración extra de las casillas especiales */
 		gestor.agregarContadorTurnos(carcel);
@@ -75,6 +84,5 @@ public class Tablero {
 	public ArrayList<Casilla> getCasillas() {
 		return casillas;
 	}
-	
 	
 }

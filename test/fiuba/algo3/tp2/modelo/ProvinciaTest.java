@@ -103,11 +103,11 @@ public class ProvinciaTest {
 	@Test
 	public void construirCasaCapitalJugadorSeReduce() throws ConstruirCasaInvalidoException {
 		Provincia provincia = new Provincia(0, 0, 2000, 0, 0, 0, 0, "");
-		Jugador jugador1 = new Jugador(provincia);
+		Jugador jugador = new Jugador(provincia);
 		
-		provincia.comprar(jugador1);
+		provincia.comprar(jugador);
 		provincia.construirCasa();	
-		assertEquals(98000, jugador1.getCapital(), DELTA);
+		assertEquals(98000, jugador.getCapital(), DELTA);
 	}
 	
 	@Test

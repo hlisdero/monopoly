@@ -23,6 +23,10 @@ public class GestorMovimiento {
 
 	public void mover(Jugador jugador) {
 		int cantidadDadosDoble = 0;
+		
+		if (!jugador.sePuedeMover()) {
+			return;
+		}
 		do {
 			this.mover(jugador, jugador.tirarDados().getSuma());
 			if (jugador.getResultadoDados().esDoble()) {
@@ -36,16 +40,13 @@ public class GestorMovimiento {
 			return;
 		} 
 		Casilla casillaSiguiente = tablero.getCasillaSiguiente(jugador.getCasilla(), posiciones);
-		jugador.setCasilla(casillaSiguiente);
-		casillaSiguiente.aplicarEfecto(jugador);
+		mover(jugador, casillaSiguiente);
 	}
 	
 	public void mover(Jugador jugador, Casilla casilla) {
+		jugador.setCasilla(casilla);
 		casilla.aplicarEfecto(jugador);
-		jugador.setCasilla(casilla);	
-
 	}
-	
 	
 	public Tablero getTablero() {
 		return tablero;

@@ -1,4 +1,3 @@
-install: travis_wait mvn install
 language: java
 jdk:
   - oraclejdk8

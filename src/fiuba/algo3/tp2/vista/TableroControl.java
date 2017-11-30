@@ -8,6 +8,7 @@ import fiuba.algo3.tp2.vista.eventos.*;
 
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class TableroControl extends Parent{
@@ -29,6 +30,7 @@ public class TableroControl extends Parent{
 	
 	private TurnoJugador turnoJugador = new TurnoJugador();
 	
+	Label titulo = new Label("Entrar el numero de casilla");
 	TextField text = new TextField();
 	
 
@@ -80,6 +82,7 @@ public class TableroControl extends Parent{
        	this.getChildren().add(terreno);
 		this.getChildren().add(turnoJugador);
 		this.getChildren().add(barra);
+		this.getChildren().add(titulo);
 		this.getChildren().add(text);
 	}
 	
@@ -121,6 +124,9 @@ public class TableroControl extends Parent{
 		
 		barra.setTranslateX(430);
 		barra.setTranslateY(350);
+		
+		titulo.setLayoutX(1140);
+		titulo.setLayoutY(805);
 		
 		text.setLayoutX(1140);
 		text.setLayoutY(820);

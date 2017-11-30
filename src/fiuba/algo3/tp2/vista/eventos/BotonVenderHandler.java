@@ -33,7 +33,9 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent actionEvent){
 		
-		this.numero = Integer.valueOf(text.getText());
+		try{
+		this.numero = Integer.valueOf(text.getText());}
+		catch(NumberFormatException e){this.alertVenderPropiedad(false);}
 		
 		System.out.println("Numero casilla: "+numero);
 		jugador = turno.getJugadorGenerico();

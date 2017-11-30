@@ -44,26 +44,32 @@ public class CasillaVista extends Parent{
 		casilla.setFill(Color.TRANSPARENT);
 	    casilla.setStroke(Color.TRANSPARENT);
 		
+	    
 	    casilla.setOnMouseMoved(new EventHandler<MouseEvent>() {
 	        @Override
 	        public void handle(MouseEvent event) {
 	        			Tooltip.install(casilla, tp);
+	        			try{
 	        			tp.setText("Nombre casilla: "+name+
 	        					"\nPrecio casilla: "+((Propiedad) valorCasilla).getPrecio()+
 	        					"\nNumero casilla: "+numeroCasilla
 	        					);
+	        			 }  catch(ClassCastException e){
+	        				 tp.setText("Nombre casilla: "+name+
+	 	        					"\nNumero casilla: "+numeroCasilla);
+	        			 }
 	        			tp.show(casilla, event.getScreenX(), event.getScreenY());
 	        }
 	    });
 	    
+	  
 	    casilla.setOnMouseExited(new EventHandler<MouseEvent>() {
 	        @Override
 	        public void handle(MouseEvent event) {
-	        	
 	        	 tp.hide();	
 	        }
 	    });
-		
+	   
 	    this.getChildren().add(casilla);
 	}
 	public double  getPosX() {

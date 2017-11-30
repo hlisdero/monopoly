@@ -28,7 +28,7 @@ public class GestorMovimiento {
 			if (jugador.getResultadoDados().esDoble()) {
 				cantidadDadosDoble++;
 			}
-		} while (cantidadDadosDoble < CANTIDAD_DADOS_DOBLE_MAXIMA);
+		} while (cantidadDadosDoble <= CANTIDAD_DADOS_DOBLE_MAXIMA);
 	}
 	
 	public void mover(Jugador jugador, int posiciones) {

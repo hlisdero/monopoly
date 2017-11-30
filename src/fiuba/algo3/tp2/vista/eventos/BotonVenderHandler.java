@@ -27,9 +27,6 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		this.terreno = terreno;
 		this.source = btn;
 		this.text = text;
-		
-		
-		
 	}
 	
 	
@@ -54,7 +51,6 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		}catch(ClassCastException e){
 			this.alertVenderPropiedad(false);
 		}
-		
 	}
 	
 	public void alertVenderPropiedad(boolean valido)

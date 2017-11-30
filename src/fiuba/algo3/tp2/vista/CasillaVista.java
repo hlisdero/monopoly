@@ -3,7 +3,11 @@ package fiuba.algo3.tp2.vista;
 import java.util.ArrayList;
 
 import fiuba.algo3.tp2.modelo.Casilla;
+import fiuba.algo3.tp2.modelo.Propiedad;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -19,9 +23,10 @@ public class CasillaVista extends Parent{
 	private Casilla valorCasilla;
 	private String name;
 	private Rectangle casilla;
+	private Tooltip tp = new Tooltip();
 	
 	
-	public CasillaVista(double positionX, double positionY, double sizeX, double sizeY, Casilla valorCasilla){
+	public CasillaVista(double positionX, double positionY, double sizeX, double sizeY, final Casilla valorCasilla, final int numeroCasilla){
 		
 		this.posX = positionX;
 		this.posY = positionY;
@@ -39,6 +44,25 @@ public class CasillaVista extends Parent{
 		casilla.setFill(Color.TRANSPARENT);
 	    casilla.setStroke(Color.TRANSPARENT);
 		
+	    casilla.setOnMouseMoved(new EventHandler<MouseEvent>() {
+	        @Override
+	        public void handle(MouseEvent event) {
+	        			Tooltip.install(casilla, tp);
+	        			tp.setText("Nombre casilla: "+name+
+	        					"\nPrecio casilla: "+((Propiedad) valorCasilla).getPrecio()+
+	        					"\nNumero casilla: "+numeroCasilla
+	        					);
+	        			tp.show(casilla, event.getScreenX(), event.getScreenY());
+	        }
+	    });
+	    
+	    casilla.setOnMouseExited(new EventHandler<MouseEvent>() {
+	        @Override
+	        public void handle(MouseEvent event) {
+	        	
+	        	 tp.hide();	
+	        }
+	    });
 		
 	    this.getChildren().add(casilla);
 	}

@@ -23,7 +23,7 @@ public class CasillaVista extends Parent{
 	private Casilla valorCasilla;
 	private String name;
 	private Rectangle casilla;
-	private Tooltip tp = new Tooltip();
+	private Tooltip vistaDetallesCasillas = new Tooltip();
 	
 	
 	public CasillaVista(double positionX, double positionY, double sizeX, double sizeY, final Casilla valorCasilla, final int numeroCasilla){
@@ -48,17 +48,17 @@ public class CasillaVista extends Parent{
 	    casilla.setOnMouseMoved(new EventHandler<MouseEvent>() {
 	        @Override
 	        public void handle(MouseEvent event) {
-	        			Tooltip.install(casilla, tp);
+	        			Tooltip.install(casilla, vistaDetallesCasillas);
 	        			try{
-	        			tp.setText("Nombre casilla: "+name+
+	        				vistaDetallesCasillas.setText("Nombre casilla: "+name+
 	        					"\nPrecio casilla: "+((Propiedad) valorCasilla).getPrecio()+
 	        					"\nNumero casilla: "+numeroCasilla
 	        					);
-	        			 }  catch(ClassCastException e){
-	        				 tp.setText("Nombre casilla: "+name+
+	        			 } catch(ClassCastException e){
+	        				 vistaDetallesCasillas.setText("Nombre casilla: "+name+
 	 	        					"\nNumero casilla: "+numeroCasilla);
 	        			 }
-	        			tp.show(casilla, event.getScreenX(), event.getScreenY());
+	        			vistaDetallesCasillas.show(casilla, event.getScreenX(), event.getScreenY());
 	        }
 	    });
 	    
@@ -66,7 +66,7 @@ public class CasillaVista extends Parent{
 	    casilla.setOnMouseExited(new EventHandler<MouseEvent>() {
 	        @Override
 	        public void handle(MouseEvent event) {
-	        	 tp.hide();	
+	        		vistaDetallesCasillas.hide();	
 	        }
 	    });
 	   

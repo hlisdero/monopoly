@@ -14,8 +14,7 @@ public class TerrenoVista extends Parent{
 	public ArrayList<CasillaVista> list = new ArrayList<CasillaVista>();
 	private AlgoPoly algo = new AlgoPoly();
 	
-	public TerrenoVista()
-	{
+	public TerrenoVista() {
 		this.dibujarTereno();
 	}
 	

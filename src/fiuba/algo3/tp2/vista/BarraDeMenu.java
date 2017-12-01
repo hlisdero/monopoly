@@ -10,12 +10,12 @@ import javafx.scene.control.MenuItem;
 public class BarraDeMenu extends MenuBar{
 
 	
-	 public BarraDeMenu(){
+	 public BarraDeMenu() {
 		 
 		 
 		 Menu menuOpcion = new Menu("Menu");
 
-	     MenuItem opcionSalir = new MenuItem("Quitar");
+	     MenuItem opcionSalir = new MenuItem("Salir del Juego");
 	        
 	     OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
 	     opcionSalir.setOnAction(opcionSalirHandler);

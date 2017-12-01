@@ -32,35 +32,30 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 	
 	
 	@Override
-	public void handle(ActionEvent actionEvent){
+	public void handle(ActionEvent actionEvent) {
 		
 		try{
-		this.numero = Integer.valueOf(text.getText());}
-		catch(NumberFormatException e)
-		{this.alertVenderPropiedad(false);}
+			this.numero = Integer.valueOf(text.getText());
+		}catch(NumberFormatException e){
+			this.alertVenderPropiedad(false);
+		}
 		
 		
 		
-		//System.out.println("Numero casilla: "+numero);
 		jugador = turno.getJugadorGenerico();
 		try{
-			if(jugador.getValorJugador().getGestorPropiedades().getPropiedades().contains(terreno.getCasillasVista().get(numero).getValorCasilla()))
-			{
+			if(jugador.getValorJugador().getGestorPropiedades().getPropiedades().contains(terreno.getCasillasVista().get(numero).getValorCasilla())){
 				jugador.getValorJugador().vender((Propiedad)terreno.getCasillasVista().get(numero).getValorCasilla());
 				terreno.venderCasa(terreno.getCasillaVista(numero));
 				this.alertVenderPropiedad(true);
 				source.setDisable(true);
-			}
-		
-			else{ this.alertVenderPropiedad(false);
-		}
+			}else{ this.alertVenderPropiedad(false);}
 		}catch(ClassCastException e){
 			this.alertVenderPropiedad(false);
 		}catch(NullPointerException e){}
 	}
 	
-	public void alertVenderPropiedad(boolean valido)
-	{
+	public void alertVenderPropiedad(boolean valido) {
 		Alert dialogoAlerta = new Alert(null);
       	dialogoAlerta.setTitle("Vender propiedad");
       	dialogoAlerta.initStyle(StageStyle.UTILITY);
@@ -68,8 +63,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		if(valido){
 			dialogoAlerta.setAlertType(AlertType.CONFIRMATION);
 			dialogoAlerta.setContentText("Precio de la propiedad: "+((Propiedad) terreno.getCasillasVista().get(numero).getValorCasilla()).getPrecio()+"\n\nCapital restante: " +jugador.getValorJugador().getCapital());
-		}
-		else{
+		}else{
 			dialogoAlerta.setAlertType(AlertType.ERROR);
 			dialogoAlerta.setContentText("No se puede vender la propiedad numero "+numero);
 		}

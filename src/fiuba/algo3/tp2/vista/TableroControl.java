@@ -4,6 +4,7 @@ package fiuba.algo3.tp2.vista;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.tp2.modelo.Propiedad;
 import fiuba.algo3.tp2.vista.eventos.*;
 
 import javafx.scene.Parent;
@@ -30,7 +31,7 @@ public class TableroControl extends Parent{
 	
 	private TurnoJugador turnoJugador = new TurnoJugador();
 	
-	Label titulo = new Label("Entrar el numero de casilla");
+	Label titulo = new Label("Numero de casilla que quiere vender");
 	TextField text = new TextField();
 	
 
@@ -38,6 +39,21 @@ public class TableroControl extends Parent{
 
 		this.setLayoutComponents();
 
+		text.editableProperty();
+		
+		
+		text.setOnKeyTyped(e->{
+			Integer numeroCasillaAVender = 0;
+			try{
+				 numeroCasillaAVender = Integer.valueOf(text.getText());}
+				catch(NumberFormatException error)
+				{}
+			if(!(terreno.getCasillasVista().get(numeroCasillaAVender).getValorCasilla() instanceof Propiedad)){
+				venderPropiedad.setDisable(true);
+				}else {
+					venderPropiedad.setDisable(false);
+			}
+		});
 		
 		listBotones.add(tirarDados);
 		listBotones.add(comprarPropiedad);
@@ -47,9 +63,10 @@ public class TableroControl extends Parent{
 		listBotones.add(construirHotel);
 		listBotones.add(pagarFianza);
 		listBotones.add(datosJugador);
+
+		
 	
-       	
-       	
+		
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador, terreno, comprarPropiedad);
        	comprarPropiedad.setOnAction(comprarHandler);
        	
@@ -84,6 +101,7 @@ public class TableroControl extends Parent{
 		this.getChildren().add(barra);
 		this.getChildren().add(titulo);
 		this.getChildren().add(text);
+	
 	}
 	
 

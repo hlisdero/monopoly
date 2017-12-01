@@ -17,15 +17,15 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 	private JugadorVista jugador;
 	private TurnoJugador turno;
 	private int cantidadJugadores;
-	private ArrayList<Button> btns;
+	private ArrayList<Button> listaBotones;
 	
 	
-	public BotonFinalizarTurnoHandler(TurnoJugador turno, JugadorVista jugador, ArrayList<Button> btns)
+	public BotonFinalizarTurnoHandler(TurnoJugador turno, JugadorVista jugador, ArrayList<Button> botones)
 	{
 		this.turno = turno;
 		this.jugador = jugador;
 		this.cantidadJugadores = turno.getListaJugadores().size();
-		this.btns = btns;
+		this.listaBotones = botones;
 	}
 	
 	@Override
@@ -37,7 +37,7 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 			turno.setJugadorGenerico(jugador);
 			this.alertFinalizarTurno();
 			
-			for(Button btn: btns){btn.setDisable(false);}
+			for(Button botones: listaBotones){botones.setDisable(false);}
     }
 	
 	public void alertFinalizarTurno(){

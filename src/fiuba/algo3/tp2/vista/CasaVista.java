@@ -1,21 +1,16 @@
 package fiuba.algo3.tp2.vista;
 
-
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 
-public class CasaVista extends Parent{
-	
+public class CasaVista extends Parent {
 	private double posX;
 	private double posY;
 	private double sizeX;
 	private double sizeY;
-	
 	private static double translacion;
-
-	 
 	
-	public CasaVista(double positionX, double positionY, JugadorVista jugadorVista){
+	public CasaVista(double positionX, double positionY, JugadorVista jugadorVista) {
 		translacion += 10;
 		this.posX = positionX + translacion;
 		this.posY = positionY;

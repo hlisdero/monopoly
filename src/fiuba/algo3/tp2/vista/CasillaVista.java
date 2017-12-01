@@ -11,11 +11,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-
-
-public class CasillaVista extends Parent{
-	
-	private  ArrayList<Parent> listaPropiedades = new ArrayList<Parent>() ;
+public class CasillaVista extends Parent {	
+	private ArrayList<Parent> listaPropiedades = new ArrayList<Parent>();
 	private double posX;
 	private double posY;
 	private double sizeX;
@@ -25,9 +22,7 @@ public class CasillaVista extends Parent{
 	private Rectangle casilla;
 	private Tooltip vistaDetallesCasillas = new Tooltip();
 	
-	
 	public CasillaVista(double positionX, double positionY, double sizeX, double sizeY, final Casilla valorCasilla, final int numeroCasilla){
-		
 		this.posX = positionX;
 		this.posY = positionY;
 		this.sizeX = sizeX;
@@ -40,29 +35,26 @@ public class CasillaVista extends Parent{
 		casilla.setHeight(this.sizeY);
 		casilla.setX(this.posX);
 		casilla.setY(this.posY);
-
 		casilla.setFill(Color.TRANSPARENT);
 	    casilla.setStroke(Color.TRANSPARENT);
-		
 	    
 	    casilla.setOnMouseMoved(new EventHandler<MouseEvent>() {
 	        @Override
 	        public void handle(MouseEvent event) {
-	        			Tooltip.install(casilla, vistaDetallesCasillas);
-	        			try{
-	        				vistaDetallesCasillas.setText("Nombre casilla: "+name+
-	        					"\nPrecio casilla: "+((Propiedad) valorCasilla).getPrecio()+
-	        					"\nNumero casilla: "+numeroCasilla
-	        					);
-	        			 } catch(ClassCastException e){
-	        				 vistaDetallesCasillas.setText("Nombre casilla: "+name+
-	 	        					"\nNumero casilla: "+numeroCasilla);
-	        			 }
-	        			vistaDetallesCasillas.show(casilla, event.getScreenX(), event.getScreenY());
+	        	Tooltip.install(casilla, vistaDetallesCasillas);
+	        	try{
+	        		vistaDetallesCasillas.setText("Nombre casilla: "+name+
+	        		"\nPrecio casilla: "+((Propiedad) valorCasilla).getPrecio()+
+	        		"\nNumero casilla: "+numeroCasilla
+	        		);
+	        	} catch(ClassCastException e){
+	        		vistaDetallesCasillas.setText("Nombre casilla: "+name+
+	 	        	"\nNumero casilla: "+numeroCasilla);
+	        	}
+	        	vistaDetallesCasillas.show(casilla, event.getScreenX(), event.getScreenY());
 	        }
 	    });
 	    
-	  
 	    casilla.setOnMouseExited(new EventHandler<MouseEvent>() {
 	        @Override
 	        public void handle(MouseEvent event) {
@@ -72,22 +64,24 @@ public class CasillaVista extends Parent{
 	   
 	    this.getChildren().add(casilla);
 	}
-	public double  getPosX() {
+	
+	public double getPosX() {
 		return this.posX;
 		
 	}
-	public double  getPosY() {
-		return this.posY;
-		
+	
+	public double getPosY() {
+		return this.posY;	
 	}
-	public double  getWidthX() {
+	
+	public double getWidthX() {
 		return this.sizeX;
-		
 	}
-	public double  getHeightY() {
+	
+	public double getHeightY() {
 		return this.sizeY;
-		
 	}
+	
 	public Casilla getValorCasilla() {
 		return valorCasilla;
 	}
@@ -95,18 +89,13 @@ public class CasillaVista extends Parent{
 	public String getName(){
 		return this.name;
 	}
-	public ArrayList<Parent> removePropiedades() {
-		
-		return this.listaPropiedades;
-						
-		
+	
+	public ArrayList<Parent> removePropiedades() {	
+		return this.listaPropiedades;		
 	}
+	
 	public void agregarPropiedad(Parent propiedad) {
 		this.listaPropiedades.add(propiedad);
-
 	}
 	
-	
-	
-
 }

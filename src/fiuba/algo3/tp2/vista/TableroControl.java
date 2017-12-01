@@ -1,7 +1,5 @@
 package fiuba.algo3.tp2.vista;
 
-
-
 import java.util.ArrayList;
 
 import fiuba.algo3.tp2.modelo.Propiedad;
@@ -12,46 +10,38 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class TableroControl extends Parent{
-	
-	TerrenoVista terreno = new TerrenoVista();
-	
-	BarraDeMenu barra = new BarraDeMenu();
-	
-	Button tirarDados= new Button("Tirar dados");
-	Button finalizarTurno= new Button("Finalizar turno");
-	Button comprarPropiedad = new Button("Comprar propiedad");
-	Button venderPropiedad = new Button("Vender propiedad");
-	Button construirCasa = new Button("Construir casa");
-	Button construirHotel = new Button("Construir hotel");
-	Button pagarFianza = new Button("Pagar fianza");
-	Button datosJugador = new Button("Datos jugador");
-	
-	ArrayList<Button> listBotones = new ArrayList<Button>();
-	
+public class TableroControl extends Parent {
+	private TerrenoVista terreno = new TerrenoVista();
+	private BarraDeMenu barra = new BarraDeMenu();
+	private Button tirarDados= new Button("Tirar dados");
+	private Button finalizarTurno= new Button("Finalizar turno");
+	private Button comprarPropiedad = new Button("Comprar propiedad");
+	private Button venderPropiedad = new Button("Vender propiedad");
+	private Button construirCasa = new Button("Construir casa");
+	private Button construirHotel = new Button("Construir hotel");
+	private Button pagarFianza = new Button("Pagar fianza");
+	private Button datosJugador = new Button("Datos jugador");
+	private ArrayList<Button> listBotones = new ArrayList<Button>();
 	private TurnoJugador turnoJugador = new TurnoJugador();
 	
 	Label titulo = new Label("Numero de casilla que quiere vender");
 	TextField text = new TextField();
 	
-
-	public TableroControl(){
-
+	public TableroControl() {
 		this.setLayoutComponents();
-
 		text.editableProperty();
-		
 		
 		text.setOnKeyTyped(e->{
 			Integer numeroCasillaAVender = 0;
-			try{
-				 numeroCasillaAVender = Integer.valueOf(text.getText());}
-				catch(NumberFormatException error)
-				{}
-			if(!(terreno.getCasillasVista().get(numeroCasillaAVender).getValorCasilla() instanceof Propiedad)){
+			
+			try {
+				numeroCasillaAVender = Integer.valueOf(text.getText());
+			} catch(NumberFormatException error) {}
+			
+			if(!(terreno.getCasillasVista().get(numeroCasillaAVender).getValorCasilla() instanceof Propiedad)) {
 				venderPropiedad.setDisable(true);
-				}else {
-					venderPropiedad.setDisable(false);
+			} else {
+				venderPropiedad.setDisable(false);
 			}
 		});
 		
@@ -63,17 +53,12 @@ public class TableroControl extends Parent{
 		listBotones.add(construirHotel);
 		listBotones.add(pagarFianza);
 		listBotones.add(datosJugador);
-
-		
 	
-		
        	BotonComprarHandler comprarHandler = new BotonComprarHandler(turnoJugador, terreno, comprarPropiedad);
-       	comprarPropiedad.setOnAction(comprarHandler);
-       	
+       	comprarPropiedad.setOnAction(comprarHandler);       	
       
  		BotonVenderHandler venderHandler = new BotonVenderHandler(turnoJugador, terreno, venderPropiedad, text);
 		venderPropiedad.setOnAction(venderHandler);
-	
 
 		BotonConstruirCasaHandler casaHandler = new BotonConstruirCasaHandler(turnoJugador, terreno);
 		construirCasa.setOnAction(casaHandler);
@@ -93,20 +78,15 @@ public class TableroControl extends Parent{
        	BotonTirarDadosHandler tirarDadosHandler = new BotonTirarDadosHandler(turnoJugador, terreno, tirarDados, comprarPropiedad);
        	tirarDados.setOnAction(tirarDadosHandler);
        	
-       	
-       	
        	this.getChildren().addAll(listBotones);
        	this.getChildren().add(terreno);
 		this.getChildren().add(turnoJugador);
 		this.getChildren().add(barra);
 		this.getChildren().add(titulo);
 		this.getChildren().add(text);
-	
 	}
-	
 
-	public void setLayoutComponents()
-	{
+	public void setLayoutComponents() {
 		tirarDados.setLayoutX(500);
 		tirarDados.setLayoutY(850);
 		tirarDados.setStyle("-fx-padding: 50;");
@@ -137,8 +117,7 @@ public class TableroControl extends Parent{
 		
 		datosJugador.setLayoutX(350);
 		datosJugador.setLayoutY(500);
-		datosJugador.setStyle("-fx-padding: 15;");
-		
+		datosJugador.setStyle("-fx-padding: 15;");	
 		
 		barra.setTranslateX(430);
 		barra.setTranslateY(350);
@@ -149,7 +128,5 @@ public class TableroControl extends Parent{
 		text.setLayoutX(1140);
 		text.setLayoutY(820);
 	}
-	
-	
 
 }

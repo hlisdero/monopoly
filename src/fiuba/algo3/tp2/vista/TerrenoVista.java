@@ -7,20 +7,15 @@ import fiuba.algo3.tp2.modelo.Casilla;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 
-
-
-public class TerrenoVista extends Parent{
-	
-	public ArrayList<CasillaVista> list = new ArrayList<CasillaVista>();
+public class TerrenoVista extends Parent {
+	private ArrayList<CasillaVista> list = new ArrayList<CasillaVista>();
 	private AlgoPoly algo = new AlgoPoly();
 	
 	public TerrenoVista() {
 		this.dibujarTereno();
 	}
 	
-	
-	public void dibujarTereno(){
-		
+	public void dibujarTereno(){	
 		ArrayList<Casilla> casillas = algo.getCasillas();
 		
 		list.add(new CasillaVista(1168,734,132,65,casillas.get(0),0));
@@ -46,9 +41,7 @@ public class TerrenoVista extends Parent{
 		list.add(new CasillaVista(1168,533,132,67,casillas.get(17),17));
 		list.add(new CasillaVista(1168,600,132,67,casillas.get(18),18));
 		list.add(new CasillaVista(1168,667,132,67,casillas.get(19),19));
-		
-		
-		
+			
 		ImageView image = new ImageView ("File:images/tablero.png ");
 		image.setLayoutX(500);
 		image.setLayoutY(400);
@@ -59,18 +52,16 @@ public class TerrenoVista extends Parent{
 		
 		for(CasillaVista casilla: list){
 			this.getChildren().addAll(casilla);
-		}
-		
-		
+		}		
 	}
 	
-	public void crearCasaVista(double posX, double posY, JugadorVista jugadorVista, CasillaVista casilla){
+	public void crearCasaVista(double posX, double posY, JugadorVista jugadorVista, CasillaVista casilla) {
 		CasaVista casa = new CasaVista(posX, posY,jugadorVista);
 		casilla.agregarPropiedad(casa);
 		this.getChildren().addAll(casa);
 	}
 	
-	public void crearHotelVista(double posX, double posY, CasillaVista casilla){
+	public void crearHotelVista(double posX, double posY, CasillaVista casilla) {
 		HotelVista hotel = new HotelVista(posX, posY);
 		casilla.agregarPropiedad(hotel);
 		this.getChildren().addAll(hotel);
@@ -83,24 +74,19 @@ public class TerrenoVista extends Parent{
 	public AlgoPoly getControlador() {
 		return algo;
 	}
-
-
+	
 	public void venderCasa(CasillaVista casilla) {
 		for  (Parent elemento: casilla.removePropiedades()) {
 			this.getChildren().remove(elemento);
 		}			
 	}
 
-
 	public Casilla getCasillaJugadorVista(JugadorVista jugador) {
 		return list.get(jugador.getNumeroCasilla()).getValorCasilla();
 	}
 
-
 	public CasillaVista getCasillaVista(int posicionNueva) {
 		return list.get(posicionNueva);
 	}
-	
-	
 
 }

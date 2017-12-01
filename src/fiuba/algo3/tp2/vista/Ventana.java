@@ -14,21 +14,15 @@ public class Ventana extends Application {
     }
     
     public void start(Stage stage) {
-  
-        StackPane root = new StackPane();
-        
-        
+        StackPane root = new StackPane();        
         TableroControl t = new TableroControl();
-        
-        
-        
+               
         root.getChildren().addAll(t);
         
         Scene scene = new Scene(root, 1600, 800);
         
         stage.setTitle("AlgoPoly");
         stage.setScene(scene);
-        
         stage.show();
     }
 

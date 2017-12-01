@@ -7,6 +7,7 @@ import fiuba.algo3.tp2.modelo.GestorMovimiento;
 import fiuba.algo3.tp2.modelo.GestorTurnos;
 import fiuba.algo3.tp2.modelo.Jugador;
 import fiuba.algo3.tp2.modelo.Propiedad;
+import fiuba.algo3.tp2.modelo.Carcel;
 
 public class AlgoPoly {
 	private GestorMovimiento gestorMovimiento = new GestorMovimiento();
@@ -37,6 +38,10 @@ public class AlgoPoly {
 	
 	public void vender(Jugador jugador, Propiedad propiedad) {
 		jugador.vender(propiedad);
+	}
+	
+	public void pagarFianza(Jugador jugador, Carcel carcel) {
+		carcel.pagarFianza(jugador);
 	}
 
 	public Jugador getJugador() {

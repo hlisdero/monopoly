@@ -24,12 +24,10 @@ public class BotonPagarFianzaHandler  implements EventHandler<ActionEvent>{
     public void handle(ActionEvent actionEvent) {
 		Jugador jugador = turno.getJugadorGenerico().getValorJugador();
 		try{
-			if(((Carcel) jugador.getCasilla()).estaAdentro(jugador) && ((Carcel) jugador.getCasilla()).puedeSalir(jugador))
-			{
+			if(((Carcel) jugador.getCasilla()).estaAdentro(jugador) && ((Carcel) jugador.getCasilla()).puedeSalir(jugador)){
 				((Carcel) jugador.getCasilla()).pagarFianza(jugador);
 				this.alertPagarFianza(true);
-			}
-			else this.alertPagarFianza(false);
+			}else this.alertPagarFianza(false);
 		}catch(ClassCastException e){
 			this.alertPagarFianza(false);
 		}
@@ -46,9 +44,8 @@ public class BotonPagarFianzaHandler  implements EventHandler<ActionEvent>{
       	dialogoAlerta.initStyle(StageStyle.UTILITY);
       	
       	if(valido) {
-      		dialogoAlerta.setContentText("Eres libre de la carcel ! ");
-      	}
-      	else dialogoAlerta.setContentText("No se puede pagar fianza ahora !");
+      		dialogoAlerta.setContentText("Fuiste liberado de prision ! ");
+      	}else dialogoAlerta.setContentText("No se puede pagar fianza ahora !");
       	dialogoAlerta.showAndWait();
 	}
 	

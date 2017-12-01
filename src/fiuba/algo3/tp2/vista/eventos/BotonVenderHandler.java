@@ -49,7 +49,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 				terreno.venderCasa(terreno.getCasillaVista(numero));
 				this.alertVenderPropiedad(true);
 				source.setDisable(true);
-			}else{ this.alertVenderPropiedad(false);}
+			}else this.alertVenderPropiedad(false);
 		}catch(ClassCastException e){
 			this.alertVenderPropiedad(false);
 		}catch(NullPointerException e){}

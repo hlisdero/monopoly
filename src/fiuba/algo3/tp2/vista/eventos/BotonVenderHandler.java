@@ -27,7 +27,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		this.terreno = terreno;
 		this.source = btn;
 		this.text = text;
-		this.text.setText("1");
+		this.text.setText("");
 	}
 	
 	
@@ -38,6 +38,7 @@ public class BotonVenderHandler implements EventHandler<ActionEvent>{
 		this.numero = Integer.valueOf(text.getText());}
 		catch(NumberFormatException e)
 		{this.alertVenderPropiedad(false);}
+		
 		
 		
 		//System.out.println("Numero casilla: "+numero);

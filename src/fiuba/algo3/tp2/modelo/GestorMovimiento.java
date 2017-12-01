@@ -49,10 +49,6 @@ public class GestorMovimiento {
 		casilla.aplicarEfecto(jugador);
 	}
 	
-	public Tablero getTablero() {
-		return tablero;
-	}
-
 	public ArrayList<Casilla> getCasillas() {
 		return tablero.getCasillas();
 	}

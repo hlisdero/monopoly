@@ -24,8 +24,6 @@ public class GestorPropiedades {
 		return propiedades.size();
 	}
 	
-	
-	
 	public ArrayList<Propiedad> getPropiedades() {
 		return propiedades;
 	}

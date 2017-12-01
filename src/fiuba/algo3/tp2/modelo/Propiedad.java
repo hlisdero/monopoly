@@ -33,6 +33,11 @@ public class Propiedad extends Casilla {
 		return (tienePropietario() && jugador != propietario);
 	}
 	
+	@Override
+	public boolean sePuedeComprar() {
+		return true;
+	}
+	
 	public void comprar(Jugador jugador) {
 		propietario = jugador;
 		jugador.restarDinero(getPrecio());

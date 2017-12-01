@@ -12,4 +12,8 @@ public class Casilla {
 	public String getNombreCasilla() {
 		return nombreCasilla;
 	}
+	
+	public boolean sePuedeComprar() {
+		return false;
+	}
 }

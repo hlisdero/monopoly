@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 /**
- * © 2015 isp-insoft all rights reserved.
+ * 2015 isp-insoft all rights reserved.
  */
 
 import java.util.concurrent.CountDownLatch;

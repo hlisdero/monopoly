@@ -16,4 +16,8 @@ public class Casilla {
 	public boolean sePuedeComprar() {
 		return false;
 	}
+
+	public boolean tienePropietario() {
+		return false;
+	}
 }

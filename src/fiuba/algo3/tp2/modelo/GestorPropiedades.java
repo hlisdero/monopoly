@@ -10,9 +10,9 @@ public class GestorPropiedades {
 		this.propietario = propietario;
 	}
 	
-	public void comprar(Propiedad propiedad) {
-			propiedades.add(propiedad);
-			propiedad.comprar(propietario);
+	public void comprar(Propiedad propiedad) {	
+		propiedad.comprar(propietario);
+		propiedades.add(propiedad);
 	}
 	
 	public void vender(Propiedad propiedad) {

@@ -27,8 +27,8 @@ public class AlgoPoly {
 		return jugadorActual;
 	}
 	
-	public boolean sePuedeComprar(Propiedad propiedad) {
-		return propiedad.sePuedeComprar();
+	public boolean sePuedeComprar(Casilla casilla) {
+		return casilla.sePuedeComprar();
 	}
 	
 	public void comprar(Jugador jugador, Propiedad propiedad) {

@@ -35,7 +35,7 @@ public class Propiedad extends Casilla {
 	
 	@Override
 	public boolean sePuedeComprar() {
-		return true;
+		return tienePropietario();
 	}
 	
 	public void comprar(Jugador jugador) {

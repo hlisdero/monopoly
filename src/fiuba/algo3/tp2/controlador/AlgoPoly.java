@@ -16,7 +16,7 @@ public class AlgoPoly {
 		gestorMovimiento.mover(jugador);
 	}
 
-	public void mover(int espacios,Jugador jugador) {
+	public void mover(Jugador jugador,int espacios) {
 		gestorMovimiento.mover(jugador,espacios);
 	}
 	
@@ -37,7 +37,6 @@ public class AlgoPoly {
 
 	public void notificarNuevoTurno(Jugador jugador) {
 		gestorMovimiento.notificarNuevoTurno(jugador);
-		
 	}
 	
 	

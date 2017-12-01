@@ -6,6 +6,7 @@ import fiuba.algo3.tp2.modelo.Casilla;
 import fiuba.algo3.tp2.modelo.GestorMovimiento;
 import fiuba.algo3.tp2.modelo.GestorTurnos;
 import fiuba.algo3.tp2.modelo.Jugador;
+import fiuba.algo3.tp2.modelo.Propiedad;
 
 public class AlgoPoly {
 	private GestorMovimiento gestorMovimiento = new GestorMovimiento();
@@ -16,8 +17,8 @@ public class AlgoPoly {
 		gestorMovimiento.mover(jugador);
 	}
 
-	public void mover(int espacios,Jugador jugador) {
-		gestorMovimiento.mover(jugador,espacios);
+	public void mover(Jugador jugador, int posiciones) {
+		gestorMovimiento.mover(jugador, posiciones);
 	}
 	
 	public Jugador proximoJugador() {
@@ -25,10 +26,21 @@ public class AlgoPoly {
 		gestorMovimiento.notificarNuevoTurno(jugadorActual);
 		return jugadorActual;
 	}
+	
+	public boolean sePuedeComprar(Propiedad propiedad) {
+		return propiedad.sePuedeComprar();
+	}
+	
+	public void comprar(Jugador jugador, Propiedad propiedad) {
+		jugador.comprar(propiedad);
+	}
+	
+	public void vender(Jugador jugador, Propiedad propiedad) {
+		jugador.vender(propiedad);
+	}
 
 	public Jugador getJugador() {
-		jugadorActual  = gestorTurnos.proximoJugador();
-		return jugadorActual;
+		return gestorTurnos.proximoJugador();
 	}
 
 	public ArrayList<Casilla> getCasillas() {
@@ -36,9 +48,6 @@ public class AlgoPoly {
 	}
 
 	public void notificarNuevoTurno(Jugador jugador) {
-		gestorMovimiento.notificarNuevoTurno(jugador);
-		
+		gestorMovimiento.notificarNuevoTurno(jugador);	
 	}
-	
-	
 }
